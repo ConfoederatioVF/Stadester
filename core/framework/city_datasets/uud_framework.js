@@ -25,10 +25,7 @@
 
     var all_countries = Object.keys(uud_obj);
 
-    //1. Fix all Wikipedia outliers
-    uud_obj = fixAllWikipediaOutliers(uud_obj);
-
-    //2. Iterate over all_chandler_modelski_cities; link each one to a UUD city if possible
+    //1. Iterate over all_chandler_modelski_cities; link each one to a UUD city if possible
     for (var i = 0; i < all_chandler_modelski_cities.length; i++) {
       var local_city = main.population.chandler_modelski[all_chandler_modelski_cities[i]];
       var local_split_city_name = all_chandler_modelski_cities[i].split("-");
@@ -48,7 +45,7 @@
         }
       }
 
-      //3. Iterate over local_city_names; find local_uud_city
+      //2. Iterate over local_city_names; find local_uud_city
       var local_uud_city;
 
       for (var x = 0; x < local_city_names.length; x++) try {
@@ -110,7 +107,7 @@
           local_uud_city = closest_uud_city[0];
       }
 
-      //Assign populstat/chandler_modelski city types
+      //3. Assign populstat/chandler_modelski city types
       if (local_uud_city) {
         local_uud_city.type = "populstat";
         local_uud_city.chandler_modelski_coords = [local_city.latitude, local_city.longitude];
@@ -185,25 +182,7 @@
 
         if (!local_uud_city.population) local_uud_city.population = {};
 
-        //2. Merge .wikipedia_population into .population using geometric mean where domains overlap
-        if (local_uud_city.wikipedia_population) {
-          var all_wikipedia_population_keys = Object.keys(local_uud_city.wikipedia_population);
-
-          //Iterate over all_wikipedia_population_keys; skip first key which is often erroneous
-          if (wikipedia_population_keys.length > 1)
-            for (var y = 1; y < all_wikipedia_population_keys.length; y++) {
-              var local_population_value = local_uud_city.population[all_wikipedia_population_keys[y]];
-              var local_wikipedia_value = local_uud_city.wikipedia_population[all_wikipedia_population_keys[y]];
-
-              if (local_population_value != undefined && local_population_value > 0) {
-                local_uud_city.population[all_wikipedia_population_keys[y]] = weightedGeometricMean([local_population_value, local_wikipedia_value]);
-              } else {
-                local_uud_city.population[all_wikipedia_population_keys[y]] = local_wikipedia_value;
-              }
-            }
-        }
-
-        //3. Merge .chandler_modelski_population into .population using geometric mean where domains overlap
+        //2. Merge .chandler_modelski_population into .population using geometric mean where domains overlap
         if (local_uud_city.chandler_modelski_population) {
           var all_chandler_modelski_population_keys = Object.keys(local_uud_city.chandler_modelski_population);
 
@@ -222,8 +201,7 @@
       }
     }
 
-    //4. Remove growth rate outliers, then interpolate, then flatten UUD
-    uud_obj = removeUUDGrowthRateOutliers(uud_obj);
+    //3. Interpolate and flatten UUD data
     uud_obj = interpolateUUD(uud_obj);
     uud_obj = flattenMetrosInUUD(uud_obj);
     
@@ -242,6 +220,7 @@
     var uud_obj = arg0_uud_obj;
 
     //Declare local instance variables
+
     
     //Return statement
     return uud_obj;

@@ -9,5 +9,6 @@ global.settings = {
   gemini_accounts: [
     `htmlprogrammingbn@gmail.com`,
     `vf.confoederatio@gmail.com`
-  ]
+  ],
+  google_maps_api_key: `AIzaSyAmn4qdoPciHD0hGRbO4Iab9qlJHMEEp2Q`
 };

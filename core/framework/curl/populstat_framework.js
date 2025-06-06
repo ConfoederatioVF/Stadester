@@ -1,5 +1,25 @@
 //Initialise functions
 {
+  global.cleanPopulstatCoords = function () {
+    //Declare local instance variables
+    var all_countries = Object.keys(main.curl.populstat);
+
+    //Iterate over all_countries
+    for (var i = 0; i < all_countries.length; i++) {
+      var country_obj = main.curl.populstat[all_countries[i]];
+
+      //Iterate over all_local_cities
+      var all_local_cities = Object.keys(country_obj);
+
+      for (var x = 0; x < all_local_cities.length; x++) {
+        var local_city = country_obj[all_local_cities[x]];
+
+        if (typeof local_city == "object")
+          delete local_city.coords;
+      }
+    }
+  };
+
   /**
    * geolocateAllPopulstatCities() - Geolocates all cities in the populstat object using Google Maps/Puppeteer.
    */
@@ -8,18 +28,19 @@
     var all_countries = Object.keys(main.curl.populstat);
 
     //Iterate over all_countries
-    for (var i = 0; i < all_countries.length; i++) try {
-      console.log(`Processing (${i + 1}/${all_countries.length}) ..`);
-      await geolocatePopulstatCountryCities(all_countries[i]);
-    } catch (e) {
-      console.error(e);
-    }
+    for (var i = 0; i < all_countries.length; i++)
+      try {
+        console.log(`Processing (${i + 1}/${all_countries.length}) ..`);
+        await geolocatePopulstatCountryCities(all_countries[i]);
+      } catch (e) {
+        console.error(e);
+      }
   };
 
   /**
    * geolocatePopulstatCountryCities() - Geolocates all cities for a given country using Google Maps/Puppeteer. Returns the Populstat country object.
    * @param {String} arg0_country_key
-   *  
+   *
    * @returns {Object}
    */
   global.geolocatePopulstatCountryCities = async function (arg0_country_key) {
@@ -28,56 +49,62 @@
 
     //Declare local instance variables
     var country_obj = main.curl.populstat[country_key];
-    
+
     //Iterate over all_cities
     var all_cities = Object.keys(country_obj);
-    
+
     console.log(`Processing ${country_key} (${config.populstat.countries[country_key]}), with ${all_cities.length} cities ..`);
 
-    for (var i = 0; i < all_cities.length; i++) try {
-      //Save every 100 geolocated cities
-      if (i % 100 == 0 && i != 0)
-        savePopulstatData();
+    for (var i = 0; i < all_cities.length; i++)
+      try {
+        //Save every 100 geolocated cities
+        if (i % 100 == 0 && i != 0) savePopulstatData();
 
-      var local_city = country_obj[all_cities[i]];
-      var local_country_name = config.populstat.countries[country_key];
+        var local_city = country_obj[all_cities[i]];
+        var local_country_name = config.populstat.countries[country_key];
         local_country_name = getList(local_country_name)[0];
 
-      //Skip if coords already exist
-      if (local_city.coords) continue;
+        //Skip if coords already exist
+        if (local_city.coords) continue;
 
-      //.other_names handling
-      console.log(`- ${local_city.name}`);
-      if (local_city.name) {
-        var city_names = [`${local_city.name}, ${local_country_name}`];
+        //.other_names handling
+        console.log(`- ${local_city.name}`);
 
-        if (local_city.other_names)
-          for (var x = 0; x < local_city.other_names.length; x++)
-            city_names.push(`${local_city.other_names[x]}, ${local_country_name}`);
-        console.log(` - Processing ${local_city.name}: `, city_names);
-        console.log(`  - Populstat towns remaining: (${getPopulstatMissingCoordsTotal()}/${getPopulstatTotalTowns()})`);
+        if (local_city.name) {
+          var city_names = [`${local_city.name}, ${local_country_name}`];
 
-        //Iterate over all city_names until a valid latlng coord is found
-        for (var x = 0; x < city_names.length; x++) try {
-          var local_coords = await getCityCoords(city_names[x]);
+          if (local_city.other_names)
+            for (var x = 0; x < local_city.other_names.length; x++)
+              city_names.push(`${local_city.other_names[x]}, ${local_country_name}`);
 
-          if (local_coords[0] != 0 && local_coords[1] != 0) {
-            console.log(` - Found ${city_names[x]} at (${local_coords[0]}, ${local_coords[1]}), (${i + 1}/${all_cities.length})`);
-            local_city.coords = local_coords;
-            break;
-          } else {
-            console.log(` - Failed to find ${city_names[x]} at (${local_coords[0]}, ${local_coords[1]}), (${i + 1}/${all_cities.length})`);
-          } 
-        } catch (e) {
-          console.error(e);
+          console.log(` - Processing ${local_city.name}: `, city_names);
+          console.log(`  - Populstat towns remaining: (${getPopulstatMissingCoordsTotal()}/${getPopulstatTotalTowns()})`);
+
+          //Iterate over all city_names until a valid latlng coord is found
+          for (var x = 0; x < city_names.length; x++)
+            try {
+              var local_coords = await getGoogleMapsCityCoords(city_names[x]);
+
+              if (local_coords[0] != 0 && local_coords[1] != 0) {
+                console.log(` - Found ${city_names[x]} at (${local_coords[0]}, ${local_coords[1]}), (${i + 1}/${all_cities.length})`);
+                local_city.coords = local_coords;
+                break;
+              } else {
+                console.log(` - Failed to find ${city_names[x]} at (${local_coords[0]}, ${local_coords[1]}), (${i + 1}/${all_cities.length})`);
+              }
+            } catch (e) {
+              console.error(e);
+            }
         }
+      } catch (e) {
+        console.error(e);
       }
-    } catch (e) {
-      console.error(e);
-    }
-    
+
     //Save the updated populstat object to JSON file
-    FileManager.saveFileAsJSON(config.defines.common.input_file_paths.populstat_cities, main.curl.populstat);
+    FileManager.saveFileAsJSON(
+        config.defines.common.input_file_paths.populstat_cities,
+        main.curl.populstat
+    );
 
     //Return statement
     return country_obj;

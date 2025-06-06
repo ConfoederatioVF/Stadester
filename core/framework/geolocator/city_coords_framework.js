@@ -62,6 +62,39 @@
     return [parseFloat(lat_value), parseFloat(lng_value)];
   };
 
+  global.getGoogleMapsCityCoords = async function (arg0_city_name) {
+    //Convert from parameters
+    var city_name = arg0_city_name;
+
+    //Declare local instance variables
+    var lat_value = 0;
+    var local_exec = util.promisify(exec);
+    var lng_value = 0;
+    var processed_city_name = city_name.replace(/ /gm, "+");
+
+    //Run exec call to CURL
+    var { stdout, stderr } = await local_exec(`curl -s "https://maps.googleapis.com/maps/api/geocode/json?components=locality:${processed_city_name}&key=${settings.google_maps_api_key}"`);
+
+    //Guard clause if error occurs from CURL call
+    if (stderr) {
+      console.error(stderr);
+      return;
+    }
+
+    var gmaps_obj = JSON.parse(stdout);
+    try {
+      var location_obj = gmaps_obj.results[0].geometry.location;
+
+      lat_value = location_obj.lat;
+      lng_value = location_obj.lng;
+    } catch (e) {
+      console.error(e);
+    }
+
+    //Return statement
+    return [parseFloat(lat_value), parseFloat(lng_value)];
+  };
+
   /**
    * launchCityCoordsInstance() - Launches a browser instance to go to Google Maps. Internal helper function.
    */

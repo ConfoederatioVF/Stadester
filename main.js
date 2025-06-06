@@ -40,6 +40,7 @@ global.path = require("path");
 global.pngjs = require("pngjs");
 global.puppeteer = require("puppeteer-core");
 global.tensorflow = require("@tensorflow/tfjs");
+global.util = require("util");
 global.v8 = require("v8");
 
 global.AdBlockerPlugin = require("puppeteer-extra-plugin-adblocker");
