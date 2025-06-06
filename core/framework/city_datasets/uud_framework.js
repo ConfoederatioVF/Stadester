@@ -4,7 +4,10 @@
     //Convert from parameters
     var uud_obj = arg0_uud_obj;
 
-    //[WIP] - Move this to a stage 2 function post-interpolation
+    //Declare local instance variables
+    var all_countries = Object.keys(uud_obj);
+    //Move this to a stage 2 function post-interpolation
+
     //1. Fetch local_agglomeration_obj; subtract suburbs from .is_agglomeration_of figures for overlapping years where possible
     
     //2. Remove any zero or negative values from the main agglomeration if there is a main agglomeration
@@ -25,7 +28,7 @@
 
     var all_countries = Object.keys(uud_obj);
 
-    //0. Iterate over all_countries; make sure .population figures for Populstat is multiplied by 1000
+    //1. Iterate over all_countries; make sure .population figures for Populstat is multiplied by 1000
     for (var i = 0; i < all_countries.length; i++) {
       var local_country = uud_obj[all_countries[i]];
 
@@ -40,7 +43,7 @@
       }
     }
 
-    //1. Iterate over all_chandler_modelski_cities; link each one to a UUD city if possible
+    //2. Iterate over all_chandler_modelski_cities; link each one to a UUD city if possible
     for (var i = 0; i < all_chandler_modelski_cities.length; i++) {
       var local_city = main.population.chandler_modelski[all_chandler_modelski_cities[i]];
       var local_split_city_name = all_chandler_modelski_cities[i].split("-");
@@ -60,7 +63,7 @@
         }
       }
 
-      //2. Iterate over local_city_names; find local_uud_city
+      //3. Iterate over local_city_names; find local_uud_city
       var local_uud_city;
 
       for (var x = 0; x < local_city_names.length; x++) try {
@@ -122,7 +125,7 @@
           local_uud_city = closest_uud_city[0];
       }
 
-      //3. Assign populstat/chandler_modelski city types
+      //4. Assign populstat/chandler_modelski city types
       if (local_uud_city) {
         local_uud_city.type = "populstat";
         local_uud_city.chandler_modelski_coords = [local_city.latitude, local_city.longitude];
@@ -135,7 +138,7 @@
       }
     }
 
-    //4. Set .type for all remaining UUD cities
+    //5. Set .type for all remaining UUD cities
     var all_countries = Object.keys(uud_obj);
 
     //Iterate over all_countries
@@ -164,6 +167,33 @@
     var uud_obj = arg0_uud_obj;
     
     //Declare local instance variables
+    var all_countries = Object.keys(uud_obj);
+
+    //Iterate over all_countries
+    for (var i = 0; i < all_countries.length; i++) {
+      var local_country = uud_obj[all_countries[i]];
+
+      console.log(` - Interpolating country:`, all_countries[i]);
+      if (local_country.type != "chandler_modelski") {
+        //Iterate over all_cities
+        var all_cities = Object.keys(local_country);
+
+        for (var x = 0; x < all_cities.length; x++) {
+          var local_city = local_country[all_cities[x]];
+
+          if (local_city.population && Object.keys(local_city.population).length >= 2)
+            local_city.population = cubicSplineInterpolationObject(local_city.population, {
+              all_years: true
+            });
+        }
+      } else {
+        //This is a Chandler-Modelski city, so interpolate based on the 'country' level
+        if (local_country.population && Object.keys(local_country.population).length >= 2)
+          local_country.population = cubicSplineInterpolationObject(local_country.population, {
+            all_years: true
+          });
+      }
+    }
     
     //Return statement
     return uud_obj;

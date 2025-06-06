@@ -46,6 +46,7 @@
    * cubicSplineInterpolationObject() - Performs a cubic spline interpolation operation on an object.
    * @param {Object} arg0_object - The object to perform the cubic spline interpolation on.
    * @param {Object} [arg1_options]
+   *  @param {boolean} [arg1_options.all_years=false] - Optional. Whether to interpolate for every single year in the domain.
    *  @param {Array<number>} [arg1_options.years] - Optional. The years to interpolate over if possible.
    * 
    * @return {Object}
@@ -66,6 +67,14 @@
     //Initialise options post-local instance variables
     options.years = (options.years) ? 
       getList(options.years) : years;
+    if (options.all_years) {
+      var object_domain = getObjectDomain(object);
+      years = [];
+
+      //Iterate between object_domain[0] and object_domain[1]
+      for (var i = object_domain[0]; i <= object_domain[1]; i++)
+        years.push(i);
+    }
 
     //Iterate over all years in domain
     for (var i = 0; i < options.years.length; i++)
@@ -175,6 +184,19 @@
 
     //Return statement
     return depth;
+  };
+
+  global.getObjectDomain = function (arg0_object) {
+    //Convert from parameters
+    var object = arg0_object;
+
+    //Declare local instance variables
+    var keys_as_numbers = Object.keys(object).map(Number);
+    var max_key = Math.max(...keys_as_numbers);
+    var min_key = Math.min(...keys_as_numbers);
+
+    //Return statement
+    return [min_key, max_key];
   };
 
   /*
