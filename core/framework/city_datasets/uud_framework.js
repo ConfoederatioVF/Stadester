@@ -25,6 +25,21 @@
 
     var all_countries = Object.keys(uud_obj);
 
+    //0. Iterate over all_countries; make sure .population figures for Populstat is multiplied by 1000
+    for (var i = 0; i < all_countries.length; i++) {
+      var local_country = uud_obj[all_countries[i]];
+
+      //Iterate over all_local_cities
+      var all_local_cities = Object.keys(local_country);
+
+      for (var x = 0; x < all_local_cities.length; x++) {
+        var local_city = local_country[all_local_cities[x]];
+
+        if (local_city.population)
+          local_city.population = operateObject(local_city.population, `n = n*1000`);
+      }
+    }
+
     //1. Iterate over all_chandler_modelski_cities; link each one to a UUD city if possible
     for (var i = 0; i < all_chandler_modelski_cities.length; i++) {
       var local_city = main.population.chandler_modelski[all_chandler_modelski_cities[i]];

@@ -29,7 +29,6 @@
           //Cubic spline interpolate if there are at least 2 extant data points
           if (all_population_keys.length >= 2)
             local_city.population = cubicSplineInterpolationObject(local_city.population);
-          local_city.population = operateObject(local_city.population, `n = n*1000`);
 
           local_population_domain = [
             parseInt(all_population_keys[0]), 
