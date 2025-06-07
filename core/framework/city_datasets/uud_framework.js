@@ -249,7 +249,7 @@
             local_city.population = cubicSplineInterpolationObject(local_city.population, {
               all_years: true
             });
-          console.timeEnd(interpolating_country_log_string);
+          console.timeEnd(interpolating_city_log_string);
         }
       } else {
         //This is a Chandler-Modelski city, so interpolate based on the so-called 'country' level
@@ -339,19 +339,23 @@
 
   global.saveUUDData = function () {
     //Declare local instance variables
-    console.log(`- Initialising UUD ..`);
+    console.time(`- Initialising UUD ..`);
     var uud_obj = initialiseUUD();
+    console.timeEnd(`- Initialising UUD ..`);
 
     //Save uud_obj
-    console.log(`- Saving raw UUD data...`);
+    console.time(`- Saving raw UUD data...`);
     FileManager.saveFileAsJSON(config.defines.common.input_file_paths.uud_cities, uud_obj);
+    console.timeEnd(`- Saving raw UUD data...`);
 
     //Process uud_obj
-    console.log(`- Processing UUD data...`);
+    console.time(`- Processing UUD data...`);
     new_uud_obj = processUUD(JSON.parse(JSON.stringify(uud_obj)));
+    console.timeEnd(`- Processing UUD data...`);
 
     //Save new_uud_obj
-    console.log(`- Saving processed UUD data...`);
+    console.time(`- Saving processed UUD data...`);
     FileManager.saveFileAsJSON(config.defines.common.input_file_paths.processed_uud_cities, new_uud_obj);
+    console.timeEnd(`- Saving processed UUD data...`);
   };
 }
