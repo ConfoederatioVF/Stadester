@@ -260,6 +260,76 @@
     }
   };
 
+  global.getNearestNegativeNumberInObject = function (arg0_object, arg1_key) {
+    //Convert from parameters
+    var object = arg0_object;
+    var key = parseInt(arg1_key);
+
+    //Declare local instance variables
+    var min_distance = Infinity;
+    var nearest_key = null;
+
+    //Iterate over all keys in object
+    for (var local_key in object)
+        //Ensure we only check the object's own properties
+      if (Object.hasOwnProperty.call(object, local_key)) {
+        var local_value = object[local_key];
+
+        //Check that the value is a positive number
+        if (typeof local_value == "number" && local_value < 0) {
+          var candidate_key_number = Number(local_key);
+          var distance = Math.abs(candidate_key_number - key);
+
+          //Check if this key is a better candidate
+          if (distance < min_distance) {
+            min_distance = distance;
+            nearest_key = candidate_key_number;
+          } else if (distance == min_distance) {
+            if (candidate_key_number > nearest_key)
+              nearest_key = candidate_key_number;
+          }
+        }
+      }
+
+    //Return statement
+    return nearest_key;
+  };
+
+  global.getNearestPositiveNumberInObject = function (arg0_object, arg1_key) {
+    //Convert from parameters
+    var object = arg0_object;
+    var key = parseInt(arg1_key);
+
+    //Declare local instance variables
+    var min_distance = Infinity;
+    var nearest_key = null;
+
+    //Iterate over all keys in object
+    for (var local_key in object)
+      //Ensure we only check the object's own properties
+      if (Object.hasOwnProperty.call(object, local_key)) {
+        var local_value = object[local_key];
+
+        //Check that the value is a positive number
+        if (typeof local_value == "number" && local_value > 0) {
+          var candidate_key_number = Number(local_key);
+          var distance = Math.abs(candidate_key_number - key);
+
+          //Check if this key is a better candidate
+          if (distance < min_distance) {
+            min_distance = distance;
+            nearest_key = candidate_key_number;
+          } else if (distance == min_distance) {
+            if (candidate_key_number > nearest_key)
+              nearest_key = candidate_key_number;
+          }
+        }
+      }
+
+    //Return statement
+    return nearest_key;
+  };
+
   /*
     getSubobject() - Fetches a subobject.
     arg0_object: (Object) - The object to pass.

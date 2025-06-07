@@ -1,18 +1,79 @@
 //Initialise functions
 {
-  global.flattenMetrosInUUD = function (arg0_uud_obj) {
+  global.flattenMetrosInUUD = function (arg0_uud_obj, arg1_options) { //[WIP] - Move this to a stage 2 function post-interpolation
     //Convert from parameters
     var uud_obj = arg0_uud_obj;
+    var options = (arg1_options) ? arg1_options : {};
 
     //Declare local instance variables
     var all_countries = Object.keys(uud_obj);
-    //Move this to a stage 2 function post-interpolation
 
-    //1. Fetch local_agglomeration_obj; subtract suburbs from .is_agglomeration_of figures for overlapping years where possible
-    
-    //2. Remove any zero or negative values from the main agglomeration if there is a main agglomeration
+    //Iterate over all countries
+    for (var i = 0; i < all_countries.length; i++) {
+      var local_country = uud_obj[all_countries[i]];
 
-    //3. Merge cities with duplicate .coords
+      if (local_country.type != "chandler_modelski") {
+        //Iterate over all_cities
+        var all_cities = Object.keys(local_country);
+
+        for (var x = 0; x < all_cities.length; x++) {
+          var local_city = local_country[all_cities[x]];
+
+          if (local_city.is_agglomeration_of) {
+            //Guard clause if no population
+            if (!local_city.population) return;
+            if (Object.keys(local_city.population).length == 0) return;
+
+            //1. Fetch local_agglomeration_obj; subtract suburbs from .is_agglomeration_of figures for overlapping years where possible
+            var local_agglomeration_obj = getPopulstatCity(`${local_city.is_agglomeration_of}, ${all_countries[i]}`, { same_country: true });
+
+            if (local_agglomeration_obj) {
+              if (local_agglomeration_obj.name != local_city.name) {
+                //Iterate over all_local_population_keys
+                var all_local_population_keys = Object.keys(local_city.population);
+
+                for (var y = 0; y < all_local_population_keys.length; y++) {
+                  var local_value = local_city.population[all_local_population_keys[y]];
+
+                  if (local_agglomeration_obj.population[all_local_population_keys[y]])
+                    modifyValue(local_agglomeration_obj.population, all_local_population_keys[y], local_value*-1);
+                }
+              }
+
+              //Mark as .is_agglomeration
+              local_city.is_agglomeration = true;
+            }
+          }
+        }
+      }
+    }
+
+    //2. Remove any negative numbers from agglomerations if specified and replace them with the nearest positive number
+    if (!options.do_not_remove_negative_numbers)
+      //Iterate over all_countries
+      for (var i = 0; i < all_countries.length; i++) {
+        var local_country = uud_obj[all_countries[i]];
+
+        if (local_country.type != "chandler_modelski") {
+          //Iterate over all_cities
+          var all_cities = Object.keys(local_country);
+
+          for (var x = 0; x < all_cities.length; x++) {
+            var local_city = local_country[all_cities[x]];
+
+            if (local_city.is_agglomeration) {
+              var all_local_city_population_keys = Object.keys(local_city.population);
+
+              for (var y = 0; y < all_local_city_population_keys.length; y++) {
+                var local_value = local_city.population[all_local_city_population_keys[y]];
+
+                if (local_value < 0)
+                  local_value = getNearestPositiveNumberInObject(local_city.population, all_local_city_population_keys[y]);
+              }
+            }
+          }
+        }
+      }
 
     //Return statement
     return uud_obj;
@@ -171,9 +232,10 @@
 
     //Iterate over all_countries
     for (var i = 0; i < all_countries.length; i++) {
+      var interpolating_country_log_string = ` - Interpolating country: ${all_countries[i]}, (${i}/${all_countries.length})`;
       var local_country = uud_obj[all_countries[i]];
 
-      console.log(` - Interpolating country:`, all_countries[i]);
+      console.time(interpolating_country_log_string);
       if (local_country.type != "chandler_modelski") {
         //Iterate over all_cities
         var all_cities = Object.keys(local_country);
@@ -181,18 +243,22 @@
         for (var x = 0; x < all_cities.length; x++) {
           var local_city = local_country[all_cities[x]];
 
+          var interpolating_city_log_string = `  - Interpolating: ${all_cities[x]}, (${x}/${all_cities.length}) for all years.`;
+          console.time(interpolating_city_log_string);
           if (local_city.population && Object.keys(local_city.population).length >= 2)
             local_city.population = cubicSplineInterpolationObject(local_city.population, {
               all_years: true
             });
+          console.timeEnd(interpolating_country_log_string);
         }
       } else {
-        //This is a Chandler-Modelski city, so interpolate based on the 'country' level
+        //This is a Chandler-Modelski city, so interpolate based on the so-called 'country' level
         if (local_country.population && Object.keys(local_country.population).length >= 2)
           local_country.population = cubicSplineInterpolationObject(local_country.population, {
             all_years: true
           });
       }
+      console.timeEnd(interpolating_country_log_string);
     }
     
     //Return statement
@@ -273,6 +339,7 @@
 
   global.saveUUDData = function () {
     //Declare local instance variables
+    console.log(`- Initialising UUD ..`);
     var uud_obj = initialiseUUD();
 
     //Save uud_obj
