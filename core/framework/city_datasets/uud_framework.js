@@ -5,6 +5,9 @@
     var uud_obj = arg0_uud_obj;
     var options = (arg1_options) ? arg1_options : {};
 
+    //Declare local instance variables
+    var all_countries = Object.keys(uud_obj);
+
     //Iterate over all years in config.uud.processing
     for (var i = config.uud.processing.uud_domain[0]; i <= config.uud.processing.uud_domain[1]; i++)
       uud_obj = flattenMetrosInUUDForYear(uud_obj, i, options);
@@ -35,16 +38,19 @@
           if (local_city.is_agglomeration_of) {
             //Guard clause if no population
             if (!local_city.population) continue;
-            if (Object.keys(local_city.population).length <= 2) continue;
+            if (Object.keys(local_city.population).length == 0) continue;
 
             //1. Fetch local_agglomeration_obj; subtract suburbs from .is_agglomeration_of figures for overlapping years where possible
-            var local_agglomeration_obj = getPopulstatCity(`${local_city.is_agglomeration_of}, ${all_countries[i]}`, { same_country: true });
+            var local_agglomeration_obj = getPopulstatCity(`${local_city.is_agglomeration_of}, ${all_countries[i]}`, {
+              populstat_obj: uud_obj,
+              same_country: true
+            });
 
             if (local_agglomeration_obj) {
               if (local_agglomeration_obj.name != local_city.name) {
                 var local_value = local_city.population[year];
 
-                if (local_agglomeration_obj.population[year])
+                if (local_value && local_agglomeration_obj.population[year])
                   modifyValue(local_agglomeration_obj.population, year, local_value*-1);
               }
 
@@ -57,7 +63,7 @@
     }
 
     //2. Remove any negative numbers from agglomerations if specified and replace them with the nearest positive number
-    if (!options.do_not_remove_negative_numbers)
+    /*if (!options.do_not_remove_negative_numbers)
       //Iterate over all_countries
       for (var i = 0; i < all_countries.length; i++) {
         var local_country = uud_obj[all_countries[i]];
@@ -74,7 +80,7 @@
                 local_city.population[year] = getNearestPositiveNumberInObject(local_city.population, year);
           }
         }
-      }
+      }*/
 
     //Return statement
     return uud_obj;

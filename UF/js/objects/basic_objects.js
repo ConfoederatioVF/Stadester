@@ -292,7 +292,7 @@
       }
 
     //Return statement
-    return nearest_key;
+    return object[nearest_key];
   };
 
   global.getNearestPositiveNumberInObject = function (arg0_object, arg1_key) {
@@ -327,7 +327,7 @@
       }
 
     //Return statement
-    return nearest_key;
+    return object[nearest_key];
   };
 
   /*
