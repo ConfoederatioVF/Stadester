@@ -1,5 +1,15 @@
 //Initialise functions
 {
+	/**
+	 * geoJSONFillPolygon() - Fills a GeoJSON Polygon on a given RGBA buffer. [WIP] - This is an AI-generated function that works; it needs refactoring in the future.
+	 * @param {Buffer<ArrayBuffer>} arg0_rgba_buffer
+	 * @param {Object} arg1_polygon
+	 * @param {Object} [arg2_options]
+	 *  @param {number} [arg2_options.height=2160] - The height of the underlying RGBA buffer.
+	 *  @param {number} [arg2_options.width=4320] - The width of the underlying RGBA buffer.
+	 *
+	 * @returns {Buffer<ArrayBuffer>}
+	 */
 	global.geoJSONFillPolygon = function (arg0_rgba_buffer, arg1_polygon, arg2_options) {
 		// Convert from parameters
 		var rgba_buffer = arg0_rgba_buffer;
@@ -61,6 +71,15 @@
 		return rgba_buffer;
 	};
 
+	/**
+	 * getEquirectangularCoordsPixel - Fetches the x, y coordinate pair for a given pixel given latitude and longitude coordinates for WGS84 Equirectangular.
+	 * @param {number} arg0_latitude
+	 * @param {number} arg1_longitude
+	 * @param {Object} [arg2_options]
+	 *  @param {boolean} [arg2_options.return_object=false] - Whether to return a structured object instead.
+	 *
+	 * @returns {Array<number, number>|{x_coord: number, y_coord: number}}
+	 */
 	global.getEquirectangularCoordsPixel = function (arg0_latitude, arg1_longitude, arg2_options) {
 		//Convert from parameters
 		var latitude = returnSafeNumber(arg0_latitude);
@@ -81,6 +100,14 @@
 			[x_coord, y_coord] : { x_coord, y_coord };
 	};
 
+	/**
+	 * Writes a GHSL (Global Human Settlement Layer) GeoJSON file to raster.
+	 * @param {String} arg0_input_file_path
+	 * @param {String} arg1_output_file_path
+	 * @param {Object} [arg2_options]
+	 *  @param {number} [arg2_options.height=2160]
+	 *  @param {number} [arg2_options.width=4320]
+	 */
 	global.GHSLGeoJSONToRaster = async function (arg0_input_file_path, arg1_output_file_path, arg2_options) {
 		//Convert from parameters
 		var input_file_path = arg0_input_file_path;
