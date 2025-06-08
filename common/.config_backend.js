@@ -3,5 +3,6 @@ global.config = {
   defines: {},
   ghsl: {},
   populstat: {},
+  uud: {},
   wikipedia: {}
 };

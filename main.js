@@ -30,7 +30,7 @@ loadH5Wasm();
 //CommonJS imports
 global.cubic_spline = require("cubic-spline");
 global.fs = require("fs");
-global.GeoTIFF = require("geotiff");
+global.GeoTIFF = import("geotiff");
 global.JSDOM = require("jsdom").JSDOM;
 global.mathjs = require("mathjs");
 global.ml_matrix = require("ml-matrix");

@@ -78,7 +78,7 @@
 
     //Iterate over all years in domain
     for (var i = 0; i < options.years.length; i++)
-      if (options.years[i] <= returnSafeNumber(years[years.length - 1])) {
+      if (options.years[i] >= returnSafeNumber(years[0]) && options.years[i] <= returnSafeNumber(years[years.length - 1])) {
         let current_year = options.years[i];
 
         if (current_year <= returnSafeNumber(years[years.length - 1]))
