@@ -393,7 +393,7 @@
           var local_city = local_country[all_cities[x]];
 
           if (local_city.population)
-            local_city.population = operateObject(local_country.population, `Math.round(n)`);
+            local_city.population = operateObject(local_city.population, `Math.round(n)`);
         }
       } else {
         if (local_country.population)
@@ -403,7 +403,7 @@
 
     //Save new uud_obj
     console.time(`- Saving final processed UUD data...`);
-    FileManager.saveFileAsJSON(config.defines.common.input_file_paths.processed_uud_cities, uud_obj);
+    FileManager.saveFileAsJSON(config.defines.common.input_file_paths.processed_uud_cities, new_uud_obj);
     console.timeEnd(`- Saving final processed UUD data...`);
   };
 
