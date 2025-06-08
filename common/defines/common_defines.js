@@ -8,9 +8,15 @@ config.defines.common = {
       modelski_modern: "./input/modelski/modelskiModern.csv",
       modelski_modern_v2: "./input/modelski/modelskiModernV2.csv",
     },
+    ghsl_folder: "./input/GHSL/geojson/",
+    ghsl_urban_areas_prefix: "GHS_urban_",
     populstat_cities: "./input/populstat_cities/populstat_cities.json",
     processed_uud_cities: "./input/uud/processed_uud_cities.json",
     uud_cities: "./input/uud/uud_cities.json"
+  },
+  output_file_paths: {
+    ghsl_urban_areas_folder: "./input/GHSL/urban_area_rasters/",
+    ghsl_urban_areas_prefix: "GHS_urban_"
   },
 
   prefix: "Stadestér",

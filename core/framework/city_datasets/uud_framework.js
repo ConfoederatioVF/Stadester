@@ -231,7 +231,7 @@
     var all_countries = Object.keys(uud_obj);
 
     //Iterate over all_countries
-    for (var i = 0; i < all_countries.length; i++) {
+    for (var i = 0; i < all_countries.length; i++) try {
       var interpolating_country_log_string = ` - Interpolating country: ${all_countries[i]}, (${i}/${all_countries.length})`;
       var local_country = uud_obj[all_countries[i]];
 
@@ -240,7 +240,7 @@
         //Iterate over all_cities
         var all_cities = Object.keys(local_country);
 
-        for (var x = 0; x < all_cities.length; x++) {
+        for (var x = 0; x < all_cities.length; x++) try {
           var local_city = local_country[all_cities[x]];
 
           var interpolating_city_log_string = `  - Interpolating: ${all_cities[x]}, (${x}/${all_cities.length}) for all years.`;
@@ -250,15 +250,22 @@
               all_years: true
             });
           console.timeEnd(interpolating_city_log_string);
+        } catch (e) {
+          console.error(e);
         }
       } else {
         //This is a Chandler-Modelski city, so interpolate based on the so-called 'country' level
-        if (local_country.population && Object.keys(local_country.population).length >= 2)
+        if (local_country.population && Object.keys(local_country.population).length >= 2) try {
           local_country.population = cubicSplineInterpolationObject(local_country.population, {
             all_years: true
           });
+        } catch (e) {
+          console.error(e);
+        }
       }
       console.timeEnd(interpolating_country_log_string);
+    } catch (e) {
+      console.error(e);
     }
     
     //Return statement
@@ -313,8 +320,12 @@
     }
 
     //3. Interpolate and flatten UUD data
-    uud_obj = interpolateUUD(uud_obj);
-    uud_obj = flattenMetrosInUUD(uud_obj);
+    try {
+      uud_obj = interpolateUUD(uud_obj);
+    } catch (e) { console.error(e); }
+    try {
+      uud_obj = flattenMetrosInUUD(uud_obj);
+    } catch (e) { console.error(e); }
     
     //Return statement
     return uud_obj;
