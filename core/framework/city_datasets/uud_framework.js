@@ -35,7 +35,7 @@
           if (local_city.is_agglomeration_of) {
             //Guard clause if no population
             if (!local_city.population) continue;
-            if (Object.keys(local_city.population).length == 0) continue;
+            if (Object.keys(local_city.population).length <= 2) continue;
 
             //1. Fetch local_agglomeration_obj; subtract suburbs from .is_agglomeration_of figures for overlapping years where possible
             var local_agglomeration_obj = getPopulstatCity(`${local_city.is_agglomeration_of}, ${all_countries[i]}`, { same_country: true });
@@ -70,9 +70,8 @@
             var local_city = local_country[all_cities[x]];
 
             if (local_city.is_agglomeration)
-              if (local_city.population[year] != undefined)
-                if (local_city.population[year] < 0)
-                  local_city.population[year] = getNearestPositiveNumberInObject(local_city.population, year);
+              if (local_city.population[year] != undefined && local_city.population[year] < 0)
+                local_city.population[year] = getNearestPositiveNumberInObject(local_city.population, year);
           }
         }
       }
@@ -274,7 +273,7 @@
   global.interpolateUUDForYear = function (arg0_uud_obj, arg1_year) {
     //Convert from parameters
     var uud_obj = arg0_uud_obj;
-    var year = parseInt(arg1_year);
+    var year = arg1_year;
 
     //Declare local instance variables
     var all_countries = Object.keys(uud_obj);
@@ -293,12 +292,12 @@
           var local_city = local_country[all_cities[x]];
 
           if (local_city.population && Object.keys(local_city.population).length >= 2)
-            local_city.population = cubicSplineInterpolationObject(local_city.population, { years: [year] });
+            local_city.population = cubicSplineInterpolationObject(local_city.population, { years: year });
         } catch (e) { console.error(e); }
       } else {
         //This is a Chandler-Modelski city, so interpolate based on the so-called 'country' level
         if (local_country.population && Object.keys(local_country.population).length >= 2) try {
-          local_country.population = cubicSplineInterpolationObject(local_country.population, { years: [year] });
+          local_country.population = cubicSplineInterpolationObject(local_country.population, { years: year });
         } catch (e) { console.error(e); }
       }
       console.timeEnd(log_interpolated_country_string);
@@ -364,14 +363,48 @@
     var uud_obj = initialiseUUD();
     console.timeEnd(`- Initialising UUD ..`);
 
+    //Save uud_obj
+    console.time(`- Saving raw UUD data...`);
+    FileManager.saveFileAsJSON(config.defines.common.input_file_paths.uud_cities, uud_obj);
+    console.timeEnd(`- Saving raw UUD data...`);
+
+    var new_uud_obj = JSON.parse(JSON.stringify(uud_obj));
+
     //Iterate over all hyde_years in config.uud.processing
     for (var i = 0; i < config.uud.processing.hyde_years.length; i++) {
       var local_year = config.uud.processing.hyde_years[i];
 
       console.time(`- Processing UUD for ${local_year} ..`);
-      uud_obj = saveUUDDataForYear(uud_obj, local_year);
+      new_uud_obj = saveUUDDataForYear(new_uud_obj, local_year);
       console.timeEnd(`- Processing UUD for ${local_year} ..`);
     }
+
+    //Finish processing new_uud_obj by rounding all population figures
+    var all_countries = Object.keys(new_uud_obj);
+
+    for (var i = 0; i < all_countries.length; i++) {
+      var local_country = new_uud_obj[all_countries[i]];
+
+      if (local_country.type != "chandler_modelski") {
+        //Iterate over all_cities
+        var all_cities = Object.keys(local_country);
+
+        for (var x = 0; x < all_cities.length; x++) {
+          var local_city = local_country[all_cities[x]];
+
+          if (local_city.population)
+            local_city.population = operateObject(local_country.population, `Math.round(n)`);
+        }
+      } else {
+        if (local_country.population)
+          local_country.population = operateObject(local_country.population, `Math.round(n)`);
+      }
+    }
+
+    //Save new uud_obj
+    console.time(`- Saving final processed UUD data...`);
+    FileManager.saveFileAsJSON(config.defines.common.input_file_paths.processed_uud_cities, uud_obj);
+    console.timeEnd(`- Saving final processed UUD data...`);
   };
 
   global.saveUUDDataForYear = function (arg0_uud_obj, arg1_year) {
@@ -379,19 +412,14 @@
     var uud_obj = (arg0_uud_obj) ? arg0_uud_obj : initialiseUUD();
     var year = parseInt(arg1_year);
 
-    //Save uud_obj
-    console.time(`- Saving raw UUD data...`);
-    FileManager.saveFileAsJSON(config.defines.common.input_file_paths.uud_cities, uud_obj);
-    console.timeEnd(`- Saving raw UUD data...`);
-
     //Process uud_obj
     console.time(`- Processing UUD data...`);
-    var new_uud_obj = processUUDForYear(JSON.parse(JSON.stringify(uud_obj)), year);
+    uud_obj = processUUDForYear(uud_obj, year);
     console.timeEnd(`- Processing UUD data...`);
 
     //Save new uud_obj
     console.time(`- Saving processed UUD data...`);
-    FileManager.saveFileAsJSON(config.defines.common.input_file_paths.processed_uud_cities, new_uud_obj);
+    FileManager.saveFileAsJSON(config.defines.common.input_file_paths.processed_uud_cities, uud_obj);
     console.timeEnd(`- Saving processed UUD data...`);
 
     //Return statement
