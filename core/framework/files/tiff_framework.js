@@ -1,6 +1,62 @@
 //Initialise functions
 {
 	/**
+	 * Attempts to convert a given GeoTIFF file to PNG, assuming that it is single-band
+	 * @param {String} arg0_input_file_path
+	 * @param {String} arg1_output_file_path
+	 *
+	 * @returns {Object}
+	 */
+	global.convertGeoTIFFToPNG = async function (arg0_input_file_path, arg1_output_file_path) {
+		//Convert from parameters
+		var input_file_path = arg0_input_file_path;
+		var output_file_path = arg1_output_file_path;
+
+		//Declare local instance variables
+		var tiff = await GeoTIFF.fromFile(input_file_path);
+
+		var image = await tiff.getImage();
+		var image_height = image.getHeight();
+		var image_width = image.getWidth();
+		var raster = await image.readRasters({ interleave: true });
+		var png = new pngjs.PNG({
+			height: image_height,
+			width: image_width,
+
+			colorType: 6, //RGBA
+			inputColorType: 6, //RGBA
+			bitDepth: 8 //8 bits per channel
+		});
+
+		var original_data = raster[0]; //Assuming single-band data
+
+		//Iterate over all pixels and encode it as RGBA
+		for (var i = 0; i < image_height; i++)
+			for (var x = 0; x < image_width; x++) {
+				var local_index = i*image_width + x;
+				var local_value = original_data[local_index];
+
+				//Encode the value as RGBA
+				var local_rgba = encodeNumberAsRGBA(local_value);
+
+				//Write RGBA values into the PNG data
+				var local_png_index = local_index*4;
+
+				png.data[local_png_index] = local_rgba[0];
+				png.data[local_png_index + 1] = local_rgba[1];
+				png.data[local_png_index + 2] = local_rgba[2];
+				png.data[local_png_index + 3] = local_rgba[3];
+			}
+
+		//Write the PNG file
+		png.pack().pipe(fs.createWriteStream(output_file_path))
+			.on("finish", () => console.log(`.PNG output file written to ${output_file_path}`));
+
+		//Return statement
+		return png;
+	};
+
+	/**
 	 * downscaleGeoTIFF() - Downscales a GeoTIFF file to a given options.height, options.width resolution.
 	 * @param {String} arg0_input_file_path - The input file path.
 	 * @param {String} arg1_output_file_path - The output file path.
