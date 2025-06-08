@@ -63,7 +63,7 @@
     }
 
     //2. Remove any negative numbers from agglomerations if specified and replace them with the nearest positive number
-    /*if (!options.do_not_remove_negative_numbers)
+    if (!options.do_not_remove_negative_numbers)
       //Iterate over all_countries
       for (var i = 0; i < all_countries.length; i++) {
         var local_country = uud_obj[all_countries[i]];
@@ -80,7 +80,7 @@
                 local_city.population[year] = getNearestPositiveNumberInObject(local_city.population, year);
           }
         }
-      }*/
+      }
 
     //Return statement
     return uud_obj;
@@ -327,7 +327,9 @@
 
     //Interpolate and flatten UUD data for all years
     try { uud_obj = interpolateUUD(uud_obj); } catch (e) { console.error(e); }
-    try { uud_obj = flattenMetrosInUUD(uud_obj); } catch (e) { console.error(e); }
+    try { uud_obj = flattenMetrosInUUD(uud_obj, {
+      do_not_remove_negative_numbers: true
+    }); } catch (e) { console.error(e); }
     
     //Return statement
     return uud_obj;
@@ -340,7 +342,9 @@
 
     //Interpolate and flatten UUD data for given year
     try { uud_obj = interpolateUUDForYear(uud_obj, year); } catch (e) { console.error(e); }
-    try { uud_obj = flattenMetrosInUUDForYear(uud_obj, year); } catch (e) { console.error(e); }
+    try { uud_obj = flattenMetrosInUUDForYear(uud_obj, year, {
+      do_not_remove_negative_numbers: true
+    }); } catch (e) { console.error(e); }
 
     //Return statement
     return uud_obj;
