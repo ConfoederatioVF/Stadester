@@ -14,6 +14,7 @@ Raw dumps of demographic data, cleaned and refined are available from the follow
 - Chandler (Geolocated, Cleaned)
 - Modelski (Geolocated, Cleaned)
 - Populstat (Geolocated, Cleaned)
-- Wikipedia (Geolocated, Cleaned)
+- Wikipedia (Geolocated, Extracted)
+- GHSL (Geolocated, Cleaned)
 
 This repository is currently in production and may be subject to frequent updates. Stadestér is a sub-project of both **Eoscala** and **Velkscala**.
