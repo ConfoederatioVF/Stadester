@@ -18,7 +18,7 @@
 		var image = await tiff.getImage();
 		var image_height = image.getHeight();
 		var image_width = image.getWidth();
-		var raster = await image.readRasters({ interleave: true });
+		var raster = await image.readRasters();
 		var png = new pngjs.PNG({
 			height: image_height,
 			width: image_width,
