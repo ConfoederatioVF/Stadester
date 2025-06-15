@@ -75,6 +75,14 @@
 		return uud_obj;
 	};
 
+	global.estimateCitiesImpliedDensityOrdinals = function (arg0_uud_obj) { //[WIP] - Finish function body
+
+	};
+
+	global.estimateCitiesImpliedDensities = function (arg0_uud_obj) { //[WIP] - Finish function body
+
+	};
+
 	global.estimateCityAreas = function (arg0_city_obj) {
 		//Convert from parameters
 		var city_obj = arg0_city_obj;
@@ -140,5 +148,21 @@
 
 		//Return statement
 		return city_obj;
+	};
+
+	global.estimateCityImpliedDensityOrdinals = function (arg0_city_obj) { //[WIP] - Finish function body
+
+	};
+
+	global.estimateCityImpliedDensities = function (arg0_city_obj) { //[WIP] - Finish function body
+
+	};
+
+	global.getCityCentreImpliedDensities = function (arg0_city_obj) {
+
+	};
+
+	global.getCityCentreImpliedDensityOrdinals = function (arg0_city_obj) {
+
 	};
 }
