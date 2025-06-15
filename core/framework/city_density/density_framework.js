@@ -158,11 +158,11 @@
 
 	};
 
-	global.getCityCentreImpliedDensities = function (arg0_city_obj) {
+	global.getCityCentreImpliedDensities = function (arg0_city_obj) { //[WIP] - Finish function body
 
 	};
 
-	global.getCityCentreImpliedDensityOrdinals = function (arg0_city_obj) {
+	global.getCityCentreImpliedDensityOrdinals = function (arg0_city_obj) { //[WIP] - Finish function body
 
 	};
 }
