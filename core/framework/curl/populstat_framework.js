@@ -168,6 +168,7 @@
       return_obj[local_key] = await getPopulstatTownData(all_populstat_town_links[i]);
     }
 
+    //Save populstat_cities
     FileManager.saveFileAsJSON(config.defines.common.input_file_paths.populstat_cities, return_obj);
 
     //Return statement
@@ -265,7 +266,6 @@
     var return_obj = {};
 
     //Fetch the population table elements
-    var finished_population_body = false;
     var is_population_body = false;
     var population_header = [];
     var population_table_el = dom_document.querySelector(`table[border=""]`);
@@ -307,12 +307,9 @@
         var all_cells = population_table_rows[i].querySelectorAll("td");
 
         //Population body handling
-        if (is_population_body && !finished_population_body) {
+        if (is_population_body) {
           if (all_cells.length == 1)
-            if (all_cells[0].textContent.trim() == "") {
-              finished_population_body = true;
-              break;
-            }
+            continue;
 
           return_obj[all_cells[0].textContent] = {};
           var local_entry = return_obj[all_cells[0].textContent];

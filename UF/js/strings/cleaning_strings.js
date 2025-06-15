@@ -27,7 +27,6 @@
     var input_string = arg0_input_string;
 
     //Return statement
-    return input_string.toString().replace(/(__)|(\*\*)/gm, "");
-  }
-
+    return input_string.replace(/[^0-9]/g, "");
+  };
 }

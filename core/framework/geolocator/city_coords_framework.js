@@ -95,6 +95,58 @@
     return [parseFloat(lat_value), parseFloat(lng_value)];
   };
 
+  global.getOSMCityCoords = async function (arg0_city_name) {
+    //Convert from parameters
+    var city_name = arg0_city_name;
+
+    //Declare local instance variables
+    var params = new URLSearchParams({
+      q: city_name,
+      format: "jsonv2",
+      addressdetails: "1",
+      extratags: "1",
+      limit: "10"
+    });
+    var url = `https://nominatim.openstreetmap.org/search?${params.toString()}`;
+
+    console.log(`Fetching data from ${url}:`);
+    try {
+      var response = await fetch(url, { headers: { "User-Agent": "Stadestér/0.2 (vf.confoederatio@gmail.com) "} });
+        if (!response.ok) throw new Error(`HTTP Error. Status: ${response.status}`);
+      var results = await response.json();
+
+      if (!results || results.length == 0) {
+        console.warn(`No results found for ${city_name}.`);
+        return [0, 0];
+      }
+      var max_population = -1;
+      var most_populous_result = null;
+
+      for (var local_result of results) {
+        //Population data is in local_result.extratags.population if it exists
+        var local_population_string = local_result.extratags?.population;
+
+        if (local_population_string) {
+          var local_population = parseInt(local_population_string, 10);
+
+          if (!isNaN(local_population) && local_population > max_population) {
+            max_population = local_population;
+            most_populous_result = local_result;
+          }
+        }
+      }
+
+      //If we found a result with population data return it; otherwise return the first result.
+      var processed_result = (most_populous_result) ?
+        most_populous_result : results[0];
+
+      //Return statement
+      return [processed_result.lat, processed_result.lon];
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   /**
    * launchCityCoordsInstance() - Launches a browser instance to go to Google Maps. Internal helper function.
    */

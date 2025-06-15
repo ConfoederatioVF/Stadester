@@ -270,45 +270,8 @@
                 }
           }
         
-        if (is_agglomeration)
+        if (is_agglomeration && !local_city.name.toLowerCase().includes("(agglomeration)"))
           local_city.is_agglomeration_of = is_agglomeration_of;
-
-        //If is_agglomeration is true; find the city double and subtract it from the agglomeration
-        var other_city_obj;
-
-        //Iterate over local_city_names
-        for (var y = 0; y < local_city_names.length; y++) {
-          var local_city_name = `${local_city_names[y]} (agglomeration), ${local_country_name}`;
-          other_city_obj = getPopulstatCity(local_city_name, { same_country: true });
-
-          if (other_city_obj) {
-            break;
-          } else {
-            local_city_name = `${local_city_names[y]}, ${local_country_name}`;
-            other_city_obj = getPopulstatCity(local_city_name, { same_country: true });
-          }
-        }
-
-        if (other_city_obj)
-          if (other_city_obj.name == local_city.name)
-            continue;
-
-        //Subtract the other city from the agglomeration
-        if (other_city_obj) 
-          if (other_city_obj.population && local_city.population) 
-            if (other_city_obj.name != local_city.name) {
-              var all_population_keys = Object.keys(other_city_obj.population);
-              
-              for (var y = 0; y < all_population_keys.length; y++) {
-                var local_value = local_city.population[all_population_keys[y]];
-
-                modifyValue(other_city_obj.population, all_population_keys[y], returnSafeNumber(local_value*-1));
-
-                //Remove any zero values
-                if (other_city_obj.population[all_population_keys[y]] <= 0)
-                  delete other_city_obj.population[all_population_keys[y]];
-              }
-            }
       }
     }
 
