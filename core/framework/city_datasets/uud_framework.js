@@ -269,7 +269,7 @@
         }
 
         if (closest_uud_city[0])
-          local_uud_city = closest_uud_city[0];
+          local_uud_city = closest_uud_city[0]; //[WIP] - This needs to be reworked to either a dumbMergeCities() or smartMergeCities() because this is not a shallow copy
       }
 
       //4. Assign populstat/chandler_modelski city types
@@ -446,7 +446,8 @@
     return uud_obj;
   };
 
-  global.saveUUDData = function () {
+  //saveUUDData() - Both initialises, then saves UUD data.
+  global.saveUUDData = async function () {
     //Declare local instance variables
     console.time(`- Initialising UUD ..`);
     var uud_obj = initialiseUUD();
@@ -491,12 +492,12 @@
     }
 
     console.time(`- Fixing missing coords in UUD ..`);
-    new_uud_obj = fixCoordsInUUD(new_uud_obj);
+    new_uud_obj = await fixCoordsInUUD(new_uud_obj);
     console.timeEnd(`- Fixing missing coords in UUD ..`);
 
     //Save new uud_obj
-    console.time(`- Saving final processed UUD data...`);
-    FileManager.saveFileAsJSON(config.defines.common.input_file_paths.processed_uud_cities, new_uud_obj);
+    console.time(`- Saving final processed UUD data...`)
+    saveUUDObject(new_uud_obj);
     console.timeEnd(`- Saving final processed UUD data...`);
   };
 
