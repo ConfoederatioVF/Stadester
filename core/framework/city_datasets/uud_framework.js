@@ -490,6 +490,10 @@
       }
     }
 
+    console.time(`- Fixing missing coords in UUD ..`);
+    new_uud_obj = fixCoordsInUUD(new_uud_obj);
+    console.timeEnd(`- Fixing missing coords in UUD ..`);
+
     //Save new uud_obj
     console.time(`- Saving final processed UUD data...`);
     FileManager.saveFileAsJSON(config.defines.common.input_file_paths.processed_uud_cities, new_uud_obj);

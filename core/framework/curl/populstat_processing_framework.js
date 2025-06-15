@@ -222,6 +222,7 @@
     return (country_exists[1]) ? country_exists[0] : undefined;
   };
 
+  //processPopulstatData() - Processes extant Populstat data for later UUD processing.
   global.processPopulstatData = function () {
     //Declare local instance variables
     var agglomeration_patterns = config.populstat.processing.agglomeration_patterns;
