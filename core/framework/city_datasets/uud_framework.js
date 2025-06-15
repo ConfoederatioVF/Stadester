@@ -65,9 +65,17 @@
             if (!local_coords) local_coords = await getOSMCityCoords(processed_city_name);
 
             console.log(` - local_coords:`, local_coords);
-            if (local_coords && (local_coords[0] != 0 || local_coords[1] != 0))
+            if (local_coords && (local_coords[0] != 0 || local_coords[1] != 0)) {
               local_country.coords = local_coords;
+              local_country.latitude = local_coords[0];
+              local_country.longitude = local_coords[1];
+
+              continue;
+            }
           }
+
+          //Assign local_country.coords otherwise
+          local_country.coords = [local_country.latitude, local_country.longitude];
         } catch (e) {
           console.error(e);
         }
