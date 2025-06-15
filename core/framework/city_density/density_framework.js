@@ -75,12 +75,50 @@
 		return uud_obj;
 	};
 
-	global.estimateCitiesImpliedDensityOrdinals = function (arg0_uud_obj) { //[WIP] - Finish function body
+	global.estimateCitiesImpliedDensityOrdinals = function (arg0_uud_obj) {
+		//Convert from parameters
+		var uud_obj = (arg0_uud_obj) ? arg0_uud_obj : JSON.parse(fs.readFileSync(config.defines.common.input_file_paths.processed_uud_cities));
 
+		//Declare local instance variables
+		var all_countries = Object.keys(uud_obj);
+
+		//Iterate over all_countries
+		for (var i = 0; i < all_countries.length; i++) {
+			var local_country = uud_obj[all_countries[i]];
+
+			if (local_country.type != "chandler_modelski") {
+				//Iterate over all_cities
+				var all_cities = Object.keys(local_country);
+
+				for (var x = 0; x < all_cities.length; x++)
+					local_country[all_cities[x]] = estimateCityImpliedDensityOrdinals(local_country[all_cities[x]]);
+			} else {
+				uud_obj[all_countries[i]] = estimateCityImpliedDensityOrdinals(local_country);
+			}
+		}
 	};
 
-	global.estimateCitiesImpliedDensities = function (arg0_uud_obj) { //[WIP] - Finish function body
+	global.estimateCitiesImpliedDensities = function (arg0_uud_obj) {
+		//Convert from parameters
+		var uud_obj = (arg0_uud_obj) ? arg0_uud_obj : JSON.parse(fs.readFileSync(config.defines.common.input_file_paths.processed_uud_cities));
 
+		//Declare local instance variables
+		var all_countries = Object.keys(uud_obj);
+
+		//Iterate over all_countries
+		for (var i = 0; i < all_countries.length; i++) {
+			var local_country = uud_obj[all_countries[i]];
+
+			if (local_country.type != "chandler_modelski") {
+				//Iterate over all_cities
+				var all_cities = Object.keys(local_country);
+
+				for (var x = 0; x < all_cities.length; x++)
+					local_country[all_cities[x]] = estimateCityImpliedDensities(local_country[all_cities[x]]);
+			} else {
+				uud_obj[all_countries[i]] = estimateCityImpliedDensities(local_country);
+			}
+		}
 	};
 
 	global.estimateCityAreas = function (arg0_city_obj) {
