@@ -414,9 +414,9 @@
 
     //Interpolate and flatten UUD data for all years
     try { uud_obj = interpolateUUD(uud_obj); } catch (e) { console.error(e); }
-    try { uud_obj = flattenMetrosInUUD(uud_obj, {
+    /*try { uud_obj = flattenMetrosInUUD(uud_obj, {
       do_not_remove_negative_numbers: true
-    }); } catch (e) { console.error(e); }
+    }); } catch (e) { console.error(e); }*/
     
     //Return statement
     return uud_obj;
@@ -429,9 +429,9 @@
 
     //Interpolate and flatten UUD data for given year
     try { uud_obj = interpolateUUDForYear(uud_obj, year); } catch (e) { console.error(e); }
-    try { uud_obj = flattenMetrosInUUDForYear(uud_obj, year, {
+    /*try { uud_obj = flattenMetrosInUUDForYear(uud_obj, year, {
       do_not_remove_negative_numbers: true
-    }); } catch (e) { console.error(e); }
+    }); } catch (e) { console.error(e); }*/
 
     //Return statement
     return uud_obj;

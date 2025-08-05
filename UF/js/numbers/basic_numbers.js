@@ -162,7 +162,7 @@
     } else {
       return random_id;
     }
-  }
+  };
 
   global.geometricMean = function (arg0_values) {
     //Convert from parameters
@@ -176,6 +176,27 @@
 
     //Return statement
     return Math.pow(product, 1/values.length);
+  };
+  
+  global.haversineDistance = function (arg0_coords, arg1_coords) {
+    //Convert from parameters
+    var coords = arg0_coords;
+    var ot_coords = arg1_coords;
+    
+    //Declare local instance variables
+    var R = 6371; //Earth's radius in km
+    var toRad = (deg) => (deg*Math.PI)/180;
+    
+    var [lat_one, lng_one] = coords, [lat_two, lng_two] = ot_coords;
+    var d_lat = toRad(lat_two - lat_one);
+    var d_lng = toRad(lng_two - lng_one);
+    
+    var a = Math.sin(d_lat/2)**2 +
+      Math.cos(toRad(lat_one))*Math.cos(toRad(lat_two))*Math.sin(d_lng/2)**2;
+    var c = 2*Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    
+    //Return statement
+    return R*c;
   };
 
   /*
