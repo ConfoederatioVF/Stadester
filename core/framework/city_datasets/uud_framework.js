@@ -89,90 +89,6 @@
     return uud_obj;
   };
 
-  global.flattenMetrosInUUD = function (arg0_uud_obj, arg1_options) {
-    //Convert from parameters
-    var uud_obj = arg0_uud_obj;
-    var options = (arg1_options) ? arg1_options : {};
-
-    //Iterate over all years in config.uud.processing
-    for (var i = config.uud.processing.uud_domain[0]; i <= config.uud.processing.uud_domain[1]; i++)
-      uud_obj = flattenMetrosInUUDForYear(uud_obj, i, options);
-
-    //Return statement
-    return uud_obj;
-  };
-
-  global.flattenMetrosInUUDForYear = function (arg0_uud_obj, arg1_year, arg2_options) {
-    //Convert from parameters
-    var uud_obj = arg0_uud_obj;
-    var year = parseInt(arg1_year);
-    var options = (arg2_options) ? arg2_options : {};
-
-    //Declare local instance variables
-    var all_countries = Object.keys(uud_obj);
-
-    //Iterate over all_countries
-    for (var i = 0; i < all_countries.length; i++) {
-      var local_country = uud_obj[all_countries[i]];
-
-      if (local_country.type != "chandler_modelski") {
-        //Iterate over all_cities
-        var all_cities = Object.keys(local_country);
-
-        for (var x = 0; x < all_cities.length; x++) {
-          var local_city = local_country[all_cities[x]];
-
-          if (local_city.is_agglomeration_of) {
-            //Guard clause if no population
-            if (!local_city.population) continue;
-            if (Object.keys(local_city.population).length == 0) continue;
-
-            //1. Fetch local_agglomeration_obj; subtract suburbs from .is_agglomeration_of figures for overlapping years where possible
-            var local_agglomeration_obj = getPopulstatCity(`${local_city.is_agglomeration_of}, ${all_countries[i]}`, {
-              populstat_obj: uud_obj,
-              same_country: true
-            });
-
-            if (local_agglomeration_obj) {
-              if (local_agglomeration_obj.name != local_city.name) {
-                var local_value = local_city.population[year];
-
-                if (local_value && local_agglomeration_obj.population[year])
-                  modifyValue(local_agglomeration_obj.population, year, local_value*-1);
-              }
-
-              //Mark as .is_agglomeration
-              local_city.is_agglomeration = true;
-            }
-          }
-        }
-      }
-    }
-
-    //2. Remove any negative numbers from agglomerations if specified and replace them with the nearest positive number
-    if (!options.do_not_remove_negative_numbers)
-      //Iterate over all_countries
-      for (var i = 0; i < all_countries.length; i++) {
-        var local_country = uud_obj[all_countries[i]];
-
-        if (local_country.type != "chandler_modelski") {
-          //Iterate over all_cities
-          var all_cities = Object.keys(local_country);
-
-          for (var x = 0; x < all_cities.length; x++) {
-            var local_city = local_country[all_cities[x]];
-
-            if (local_city.is_agglomeration)
-              if (local_city.population[year] != undefined && local_city.population[year] < 0)
-                local_city.population[year] = getNearestPositiveNumberInObject(local_city.population, year);
-          }
-        }
-      }
-
-    //Return statement
-    return uud_obj;
-  };
-
   global.initialiseUUD = function (arg0_options) {
     //Convert from parameters
     var options = (arg0_options) ? arg0_options : {};
@@ -414,9 +330,6 @@
 
     //Interpolate and flatten UUD data for all years
     try { uud_obj = interpolateUUD(uud_obj); } catch (e) { console.error(e); }
-    /*try { uud_obj = flattenMetrosInUUD(uud_obj, {
-      do_not_remove_negative_numbers: true
-    }); } catch (e) { console.error(e); }*/
     
     //Return statement
     return uud_obj;
@@ -429,27 +342,7 @@
 
     //Interpolate and flatten UUD data for given year
     try { uud_obj = interpolateUUDForYear(uud_obj, year); } catch (e) { console.error(e); }
-    /*try { uud_obj = flattenMetrosInUUDForYear(uud_obj, year, {
-      do_not_remove_negative_numbers: true
-    }); } catch (e) { console.error(e); }*/
 
-    //Return statement
-    return uud_obj;
-  };
-
-  /**
-   * removeUUDGrowthRateOutliers() - Removes growth rate outliers from UUD - anything with a yearly growth rate of more than 25% or less than -25%
-   * @param {Object} arg0_uud_obj 
-   * 
-   * @returns {Object}
-   */
-  global.removeUUDGrowthRateOutliers = function (arg0_uud_obj) { //[WIP] - Finish function body
-    //Convert from parameters
-    var uud_obj = arg0_uud_obj;
-
-    //Declare local instance variables
-
-    
     //Return statement
     return uud_obj;
   };
