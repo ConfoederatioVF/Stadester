@@ -35,4 +35,13 @@
 			FileManager.saveFileAsJSON(output_file_path, stadester_obj);
 		} catch (e) { console.error(e); }
 	};
+	
+	global.getProcessedStadesterObject = function () {
+		//Declare local instance variables
+		var input_file_path = config.defines.common.input_file_paths.processed_stadester_cities;
+		global.stadester_obj = JSON.parse(fs.readFileSync(input_file_path, "utf8"));
+		
+		//Return statement
+		return stadester_obj;
+	};
 }

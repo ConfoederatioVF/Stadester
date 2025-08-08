@@ -1,5 +1,11 @@
 //Initialise functions
 {
+	//0. Helper functions
+	global.getGlobalPopulationDensityObject = function () {
+	
+	};
+	
+	//1. Estimate Baseline Cities
 	global.estimateBaselineCityArea = function (arg0_city_obj) {
 		//Convert from parameters
 		var city_obj = arg0_city_obj;
@@ -7,6 +13,7 @@
 		//Declare local instance variables
 		var density_processing_obj = config.population_density.processing;
 
+		var area_growth_ratio = density_processing_obj.area_to_pop_growth_rate_ratio;
 		var baseline_density_per_ha = getAverage(density_processing_obj.baseline_density_per_ha);
 
 		//Calculate baseline city area
@@ -17,190 +24,86 @@
 		var city_baseline_population = Math.abs(city_obj.population[density_processing_obj.baseline_year]); //Absolute value for handling corrective populations
 
 		if (!city_obj.area) city_obj.area = {};
-			city_obj.area[density_processing_obj.baseline_year] = returnSafeNumber((city_baseline_population/baseline_density_per_ha)/100); //Area in km^2
-
-		//Return statement
-		return city_obj;
-	};
-
-	global.estimateBaselineCityAreas = function (arg0_uud_obj) {
-		//Convert from parameters
-		var uud_obj = (arg0_uud_obj) ? arg0_uud_obj : JSON.parse(fs.readFileSync(config.defines.common.input_file_paths.processed_uud_cities));
-
-		//Declare local instance variables
-		var all_countries = Object.keys(uud_obj);
-
-		//Iterate over all_countries
-		for (var i = 0; i < all_countries.length; i++) {
-			var local_country = uud_obj[all_countries[i]];
-
-			if (local_country.type != "chandler_modelski") {
-				//Iterate over all_cities
-				var all_cities = Object.keys(local_country);
-
-				for (var x = 0; x < all_cities.length; x++)
-					local_country[all_cities[x]] = estimateBaselineCityArea(local_country[all_cities[x]]);
-			} else {
-				uud_obj[all_countries[i]] = estimateBaselineCityArea(local_country);
-			}
-		}
-
-		//Return statement
-		return uud_obj;
-	};
-
-	global.estimateCitiesAreas = function (arg0_uud_obj) {
-		//Convert from parameters
-		var uud_obj = (arg0_uud_obj) ? arg0_uud_obj : JSON.parse(fs.readFileSync(config.defines.common.input_file_paths.processed_uud_cities));
-
-		//Declare local instance variables
-		var all_countries = Object.keys(uud_obj);
-
-		//Iterate over all_countries
-		for (var i = 0; i < all_countries.length; i++) {
-			var local_country = uud_obj[all_countries[i]];
-
-			if (local_country.type != "chandler_modelski") {
-				//Iterate over all_cities
-				var all_cities = Object.keys(local_country);
-
-				for (var x = 0; x < all_cities.length; x++)
-					local_country[all_cities[x]] = estimateCityAreas(local_country[all_cities[x]]);
-			} else {
-				uud_obj[all_countries[i]] = estimateCityAreas(local_country);
-			}
-		}
-
-		//Return statement
-		return uud_obj;
-	};
-
-	global.estimateCitiesImpliedDensityOrdinals = function (arg0_uud_obj) {
-		//Convert from parameters
-		var uud_obj = (arg0_uud_obj) ? arg0_uud_obj : JSON.parse(fs.readFileSync(config.defines.common.input_file_paths.processed_uud_cities));
-
-		//Declare local instance variables
-		var all_countries = Object.keys(uud_obj);
-
-		//Iterate over all_countries
-		for (var i = 0; i < all_countries.length; i++) {
-			var local_country = uud_obj[all_countries[i]];
-
-			if (local_country.type != "chandler_modelski") {
-				//Iterate over all_cities
-				var all_cities = Object.keys(local_country);
-
-				for (var x = 0; x < all_cities.length; x++)
-					local_country[all_cities[x]] = estimateCityImpliedDensityOrdinals(local_country[all_cities[x]]);
-			} else {
-				uud_obj[all_countries[i]] = estimateCityImpliedDensityOrdinals(local_country);
-			}
-		}
-	};
-
-	global.estimateCitiesImpliedDensities = function (arg0_uud_obj) {
-		//Convert from parameters
-		var uud_obj = (arg0_uud_obj) ? arg0_uud_obj : JSON.parse(fs.readFileSync(config.defines.common.input_file_paths.processed_uud_cities));
-
-		//Declare local instance variables
-		var all_countries = Object.keys(uud_obj);
-
-		//Iterate over all_countries
-		for (var i = 0; i < all_countries.length; i++) {
-			var local_country = uud_obj[all_countries[i]];
-
-			if (local_country.type != "chandler_modelski") {
-				//Iterate over all_cities
-				var all_cities = Object.keys(local_country);
-
-				for (var x = 0; x < all_cities.length; x++)
-					local_country[all_cities[x]] = estimateCityImpliedDensities(local_country[all_cities[x]]);
-			} else {
-				uud_obj[all_countries[i]] = estimateCityImpliedDensities(local_country);
-			}
-		}
-	};
-
-	global.estimateCityAreas = function (arg0_city_obj) {
-		//Convert from parameters
-		var city_obj = arg0_city_obj;
-
-		//Guard clause if city_obj.population does not exist
-		if (!city_obj.population) return city_obj;
-
-		//Declare local instance variables
-		var all_population_keys = Object.keys(city_obj.population);
-		var density_processing_obj = config.population_density.processing;
-		var uud_processing_obj = config.uud.processing;
-		var has_year_after_baseline = false;
-
-		//Iterate over all_population_keys
-		for (var i = 0; i < all_population_keys.length; i++)
-			if (
-				parseInt(all_population_keys[i]) >= density_processing_obj.baseline_year &&
-				parseInt(all_population_keys[i]) <= density_processing_obj.cutoff_year
-			) {
-				has_year_after_baseline = true;
-				break;
-			}
-
-		//Iterate from density_processing_obj.baseline_year to density_processing_obj.cutoff_year for the set of HYDE years and assess growth
-		if (has_year_after_baseline) {
-			//Initialise area if undefined
-			if (!city_obj.area) city_obj = estimateBaselineCityArea(city_obj);
-
-			//Iterate over all HYDE years
-			for (var i = 0; i < uud_processing_obj.hyde_years.length; i++)
-				if (
-					uud_processing_obj.hyde_years[i] >= density_processing_obj.baseline_year &&
-					uud_processing_obj.hyde_years[i] <= density_processing_obj.cutoff_year
-				) {
-					var city_domain = getObjectDomain(city_obj.population);
-					var local_year = uud_processing_obj.hyde_years[i];
-
-					//Guard clause if this is the baseline year
-					if (local_year == density_processing_obj.baseline_year) continue;
-
-					if (city_obj.population[local_year] == undefined)
-						if (local_year >= city_domain[0] && local_year <= city_domain[1] && all_population_keys.length >= 2)
-							city_obj.population = cubicSplineInterpolationObject(city_obj.population, { years: [local_year] });
-
-					var local_population_index = all_population_keys.indexOf(local_year.toString());
-						if (local_population_index == -1) {
-							console.warn(`- ${city_obj.name} faces invalid figures for ${local_year}. Skipping in area calculations.`);
-							continue;
+			if (city_baseline_population) {
+				var current_area = returnSafeNumber((city_baseline_population/baseline_density_per_ha)/100);
+				
+				city_obj.area[density_processing_obj.baseline_year] = current_area; //Area in km^2
+				
+				//Calculate RNI for population first; populate rni_obj
+				var all_population_keys = Object.keys(city_obj.population);
+				
+				if (all_population_keys.length >= 2) {
+					var rni_obj = {};
+					
+					//Iterate over all_population_keys
+					for (let i = 1; i < all_population_keys.length; i++)
+						if (parseInt(all_population_keys[i]) > density_processing_obj.baseline_year) {
+							var local_value = city_obj.population[all_population_keys[i]];
+							var local_rni = 0;
+							
+							if (local_value) {
+								var previous_value = city_obj.population[all_population_keys[i - 1]];
+								
+								local_rni = (local_value - previous_value)/previous_value;
+							} else if (local_value == 0) {
+								local_rni = 0;
+							}
+							
+							rni_obj[all_population_keys[i - 1]] = returnSafeNumber(local_rni, 0);
 						}
-					var local_population_growth = 1;
-					var local_value = city_obj.population[local_year];
-
-					if (local_population_index - 1 > 0) {
-						var previous_key = all_population_keys[local_population_index - 1];
-						var previous_value = city_obj.population[previous_key];
-						var years_since_previous_value = parseInt(local_year) - parseInt(previous_key);
-
-						local_population_growth = (local_value - previous_value)/years_since_previous_value;
-						city_obj.area[local_year] = city_obj.area[previous_key] + local_population_growth*density_processing_obj.area_to_pop_growth_rate_ratio;
+					
+					city_obj.rni = rni_obj;
+					
+					//Iterate over all_rni_keys; establish area based on area_growth_ratio
+					var all_rni_keys = Object.keys(rni_obj);
+					
+					for (let i = 0; i < all_rni_keys.length - 1; i++) {
+						var local_rni = rni_obj[all_rni_keys[i + 1]];
+						
+						city_obj.area[all_rni_keys[i]] = current_area + current_area*local_rni*area_growth_ratio;
+						current_area = city_obj.area[all_rni_keys[i]];
 					}
 				}
-		}
+			}
 
 		//Return statement
 		return city_obj;
 	};
 
-	global.estimateCityImpliedDensityOrdinals = function (arg0_city_obj) { //[WIP] - Finish function body
+	global.estimateBaselineCityAreas = function (arg0_stadester_obj) {
+		//Convert from parameters
+		var stadester_obj = (arg0_stadester_obj) ? arg0_stadester_obj : getProcessedStadesterObject();
 
+		//Declare local instance variables
+		var all_cities = Object.keys(stadester_obj);
+
+		//Iterate over all_countries
+		for (var i = 0; i < all_cities.length; i++) {
+			var local_city = stadester_obj[all_cities[i]];
+
+			stadester_obj[all_cities[i]] = estimateBaselineCityArea(local_city);
+		}
+
+		//Return statement
+		return stadester_obj;
 	};
-
-	global.estimateCityImpliedDensities = function (arg0_city_obj) { //[WIP] - Finish function body
-
-	};
-
-	global.getCityCentreImpliedDensities = function (arg0_city_obj) { //[WIP] - Finish function body
-
-	};
-
-	global.getCityCentreImpliedDensityOrdinals = function (arg0_city_obj) { //[WIP] - Finish function body
-
+	
+	//1.1. Once baseline city areas are calculated, calculate remaining city areas utilising Angel's moving density
+	
+	//2. Establish rank-ordinals and use them to calculate Clark parameters
+		//A = imputed persons_per_ha from rank ordinal of HYDE density; (.centre_density)
+		//b = walkability ratio, Angel 2012, interpolated (.walkability_ratio)
+		//y = actual density as calculated from established .population/.area objects (.density)
+	
+	//3. Apply Clark/Modified Clark typologies to calculate imputed populations within gridcell radii
+	
+	//4. Use imputed populations within gridcell radii to buffer population by scaling rings to target over substrata
+	
+	global.processCitiesAreas = function () {
+		//Declare local instance variables
+		global.stadester_obj = estimateBaselineCityAreas();
+		
+		//Save processed stadester_obj
+		FileManager.saveFileAsJSON('./input/uud/stadester_areas.json', stadester_obj);
 	};
 }
