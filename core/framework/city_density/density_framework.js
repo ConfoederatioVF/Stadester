@@ -113,12 +113,96 @@
 	};
 	
 	//1.1. Once baseline city areas are calculated, calculate remaining city areas utilising Angel's moving density
-	global.calculateRemainderCityArea = function (arg0_city_obj) {
-	
+	global.calculateRemainderCityArea = function (arg0_city_obj, arg1_global_pop_density_obj) { //[WIP] - Finish function body
+		//Convert from parameters
+		var city_obj = arg0_city_obj;
+		var global_pop_density_obj = (arg1_global_pop_density_obj) ? arg1_global_pop_density_obj : getGlobalPopulationDensityObject();
+		
+		//Declare local instance variables
+		var all_global_density_keys = Object.keys(global_pop_density_obj);
+		var density_processing_obj = config.population_density.processing;
+		var density_domain = [density_processing_obj.baseline_year, all_global_density_keys[all_global_density_keys.length - 1]];
+		
+		var area_growth_ratio = density_processing_obj.area_to_pop_growth_rate_ratio;
+		
+		//Internal guard clause if city_obj already has .area defines
+		if (city_obj.area && Object.keys(city_obj.area).length >= 1) return city_obj;
+		
+		//Calculate baseline city area
+		if (!city_obj.area) city_obj.area = {};
+		if (city_obj.population) {
+			var all_population_keys = Object.keys(city_obj.population);
+			var has_population_after_1800 = [false, -10000];
+			
+			//Iterate over all_population_keys
+			for (let i = 0; i < all_population_keys.length; i++)
+				if (city_obj.population[all_population_keys[i]] > 0 && parseInt(all_population_keys[i]) >= 1800) {
+					has_population_after_1800 = [true, all_population_keys[i]];
+					break;
+				}
+			
+			if (has_population_after_1800[0]) {
+				var current_area = returnSafeNumber(city_obj.population[has_population_after_1800[1]]/global_pop_density_obj[has_population_after_1800[1]]/100);
+				
+				city_obj.area[has_population_after_1800[1]] = current_area;
+				
+				//Calculate RNI for population first; populate rni_obj
+				if (all_population_keys.length >= 2) {
+					var rni_obj = {};
+					
+					//Iterate over all_population_keys
+					for (let i = 1; i < all_population_keys.length; i++)
+						if (parseInt(all_population_keys[i]) > has_population_after_1800[1]) {
+							var local_rni  = 0;
+							var local_value = city_obj.population[all_population_keys[i]];
+							
+							if (local_value) {
+								var previous_value = city_obj.population[all_population_keys[i - 1]];
+								
+								local_rni = (local_value - previous_value)/previous_value;
+							} else if (local_value == 0) {
+								local_rni = 0;
+							}
+							
+							rni_obj[all_population_keys[i - 1]] = returnSafeNumber(local_rni, 0);
+						}
+					
+					city_obj.rni = rni_obj;
+					
+					//Iterate over all_rni_keys; establish area based on area_growth_rate
+					var all_rni_keys = Object.keys(rni_obj);
+					
+					for (let i = 0; i < all_rni_keys.length - 1; i++) {
+						var local_rni = rni_obj[all_rni_keys[i + 1]];
+						
+						city_obj.area[all_rni_keys[i]] = current_area + current_area*local_rni*area_growth_ratio;
+						current_area = city_obj.area[all_rni_keys[i]];
+					}
+				}
+			}
+		}
+		
+		//Return statement
+		return city_obj;
 	};
 	
 	global.calculateRemainderCityAreas = function (arg0_stadester_obj) {
-	
+		//Convert from parameters
+		var stadester_obj = (arg0_stadester_obj) ? arg0_stadester_obj : getProcessedStadesterObject();
+		
+		//Declare local instance variables
+		var all_cities = Object.keys(stadester_obj);
+		var global_pop_density_obj = getGlobalPopulationDensityObject();
+		
+		//Iterate over all_countries
+		for (var i = 0; i < all_cities.length; i++) {
+			var local_city = stadester_obj[all_cities[i]];
+			
+			stadester_obj[all_cities[i]] = calculateRemainderCityArea(local_city, global_pop_density_obj);
+		}
+		
+		//Return statement
+		return stadester_obj;
 	};
 	
 	//2. Establish rank-ordinals and use them to calculate Clark parameters
@@ -133,6 +217,7 @@
 	global.processCitiesAreas = function () {
 		//Declare local instance variables
 		global.stadester_obj = estimateBaselineCityAreas();
+		global.stadester_obj = calculateRemainderCityAreas(global.stadester_obj);
 		
 		//Save processed stadester_obj
 		FileManager.saveFileAsJSON('./input/uud/stadester_areas.json', stadester_obj);
