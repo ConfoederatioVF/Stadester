@@ -276,6 +276,28 @@
     //Return statement
     return total_sum;
   }
+  
+  global.interpolateNegativesInObject = function (arg0_object) {
+    //Convert from parameters
+    var object = arg0_object;
+    
+    //Declare local instance variables
+    var all_object_keys = Object.keys(object).map(Number).sort((a, b) => a - b);
+    var last_positive = null;
+    
+    for (let local_key of all_object_keys) {
+      let local_value = object[local_key];
+      
+      if (local_value >= 0) {
+        last_positive = local_value;
+      } else if (local_value < 0) {
+        object[local_key] = last_positive;
+      }
+    }
+    
+    //Return object
+    return object;
+  };
 
   /*
     invertFractionObject() - Inverts a fraction object, fetching the reciprocal of percentage values.
@@ -542,7 +564,7 @@
       object: processed_object,
       ot_object: processed_ot_object
     };
-  }
+  };
 
   /*
     standardiseFraction() - Standardises the object to maximum = 1, with each other value being adjusted to a value.

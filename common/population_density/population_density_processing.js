@@ -22,6 +22,17 @@ config.population_density.processing = {
 			"1990": -0.0103,
 			"2000": -0.0096
 		},
+		clark_b_regions: {
+		
+		},
+		clark_equations: {
+			"1800": {
+			
+			},
+			"1945": {
+			
+			}
+		},
 	baseline_year: 1800,
 	cutoff_year: 1975, //GHSL kicks in here
 

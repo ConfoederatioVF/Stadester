@@ -81,10 +81,10 @@
 					//Iterate over all_rni_keys; establish area based on area_growth_ratio
 					var all_rni_keys = Object.keys(rni_obj);
 					
-					for (let i = 0; i < all_rni_keys.length - 1; i++) {
-						var local_rni = rni_obj[all_rni_keys[i + 1]];
+					for (let i = 0; i < all_rni_keys.length; i++) {
+						var local_rni = rni_obj[all_rni_keys[i]];
 						
-						city_obj.area[all_rni_keys[i]] = current_area + current_area*local_rni*area_growth_ratio;
+						city_obj.area[all_rni_keys[i]] = current_area + returnSafeNumber(current_area*local_rni*area_growth_ratio);
 						current_area = city_obj.area[all_rni_keys[i]];
 					}
 				}
@@ -171,10 +171,10 @@
 					//Iterate over all_rni_keys; establish area based on area_growth_rate
 					var all_rni_keys = Object.keys(rni_obj);
 					
-					for (let i = 0; i < all_rni_keys.length - 1; i++) {
-						var local_rni = rni_obj[all_rni_keys[i + 1]];
+					for (let i = 0; i < all_rni_keys.length; i++) {
+						var local_rni = rni_obj[all_rni_keys[i]];
 						
-						city_obj.area[all_rni_keys[i]] = current_area + current_area*local_rni*area_growth_ratio;
+						city_obj.area[all_rni_keys[i]] = current_area + returnSafeNumber(current_area*local_rni*area_growth_ratio);
 						current_area = city_obj.area[all_rni_keys[i]];
 					}
 				}
@@ -204,12 +204,75 @@
 		return stadester_obj;
 	};
 	
+	global.fixCityAreas = function (arg0_stadester_obj) {
+		//Convert from parameters
+		var stadester_obj = (arg0_stadester_obj) ? arg0_stadester_obj : getProcessedStadesterObject();
+		
+		//Declare local instance variables
+		var all_cities = Object.keys(stadester_obj);
+		
+		//Iterate over all_countries
+		for (let i = 0; i < all_cities.length; i++) {
+			let local_city = stadester_obj[all_cities[i]];
+			
+			if (local_city.area) local_city.area = interpolateNegativesInObject(local_city.area);
+		}
+		
+		//Return statement
+		return stadester_obj;
+	};
+	
 	//1.2. Calculate (.density) from (.population/.area)
+	
+	global.calculateCityDensity = function (arg0_city_obj) {
+		//Convert from parameters
+		var city_obj = arg0_city_obj;
+		
+		//Internal guard clause if .area/.population are empty
+		if (!(city_obj.area && Object.keys(city_obj.area).length > 0)) return city_obj;
+		if (!(city_obj.population && Object.keys(city_obj.population).length > 0)) return city_obj;
+		
+		//Declare local instance variables
+		var all_area_keys = Object.keys(city_obj.area);
+		var density_obj = {};
+		
+		//Iterate over all_area_keys
+		for (let i = 0; i < all_area_keys.length; i++) {
+			var local_area = city_obj.area[all_area_keys[i]];
+			var local_population = city_obj.population[all_area_keys[i]];
+			
+			//Set density_obj
+			density_obj[all_area_keys[i]] = local_population/local_area;
+		}
+		
+		city_obj.density = density_obj;
+		
+		//Return statement
+		return city_obj;
+	};
+	
+	global.calculateCityDensities = function (arg0_stadester_obj) {
+		//Convert from parameters
+		var stadester_obj = (arg0_stadester_obj) ? arg0_stadester_obj : getProcessedStadesterObject();
+		
+		//Declare local instance variables
+		var all_cities = Object.keys(stadester_obj);
+		
+		//Iterate over all_countries
+		for (let i = 0; i < all_cities.length; i++) {
+			let local_city = stadester_obj[all_cities[i]];
+			
+			stadester_obj[all_cities[i]] = calculateCityDensity(local_city);
+		}
+		
+		//Return statement
+		return stadester_obj;
+	};
 	
 	//2. Establish rank-ordinals and use them to calculate Clark parameters
 		//A = imputed persons_per_ha from rank ordinal of HYDE density; (.centre_density)
 		//b = walkability ratio, Angel 2012, interpolated (.walkability_ratio)
-		//y = actual density as calculated from established .population/.area objects (.density)
+		//y = actual density as calculated from established .population/.area objects (.density) DONE
 	
 	//3. Apply Clark/Modified Clark typologies to calculate imputed populations within gridcell radii
 	
@@ -218,7 +281,10 @@
 	global.processCitiesAreas = function () {
 		//Declare local instance variables
 		global.stadester_obj = estimateBaselineCityAreas();
-		global.stadester_obj = calculateRemainderCityAreas(global.stadester_obj);
+		global.stadester_obj = calculateRemainderCityAreas(stadester_obj);
+		global.stadester_obj = fixCityAreas(stadester_obj);
+		
+		global.stadester_obj = calculateCityDensities(stadester_obj);
 		
 		//Save processed stadester_obj
 		FileManager.saveFileAsJSON('./input/uud/stadester_areas.json', stadester_obj);
