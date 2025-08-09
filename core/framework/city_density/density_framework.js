@@ -2,7 +2,31 @@
 {
 	//0. Helper functions
 	global.getGlobalPopulationDensityObject = function () {
-	
+		//Declare local instance variables
+		var density_processing_obj = config.population_density.processing;
+		var previous_value = getAverage(density_processing_obj.baseline_density_per_ha);
+		var return_obj = {
+			[density_processing_obj.baseline_year]: previous_value
+		};
+		
+		//Iterate over all_angel_density_keys
+		var all_angel_density_keys = Object.keys(density_processing_obj.angel_density_change_per_decade);
+		var all_angel_years = [];
+		var last_angel_year = parseInt(all_angel_density_keys[all_angel_density_keys.length - 1]);
+		
+		for (let i = 0; i < all_angel_density_keys.length; i++) {
+			var all_return_keys = Object.keys(return_obj);
+			var local_decadal_growth_rate = density_processing_obj.angel_density_change_per_decade[all_angel_density_keys[i]];
+			
+			previous_value = previous_value*(1 + local_decadal_growth_rate);
+			return_obj[all_angel_density_keys[i]] = previous_value;
+		}
+		
+		for (let i = density_processing_obj.baseline_year; i < last_angel_year; i++)
+			all_angel_years.push(i);
+		
+		//Return statement
+		return cubicSplineInterpolationObject(return_obj, { years: all_angel_years });
 	};
 	
 	//1. Estimate Baseline Cities
@@ -89,6 +113,13 @@
 	};
 	
 	//1.1. Once baseline city areas are calculated, calculate remaining city areas utilising Angel's moving density
+	global.calculateRemainderCityArea = function (arg0_city_obj) {
+	
+	};
+	
+	global.calculateRemainderCityAreas = function (arg0_stadester_obj) {
+	
+	};
 	
 	//2. Establish rank-ordinals and use them to calculate Clark parameters
 		//A = imputed persons_per_ha from rank ordinal of HYDE density; (.centre_density)
