@@ -2,5 +2,6 @@
 economic_datasets/
 geographic_datasets/
 node_modules/
+input/uud/stadester_areas.json
 output/
 /node-gdal
