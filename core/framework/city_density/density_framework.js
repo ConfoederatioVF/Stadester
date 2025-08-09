@@ -113,8 +113,7 @@
 	};
 	
 	//1.1. Once baseline city areas are calculated, calculate remaining city areas utilising Angel's moving density
-	global.calculateRemainderCityArea = function (arg0_city_obj, arg1_global_pop_density_obj) { //[WIP] - Finish function body
-		//Convert from parameters
+	global.calculateRemainderCityArea = function (arg0_city_obj, arg1_global_pop_density_obj) {
 		var city_obj = arg0_city_obj;
 		var global_pop_density_obj = (arg1_global_pop_density_obj) ? arg1_global_pop_density_obj : getGlobalPopulationDensityObject();
 		
@@ -204,6 +203,8 @@
 		//Return statement
 		return stadester_obj;
 	};
+	
+	//1.2. Calculate (.density) from (.population/.area)
 	
 	//2. Establish rank-ordinals and use them to calculate Clark parameters
 		//A = imputed persons_per_ha from rank ordinal of HYDE density; (.centre_density)
