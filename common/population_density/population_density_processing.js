@@ -479,7 +479,10 @@ config.population_density.processing = {
 		},
 	baseline_year: 1800,
 	cutoff_year: 1975, //GHSL kicks in here
+	deg_to_radians: Math.PI/180,
+	earth_radius: 6371,
 	end_year: 2000, //Simulated end-year
+	pixel_deg: 5/60, //5-arcmin in degrees
 
 	area_to_pop_growth_rate_ratio: 1.27 //From Angel
 };
