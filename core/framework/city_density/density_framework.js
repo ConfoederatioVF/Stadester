@@ -355,7 +355,7 @@
 		//Iterate over all_cities
 		for (let i = 0; i < all_cities.length; i++) {
 			let local_city = stadester_obj[all_cities[i]];
-			let local_density = 0;
+			let local_density = -1;
 			
 			if (local_city.density) {
 				let all_density_keys = Object.keys(local_city.density);
@@ -365,7 +365,8 @@
 						local_density = local_city.density[all_density_keys[x]];
 				
 				//Set local_density
-				density_obj[local_city.key] = local_density;
+				if (local_density != -1)
+					density_obj[local_city.key] = local_density;
 			}
 		}
 		
@@ -436,14 +437,60 @@
 	};
 	
 	//2.1. Calculate .centre_density (A) from rank ordinal of actual density
-	
-	global.calculateCentreDensitiesForYear = function (arg0_year) { //[WIP] - Finish function body
-	
-	};
-	
 	global.calculateCitiesCentreDensities = function (arg0_stadester_obj) { //[WIP] - Finish function body
-		//Declare local instance variables
+		//Convert from parameters
 		var stadester_obj = (arg0_stadester_obj) ? arg0_stadester_obj : getProcessedStadesterObject();
+		
+		//Declare local instance variables
+		var all_cities = Object.keys(stadester_obj);
+		var density_obj = {}; //Contains per-year <city_key>: <rank_ordinal> dictionaries from 1800-2000
+		var global_density_obj = getGlobalPopulationDensityObject();
+		
+		//Populate density_obj
+		var density_processing_obj = config.population_density.processing;
+		
+		for (let i = density_processing_obj.baseline_year; i <= density_processing_obj.end_year; i++)
+			density_obj[i] = calculateDensityOrdinalsForYear(i, stadester_obj);
+		
+		var all_density_keys = Object.keys(density_obj);
+		
+		//Iterate over all_cities, and adjust for rolling Angel density (global_density_obj)
+		for (let i = 0; i < all_cities.length; i++) {
+			var has_density_ranks = false;
+			let local_centre_density_obj = {};
+			let local_city = stadester_obj[all_cities[i]];
+			
+			//Check to see if local_city has_density_ranks
+			for (let x = 0; x < all_density_keys.length; x++) {
+				let local_density_dictionary = density_obj[all_density_keys[x]];
+				
+				if (local_density_dictionary[local_city.key]) {
+					has_density_ranks = true;
+					break;
+				}
+			}
+			
+			if (has_density_ranks) {
+				//Iterate over all_density_keys and calculate centre_density for that key
+				for (let x = 0; x < all_density_keys.length; x++) {
+					let local_density_dictionary = density_obj[all_density_keys[x]];
+					
+					if (local_density_dictionary[local_city.key]) {
+						let local_density_rank = local_density_dictionary[local_city.key];
+						
+						let centre_density = 130*Math.log(
+							Object.keys(local_density_dictionary).length/120/local_density_rank
+						) + 506 + global_density_obj[all_density_keys[x]];
+						
+						local_centre_density_obj[all_density_keys[x]] = centre_density;
+					}
+				}
+			}
+			
+			console.log(`- ${local_city.key} (${i}/${all_cities.length}):`);
+			console.log(` - centre_density:`, local_centre_density_obj);
+			local_city.centre_density = local_centre_density_obj;
+		}
 		
 		//Return statement
 		return stadester_obj;
