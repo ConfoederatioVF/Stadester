@@ -271,8 +271,43 @@
 	
 	//2. Establish rank-ordinals and use them to calculate Clark parameters
 		//A = imputed persons_per_ha from rank ordinal of HYDE density; (.centre_density)
-		//b = walkability ratio, Angel 2012, interpolated (.walkability_ratio)
+		//b = walkability ratio, Angel 2012, interpolated (.walkability_ratio) DONE
 		//y = actual density as calculated from established .population/.area objects (.density) DONE
+	
+	/**
+	 * Assigns `.angel_region`, `.clark_region` to all cities in Stadestér
+	 * @param {Object} arg0_stadester_obj
+	 */
+	global.assignRegionsToCities = function (arg0_stadester_obj) {
+		//Convert from parameters
+		var stadester_obj = (arg0_stadester_obj) ? arg0_stadester_obj : getProcessedStadesterObject();
+		
+		//Declare local instance variables
+		var all_cities = Object.keys(stadester_obj);
+		var common_defines = config.defines.common;
+		
+		var angel_raster = loadImage(common_defines.angel_regions);
+		var clark_raster = loadImage(common_defines.clark_subdivisions);
+		
+		//Iterate over all_cities
+		for (let i = 0; i < all_cities.length; i++) {
+			let local_city = stadester_obj[all_cities[i]];
+			let local_city_coords = getCityPixel(local_city, { height: angel_raster.height, width: angel_raster.width });
+			
+			//From local_city_coords, assign the .angel_region/.clark_region
+			var local_index = (angel_raster.width*local_city_coords[1] + local_city_coords[0]) << 2; //4 bytes per pixel (RGBA)
+			
+			var angel_r = angel_raster.data[local_index],
+				angel_g = angel_raster.data[local_index + 1],
+				angel_b = angel_raster.data[local_index + 2];
+			var clark_r = clark_raster.data[local_index],
+				clark_g = clark_raster.data[local_index + 1],
+				clark_b = clark_raster.data[local_index + 2];
+			
+			//Set .angel_region/.clark_region
+			
+		}
+	};
 	
 	global.calculateCentreDensitiesForYear = function (arg0_year) {
 	
@@ -281,6 +316,7 @@
 	/**
 	 * Returns a <city-key>: <rank-ordinal> Object dictionary given a particular year.
 	 * @param {number} arg0_year
+	 * @param {Object} arg1_stadester_obj
 	 *
 	 * @returns {{"<city_key>": number}}
 	 */
@@ -295,11 +331,11 @@
 		
 		//Iterate over all_cities
 		for (let i = 0; i < all_cities.length; i++) {
-			var local_city = stadester_obj[all_cities[i]];
-			var local_density = 0;
+			let local_city = stadester_obj[all_cities[i]];
+			let local_density = 0;
 			
 			if (local_city.density) {
-				var all_density_keys = Object.keys(local_city.density);
+				let all_density_keys = Object.keys(local_city.density);
 				
 				for (let x = 0; x < all_density_keys.length; x++)
 					if (parseInt(all_density_keys[x]) <= year)
@@ -322,12 +358,58 @@
 		return density_obj;
 	};
 	
-	global.calculateWalkabilityRatiosForYear = function (arg0_year) {
-	
-	};
-	
 	global.getWalkabilityRatioObject = function () {
-	
+		//Declare local instance variables
+		var density_processing_obj = config.population_density.processing;
+		
+		var angel_regions = density_processing_obj.angel_regions;
+		
+		//Iterate over all_angel_regions
+		var all_angel_regions = Object.keys(angel_regions);
+		
+		for (let i = 0; i < all_angel_regions.length; i++) {
+			let region_mean_walkability = {};
+			let region_obj = angel_regions[all_angel_regions[i]];
+			let region_walkability_sum = {};
+			
+			//Iterate over all_cities
+			let all_cities = Object.keys(region_obj.cities);
+			
+			for (let x = 0; x < all_cities.length; x++) {
+				let local_city = region_obj.cities[all_cities[x]];
+				let local_city_keys = Object.keys(local_city);
+				let local_domain = [parseInt(local_city_keys[0]), parseInt(local_city_keys[local_city_keys.length - 1])];
+				let local_years = [];
+				
+				//Iterate over the local_domain; pad out numbers to the end year (2000)
+				for (var y = local_domain[0]; y <= local_domain[1]; y++)
+					local_years.push(y);
+				
+				local_city = cubicSplineInterpolationObject(local_city, { years: local_years });
+				for (var y = local_domain[1]; y <= density_processing_obj.end_year; y++)
+					local_city[y] = local_city[local_domain[1]];
+				
+				region_obj.cities[all_cities[x]] = local_city;
+			}
+			
+			//Compute mean for all_cities
+			for (let x = density_processing_obj.baseline_year; x <= density_processing_obj.end_year; x++)
+				for (let y = 0; y < all_cities.length; y++) {
+					let local_city = region_obj.cities[all_cities[y]];
+					
+					if (!region_walkability_sum) region_walkability_sum[all_cities[y]] = {};
+					modifyValue(region_walkability_sum, x, local_city[x]);
+				}
+			
+			//Iterate over all_region_walkability_sum_keys
+			for (let x = density_processing_obj.baseline_year; x <= density_processing_obj.end_year; x++)
+				region_mean_walkability[x] = 1 - (region_walkability_sum[x]/all_cities.length - 1); //Invert walkability ratio
+			
+			region_obj.walkability_ratio = region_mean_walkability;
+		}
+		
+		//Return statement
+		return angel_regions;
 	};
 	
 	//3. Apply Clark/Modified Clark typologies to calculate imputed populations within gridcell radii

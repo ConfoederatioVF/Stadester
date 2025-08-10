@@ -1,5 +1,6 @@
 config.defines.common = {
   input_file_paths: {
+    angel_subdivisions: "./input/angel/angel_subdivisions.png",
     chandler_modelski_csvs: {
       chandler: "./input/chandler/chandler.csv",
       chandler_v2: "./input/chandler/chandlerV2.csv",
@@ -8,6 +9,7 @@ config.defines.common = {
       modelski_modern: "./input/modelski/modelskiModern.csv",
       modelski_modern_v2: "./input/modelski/modelskiModernV2.csv",
     },
+    clark_subdivisions: "./input/clark/clark_subdivisions.png",
     flattened_stadester_cities: `./input/uud/flattened_stadester_cities.json`,
     hyde_population: `./input/hyde/population/`,
       hyde_substrata_prefix: `substrata_pop__`,

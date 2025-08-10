@@ -61,6 +61,39 @@
     //Return statement
     return [parseFloat(lat_value), parseFloat(lng_value)];
   };
+  
+  /**
+   * getCityPixel() - Returns an [x, y] coordinate pixel given the .coords {@link Array}<{@link number}, {@link number}>.
+   * @param {Object} arg0_city_obj
+   * @param {Object} [arg1_options]
+   *  @param {number} [arg1_options.height=2160]
+   *  @param {number} [arg1_options.width=4320]
+   *
+   * @returns {[number,number]}
+   */
+  global.getCityPixel = function (arg0_city_obj, arg1_options) {
+    //Convert from parameters
+    var city_obj = arg0_city_obj;
+    var options = (arg1_options) ? arg1_options : {};
+    
+    //Initialise options
+    options.height = returnSafeNumber(options.height, 2160);
+    options.width = returnSafeNumber(options.width, 4320);
+    
+    //Declare local instance variables
+    var coords = [parseFloat(city_obj.coords[0]), parseFloat(city_obj.coords[1])];
+    
+    if (coords) {
+      var local_x = ((city_obj.coords[1] + 180)/360)*options.width;
+      var local_y = ((90 - city_obj.coords[0])/180)*options.height;
+      
+      //Return statement
+      return [Math.floor(local_x), Math.floor(local_y)];
+    } else {
+      //Return statement
+      return [0, 0];
+    }
+  };
 
   global.getGoogleMapsCityCoords = async function (arg0_city_name) {
     //Convert from parameters
