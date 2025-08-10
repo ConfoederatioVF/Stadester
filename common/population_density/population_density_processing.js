@@ -265,10 +265,10 @@ config.population_density.processing = {
 			}
 		},
 		clark_b_regions: {
-			"1800": {
+			"1800": { //Baseline
 				no_regions: true //Defaults to default: function() in map
 			},
-			"1945": {
+			"1945": { //Clark variants after 1945
 				anglo_settler: {
 					colour: [175, 63, 76]
 				},

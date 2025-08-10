@@ -285,9 +285,15 @@
 		//Declare local instance variables
 		var all_cities = Object.keys(stadester_obj);
 		var common_defines = config.defines.common;
+		var density_processing_obj = config.population_density.processing;
 		
-		var angel_raster = loadImage(common_defines.angel_regions);
-		var clark_raster = loadImage(common_defines.clark_subdivisions);
+		var angel_raster = loadImage(common_defines.input_file_paths.angel_subdivisions);
+		var clark_raster = loadImage(common_defines.input_file_paths.clark_subdivisions);
+		
+		var angel_regions_obj = density_processing_obj.angel_regions;
+		var clark_regions_obj = density_processing_obj.clark_b_regions;
+			var all_clark_regions_keys = Object.keys(clark_regions_obj);
+				clark_regions_obj = clark_regions_obj[all_clark_regions_keys[all_clark_regions_keys.length - 1]];
 		
 		//Iterate over all_cities
 		for (let i = 0; i < all_cities.length; i++) {
@@ -305,11 +311,32 @@
 				clark_b = clark_raster.data[local_index + 2];
 			
 			//Set .angel_region/.clark_region
+			//Iterate over all_angel_regions; set .angel_region
+			var all_angel_regions = Object.keys(angel_regions_obj);
 			
+			for (let x = 0; x < all_angel_regions.length; x++) {
+				let local_angel_region = angel_regions_obj[all_angel_regions[x]];
+				
+				if (local_angel_region.colour.join(",") == [angel_r, angel_g, angel_b].join(","))
+					local_city.angel_region = all_angel_regions[x];
+			}
+			
+			//Iterate over all_clark_regions; set .clark_region
+			var all_clark_regions = Object.keys(clark_regions_obj);
+			
+			for (let x = 0; x < all_clark_regions.length; x++) {
+				let local_clark_region = clark_regions_obj[all_clark_regions[x]];
+				
+				if (local_clark_region.colour.join(",") == [clark_r, clark_g, clark_b].join(","))
+					local_city.clark_region = all_clark_regions[x];
+			}
 		}
+		
+		//Return statement
+		return stadester_obj;
 	};
 	
-	global.calculateCentreDensitiesForYear = function (arg0_year) {
+	global.calculateCentreDensitiesForYear = function (arg0_year) { //[WIP] - Finish function body
 	
 	};
 	
@@ -418,11 +445,15 @@
 	
 	global.processCitiesAreas = function () {
 		//Declare local instance variables
+		//1. Fundamental variables; .area/.density calculation
 		global.stadester_obj = estimateBaselineCityAreas();
 		global.stadester_obj = calculateRemainderCityAreas(stadester_obj);
 		global.stadester_obj = fixCityAreas(stadester_obj);
 		
 		global.stadester_obj = calculateCityDensities(stadester_obj);
+		
+		//2. Clark coefficient calculations
+		global.stadester_obj = assignRegionsToCities(stadester_obj); //Used for calculating Clark variant equations/walkability ratios
 		
 		//Save processed stadester_obj
 		FileManager.saveFileAsJSON('./input/uud/stadester_areas.json', stadester_obj);
