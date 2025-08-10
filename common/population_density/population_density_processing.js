@@ -289,7 +289,7 @@ config.population_density.processing = {
 			"1800": {
 				default: function (arg0_A, arg1_b, arg2_inner_radius_distance, arg3_outer_radius_distance) {
 					//Convert from parameters
-					var A = arg0_A;
+					var A = arg0_A*100;
 					var b = arg1_b;
 					var inner_radius_distance = arg2_inner_radius_distance;
 					var outer_radius_distance = arg3_outer_radius_distance;
@@ -339,7 +339,7 @@ config.population_density.processing = {
 				},
 				eu_and_east_asia: function (arg0_A, arg1_b, arg2_inner_radius_distance, arg3_outer_radius_distance) {
 					//Convert from parameters
-					var A = arg0_A;
+					var A = arg0_A*100;
 					var b = arg1_b;
 					var inner_radius_distance = arg2_inner_radius_distance;
 					var outer_radius_distance = arg3_outer_radius_distance;
@@ -377,7 +377,7 @@ config.population_density.processing = {
 				},
 				global_south: function (arg0_A, arg1_b, arg2_inner_radius_distance, arg3_outer_radius_distance) {
 					//Convert from parameters
-					var A = arg0_A;
+					var A = arg0_A*100;
 					var b = arg1_b;
 					var inner_radius_distance = arg2_inner_radius_distance;
 					var outer_radius_distance = arg3_outer_radius_distance;
@@ -430,7 +430,7 @@ config.population_density.processing = {
 			"1800": {
 				default: function (arg0_A, arg1_b, arg2_x) {
 					//Convert from parameters
-					var A = arg0_a;
+					var A = arg0_a*100;
 					var b = arg1_b;
 					var x = arg2_x;
 					
@@ -441,7 +441,7 @@ config.population_density.processing = {
 			"1945": {
 				anglo_settler: function (arg0_A, arg1_b, arg2_x) {
 					//Convert from parameters
-					var A = arg0_a;
+					var A = arg0_a*100;
 					var b = arg1_b;
 					var x = arg2_x;
 					
@@ -450,7 +450,7 @@ config.population_density.processing = {
 				},
 				eu_and_east_asia: function (arg0_A, arg1_b, arg2_x) {
 					//Convert from parameters
-					var A = arg0_a;
+					var A = arg0_a*100;
 					var b = arg1_b;
 					var x = arg2_x;
 				
@@ -459,7 +459,7 @@ config.population_density.processing = {
 				},
 				global_south: function (arg0_A, arg1_b, arg2_x) {
 					//Convert from parameters
-					var A = arg0_a;
+					var A = arg0_a*100;
 					var b = arg1_b;
 					var x = arg2_x;
 					
@@ -468,7 +468,7 @@ config.population_density.processing = {
 				},
 				socialist_world: function (arg0_A, arg1_b, arg2_x) {
 					//Convert from parameters
-					var A = arg0_a;
+					var A = arg0_a*100;
 					var b = arg1_b;
 					var x = arg2_x;
 					
