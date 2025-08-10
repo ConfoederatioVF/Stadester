@@ -283,6 +283,14 @@ config.population_density.processing = {
 				}
 			}
 		},
+		clark_annular_equations: { //[WIP] - Do integration on Clark functions first
+			"1800": {
+			
+			},
+			"1945": {
+			
+			}
+		},
 		clark_equations: {
 			"1800": {
 				default: function (arg0_A, arg1_b, arg2_x) {
