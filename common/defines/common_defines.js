@@ -9,6 +9,8 @@ config.defines.common = {
       modelski_modern_v2: "./input/modelski/modelskiModernV2.csv",
     },
     flattened_stadester_cities: `./input/uud/flattened_stadester_cities.json`,
+    hyde_population: `./input/hyde/population/`,
+      hyde_substrata_prefix: `substrata_pop__`,
     ghsl_folder: "./input/GHSL/geojson/",
     ghsl_urban_areas_prefix: "GHS_urban_",
     populstat_cities: "./input/populstat_cities/populstat_cities.json",

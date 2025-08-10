@@ -274,6 +274,22 @@
 		//b = walkability ratio, Angel 2012, interpolated (.walkability_ratio)
 		//y = actual density as calculated from established .population/.area objects (.density) DONE
 	
+	global.calculateCentreDensitiesForYear = function () {
+	
+	};
+	
+	global.calculateDensityOrdinalsForYear = function (arg0_year) {
+	
+	};
+	
+	global.calculateWalkabilityRatiosForYear = function (arg0_year) {
+	
+	};
+	
+	global.getWalkabilityRatioObject = function () {
+	
+	};
+	
 	//3. Apply Clark/Modified Clark typologies to calculate imputed populations within gridcell radii
 	
 	//4. Use imputed populations within gridcell radii to buffer population by scaling rings to target over substrata
