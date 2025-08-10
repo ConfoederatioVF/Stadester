@@ -52,6 +52,16 @@ global.url = require("url");
 global.puppeteer = require("puppeteer-extra");
 global.StealthPlugin = require("puppeteer-extra-plugin-stealth");
 
+const {
+  lambertW0, // same as lambertW0_IaconoBoyd
+  lambertW0_IaconoBoyd,
+  lambertW0Log, // same as lambertW0Log_xmodar
+  lambertW0Log_xmodar,
+  lambertW0_SimpleIteration_LT_E,
+  lambertW0_SimpleIteration_GT_E,
+  W0_LIMIT_POINT
+} = require('lambert-w-function');
+
 //Load all scripts
 FileManager.loadAllScripts();
 FileManager.loadFile("settings.js");

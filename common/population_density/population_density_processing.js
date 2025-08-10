@@ -22,6 +22,9 @@ config.population_density.processing = {
 			"1990": -0.0103,
 			"2000": -0.0096
 		},
+		angel_regions: {
+		
+		},
 		clark_b_regions: {
 			"1800": {
 				no_regions: true //Defaults to default: function() in map
@@ -43,13 +46,53 @@ config.population_density.processing = {
 		},
 		clark_equations: {
 			"1800": {
-			
+				default: function (arg0_A, arg1_b, arg2_x) {
+					//Convert from parameters
+					var A = arg0_a;
+					var b = arg1_b;
+					var x = arg2_x;
+					
+					//Return statement
+					return A*Math.exp(-b*x);
+				}
 			},
 			"1945": {
-				anglo_settler: function (arg0_A, arg1_b, arg2_x, arg3_y) {
-				
+				anglo_settler: function (arg0_A, arg1_b, arg2_x) {
+					//Convert from parameters
+					var A = arg0_a;
+					var b = arg1_b;
+					var x = arg2_x;
+					
+					//Return statement
+					return x*Math.exp(-0.67*x);
 				},
+				eu_and_east_asia: function (arg0_A, arg1_b, arg2_x) {
+					//Convert from parameters
+					var A = arg0_a;
+					var b = arg1_b;
+					var x = arg2_x;
 				
+					//Return statement
+					return A*(x + 0.5)*Math.exp(-b*x);
+				},
+				global_south: function (arg0_A, arg1_b, arg2_x) {
+					//Convert from parameters
+					var A = arg0_a;
+					var b = arg1_b;
+					var x = arg2_x;
+					
+					//Return statement
+					return A*Math.exp(-b*x);
+				},
+				socialist_world: function (arg0_A, arg1_b, arg2_x) {
+					//Convert from parameters
+					var A = arg0_a;
+					var b = arg1_b;
+					var x = arg2_x;
+					
+					//Return statement
+					return 1/(1 + Math.exp(4*(x - 1.8)));
+				},
 			}
 		},
 	baseline_year: 1800,
