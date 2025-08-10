@@ -270,7 +270,7 @@
 	};
 	
 	//2. Establish rank-ordinals and use them to calculate Clark parameters
-		//A = imputed persons_per_ha from rank ordinal of HYDE density; (.centre_density)
+		//A = imputed persons_per_ha from rank ordinal of actual density; (.centre_density)
 		//b = walkability ratio, Angel 2012, interpolated (.walkability_ratio) DONE
 		//y = actual density as calculated from established .population/.area objects (.density) DONE
 	
@@ -334,10 +334,6 @@
 		
 		//Return statement
 		return stadester_obj;
-	};
-	
-	global.calculateCentreDensitiesForYear = function (arg0_year) { //[WIP] - Finish function body
-	
 	};
 	
 	/**
@@ -439,6 +435,21 @@
 		return angel_regions;
 	};
 	
+	//2.1. Calculate .centre_density (A) from rank ordinal of actual density
+	
+	global.calculateCentreDensitiesForYear = function (arg0_year) { //[WIP] - Finish function body
+	
+	};
+	
+	global.calculateCitiesCentreDensities = function (arg0_stadester_obj) { //[WIP] - Finish function body
+		//Declare local instance variables
+		var stadester_obj = (arg0_stadester_obj) ? arg0_stadester_obj : getProcessedStadesterObject();
+		
+		//Return statement
+		return stadester_obj;
+	};
+	
+	//[WIP] - DEPRECATED. Move to stadester radial_buffering_framework.js
 	//3. Apply Clark/Modified Clark typologies to calculate imputed populations within gridcell radii
 	
 	//4. Use imputed populations within gridcell radii to buffer population by scaling rings to target over substrata
@@ -454,6 +465,7 @@
 		
 		//2. Clark coefficient calculations
 		global.stadester_obj = assignRegionsToCities(stadester_obj); //Used for calculating Clark variant equations/walkability ratios
+		global.stadester_obj = calculateCitiesCentreDensities(stadester_obj);
 		
 		//Save processed stadester_obj
 		FileManager.saveFileAsJSON('./input/uud/stadester_areas.json', stadester_obj);
