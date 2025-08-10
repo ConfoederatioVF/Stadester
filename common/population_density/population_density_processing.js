@@ -283,14 +283,149 @@ config.population_density.processing = {
 				}
 			}
 		},
+	
+		//Clark annular equations for integrating radii
 		clark_annular_equations: { //[WIP] - Do integration on Clark functions first
 			"1800": {
-			
+				default: function (arg0_A, arg1_b, arg2_inner_radius_distance, arg3_outer_radius_distance) {
+					//Convert from parameters
+					var A = arg0_A;
+					var b = arg1_b;
+					var inner_radius_distance = arg2_inner_radius_distance;
+					var outer_radius_distance = arg3_outer_radius_distance;
+					
+					//Declare local instance variables
+					var two_pi = 2*Math.PI;
+					
+					//Internal helper function, integrated annulus
+					function F (arg0_r) {
+						//Convert from parameters
+						var r = arg0_r;
+						
+						//Return statement
+						return (-r*Math.exp(-b*r)/b) - (Math.exp(-b*r)/(b*b));
+					}
+					
+					//Return statement
+					return two_pi*A*(F(outer_radius_distance) - F(inner_radius_distance));
+				}
 			},
 			"1945": {
-			
+				anglo_settler: function (arg0_inner_radius_distance, arg1_outer_radius_distance) {
+					//Convert from parameters
+					var inner_radius_distance = arg0_inner_radius_distance;
+					var outer_radius_distance = arg1_outer_radius_distance;
+					
+					//Declare local instance variables
+					var a = 0.67;
+					var two_pi = 2*Math.PI;
+					
+					//Internal helper function, integrated annulus
+					function F (arg0_r) {
+						//Convert from parameters
+						var r = arg0_r;
+						
+						//Return statement
+						return (
+							(Math.exp(-a*r)*
+								(-(a*a*r*r + 2*a*r + 2))/
+									Math.pow(a, 3)
+							)
+						);
+					}
+					
+					//Return statement
+					return two_pi*(F(outer_radius_distance) - F(inner_radius_distance));
+				},
+				eu_and_east_asia: function (arg0_A, arg1_b, arg2_inner_radius_distance, arg3_outer_radius_distance) {
+					//Convert from parameters
+					var A = arg0_A;
+					var b = arg1_b;
+					var inner_radius_distance = arg2_inner_radius_distance;
+					var outer_radius_distance = arg3_outer_radius_distance;
+					
+					//Declare local instance variables
+					var two_pi_a = 2*Math.PI*A;
+					
+					//Internal helper functions, integrated annulus
+					function F1 (arg0_r) {
+						//Convert from parameters
+						var r = arg0_r;
+						
+						//Return statement
+						return (
+							Math.exp(-b*r)*
+								(-(b*b*r*r + 2*b*r + 2))/
+									Math.pow(b, 3)
+						);
+					}
+					function F2 (arg0_r) {
+						//Convert from parameters
+						var r = arg0_r;
+						
+						//Return statement
+						return (
+							-r*Math.exp(-b*r)/b -
+								Math.exp(-b*r)/(b*b)
+						);
+					}
+					
+					//Return statement
+					return two_pi_a*(
+						(F1(outer_radius_distance) - F1(inner_radius_distance)) + 0.5*(F2(outer_radius_distance) - F2(inner_radius_distance))
+					);
+				},
+				global_south: function (arg0_A, arg1_b, arg2_inner_radius_distance, arg3_outer_radius_distance) {
+					//Convert from parameters
+					var A = arg0_A;
+					var b = arg1_b;
+					var inner_radius_distance = arg2_inner_radius_distance;
+					var outer_radius_distance = arg3_outer_radius_distance;
+					
+					//Declare local instance variables
+					var two_pi = 2*Math.PI;
+					
+					//Internal helper function, integrated annulus
+					function F (arg0_r) {
+						//Convert from parameters
+						var r = arg0_r;
+						
+						//Return statement
+						return (-r*Math.exp(-b*r)/b) - (Math.exp(-b*r)/(b*b));
+					}
+					
+					//Return statement
+					return two_pi*A*(F(outer_radius_distance) - F(inner_radius_distance));
+				},
+				socialist_world: function (arg0_inner_radius_distance, arg1_outer_radius_distance) {
+					//Convert from parameters
+					var inner_radius_distance = arg0_inner_radius_distance;
+					var outer_radius_distance = arg1_outer_radius_distance;
+					
+					//Declare local instance variables
+					var n = 100; //100 iterations for approximating the integral trapezoidally
+					
+					var h = (outer_radius_distance - inner_radius_distance)/n;
+					var sum = 0.5*(
+						inner_radius_distance/(1 + Math.exp(4*(inner_radius_distance - 1.8))) +
+						outer_radius_distance/(1 + Math.exp(4*(outer_radius_distance - 1.8)))
+					);
+					var two_pi = 2*Math.PI;
+					
+					//Iterate over n and trapezoidally integrate
+					for (let i = 1; i < n; i++) {
+						let r = inner_radius_distance + i*h;
+						
+						sum += r/(1 + Math.exp(4*(r - 1.8)));
+					}
+					
+					//Return statement
+					return two_pi*sum*h;
+				}
 			}
 		},
+	
+		//Legacy encoded Clark equations
 		clark_equations: {
 			"1800": {
 				default: function (arg0_A, arg1_b, arg2_x) {
