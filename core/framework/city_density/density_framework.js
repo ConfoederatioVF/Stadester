@@ -258,7 +258,7 @@
 		//Declare local instance variables
 		var all_cities = Object.keys(stadester_obj);
 		
-		//Iterate over all_countries
+		//Iterate over all_cities
 		for (let i = 0; i < all_cities.length; i++) {
 			let local_city = stadester_obj[all_cities[i]];
 			
@@ -274,12 +274,52 @@
 		//b = walkability ratio, Angel 2012, interpolated (.walkability_ratio)
 		//y = actual density as calculated from established .population/.area objects (.density) DONE
 	
-	global.calculateCentreDensitiesForYear = function () {
+	global.calculateCentreDensitiesForYear = function (arg0_year) {
 	
 	};
 	
-	global.calculateDensityOrdinalsForYear = function (arg0_year) {
-	
+	/**
+	 * Returns a <city-key>: <rank-ordinal> Object dictionary given a particular year.
+	 * @param {number} arg0_year
+	 *
+	 * @returns {{"<city_key>": number}}
+	 */
+	global.calculateDensityOrdinalsForYear = function (arg0_year, arg1_stadester_obj) {
+		//Convert from parameters
+		var year = parseInt(arg0_year);
+		var stadester_obj = (arg1_stadester_obj) ? arg1_stadester_obj : getProcessedStadesterObject();
+		
+		//Declare local instance variables
+		var all_cities = Object.keys(stadester_obj);
+		var density_obj = {};
+		
+		//Iterate over all_cities
+		for (let i = 0; i < all_cities.length; i++) {
+			var local_city = stadester_obj[all_cities[i]];
+			var local_density = 0;
+			
+			if (local_city.density) {
+				var all_density_keys = Object.keys(local_city.density);
+				
+				for (let x = 0; x < all_density_keys.length; x++)
+					if (parseInt(all_density_keys[x]) <= year)
+						local_density = local_city.density[all_density_keys[x]];
+				
+				//Set local_density
+				density_obj[local_city.key] = local_density;
+			}
+		}
+		
+		density_obj = sortObject(density_obj);
+		
+		//Iterate over all_density_keys
+		var all_density_keys = Object.keys(density_obj);
+		
+		for (let i = 0; i < all_density_keys.length; i++)
+			density_obj[all_density_keys[i]] = (i + 1);
+		
+		//Return statement; Sort object in ascending order
+		return density_obj;
 	};
 	
 	global.calculateWalkabilityRatiosForYear = function (arg0_year) {

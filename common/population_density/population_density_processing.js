@@ -23,14 +23,33 @@ config.population_density.processing = {
 			"2000": -0.0096
 		},
 		clark_b_regions: {
-		
+			"1800": {
+				no_regions: true //Defaults to default: function() in map
+			},
+			"1945": {
+				anglo_settler: {
+					colour: [175, 63, 76]
+				},
+				eu_and_east_asia: {
+					colour: [47, 97, 170]
+				},
+				global_south: {
+					colour: [214, 144, 83]
+				},
+				socialist_world: {
+					colour: [20, 114, 30]
+				}
+			}
 		},
 		clark_equations: {
 			"1800": {
 			
 			},
 			"1945": {
-			
+				anglo_settler: function (arg0_A, arg1_b, arg2_x, arg3_y) {
+				
+				},
+				
 			}
 		},
 	baseline_year: 1800,
