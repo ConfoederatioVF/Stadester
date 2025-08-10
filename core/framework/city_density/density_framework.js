@@ -496,11 +496,6 @@
 		return stadester_obj;
 	};
 	
-	//[WIP] - DEPRECATED. Move to stadester radial_buffering_framework.js
-	//3. Apply Clark/Modified Clark typologies to calculate imputed populations within gridcell radii
-	
-	//4. Use imputed populations within gridcell radii to buffer population by scaling rings to target over substrata
-	
 	global.processCitiesAreas = function () {
 		//Declare local instance variables
 		//1. Fundamental variables; .area/.density calculation
