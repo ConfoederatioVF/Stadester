@@ -15,7 +15,7 @@
 		
 		//Return statement
 		return density_processing_obj.earth_radius*Math.sqrt(local_x*local_x + local_y*local_y);
-	}
+	};
 	
 	global.getPixelAreaAtLatitude = function (arg0_latitude) {
 		//Convert from parameters
@@ -30,7 +30,7 @@
 		
 		//Return statement
 		return Math.abs(dx*dy);
-	}
+	};
 	
 	global.getPixelFractionInRing = function (arg0_city_coords, arg1_pixel_coords, arg2_inner_radius, arg3_outer_radius) {
 		//Convert from parameters
@@ -62,7 +62,7 @@
 		
 		//Return statement
 		return inside/total;
-	}
+	};
 	
 	//1. Apply Clark/Modified Clark typologies to calculate imputed populations within gridcell radii
 	
@@ -74,7 +74,7 @@
 	 * @param {Object} [arg2_options]
 	 *  @param {Object} [arg2_options.walkability_ratio_obj]
 	 */
-	global.getCityPopulationByPixelRing = function (arg0_city_obj, arg1_year, arg2_options) { //[WIP] - Finish function body
+	global.getCityPopulationByPixelRing = function (arg0_city_obj, arg1_year, arg2_options) {
 		//Convert from parameters
 		var city_obj = arg0_city_obj;
 		var year = parseInt(arg1_year);
@@ -112,7 +112,7 @@
 		
 		//Return statement
 		return scaled_ring_populations;
-	}
+	};
 	
 	/**
 	 * Helper function for {@link getCityPopulationByPixelRing}().
@@ -190,7 +190,7 @@
 		
 		//Return statement
 		return results;
-	}
+	};
 	
 	global.getRasterPixels = function (arg0_city_obj, arg1_max_distance_km) {
 		//Convert from parameters
@@ -210,5 +210,10 @@
 		
 		//Return statement
 		return pixels;
-	}
+	};
+	
+	//2. End process function
+	global.processDensityRings = function (arg0_stadester_obj) { //[WIP] - Finish function body
+	
+	};
 }
