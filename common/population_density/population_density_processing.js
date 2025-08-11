@@ -460,7 +460,7 @@ config.population_density.processing = {
 					var x = options.x;
 					
 					//Return statement
-					return x*Math.exp(-0.67*x);
+					return A*x*Math.exp(-0.067*x);
 				},
 				eu_and_east_asia: function (arg0_options) {
 					//Convert from parameters

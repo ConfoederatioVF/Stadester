@@ -17,6 +17,7 @@ config.defines.common = {
     ghsl_urban_areas_prefix: "GHS_urban_",
     populstat_cities: "./input/populstat_cities/populstat_cities.json",
     processed_uud_cities: "./input/uud/processed_uud_cities.json",
+    stadester_areas: `./input/uud/stadester_areas.json`,
     stadester_cities: `./input/uud/stadester_cities.json`,
     processed_stadester_cities: `./input/uud/processed_stadester_cities.json`,
     uud_cities: "./input/uud/uud_cities.json"
