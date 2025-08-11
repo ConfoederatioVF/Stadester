@@ -186,9 +186,10 @@
 					parseFloat(local_city.coords[1])
 				];
 			return_obj[all_cities[i]].key = all_cities[i];
+			if (!local_city.name) return_obj[all_cities[i]].name = all_cities[i];
 			
 			//Check to make sure name doesn't have a colon in it
-			if (local_city.name.includes(":"))
+			if (local_city.name && local_city.name.includes(":"))
 				delete return_obj[all_cities[i]];
 		}
 		
