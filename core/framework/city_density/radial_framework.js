@@ -107,7 +107,7 @@
 		var scalar = (raw_total_population > 0) ? (population/raw_total_population) : 0;
 		var scaled_ring_populations = ring_populations.map(function (local_population) {
 			//Return statement
-			return local_population*scalar;
+			return Math.round(local_population*scalar);
 		});
 		
 		//Return statement
