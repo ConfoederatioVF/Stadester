@@ -165,7 +165,7 @@
         arr.push({
           ...city,
           __source: "chandler_modelski",
-          __country: null,
+          __country: city.country || city.region || null,
           __cityKey: cityKey
         });
       });
@@ -175,7 +175,7 @@
         arr.push({
           ...city,
           __source: "buringh",
-          __country: null,
+          __country: city.country || city.region || null,
           __cityKey: cityKey
         });
       });
@@ -185,7 +185,7 @@
         arr.push({
           ...city,
           __source: "devries",
-          __country: null,
+          __country: city.country || city.region || null,
           __cityKey: cityKey
         });
       });
@@ -207,7 +207,7 @@
       }
       
       if (cityA.__source === cityB.__source) return false;
-      if (!semanticMatch(cityA.key || cityA.name, cityB.key || cityB.name)) return false;
+      
       var latA = parseFloat(cityA.coords[0]);
       var lonA = parseFloat(cityA.coords[1]);
       var latB = parseFloat(cityB.coords[0]);
@@ -215,54 +215,81 @@
       var dLat = Math.abs(latA - latB);
       var dLon = Math.abs(lonA - lonB);
       
-      // Populstat rule
+      // --- Populstat logic: strict, do not cross-contaminate ---
       if (cityA.__source === "populstat" || cityB.__source === "populstat") {
-        return dLat <= 0.1 && dLon <= 0.1;
+        return dLat <= 0.1 && dLon <= 0.1 && semanticMatch(cityA.key || cityA.name, cityB.key || cityB.name);
       }
-      // Non-populstat rule: 5 arcmin = 0.083333...
-      return dLat <= 0.0833334 && dLon <= 0.0833334;
+      
+      // --- Non-Populstat logic ---
+      // 1. Within 5 arcmin (0.083333...) regardless of name
+      if (dLat <= 0.0833334 && dLon <= 0.0833334) return true;
+      
+      // 2. Within 5 degrees and semantic match
+      if (dLat <= 5 && dLon <= 5 && semanticMatch(cityA.key || cityA.name, cityB.key || cityB.name)) return true;
+      
+      return false;
     }
     
     // --- Step 1: Merge all cities into a single list, merging as needed ---
     var mergedCities = [];
     
     flattenCities().forEach((city) => {
-      // Try to merge with an existing city
-      var found = false;
+      // Find all mergeable cities
+      var mergeableIndexes = [];
       for (var i = 0; i < mergedCities.length; i++) {
         var merged = mergedCities[i];
         if (
           canMerge(city, merged) &&
           !merged.sources.includes(city.__source)
         ) {
-          // Merge populations
-          merged.population = mergePopulations([
-            merged.population || {},
-            city.population || {}
-          ]);
-          merged.sources.push(city.__source);
-          // Optionally, merge other metadata as needed
-          found = true;
-          break;
+          mergeableIndexes.push(i);
         }
       }
-      if (!found) {
-        // New merged city
+      
+      if (mergeableIndexes.length === 0) {
+        // No mergeable city, add as new
         var newCity = { ...city };
         newCity.sources = [city.__source];
         newCity.type = city.__source;
         mergedCities.push(newCity);
+      } else {
+        // Merge with all mergeable cities
+        var mergeGroup = [city];
+        var mergedSources = [city.__source];
+        var mergedPopulations = [city.population || {}];
+        var baseCity = { ...city };
+        
+        // Collect all mergeable cities' data
+        mergeableIndexes.forEach((idx) => {
+          var merged = mergedCities[idx];
+          mergeGroup.push(merged);
+          mergedSources = mergedSources.concat(merged.sources);
+          mergedPopulations.push(merged.population || {});
+        });
+        
+        // Remove old merged cities (descending order to avoid index shift)
+        mergeableIndexes.sort((a, b) => b - a);
+        mergeableIndexes.forEach((idx) => mergedCities.splice(idx, 1));
+        
+        // Build new merged city
+        var newMergedCity = {
+          ...baseCity,
+          sources: Array.from(new Set(mergedSources)),
+          type: "merged",
+          population: mergePopulations(mergedPopulations),
+          // Optionally, merge other metadata here
+        };
+        
+        mergedCities.push(newMergedCity);
       }
     });
     
     // --- Step 2: Build UUD structure ---
     var uud_obj = {};
-    // When building UUD structure
     mergedCities.forEach((city) => {
       // Try to get a valid country name
       var country = city.__country;
       if (!country || country === null || country === undefined) {
-        // Try to use .region, .country, or fallback to "unknown"
         country =
           city.region ||
           city.country ||
@@ -440,9 +467,5 @@
     console.time(`- Saving UUD object ..`);
     FileManager.saveFileAsJSON(config.defines.common.input_file_paths.processed_uud_cities, uud_obj);
     console.timeEnd(`- Saving UUD object ..`);
-  };
-  
-  global.testUUD = function () {
-  
   };
 }
