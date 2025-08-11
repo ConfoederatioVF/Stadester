@@ -286,6 +286,7 @@ config.population_density.processing = {
 	
 		//Clark annular equations for integrating radii
 		clark_annular_equations: { //[WIP] - Do integration on Clark functions first
+			//[WIP] - Refactor to use options object
 			"1800": {
 				default: function (arg0_A, arg1_b, arg2_inner_radius_distance, arg3_outer_radius_distance) {
 					//Convert from parameters
