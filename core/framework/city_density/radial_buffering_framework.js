@@ -65,6 +65,18 @@
 	}
 	
 	//1. Apply Clark/Modified Clark typologies to calculate imputed populations within gridcell radii
+	
+	/**
+	 * @param {Object} arg0_city_obj
+	 * @param {Array<Array<number, number>>} arg1_raster_pixels
+	 * @param {number} arg2_max_ring
+	 * @param {number} arg3_year
+	 * @param {Object} [arg4_options]
+	 *  @param {number} [arg4_options.A] - imputed persons_per_ha from rank ordinal of actual density; (.centre_density)
+	 *  @param {number} [arg4_options.b] - walkability ratio, Angel 2012, interpolated (.walkability_ratio)
+	 *
+	 * @returns {Array<number>}
+	 */
 	function getPopulationByPixelRing (arg0_city_obj, arg1_raster_pixels, arg2_max_ring, arg3_year, arg4_options) { //[WIP] - Finish Clark variant selection
 		//Convert from parameters
 		var city_obj = arg0_city_obj;
@@ -75,6 +87,10 @@
 		
 		//Declare local instance variables
 		var density_processing_obj = config.population_density.processing;
+		
+		var all_clark_keys = Object.keys(density_processing_obj.clark_equations);
+		var clark_baseline_obj = density_processing_obj.clark_equations[all_clark_keys[0]];
+		var clark_post_baseline_obj = density_processing_obj.clark_equations[all_clark_keys.length - 1];
 		var pixel_width_km = equirectangularDistance(city_obj.coords, [city_obj.coords[0], city_obj.coords[1] + density_processing_obj.pixel_deg]);
 		var results = Array(max_ring).fill(0);
 		
@@ -95,9 +111,23 @@
 			if (fraction == 0) continue; //Internal guard clause if there is no applicable area
 			
 			//Pixel area
+			let clark_function;
 			let pixel_area = getPixelAreaAtLatitude(local_pixel.coords[0]);
+			let pixel_density;
 			
 			//Select the correct Clark variant function
+			if (year >= parseInt(all_clark_keys[all_clark_keys.length - 1])) {
+				if (clark_post_baseline_obj[city_obj.clark_region])
+					pixel_density = clark_post_baseline_obj[city_obj.clark_region]({
+						...options,
+						x: local_distance
+					});
+			} else {
+				pixel_density = clark_baseline_obj.default({
+					...options,
+					x: local_distance
+				});
+			}
 			
 			//Add to the appropriate ring
 			results[local_ring - 1] += fraction*pixel_area*pixel_density;

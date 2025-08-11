@@ -285,17 +285,18 @@ config.population_density.processing = {
 		},
 	
 		//Clark annular equations for integrating radii
-		clark_annular_equations: { //[WIP] - Do integration on Clark functions first
+		clark_annular_equations: {
 			//[WIP] - Refactor to use options object
 			"1800": {
-				default: function (arg0_A, arg1_b, arg2_inner_radius_distance, arg3_outer_radius_distance) {
+				default: function (arg0_options) {
 					//Convert from parameters
-					var A = arg0_A*100;
-					var b = arg1_b;
-					var inner_radius_distance = arg2_inner_radius_distance;
-					var outer_radius_distance = arg3_outer_radius_distance;
+					var options = (arg0_options) ? arg0_options : {};
 					
 					//Declare local instance variables
+					var A = options.A*100;
+					var b = options.b;
+					var inner_radius_distance = parseFloat(options.inner_radius_distance);
+					var outer_radius_distance = parseFloat(options.outer_radius_distance);
 					var two_pi = 2*Math.PI;
 					
 					//Internal helper function, integrated annulus
@@ -312,13 +313,14 @@ config.population_density.processing = {
 				}
 			},
 			"1945": {
-				anglo_settler: function (arg0_inner_radius_distance, arg1_outer_radius_distance) {
+				anglo_settler: function (arg0_options) {
 					//Convert from parameters
-					var inner_radius_distance = arg0_inner_radius_distance;
-					var outer_radius_distance = arg1_outer_radius_distance;
+					var options = (arg0_options) ? arg0_options : {};
 					
 					//Declare local instance variables
 					var a = 0.67;
+					var inner_radius_distance = options.inner_radius_distance;
+					var outer_radius_distance = options.outer_radius_distance;
 					var two_pi = 2*Math.PI;
 					
 					//Internal helper function, integrated annulus
@@ -338,12 +340,15 @@ config.population_density.processing = {
 					//Return statement
 					return two_pi*(F(outer_radius_distance) - F(inner_radius_distance));
 				},
-				eu_and_east_asia: function (arg0_A, arg1_b, arg2_inner_radius_distance, arg3_outer_radius_distance) {
+				eu_and_east_asia: function (arg0_options) {
 					//Convert from parameters
-					var A = arg0_A*100;
-					var b = arg1_b;
-					var inner_radius_distance = arg2_inner_radius_distance;
-					var outer_radius_distance = arg3_outer_radius_distance;
+					var options = (arg0_options) ? arg0_options : {};
+					
+					//Convert from parameters
+					var A = options.A*100;
+					var b = options.b;
+					var inner_radius_distance = options.inner_radius_distance;
+					var outer_radius_distance = options.outer_radius_distance;
 					
 					//Declare local instance variables
 					var two_pi_a = 2*Math.PI*A;
@@ -376,14 +381,15 @@ config.population_density.processing = {
 						(F1(outer_radius_distance) - F1(inner_radius_distance)) + 0.5*(F2(outer_radius_distance) - F2(inner_radius_distance))
 					);
 				},
-				global_south: function (arg0_A, arg1_b, arg2_inner_radius_distance, arg3_outer_radius_distance) {
+				global_south: function (arg0_options) {
 					//Convert from parameters
-					var A = arg0_A*100;
-					var b = arg1_b;
-					var inner_radius_distance = arg2_inner_radius_distance;
-					var outer_radius_distance = arg3_outer_radius_distance;
+					var options = (arg0_options) ? arg0_options : {};
 					
 					//Declare local instance variables
+					var A = options.A*100;
+					var b = options.b;
+					var inner_radius_distance = parseFloat(options.inner_radius_distance);
+					var outer_radius_distance = parseFloat(options.outer_radius_distance);
 					var two_pi = 2*Math.PI;
 					
 					//Internal helper function, integrated annulus
@@ -398,12 +404,13 @@ config.population_density.processing = {
 					//Return statement
 					return two_pi*A*(F(outer_radius_distance) - F(inner_radius_distance));
 				},
-				socialist_world: function (arg0_inner_radius_distance, arg1_outer_radius_distance) {
+				socialist_world: function (arg0_options) {
 					//Convert from parameters
-					var inner_radius_distance = arg0_inner_radius_distance;
-					var outer_radius_distance = arg1_outer_radius_distance;
+					var options = (arg0_options) ? arg0_options : {};
 					
 					//Declare local instance variables
+					var inner_radius_distance = options.inner_radius_distance;
+					var outer_radius_distance = options.outer_radius_distance;
 					var n = 100; //100 iterations for approximating the integral trapezoidally
 					
 					var h = (outer_radius_distance - inner_radius_distance)/n;
@@ -429,49 +436,64 @@ config.population_density.processing = {
 		//Legacy encoded Clark equations
 		clark_equations: {
 			"1800": {
-				default: function (arg0_A, arg1_b, arg2_x) {
+				default: function (arg0_options) {
 					//Convert from parameters
-					var A = arg0_a*100;
-					var b = arg1_b;
-					var x = arg2_x;
+					var options = (arg0_options) ? arg0_options : {};
+					
+					//Declare local instance variables
+					var A = options.A*100;
+					var b = options.b;
+					var x = options.x;
 					
 					//Return statement
 					return A*Math.exp(-b*x);
 				}
 			},
 			"1945": {
-				anglo_settler: function (arg0_A, arg1_b, arg2_x) {
+				anglo_settler: function (arg0_options) {
 					//Convert from parameters
-					var A = arg0_a*100;
-					var b = arg1_b;
-					var x = arg2_x;
+					var options = (arg0_options) ? arg0_options : {};
+					
+					//Declare local instance variables
+					var A = options.A*100;
+					var b = options.b;
+					var x = options.x;
 					
 					//Return statement
 					return x*Math.exp(-0.67*x);
 				},
-				eu_and_east_asia: function (arg0_A, arg1_b, arg2_x) {
+				eu_and_east_asia: function (arg0_options) {
 					//Convert from parameters
-					var A = arg0_a*100;
-					var b = arg1_b;
-					var x = arg2_x;
+					var options = (arg0_options) ? arg0_options : {};
+					
+					//Declare local instance variables
+					var A = options.A*100;
+					var b = options.b;
+					var x = options.x;
 				
 					//Return statement
 					return A*(x + 0.5)*Math.exp(-b*x);
 				},
-				global_south: function (arg0_A, arg1_b, arg2_x) {
+				global_south: function (arg0_options) {
 					//Convert from parameters
-					var A = arg0_a*100;
-					var b = arg1_b;
-					var x = arg2_x;
+					var options = (arg0_options) ? arg0_options : {};
+					
+					//Declare local instance variables
+					var A = options.A*100;
+					var b = options.b;
+					var x = options.x;
 					
 					//Return statement
 					return A*Math.exp(-b*x);
 				},
-				socialist_world: function (arg0_A, arg1_b, arg2_x) {
+				socialist_world: function (arg0_options) {
 					//Convert from parameters
-					var A = arg0_a*100;
-					var b = arg1_b;
-					var x = arg2_x;
+					var options = (arg0_options) ? arg0_options : {};
+					
+					//Declare local instance variables
+					var A = options.A*100;
+					var b = options.b;
+					var x = options.x;
 					
 					//Return statement
 					return 1/(1 + Math.exp(4*(x - 1.8)));
