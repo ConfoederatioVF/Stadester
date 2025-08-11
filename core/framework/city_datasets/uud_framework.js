@@ -30,6 +30,8 @@
           var local_city = local_country[all_cities[x]];
           var reparse_coords = false;
 
+          if (local_city.latitude != undefined && local_city.longitude != undefined)
+            local_city.coords = [local_city.latitude, local_city.longitude];
           if (local_city.coords == undefined || local_city.coords == null) reparse_coords = true;
           if (!reparse_coords && (local_city.coords[0] == 0 && local_city.coords[1] == 0)) reparse_coords = true;
           
@@ -58,6 +60,9 @@
 
           if (local_country.latitude == undefined || local_country.longitude == undefined) reparse_coords = true;
           if (local_country.latitude == undefined || local_country.longitude == undefined) reparse_coords = true;
+          
+          if (local_country.latitude != undefined && local_country.longitude != undefined)
+            local_country.coords = [local_country.latitude, local_country.longitude];
 
           /*if (reparse_coords) {
             console.log(`- Attempting to reparse coords for ${processed_city_name} ..`);
@@ -359,6 +364,10 @@
     console.time(`- Initialising UUD ..`);
     var uud_obj = initialiseUUD();
     console.timeEnd(`- Initialising UUD ..`);
+    
+    console.time(`- Fixing missing coords in UUD ..`);
+    uud_obj = await fixCoordsInUUD(uud_obj);
+    console.timeEnd(`- Fixing missing coords in UUD ..`);
 
     //Save uud_obj
     console.time(`- Saving raw UUD data...`);
@@ -397,10 +406,6 @@
           local_country.population = operateObject(local_country.population, `Math.round(n)`);
       }
     }
-
-    console.time(`- Fixing missing coords in UUD ..`);
-    new_uud_obj = await fixCoordsInUUD(new_uud_obj);
-    console.timeEnd(`- Fixing missing coords in UUD ..`);
 
     //Save new uud_obj
     console.time(`- Saving final processed UUD data...`)
