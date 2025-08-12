@@ -86,7 +86,14 @@
 		//Declare local instance variables
 		var A = returnSafeNumber(city_obj.centre_density[year])*100; //p/ha
 		var area = city_obj.area[year];
-		var b = options.walkability_ratio_obj[city_obj.angel_region].walkability_ratio[year];
+		var b;
+			try {
+				if (!city_obj.angel_region) city_obj.angel_region = "eu_and_japan";
+				b = options.walkability_ratio_obj[city_obj.angel_region].walkability_ratio[year];
+			} catch (e) {
+				b = 1;
+				console.log(e);
+			}
 		var density_processing_obj = config.population_density.processing;
 		var population = city_obj.population[year];
 		
