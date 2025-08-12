@@ -12,10 +12,10 @@
 			
 			//Cardiff-Rhondda fix/swap
 			var cardiff_population = JSON.parse(JSON.stringify(stadester_obj["Cardiff-United Kingdom"].population));
-			var rhondda_population = JSON.parse(JSON.stringify(stadester_obj["Rhondda-United Kingdom"].population));
+			var rhondda_population = JSON.parse(JSON.stringify(stadester_obj["Rhondda, Cynon, Taff-United Kingdom"].population));
 			
 			stadester_obj["Cardiff-United Kingdom"].population = rhondda_population;
-			stadester_obj["Rhondda-United Kingdom"].population = cardiff_population;
+			stadester_obj["Rhondda, Cynon, Taff-United Kingdom"].population = cardiff_population;
 			
 			//Iterate over all_stadester_keys; round .population figures
 			var all_stadester_keys = Object.keys(stadester_obj);
@@ -30,10 +30,10 @@
 						local_city.population[all_population_keys[x]] = Math.round(local_city.population[all_population_keys[x]]);
 				}
 			}
-			
-			//Save stadester_obj
-			FileManager.saveFileAsJSON(output_file_path, stadester_obj);
 		} catch (e) { console.error(e); }
+		
+		//Save stadester_obj
+		FileManager.saveFileAsJSON(output_file_path, stadester_obj);
 	};
 	
 	global.getFlattenedStadesterObject = function () {

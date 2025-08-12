@@ -8,7 +8,7 @@
 			var city = stadester_obj[all_cities[i]];
 			var pop = city.population || {};
 			var negative_years = Object.keys(pop).filter(
-				(year) => pop[year] < 0
+				(year) => typeof pop[year] === "number" && pop[year] < 0
 			);
 			
 			if (negative_years.length === 0) continue;
@@ -17,8 +17,9 @@
 				var year = negative_years[y];
 				var negative_value = Math.abs(pop[year]);
 				
-				// Find suburbs (other cities with .metro_key === city.key)
+				// Find suburbs (other cities with .metro_key === city.key, but not the city itself)
 				var suburbs = all_cities
+				.filter((k) => k !== city.key) // Exclude the metro itself
 				.map((k) => stadester_obj[k])
 				.filter(
 					(c) =>
@@ -195,15 +196,13 @@
 	};
 	
 	//[WIP] - Refactor at a later date
-	global.removeStadesterDuplicates = function (arg0_stadester_obj) {
-		const stadester_obj = arg0_stadester_obj;
+	global.removeStadesterDuplicates = function (stadester_obj) {
 		const grouped = {};
 		
-		// Group by rounded coords
+		// Group by rounded coords (0.1 deg threshold)
 		for (const key in stadester_obj) {
 			const city = stadester_obj[key];
-			if (!Array.isArray(city.coords) || city.coords.length < 2) continue;
-			// Use 4 decimal places for 0.0001 deg tolerance, 3 for 0.001, 1 for 0.1
+			if (!city || !Array.isArray(city.coords) || city.coords.length < 2) continue;
 			const lat = Number(city.coords[0]).toFixed(3);
 			const lng = Number(city.coords[1]).toFixed(3);
 			const groupKey = `${lat},${lng}`;
@@ -215,27 +214,32 @@
 		
 		for (const groupKey in grouped) {
 			const group = grouped[groupKey];
-			// Find the "original" (longest population keys)
-			group.sort(
-				(a, b) =>
-					Object.keys(b.city.population || {}).length -
-					Object.keys(a.city.population || {}).length
-			);
-			const original = group[0].city;
+			
+			// Find the largest city by total population sum
+			group.sort((a, b) => {
+				const sumPop = obj =>
+					obj && obj.city && obj.city.population
+						? Object.values(obj.city.population).reduce((acc, val) => acc + (Number(val) || 0), 0)
+						: 0;
+				return sumPop(b) - sumPop(a);
+			});
+			
+			const largest = group[0].city;
+			if (!largest || !largest.population) continue;
+			
+			// Merge all population keys from all cities in the group into the largest
 			for (let i = 1; i < group.length; i++) {
 				const duplicate = group[i].city;
+				if (!duplicate || !duplicate.population) continue;
 				for (const popKey in duplicate.population) {
-					if (original.population.hasOwnProperty(popKey)) {
-						original.population[popKey] = Math.max(
-							original.population[popKey],
-							duplicate.population[popKey]
-						);
-					} else {
-						original.population[popKey] = duplicate.population[popKey];
+					if (!largest.population.hasOwnProperty(popKey)) {
+						largest.population[popKey] = duplicate.population[popKey];
 					}
 				}
 			}
-			result[group[0].key] = original;
+			
+			// Only keep the largest city's key
+			result[group[0].key] = largest;
 		}
 		
 		return result;

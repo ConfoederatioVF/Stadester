@@ -121,7 +121,7 @@
 					if (!local_uud_city) {
 						for (let y = 0; y < all_return_cities.length; y++) {
 							let local_ot_city = return_obj[all_return_cities[y]];
-							if (local_ot_city.type) continue; //Skip if .type is already set; this is likely a Chandler-Modelski city
+							if (local_ot_city.type == "chandler_modelski") continue; //Skip if .type is already chandler_modelski
 							
 							let latlng = local_ot_city.coords;
 							let ot_latlng = local_city.coords;
