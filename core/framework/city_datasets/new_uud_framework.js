@@ -21,7 +21,7 @@
 		
 		//Declare local instance variables
 		var d_lat = ot_coords[0] - coords[0];
-		var d_lng = ot_coords[1] - ot_coords[1];
+		var d_lng = ot_coords[1] - coords[1];
 		
 		//Return statement
 		return Math.sqrt(d_lat*d_lat + d_lng*d_lng);
@@ -160,21 +160,24 @@
 				let all_return_keys = Object.keys(return_obj);
 				
 				for (let x = 0; x < all_local_cities.length; x++) {
-					let local_city = local_db.data[all_local_cities[x]];
-					let was_merged = [false, undefined];
+					var local_city = local_db.data[all_local_cities[x]];
+					var was_merged = [false, undefined];
 					
 					//.precision check
 					if (local_db.precision)
 						//Check if local_city should be merged using precision threshold
-						for (let y = 0; y < all_return_keys.length; y++) {
-							let local_uud_city = return_obj[all_return_keys[y]];
+						for (var y = 0; y < all_return_keys.length; y++) {
+							var local_uud_city = return_obj[all_return_keys[y]];
 							
 							if (local_uud_city)
 								if (local_uud_city.coords && local_city.coords) try {
-									let local_distance = getCoordsDistance(local_uud_city.coords, local_city.coords);
+									var local_distance = getCoordsDistance(local_uud_city.coords, local_city.coords);
 									
-									if (local_distance <= local_db.precision)
+									if (local_distance <= local_db.precision) {
+										console.log(`- (!CM): Proximity merge (${local_uud_city.name} - ${local_city.name}):`, local_distance)
 										was_merged = [true, local_uud_city];
+										break;
+									}
 								} catch (e) { console.error(e); }
 						}
 					
@@ -187,21 +190,22 @@
 							
 							//Iterate over all .names, .other_names if possible
 							if (local_city.other_names)
-								for (let y = 0; y < local_city.other_names.length; y++) {
-									city_names.push(local_city.other_names[y]);
+								for (let y = 0; y < local_city.other_names.length; y++)
 									if (local_city.country)
 										city_names.push(`${local_city.other_names[y]}, ${local_city.country}`);
-								}
 							
 							//Iterate over all city_names, looking for a semantic match
 							for (let y = 0; y < city_names.length; y++) try {
-								let local_uud_city = getFlattenedPopulstatCity(city_names[y], { populstat_obj: return_obj });
+								let local_uud_city = getFlattenedPopulstatCity(city_names[y], {
+									populstat_obj: return_obj,
+									same_country: true
+								});
 								
 								if (local_uud_city)
 									if (local_uud_city.coords && local_city.coords) try {
 										let local_distance = getCoordsDistance(local_uud_city.coords, local_city.coords);
 										
-										if (local_distance < closest_uud_city_match[0])
+										if (local_distance <= closest_uud_city_match[0])
 											closest_uud_city_match = [local_distance, local_uud_city];
 									} catch (e) { console.error(e); }
 							} catch (e) {
@@ -209,24 +213,40 @@
 							}
 							
 							//Set was_merged if possible
-							if (closest_uud_city_match[0] <= local_db.semantic_precision)
+							if (closest_uud_city_match[0] <= local_db.semantic_precision) {
+								console.log(`- (!CM): Merged ${local_city.name}, ${closest_uud_city_match[1].name}, distance: ${closest_uud_city_match[0]}`)
 								was_merged = [true, closest_uud_city_match[1]];
+							}
 						}
 					
 					//Regular merge logic; merge into actual_city - direct key check prior to merging
 					if (return_obj[all_local_cities[x]])
 						was_merged = [true, return_obj[all_local_cities[x]]];
+					
+					//Merge cities found to be identical
+					let is_separate_city = false;
+					
 					if (was_merged[0]) {
 						let actual_city = return_obj[was_merged[1].key];
 						
 						if (actual_city) {
 							if (local_city.population)
 								actual_city.population = mergeCityPopulations(actual_city.population, local_city.population);
+							actual_city.type = all_options_keys[i];
+							
 							return_obj[actual_city.key] = actual_city;
 							
 							if (all_local_cities[x] != actual_city.key) delete return_obj[all_local_cities[x]];
+						} else {
+							is_separate_city = true;
 						}
 					} else {
+						is_separate_city = true;
+					}
+					
+					//console.log(was_merged, local_city.name);
+					if (is_separate_city) {
+						console.log(`- (!CM): Adding separate city: (${all_options_keys[i]})`, local_city.name);
 						local_city.type = all_options_keys[i];
 						
 						return_obj[all_local_cities[x]] = local_city;
@@ -239,7 +259,7 @@
 		var all_return_keys = Object.keys(return_obj);
 		
 		//Iterate over all_return_keys
-		for (let i = 0; i < all_return_keys; i++) {
+		for (let i = 0; i < all_return_keys.length; i++) {
 			let local_city = return_obj[all_return_keys[i]];
 			
 			//Check to make sure local_city has valid coords and population
@@ -273,7 +293,7 @@
 		console.timeEnd(`- Saving raw UUD data...`);
 		
 		//Return statement
-		return return_obj;
+		//return return_obj;
 	};
 	
 	global.mergeCityPopulations = function (arg0_population_obj, arg1_population_obj) {
