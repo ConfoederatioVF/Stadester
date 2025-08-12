@@ -141,56 +141,48 @@
 	}
 	
 	global.parseUUDToStadester = function () { //[WIP] - This needs to be deprecated and moved later
-		//Declare local instance variables
+	 	//Declare local instance variables
 		var return_obj = {};
 		var uud_obj = JSON.parse(fs.readFileSync(config.defines.common.input_file_paths.processed_uud_cities));
 		
-		//Iterate over all_countries and flatten them
-		var all_countries = Object.keys(uud_obj);
-		
-		for (let i = 0; i < all_countries.length; i++) {
-			var local_country = uud_obj[all_countries[i]];
-			
-			if (local_country.type != "chandler_modelski") {
-				var all_local_cities = Object.keys(local_country);
-				var local_country_name = config.populstat.countries[all_countries[i]];
-				
-				for (let x = 0; x < all_local_cities.length; x++) {
-					var local_city = local_country[all_local_cities[x]];
-					
-					//Set country name
-					local_city.country = local_country_name;
-					return_obj[`${all_local_cities[x]}-${local_country_name}`] = local_city;
-				}
-			} else {
-				var local_city = local_country;
-				
-				//Set country name
-				local_city.country = all_countries[i].split("-");
-				local_city.country = local_city.country[local_city.country.length - 1];
-				
-				return_obj[`${all_countries[i]}`] = local_city;
-			}
-		}
-		
-		//Assign .key fields to all_cities; iterate over all_cities
-		var all_cities = Object.keys(return_obj);
+		//Iterate over all city keys in flat UUD
+		var all_cities = Object.keys(uud_obj);
 		
 		for (let i = 0; i < all_cities.length; i++) {
-			var local_city = return_obj[all_cities[i]];
+			var local_city = uud_obj[all_cities[i]];
+			
+			//Set country name
+			if (!local_city.country) {
+				// Try to get country from config if possible
+				var country_name = null;
+				
+				if (local_city.region) {
+					country_name = local_city.region;
+				} else if (local_city.country) {
+					country_name = local_city.country;
+				} else {
+					// Try to parse from key if possible
+					var split_key = all_cities[i].split("-");
+					country_name = split_key[split_key.length - 1];
+				}
+				local_city.country = country_name;
+			}
 			
 			//Clean up coords, set .key
 			if (local_city.coords != undefined)
-				return_obj[all_cities[i]].coords = [
+				local_city.coords = [
 					parseFloat(local_city.coords[0]),
 					parseFloat(local_city.coords[1])
 				];
-			return_obj[all_cities[i]].key = all_cities[i];
-			if (!local_city.name) return_obj[all_cities[i]].name = all_cities[i];
+			
+			local_city.key = all_cities[i];
+			if (!local_city.name) local_city.name = all_cities[i];
 			
 			//Check to make sure name doesn't have a colon in it
-			if (local_city.name && local_city.name.includes(":"))
-				delete return_obj[all_cities[i]];
+			if (local_city.name && local_city.name.includes(":")) continue;
+			
+			//Assign to return_obj
+			return_obj[all_cities[i]] = local_city;
 		}
 		
 		//Save file as stadester_cities.json; global.stadester_obj

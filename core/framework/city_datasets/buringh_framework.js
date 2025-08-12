@@ -22,7 +22,7 @@
 			var local_country = local_obj['country'];
 			var local_key = `${local_obj.city}-${local_obj.country}`;
 			
-			if (!return_obj[local_obj.city]) return_obj[local_key] = {
+			if (!return_obj[local_key]) return_obj[local_key] = {
 				name: local_obj.city,
 				
 				coords: [
@@ -30,7 +30,8 @@
 					parseFloat(local_obj['longitude in degrees'].replace(",", "."))
 				],
 				country: local_country,
-				other_names: local_obj['synonyms and historical names'].split(","),
+				other_names: local_obj['synonyms and historical names'].split(",")
+					.map((item) => item.trim()),
 				key: local_key,
 				population: {}
 			};
