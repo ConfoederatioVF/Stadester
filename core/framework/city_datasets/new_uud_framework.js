@@ -293,7 +293,48 @@
 		console.timeEnd(`- Saving raw UUD data...`);
 		
 		//Return statement
-		//return return_obj;
+		return return_obj;
+	};
+	
+	global.interpolateUUD = function (arg0_uud_obj) {
+		//Convert from praameters
+		var uud_obj = arg0_uud_obj;
+		
+		//Iterate over all years in config.uud.processing.hyde_years that is within the UUD domain
+		for (var i = 0; i < config.uud.processing.hyde_years.length; i++) {
+			let local_year = config.uud.processing.hyde_years[i];
+			
+			if (local_year >= config.uud.processing.uud_domain[0] && local_year <= config.uud.processing.uud_domain[1]) {
+				console.time(`- Processing UUD for ${local_year} ..`);
+				uud_obj = interpolateUUDForYear(uud_obj, local_year);
+				console.timeEnd(`- Processing UUD for ${local_year} ..`);
+			}
+		}
+		
+		//Return statement
+		return uud_obj;
+	};
+	
+	global.interpolateUUDForYear = function (arg0_uud_obj, arg1_year) {
+		//Convert from parameters
+		var uud_obj = arg0_uud_obj;
+		var year = parseInt(arg1_year);
+		
+		//Declare local instance variables
+		var all_cities = Object.keys(uud_obj);
+		
+		//Iterate over all_cities
+		for (let i = 0; i < all_cities.length; i++) try {
+			let local_city = uud_obj[all_cities[i]];
+			
+			if (local_city.population && Object.keys(local_city.population).length >= 2)
+				local_city.population = cubicSplineInterpolationObject(local_city.population, { years: [year] });
+		} catch (e) {
+			console.error(e);
+		}
+		
+		//Return statement
+		return uud_obj;
 	};
 	
 	global.mergeCityPopulations = function (arg0_population_obj, arg1_population_obj) {
@@ -334,5 +375,27 @@
 		
 		//Return statement
 		return population_obj;
+	};
+	
+	//saveUUDData() - Both initialises, then saves UUD data.
+	global.saveUUDData = function () {
+		//Declare local instance variables
+		console.time(`- Initialising UUD ..`);
+		var uud_obj = initialiseUUD();
+		console.timeEnd(`- Initialising UUD ..`);
+		
+		//Interpolate uud_obj
+		uud_obj = interpolateUUD(uud_obj);
+		saveUUDObject(uud_obj);
+	};
+	
+	global.saveUUDObject = function (arg0_uud_obj) {
+		//Convert from parameters
+		var uud_obj = arg0_uud_obj;
+		
+		//Save uud_obj
+		console.time(`- Saving UUD object ..`);
+		FileManager.saveFileAsJSON(config.defines.common.input_file_paths.processed_uud_cities, uud_obj);
+		console.timeEnd(`- Saving UUD object ..`);
 	};
 }
