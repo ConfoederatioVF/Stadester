@@ -1,5 +1,10 @@
 //Initialise functions
 {
+  global.getChandlerModelskiObject = function () {
+    //Return statement
+    return main.population.chandler_modelski;
+  };
+  
   /**
    * fixChandlerModelskiPopulations() - Applies manual fixes to Chandler-Modelski.
    */

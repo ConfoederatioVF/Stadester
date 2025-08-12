@@ -19,17 +19,22 @@
 			
 			for (let x = 0; x < local_city.length; x++)
 				local_obj[header[x]] = local_city[x];
+			var local_country = local_obj['country'];
+			var local_key = `${local_obj.city}-${local_obj.country}`;
 			
-			if (!return_obj[local_obj.city]) return_obj[local_obj.city] = {
+			if (!return_obj[local_obj.city]) return_obj[local_key] = {
+				name: local_obj.city,
+				
 				coords: [
 					parseFloat(local_obj['latitude in degrees'].replace(",", ".")),
 					parseFloat(local_obj['longitude in degrees'].replace(",", "."))
 				],
+				country: local_country,
 				other_names: local_obj['synonyms and historical names'].split(","),
-				key: local_obj.city,
+				key: local_key,
 				population: {}
 			};
-			var actual_city = return_obj[local_obj.city];
+			var actual_city = return_obj[local_key];
 			var local_population = parseFloat(local_obj['inhabitants in 000-s']);
 			
 			if (local_population > 0)

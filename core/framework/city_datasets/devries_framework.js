@@ -7,7 +7,7 @@
 		var devries_coords = loadCSVAsArray(common_defines.input_file_paths.devries_coords);
 		var return_obj = {};
 		
-		//Iterate over all_cities_keys to fix issues and add them to the return_obj
+		//1. Iterate over all_cities_keys to fix issues and add them to the return_obj
 		var all_cities_keys = Object.keys(devries_cities);
 		
 		for (let i = 0; i < all_cities_keys.length; i++) {
@@ -31,10 +31,10 @@
 				}
 			
 			//.region
-			if (local_city.region) actual_city.region = local_city.region[0];
+			if (local_city.region) actual_city.country = local_city.region[0];
 		}
 		
-		//Iterate over all_coords_keys to merge .coords with regions
+		//2. Iterate over all_coords_keys to merge .coords with regions
 		for (let i = 1; i < devries_coords.length; i++) {
 			let local_value = devries_coords[i];
 			
@@ -45,10 +45,38 @@
 			return_obj[local_key].coords = [local_lat, local_lng];
 		}
 		
+		//3. Iterate over all_return_keys and change keys; process city names
+		var actual_return_obj = {};
+		var all_return_keys = Object.keys(return_obj);
+		
+		for (let i = 0; i < all_return_keys.length; i++) {
+			let local_city = return_obj[all_return_keys[i]];
+			let local_city_name = regulariseCityName(local_city.key);
+			let local_key = (local_city.country) ? `${local_city_name}-${local_city.country}` : local_city_name;
+			
+			local_city.name = local_city_name;
+			local_city.key = local_key;
+			actual_return_obj[local_key] = local_city;
+		}
+		
+		
 		//Set main.population.devries
-		main.population.devries = return_obj;
+		main.population.devries = actual_return_obj;
 		
 		//Return statement
-		return return_obj;
+		return actual_return_obj;
 	};
+	
+	global.regulariseCityName = function (name) {
+		// Replace underscores and hyphens with spaces
+		let city = name.replace(/[_-]/g, ' ');
+		// Remove extra spaces
+		city = city.replace(/\s+/g, ' ').trim();
+		// Title case, including inside parentheses and after slashes
+		city = city.replace(/([a-zA-Z]+)/g,
+			w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()
+		);
+		
+		return city;
+	}
 }

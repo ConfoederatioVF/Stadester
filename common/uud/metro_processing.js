@@ -140,7 +140,7 @@
 			global.stadester_obj : JSON.parse(fs.readFileSync(config.defines.common.input_file_paths.stadester_cities));
 	}
 	
-	global.parseUUDToStadester = function () {
+	global.parseUUDToStadester = function () { //[WIP] - This needs to be deprecated and moved later
 		//Declare local instance variables
 		var return_obj = {};
 		var uud_obj = JSON.parse(fs.readFileSync(config.defines.common.input_file_paths.processed_uud_cities));
