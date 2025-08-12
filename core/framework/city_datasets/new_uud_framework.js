@@ -34,7 +34,9 @@
 				data: getPopulstatObject(), //semantic_precision: 0.05
 			},
 			chandler_modelski: {
-				data: getChandlerModelskiObject(), legacy_chandler_modelski_merging: true
+				data: getChandlerModelskiObject(),
+				is_metro: true,
+				legacy_chandler_modelski_merging: true
 			},
 			devries: {
 				data: getDeVriesCitiesObject(), precision: 0.1, semantic_precision: 1
@@ -144,7 +146,11 @@
 						console.log(`Merging:`, all_local_cities[x], local_uud_city.key);
 						local_uud_city.type = "populstat";
 						
-						local_uud_city.population = mergeCityPopulations(local_uud_city.population, local_city.population)
+						if (local_db.is_metro) {
+							local_uud_city.population = mergeCityPopulations(local_city.population, local_uud_city.population);
+						} else {
+							local_uud_city.population = mergeCityPopulations(local_uud_city.population, local_city.population);
+						}
 						local_uud_city.chandler_modelski_coords = [local_city.latitude, local_city.longitude];
 						local_uud_city.chandler_modelski_key = all_local_cities[x];
 						return_obj[local_uud_city.key] = local_uud_city;
@@ -252,7 +258,11 @@
 							if (local_city.is_agglomeration_of)
 								actual_city.is_agglomeration_of = local_city.is_agglomeration_of;
 							if (local_city.population)
-								actual_city.population = mergeCityPopulations(actual_city.population, local_city.population);
+								if (local_db.is_metro) {
+									actual_city.population = mergeCityPopulations(local_city.population, actual_city.population);
+								} else {
+									actual_city.population = mergeCityPopulations(actual_city.population, local_city.population);
+								}
 							actual_city.type = all_options_keys[i];
 							
 							return_obj[actual_city.key] = actual_city;
@@ -357,6 +367,81 @@
 		//Return statement
 		return uud_obj;
 	};
+	
+	global.mergeMetroToCityPopulations = function (arg0_metro_population_obj, arg1_population_obj) {
+		//Convert from parameters
+		var metro_population_obj = JSON.parse(JSON.stringify(arg0_metro_population_obj));
+		var population_obj = JSON.parse(JSON.stringify(arg1_population_obj));
+		
+		//Declare local instance variables
+		var all_metro_keys = Object.keys(metro_population_obj);
+		var geomean_errors_in_domain = [];
+		var population_domain = [];
+		var union_obj = JSON.parse(JSON.stringify(population_obj));
+		
+		//Establish population_domain
+		var union_keys = Object.keys(union_obj).map(Number).sort((a, b) => a - b);
+		population_domain = [union_keys[0], union_keys[union_keys.length - 1]];
+		
+		//Iterate over all_metro_keys in population_domain; calculate geomean_scalar
+		var years_to_interpolate = [];
+		
+		for (let i = 0; i < all_metro_keys.length; i++)
+			if (parseInt(all_metro_keys[i]) >= population_domain[0] && parseInt(all_metro_keys[i]) < population_domain[1])
+				years_to_interpolate.push(parseInt(all_metro_keys[i]));
+		union_obj = cubicSplineInterpolationObject(union_obj, { years: years_to_interpolate });
+		
+		for (let i = 0; i < all_metro_keys.length; i++)
+			if (parseInt(all_metro_keys[i]) >= population_domain[0] && parseInt(all_metro_keys[i]) < population_domain[1])
+				if (union_obj[all_metro_keys[i]]) {
+					let local_union_value = union_obj[all_metro_keys[i]];
+					let local_value = metro_population_obj[all_metro_keys[i]];
+					
+					geomean_errors_in_domain.push(local_value/local_union_value);
+				}
+		
+		//Merge metro_population_obj into population_obj after dividing by geomean_scalar, but only if value is less than existing geomean
+		var geomean_scalar = weightedGeometricMean(geomean_errors_in_domain);
+			if (geomean_scalar == 0) geomean_scalar = 1;
+		metro_population_obj = operateObject(metro_population_obj, `n = n/${geomean_scalar}`);
+		
+		all_metro_keys = Object.keys(metro_population_obj);
+		
+		for (let i = 0; i < all_metro_keys.length; i++) {
+			var in_non_metro_domain = (parseInt(all_metro_keys[i]) >= population_domain[0] && parseInt(all_metro_keys[i]) < population_domain[1]);
+			var local_population = population_obj[all_metro_keys[i]];
+			var local_value = metro_population_obj[all_metro_keys[i]];
+			
+			if (in_non_metro_domain) {
+				var local_geomean = weightedGeometricMean(getList(local_population));
+				var local_population_list = getList(local_population);
+				
+				if (local_value <= local_geomean)
+					if (!Array.isArray(local_value)) {
+						local_population_list.push(local_value)
+					} else {
+						local_population_list = local_population_list.concat(local_value);
+					}
+			} else {
+				if (!Array.isArray(local_population)) {
+					if (!Array.isArray(local_value)) {
+						population_obj[all_metro_keys[i]] = [local_value];
+					} else {
+						population_obj[all_metro_keys[i]] = local_value;
+					}
+				} else {
+					if (!Array.isArray(local_value)) {
+						population_obj[all_metro_keys[i]].push(local_value);
+					} else {
+						population_obj[all_metro_keys[i]] = population_obj[all_metro_keys[i]].concat(local_value);
+					}
+				}
+			}
+		}
+		
+		//Return statement
+		return population_obj;
+	}
 	
 	global.mergeCityPopulations = function (arg0_population_obj, arg1_population_obj) {
 		//Convert from parameters
