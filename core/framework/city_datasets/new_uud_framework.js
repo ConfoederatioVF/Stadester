@@ -31,16 +31,16 @@
 		//Declare local instance variables
 		var options = {
 			populstat: {
-				data: getPopulstatObject()
+				data: getPopulstatObject(), //semantic_precision: 0.05
 			},
 			chandler_modelski: {
 				data: getChandlerModelskiObject(), legacy_chandler_modelski_merging: true
 			},
 			devries: {
-				data: getDeVriesCitiesObject(), precision: 0.05, semantic_precision: 1
+				data: getDeVriesCitiesObject(), precision: 0.1, semantic_precision: 1
 			},
 			buringh: {
-				data: getBuringhObject(), precision: 0.05, semantic_precision: 1
+				data: getBuringhObject(), precision: 0.1, semantic_precision: 1
 			}
 		};
 		var return_obj = {};
@@ -71,7 +71,10 @@
 					local_split_city_name.pop();
 					local_split_city_name = local_split_city_name.join("-");
 					
-					let local_city_names = [`${local_split_city_name}, ${local_country_name}`, local_split_city_name];
+					let local_city_names = [
+						`${local_split_city_name}, ${local_country_name}`, local_split_city_name,
+						`${local_city.name}`
+					];
 					
 					//Iterate over local_city.other_names
 					if (local_city.other_names) {
@@ -164,22 +167,35 @@
 					var was_merged = [false, undefined];
 					
 					//.precision check
-					if (local_db.precision)
-						//Check if local_city should be merged using precision threshold
+					if (local_db.precision) {
+						let closest_uud_city = null;
+						let closest_distance = Infinity;
+						
 						for (var y = 0; y < all_return_keys.length; y++) {
 							var local_uud_city = return_obj[all_return_keys[y]];
 							
-							if (local_uud_city)
-								if (local_uud_city.coords && local_city.coords) try {
+							if (local_uud_city && local_uud_city.coords && local_city.coords) {
+								try {
 									var local_distance = getCoordsDistance(local_uud_city.coords, local_city.coords);
 									
-									if (local_distance <= local_db.precision) {
-										console.log(`- (!CM): Proximity merge (${local_uud_city.name} - ${local_city.name}):`, local_distance)
-										was_merged = [true, local_uud_city];
-										break;
+									if (local_distance <= local_db.precision && local_distance < closest_distance) {
+										closest_uud_city = local_uud_city;
+										closest_distance = local_distance;
 									}
-								} catch (e) { console.error(e); }
+								} catch (e) {
+									console.error(e);
+								}
+							}
 						}
+						
+						if (closest_uud_city) {
+							console.log(
+								`- (!CM): Proximity merge (${closest_uud_city.name} - ${local_city.name}):`,
+								closest_distance
+							);
+							was_merged = [true, closest_uud_city];
+						}
+					}
 					
 					//.semantic_precision check
 					if (!was_merged[0])
@@ -190,15 +206,16 @@
 							
 							//Iterate over all .names, .other_names if possible
 							if (local_city.other_names)
-								for (let y = 0; y < local_city.other_names.length; y++)
+								for (let y = 0; y < local_city.other_names.length; y++) {
+									city_names.push(`${local_city.other_names[y]}`);
 									if (local_city.country)
 										city_names.push(`${local_city.other_names[y]}, ${local_city.country}`);
+								}
 							
 							//Iterate over all city_names, looking for a semantic match
 							for (let y = 0; y < city_names.length; y++) try {
 								let local_uud_city = getFlattenedPopulstatCity(city_names[y], {
-									populstat_obj: return_obj,
-									same_country: true
+									populstat_obj: return_obj
 								});
 								
 								if (local_uud_city)
@@ -213,14 +230,16 @@
 							}
 							
 							//Set was_merged if possible
-							if (closest_uud_city_match[0] <= local_db.semantic_precision) {
-								console.log(`- (!CM): Merged ${local_city.name}, ${closest_uud_city_match[1].name}, distance: ${closest_uud_city_match[0]}`)
-								was_merged = [true, closest_uud_city_match[1]];
-							}
+							if (closest_uud_city_match[0] <= local_db.semantic_precision) try {
+								if (!(i == 0 && return_obj[closest_uud_city_match[1].key])) {
+									console.log(`- (!CM): Semantic merge ${local_city.name}, ${closest_uud_city_match[1].name}, distance: ${closest_uud_city_match[0]}`)
+									was_merged = [true, closest_uud_city_match[1]];
+								}
+							} catch (e) { console.error(e); }
 						}
 					
 					//Regular merge logic; merge into actual_city - direct key check prior to merging
-					if (return_obj[all_local_cities[x]])
+					if (i != 0 && return_obj[all_local_cities[x]])
 						was_merged = [true, return_obj[all_local_cities[x]]];
 					
 					//Merge cities found to be identical
@@ -230,6 +249,8 @@
 						let actual_city = return_obj[was_merged[1].key];
 						
 						if (actual_city) {
+							if (local_city.is_agglomeration_of)
+								actual_city.is_agglomeration_of = local_city.is_agglomeration_of;
 							if (local_city.population)
 								actual_city.population = mergeCityPopulations(actual_city.population, local_city.population);
 							actual_city.type = all_options_keys[i];
