@@ -1,6 +1,19 @@
 //Initialise functions
 {
   global.getChandlerModelskiObject = function () {
+    //Declare local instance variables
+    var chandler_modelski_obj = main.population.chandler_modelski;
+    
+    //Iterate over all_cities
+    var all_cities = Object.keys(chandler_modelski_obj);
+    
+    for (let i = 0; i < all_cities.length; i++) {
+      var local_city = chandler_modelski_obj[all_cities[i]];
+      
+      if (local_city.latitude != undefined && local_city.longitude != undefined)
+        local_city.coords = [local_city.latitude, local_city.longitude];
+    }
+    
     //Return statement
     return main.population.chandler_modelski;
   };

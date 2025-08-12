@@ -68,3 +68,31 @@ global.estimateBaselineCityArea = function (arg0_city_obj) {
 	return city_obj;
 };
 */
+
+
+/*
+for (let y = 0; y < local_city_names.length; y++) try {
+	local_uud_city = getFlattenedPopulstatCity(local_city_names[y], { populstat_obj: return_obj });
+	
+	//Only find cities that are within 1 degree o f.coords
+	if (local_uud_city) {
+		//Check if .latitude and .longitude are within 1 degree of .coords
+		let latlng = local_uud_city.coords;
+		let ot_latlng = local_city.coords;
+		
+		if (Math.abs(latlng[0] - ot_latlng[0]) <= 1 && Math.abs(latlng[1] - ot_latlng[1]) <= 1) {
+			if (options.debug) {
+				local_uud_city.break_condition = [local_city_names[x], true];
+				local_uud_city.latlng = latlng;
+				local_uud_city.ot_latlng = ot_latlng;
+			}
+			break;
+		}
+	}
+	
+	//Reset local_uud_city for next iteration
+	local_uud_city = undefined;
+} catch (e) {
+	console.error(e);
+}
+ */

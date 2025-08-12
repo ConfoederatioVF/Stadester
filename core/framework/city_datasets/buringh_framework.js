@@ -41,8 +41,9 @@
 				actual_city.population[local_obj.year] = local_population*1000;
 		}
 		
-		//Remove excess .city entry
+		//Remove excess .city entries
 		delete return_obj.city;
+		delete return_obj['city-country'];
 		
 		//Set main.population.buringh
 		main.population.buringh = return_obj;

@@ -89,7 +89,7 @@
     return uud_obj;
   };
   
-  global.initialiseUUD = function (arg0_options) {
+  /*global.initialiseUUD = function (arg0_options) {
     //Convert from parameters
     var options = (arg0_options) ? arg0_options : {};
     
@@ -265,7 +265,7 @@
     
     //Return statement
     return uud_obj;
-  };
+  };*/
   
   global.interpolateUUD = function (arg0_uud_obj) {
     //Convert from parameters

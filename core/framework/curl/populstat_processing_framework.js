@@ -1,5 +1,101 @@
 //Initialise functions
 {
+  global.getFlattenedPopulstatCity = function (arg0_city_name, arg1_options) {
+    // Convert from parameters
+    var city_name = arg0_city_name.toLowerCase().trim();
+    var options = arg1_options || {};
+    
+    // Use provided populstat_obj or fallback
+    var populstat_obj = options.populstat_obj ||
+      (main.population.populstat || main.curl.populstat);
+    
+    // Split city and country
+    var split_city_name = city_name.split(/,|-/);
+    var city_country = "";
+    if (split_city_name.length > 1) {
+      city_country = split_city_name[split_city_name.length - 1].trim();
+      split_city_name.pop();
+    }
+    city_name = split_city_name.join("-");
+    
+    // Prepare for search
+    var city_exists = ["", false]; // [city_obj, city_exists]
+    var all_city_keys = Object.keys(populstat_obj);
+    
+    // If same_country option, filter keys
+    if (options.same_country && city_country) {
+      all_city_keys = all_city_keys.filter(function (key) {
+        var key_country = key.split(/,|-/).pop().trim().toLowerCase();
+        return key_country === city_country;
+      });
+    }
+    
+    // 1. Exact key match
+    for (var i = 0; i < all_city_keys.length; i++) {
+      var key = all_city_keys[i];
+      if (key.toLowerCase().trim() === city_name + "-" + city_country) {
+        return options.return_key ? key : populstat_obj[key];
+      }
+    }
+    
+    // 2. Soft search: match city name or other_names
+    for (var i = 0; i < all_city_keys.length; i++) {
+      var key = all_city_keys[i];
+      var city_obj = populstat_obj[key];
+      var key_city = key.split(/,|-/)[0].toLowerCase().trim();
+      var key_country = key.split(/,|-/).pop().toLowerCase().trim();
+      
+      // Check main name
+      if (key_city.indexOf(city_name) !== -1) {
+        if (!options.same_country || key_country === city_country) {
+          city_exists = [options.return_key ? key : city_obj, true];
+        }
+      }
+      
+      // Check other_names
+      if (city_obj.other_names) {
+        for (var y = 0; y < city_obj.other_names.length; y++) {
+          var other_name = city_obj.other_names[y].toLowerCase().trim();
+          if (other_name.indexOf(city_name) !== -1) {
+            if (!options.same_country || key_country === city_country) {
+              city_exists = [options.return_key ? key : city_obj, true];
+            }
+          }
+        }
+      }
+    }
+    
+    // 3. Hard search: exact match on city name or other_names
+    for (var i = 0; i < all_city_keys.length; i++) {
+      var key = all_city_keys[i];
+      var city_obj = populstat_obj[key];
+      var key_city = key.split(/,|-/)[0].toLowerCase().trim();
+      var key_country = key.split(/,|-/).pop().toLowerCase().trim();
+      
+      // Check main name
+      if (key_city === city_name) {
+        if (!options.same_country || key_country === city_country) {
+          city_exists = [options.return_key ? key : city_obj, true];
+        }
+      }
+      
+      // Check other_names
+      if (city_obj.other_names) {
+        for (var y = 0; y < city_obj.other_names.length; y++) {
+          var other_name = city_obj.other_names[y].toLowerCase().trim();
+          if (other_name === city_name) {
+            if (!options.same_country || key_country === city_country) {
+              city_exists = [options.return_key ? key : city_obj, true];
+            }
+          }
+        }
+      }
+    }
+    
+    // Return result
+    return city_exists[1] ? city_exists[0] : undefined;
+  };
+  
   /**
    * getPopulstatCity() - Fetches a Populstat city object/combined key '<city>-<country>'.
    * @param {String} arg0_city_name 
