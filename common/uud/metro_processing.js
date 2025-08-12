@@ -215,31 +215,31 @@
 		for (const groupKey in grouped) {
 			const group = grouped[groupKey];
 			
-			// Find the largest city by total population sum
+			// Find the city with the most population years (highest data fidelity)
 			group.sort((a, b) => {
-				const sumPop = obj =>
+				const numYears = obj =>
 					obj && obj.city && obj.city.population
-						? Object.values(obj.city.population).reduce((acc, val) => acc + (Number(val) || 0), 0)
+						? Object.keys(obj.city.population).length
 						: 0;
-				return sumPop(b) - sumPop(a);
+				return numYears(b) - numYears(a);
 			});
 			
-			const largest = group[0].city;
-			if (!largest || !largest.population) continue;
+			const best = group[0].city;
+			if (!best || !best.population) continue;
 			
-			// Merge all population keys from all cities in the group into the largest
+			// Merge all population keys from all cities in the group into the best
 			for (let i = 1; i < group.length; i++) {
 				const duplicate = group[i].city;
 				if (!duplicate || !duplicate.population) continue;
 				for (const popKey in duplicate.population) {
-					if (!largest.population.hasOwnProperty(popKey)) {
-						largest.population[popKey] = duplicate.population[popKey];
+					if (!best.population.hasOwnProperty(popKey)) {
+						best.population[popKey] = duplicate.population[popKey];
 					}
 				}
 			}
 			
-			// Only keep the largest city's key
-			result[group[0].key] = largest;
+			// Only keep the best city's key
+			result[group[0].key] = best;
 		}
 		
 		return result;

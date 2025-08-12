@@ -12,11 +12,16 @@
 			
 			//Cardiff-Rhondda fix/swap
 			var cardiff_population = JSON.parse(JSON.stringify(stadester_obj["Cardiff-United Kingdom"].population));
-			var rhondda_population = JSON.parse(JSON.stringify(stadester_obj["Rhondda, Cynon, Taff-United Kingdom"].population));
+			var rhondda_population = JSON.parse(JSON.stringify(stadester_obj["Rhondda-United Kingdom"].population));
 			
 			stadester_obj["Cardiff-United Kingdom"].population = rhondda_population;
-			stadester_obj["Rhondda, Cynon, Taff-United Kingdom"].population = cardiff_population;
-			
+			stadester_obj["Rhondda-United Kingdom"].population = cardiff_population;
+		} catch (e) { console.error(e); }
+		try {
+			//Minneapolis duplicate fix
+			delete stadester_obj["Minneapolis-United States of America"];
+		} catch (e) { console.error(e); }
+		try {
 			//Iterate over all_stadester_keys; round .population figures
 			var all_stadester_keys = Object.keys(stadester_obj);
 			
@@ -26,8 +31,12 @@
 				if (local_city.population) {
 					var all_population_keys = Object.keys(local_city.population);
 					
-					for (let x = 0; x < all_population_keys.length; x++)
-						local_city.population[all_population_keys[x]] = Math.round(local_city.population[all_population_keys[x]]);
+					for (let x = 0; x < all_population_keys.length; x++) {
+						var local_value = local_city.population[all_population_keys[x]];
+						
+						if (local_value < 0) local_value = 0; //[WIP] - Remove negatives for now
+						local_city.population[all_population_keys[x]] = Math.round(local_value);
+					}
 				}
 			}
 		} catch (e) { console.error(e); }
