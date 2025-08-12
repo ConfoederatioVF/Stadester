@@ -1,93 +1,507 @@
 //Initialise functions
 {
-  /**
-   * fixCoordsInUUD() - Fixes broken coords within UUD; optionally saving it to the processed UUD file stack.
-   * @param {Object} arg0_uud_obj
-   * @param {Object} [arg1_options]
-   *  @param {boolean} [arg1_options.save_uud_obj=false] - Whether to save the UUD object to the processed UUD file stack.
-   *
-   * @returns {Object}
-   */
-  global.fixCoordsInUUD = async function (arg0_uud_obj, arg1_options) {
+  global.areNamesSimilar = function (arg0_name, arg1_ot_name) {
     //Convert from parameters
-    var uud_obj = (arg0_uud_obj) ?
-      arg0_uud_obj : JSON.parse(fs.readFileSync(config.defines.common.input_file_paths.processed_uud_cities));
-    var options = (arg1_options) ? arg1_options : {};
+    var name = arg0_name;
+    var ot_name = arg1_ot_name;
     
     //Declare local instance variables
-    var all_countries = Object.keys(uud_obj);
+    name = name.toLowerCase().trim();
+    ot_name = ot_name.toLowerCase().trim();
     
-    //Iterate over all_countries
-    for (var i = 0; i < all_countries.length; i++) {
-      var local_country = uud_obj[all_countries[i]];
+    //Return statement
+    if (ot_name.includes(name) || name.includes(ot_name) || name == ot_name)
+      return true;
+  };
+  
+  global.getCoordsDistance = function (arg0_coords, arg1_coords) {
+    //Convert from parameters
+    var coords = arg0_coords;
+    var ot_coords = arg1_coords;
+    
+    //Declare local instance variables
+    var d_lat = ot_coords[0] - coords[0];
+    var d_lng = ot_coords[1] - coords[1];
+    
+    //Return statement
+    return Math.sqrt(d_lat*d_lat + d_lng*d_lng);
+  };
+  
+  global.initialiseUUD = function () {
+    //Declare local instance variables
+    var options = {
+      populstat: {
+        data: getPopulstatObject(), //semantic_precision: 0.05
+      },
+      chandler_modelski: {
+        data: getChandlerModelskiObject(),
+        is_metro: true,
+        legacy_chandler_modelski_merging: true
+      },
+      devries: {
+        data: getDeVriesCitiesObject(), precision: 0.1, semantic_precision: 1
+      },
+      buringh: {
+        data: getBuringhObject(), precision: 0.1, semantic_precision: 1
+      }
+    };
+    var return_obj = {};
+    
+    //1. Unify all databases; iterate over all_options_keys
+    var all_options_keys = Object.keys(options);
+    
+    for (let i = 0; i < all_options_keys.length; i++) {
+      let local_db = options[all_options_keys[i]];
       
-      if (local_country.type != "chandler_modelski") {
-        //Iterate over all_cities
-        var all_cities = Object.keys(local_country);
-        var local_country_name = config.populstat.countries[all_countries[i]];
-        
-        for (var x = 0; x < all_cities.length; x++) {
-          var local_city = local_country[all_cities[x]];
-          var reparse_coords = false;
+      //First come, first-serve
+      let all_local_cities = Object.keys(local_db.data);
+      
+      if (i == 0)
+        for (let x = 0; x < all_local_cities.length; x++) {
+          let local_city = local_db.data[all_local_cities[x]];
           
-          if (local_city.coords == undefined || local_city.coords == null) reparse_coords = true;
-          if (!reparse_coords && (local_city.coords[0] == 0 && local_city.coords[1] == 0)) reparse_coords = true;
+          return_obj[all_local_cities[x]] = local_city;
+        }
+      
+      //0. Legacy Chandler-Modelski handling
+      if (local_db.legacy_chandler_modelski_merging) {
+        for (let x = 0; x < all_local_cities.length; x++) {
+          let local_city = local_db.data[all_local_cities[x]];
+          let local_split_city_name = all_local_cities[x].split("-");
           
-          if (reparse_coords) {
-            var local_city_names = [local_city.name];
+          let local_country_name = local_split_city_name[local_split_city_name.length - 1];
+          local_split_city_name.pop();
+          local_split_city_name = local_split_city_name.join("-");
+          
+          let local_city_names = [
+            `${local_split_city_name}, ${local_country_name}`, local_split_city_name,
+            `${local_city.name}`
+          ];
+          
+          //Iterate over local_city.other_names
+          if (local_city.other_names) {
+            let local_other_names = getList(local_city.other_names);
             
-            if (local_city.other_names)
-              local_city_names = local_city_names.concat(local_city.other_names);
+            for (let y = 0; y < local_other_names.length; y++) {
+              local_city_names.push(`${local_other_names[y]}, ${local_country_name}`);
+              local_city_names.push(local_other_names[y]);
+            }
+          }
+          
+          //Iterate over local_city_names; find local_uud_city
+          let local_uud_city;
+          
+          for (let y = 0; y < local_city_names.length; y++) try {
+            local_uud_city = getFlattenedPopulstatCity(local_city_names[y], { populstat_obj: return_obj });
             
-            //Iterate over all local_city_names to fix coords
-            for (var y = 0; y < local_city_names.length; y++) try {
-              var local_coords = await getOSMCityCoords(`${local_city_names[y]}, ${local_country_name}`);
+            //Only find cities that are within 1 degree o f.coords
+            if (local_uud_city) {
+              //Check if .latitude and .longitude are within 1 degree of .coords
+              let latlng = local_uud_city.coords;
+              let ot_latlng = local_city.coords;
               
-              if (local_coords && (local_coords[0] != 0 || local_coords[1] != 0)) {
-                local_city.coords = local_coords;
+              if (Math.abs(latlng[0] - ot_latlng[0]) <= 1 && Math.abs(latlng[1] - ot_latlng[1]) <= 1) {
+                if (options.debug) {
+                  local_uud_city.break_condition = [local_city_names[y], true];
+                  local_uud_city.latlng = latlng;
+                  local_uud_city.ot_latlng = ot_latlng;
+                }
                 break;
               }
-            } catch (e) {
-              console.error(e);
             }
+            
+            //Reset local_uud_city for next iteration
+            local_uud_city = undefined;
+          } catch (e) {
+            console.error(e);
+          }
+          
+          //Otherwise; check if there are any UUD cities whose .coords are within 0,1 degrees of ot_latlng; fetch closest match
+          let all_return_cities = Object.keys(return_obj);
+          let closest_uud_city = [undefined, 1];
+          
+          if (!local_uud_city) {
+            for (let y = 0; y < all_return_cities.length; y++) {
+              let local_ot_city = return_obj[all_return_cities[y]];
+              if (local_ot_city.type == "chandler_modelski") continue; //Skip if .type is already chandler_modelski
+              
+              let latlng = local_ot_city.coords;
+              let ot_latlng = local_city.coords;
+              
+              if (latlng)
+                if (Math.abs(latlng[0] - ot_latlng[0]) <= 0.1 && Math.abs(latlng[1] - ot_latlng[1]) <= 0.1) {
+                  var sum_distance = Math.abs(latlng[0] - ot_latlng[0]) + Math.abs(latlng[1] - ot_latlng[1]);
+                  
+                  if (sum_distance < closest_uud_city[1] && sum_distance < 0.2)
+                    closest_uud_city = [local_ot_city, sum_distance];
+                }
+            }
+            
+            if (closest_uud_city[0])
+              local_uud_city = closest_uud_city[0];
+          }
+          
+          //Assign populstat/chandler_modelski city types
+          if (local_uud_city) {
+            console.log(`Merging:`, all_local_cities[x], local_uud_city.key);
+            local_uud_city.type = "populstat";
+            
+            if (local_db.is_metro) {
+              local_uud_city.population = mergeCityPopulations(local_city.population, local_uud_city.population);
+            } else {
+              local_uud_city.population = mergeCityPopulations(local_uud_city.population, local_city.population);
+            }
+            local_uud_city.chandler_modelski_coords = [local_city.latitude, local_city.longitude];
+            local_uud_city.chandler_modelski_key = all_local_cities[x];
+            return_obj[local_uud_city.key] = local_uud_city;
+            
+            //Delete keys if different
+            if (all_local_cities[x] != local_uud_city.key) delete return_obj[all_local_cities[x]];
+          } else {
+            //Set local_city as a new UUD city
+            local_city.type = "chandler_modelski";
+            return_obj[all_local_cities[x]] = local_city;
           }
         }
       } else {
-        try {
-          //This is a Chandler-Modelski city, geolocate using Google Maps if possible first
-          var processed_city_name = all_countries[i].split("-").join(", ");
-          var reparse_coords = false;
+        //Regular Euclidean merging based on precision rules
+        //1. Iterate over all_local_cities and check against all_return_keys coords
+        let all_return_keys = Object.keys(return_obj);
+        
+        for (let x = 0; x < all_local_cities.length; x++) {
+          var local_city = local_db.data[all_local_cities[x]];
+          var was_merged = [false, undefined];
           
-          if (local_country.latitude == undefined || local_country.longitude == undefined) reparse_coords = true;
-          if (local_country.latitude == null || local_country.longitude == null) reparse_coords = true;
-          
-          if (reparse_coords) {
-            console.log(`- Attempting to reparse coords for ${processed_city_name} ..`);
-            var local_coords = await getGoogleMapsCityCoords(processed_city_name);
-            if (!local_coords) local_coords = await getOSMCityCoords(processed_city_name);
+          //.precision check
+          if (local_db.precision) {
+            let closest_uud_city = null;
+            let closest_distance = Infinity;
             
-            console.log(` - local_coords:`, local_coords);
-            if (local_coords && (local_coords[0] != 0 || local_coords[1] != 0)) {
-              local_country.coords = local_coords;
-              local_country.latitude = local_coords[0];
-              local_country.longitude = local_coords[1];
+            for (var y = 0; y < all_return_keys.length; y++) {
+              var local_uud_city = return_obj[all_return_keys[y]];
               
-              continue;
+              if (local_uud_city && local_uud_city.coords && local_city.coords) {
+                try {
+                  var local_distance = getCoordsDistance(local_uud_city.coords, local_city.coords);
+                  
+                  if (local_distance <= local_db.precision && local_distance < closest_distance) {
+                    closest_uud_city = local_uud_city;
+                    closest_distance = local_distance;
+                  }
+                } catch (e) {
+                  console.error(e);
+                }
+              }
+            }
+            
+            if (closest_uud_city) {
+              console.log(
+                `- (!CM): Proximity merge (${closest_uud_city.name} - ${local_city.name}):`,
+                closest_distance
+              );
+              was_merged = [true, closest_uud_city];
             }
           }
           
-          //Assign local_country.coords otherwise
-          local_country.coords = [local_country.latitude, local_country.longitude];
-        } catch (e) {
-          console.error(e);
+          //.semantic_precision check
+          if (!was_merged[0])
+            if (local_db.semantic_precision) {
+              //Check if local_city should be merged using semantic_precision threshold
+              let city_names = [`${local_city.name}`, `${local_city.key}`];
+              let closest_uud_city_match = [Infinity, undefined];
+              
+              //Iterate over all .names, .other_names if possible
+              if (local_city.other_names)
+                for (let y = 0; y < local_city.other_names.length; y++) {
+                  city_names.push(`${local_city.other_names[y]}`);
+                  if (local_city.country)
+                    city_names.push(`${local_city.other_names[y]}, ${local_city.country}`);
+                }
+              
+              //Iterate over all city_names, looking for a semantic match
+              for (let y = 0; y < city_names.length; y++) try {
+                let local_uud_city = getFlattenedPopulstatCity(city_names[y], {
+                  populstat_obj: return_obj
+                });
+                
+                if (local_uud_city)
+                  if (local_uud_city.coords && local_city.coords) try {
+                    let local_distance = getCoordsDistance(local_uud_city.coords, local_city.coords);
+                    
+                    if (local_distance <= closest_uud_city_match[0])
+                      closest_uud_city_match = [local_distance, local_uud_city];
+                  } catch (e) { console.error(e); }
+              } catch (e) {
+                console.error(e);
+              }
+              
+              //Set was_merged if possible
+              if (closest_uud_city_match[0] <= local_db.semantic_precision) try {
+                if (!(i == 0 && return_obj[closest_uud_city_match[1].key])) {
+                  console.log(`- (!CM): Semantic merge ${local_city.name}, ${closest_uud_city_match[1].name}, distance: ${closest_uud_city_match[0]}`)
+                  was_merged = [true, closest_uud_city_match[1]];
+                }
+              } catch (e) { console.error(e); }
+            }
+          
+          //Regular merge logic; merge into actual_city - direct key check prior to merging
+          if (i != 0 && return_obj[all_local_cities[x]])
+            was_merged = [true, return_obj[all_local_cities[x]]];
+          
+          //Merge cities found to be identical
+          let is_separate_city = false;
+          
+          if (was_merged[0]) {
+            let actual_city = return_obj[was_merged[1].key];
+            
+            if (actual_city) {
+              if (local_city.is_agglomeration_of)
+                actual_city.is_agglomeration_of = local_city.is_agglomeration_of;
+              if (local_city.population)
+                if (local_db.is_metro) {
+                  actual_city.population = mergeCityPopulations(local_city.population, actual_city.population);
+                } else {
+                  actual_city.population = mergeCityPopulations(actual_city.population, local_city.population);
+                }
+              actual_city.type = all_options_keys[i];
+              
+              return_obj[actual_city.key] = actual_city;
+              
+              if (all_local_cities[x] != actual_city.key) delete return_obj[all_local_cities[x]];
+            } else {
+              is_separate_city = true;
+            }
+          } else {
+            is_separate_city = true;
+          }
+          
+          //console.log(was_merged, local_city.name);
+          if (is_separate_city) {
+            console.log(`- (!CM): Adding separate city: (${all_options_keys[i]})`, local_city.name);
+            local_city.type = all_options_keys[i];
+            
+            return_obj[all_local_cities[x]] = local_city;
+          }
         }
       }
     }
     
-    //Save UUD object if necessary
-    if (options.save_uud_obj) saveUUDObject(uud_obj);
+    //2. Flatten .population array entries; take weightedGeometricMean
+    var all_return_keys = Object.keys(return_obj);
+    
+    //Iterate over all_return_keys
+    for (let i = 0; i < all_return_keys.length; i++) {
+      let local_city = return_obj[all_return_keys[i]];
+      
+      //Check to make sure local_city has valid coords and population
+      if (local_city.coords && Array.isArray(local_city.coords))
+        if (!isNaN(parseFloat(local_city.coords[0])) && !isNaN(parseFloat(local_city.coords[1]))) {
+          local_city.coords = [parseFloat(local_city.coords[0]), parseFloat(local_city.coords[1])];
+          
+          if (local_city.population) {
+            let all_population_keys = Object.keys(local_city.population);
+            
+            for (let x = 0; x < all_population_keys.length; x++) {
+              let local_value = local_city.population[all_population_keys[x]];
+              
+              if (Array.isArray(local_value))
+                if (local_value.length > 1) {
+                  local_city.population[all_population_keys[x]] = weightedGeometricMean(local_value);
+                } else {
+                  local_city.population[all_population_keys[x]] = local_value[0];
+                }
+            }
+          }
+        } else {
+          //Delete malformed cities
+          delete return_obj[all_return_keys[i]];
+        }
+    }
+    
+    //Save uud_obj
+    console.time(`- Saving raw UUD data...`);
+    FileManager.saveFileAsJSON(config.defines.common.input_file_paths.uud_cities, return_obj);
+    console.timeEnd(`- Saving raw UUD data...`);
+    
+    //Return statement
+    return return_obj;
+  };
+  
+  global.interpolateUUD = function (arg0_uud_obj) {
+    //Convert from praameters
+    var uud_obj = arg0_uud_obj;
+    
+    //Iterate over all years in config.uud.processing.hyde_years that is within the UUD domain
+    for (var i = 0; i < config.uud.processing.hyde_years.length; i++) {
+      let local_year = config.uud.processing.hyde_years[i];
+      
+      if (local_year >= config.uud.processing.uud_domain[0] && local_year <= config.uud.processing.uud_domain[1]) {
+        console.time(`- Processing UUD for ${local_year} ..`);
+        uud_obj = interpolateUUDForYear(uud_obj, local_year);
+        console.timeEnd(`- Processing UUD for ${local_year} ..`);
+      }
+    }
     
     //Return statement
     return uud_obj;
+  };
+  
+  global.interpolateUUDForYear = function (arg0_uud_obj, arg1_year) {
+    //Convert from parameters
+    var uud_obj = arg0_uud_obj;
+    var year = parseInt(arg1_year);
+    
+    //Declare local instance variables
+    var all_cities = Object.keys(uud_obj);
+    
+    //Iterate over all_cities
+    for (let i = 0; i < all_cities.length; i++) try {
+      let local_city = uud_obj[all_cities[i]];
+      
+      if (local_city.population && Object.keys(local_city.population).length >= 2)
+        local_city.population = cubicSplineInterpolationObject(local_city.population, { years: [year] });
+    } catch (e) {
+      console.error(e);
+    }
+    
+    //Return statement
+    return uud_obj;
+  };
+  
+  global.mergeMetroToCityPopulations = function (arg0_metro_population_obj, arg1_population_obj) {
+    //Convert from parameters
+    var metro_population_obj = JSON.parse(JSON.stringify(arg0_metro_population_obj));
+    var population_obj = JSON.parse(JSON.stringify(arg1_population_obj));
+    
+    //Declare local instance variables
+    var all_metro_keys = Object.keys(metro_population_obj);
+    var geomean_errors_in_domain = [];
+    var population_domain = [];
+    var union_obj = JSON.parse(JSON.stringify(population_obj));
+    
+    //Establish population_domain
+    var union_keys = Object.keys(union_obj).map(Number).sort((a, b) => a - b);
+    population_domain = [union_keys[0], union_keys[union_keys.length - 1]];
+    
+    //Iterate over all_metro_keys in population_domain; calculate geomean_scalar
+    var years_to_interpolate = [];
+    
+    for (let i = 0; i < all_metro_keys.length; i++)
+      if (parseInt(all_metro_keys[i]) >= population_domain[0] && parseInt(all_metro_keys[i]) < population_domain[1])
+        years_to_interpolate.push(parseInt(all_metro_keys[i]));
+    union_obj = cubicSplineInterpolationObject(union_obj, { years: years_to_interpolate });
+    
+    for (let i = 0; i < all_metro_keys.length; i++)
+      if (parseInt(all_metro_keys[i]) >= population_domain[0] && parseInt(all_metro_keys[i]) < population_domain[1])
+        if (union_obj[all_metro_keys[i]]) {
+          let local_union_value = union_obj[all_metro_keys[i]];
+          let local_value = metro_population_obj[all_metro_keys[i]];
+          
+          geomean_errors_in_domain.push(local_value/local_union_value);
+        }
+    
+    //Merge metro_population_obj into population_obj after dividing by geomean_scalar, but only if value is less than existing geomean
+    var geomean_scalar = weightedGeometricMean(geomean_errors_in_domain);
+    if (geomean_scalar == 0) geomean_scalar = 1;
+    metro_population_obj = operateObject(metro_population_obj, `n = n/${geomean_scalar}`);
+    
+    all_metro_keys = Object.keys(metro_population_obj);
+    
+    for (let i = 0; i < all_metro_keys.length; i++) {
+      var in_non_metro_domain = (parseInt(all_metro_keys[i]) >= population_domain[0] && parseInt(all_metro_keys[i]) < population_domain[1]);
+      var local_population = population_obj[all_metro_keys[i]];
+      var local_value = metro_population_obj[all_metro_keys[i]];
+      
+      if (in_non_metro_domain) {
+        var local_geomean = weightedGeometricMean(getList(local_population));
+        var local_population_list = getList(local_population);
+        
+        if (local_value <= local_geomean)
+          if (!Array.isArray(local_value)) {
+            local_population_list.push(local_value)
+          } else {
+            local_population_list = local_population_list.concat(local_value);
+          }
+      } else {
+        if (!Array.isArray(local_population)) {
+          if (!Array.isArray(local_value)) {
+            population_obj[all_metro_keys[i]] = [local_value];
+          } else {
+            population_obj[all_metro_keys[i]] = local_value;
+          }
+        } else {
+          if (!Array.isArray(local_value)) {
+            population_obj[all_metro_keys[i]].push(local_value);
+          } else {
+            population_obj[all_metro_keys[i]] = population_obj[all_metro_keys[i]].concat(local_value);
+          }
+        }
+      }
+    }
+    
+    //Return statement
+    return population_obj;
+  }
+  
+  global.mergeCityPopulations = function (arg0_population_obj, arg1_population_obj) {
+    //Convert from parameters
+    var population_obj = JSON.parse(JSON.stringify(arg0_population_obj));
+    var ot_population_obj = JSON.parse(JSON.stringify(arg1_population_obj));
+    
+    //Declare local instance variables
+    var all_ot_population_keys = Object.keys(ot_population_obj);
+    var all_population_keys = Object.keys(population_obj);
+    
+    //Make everything in all_population_keys an array
+    for (let i = 0; i < all_population_keys.length; i++)
+      if (!Array.isArray(population_obj[all_population_keys[i]]))
+        population_obj[all_population_keys[i]] = [population_obj[all_population_keys[i]]];
+    
+    //Iterate over all_ot_population_keys and attempt their merger into population_obj
+    for (let i = 0; i < all_ot_population_keys.length; i++) {
+      let local_value = ot_population_obj[all_ot_population_keys[i]];
+      
+      if (Array.isArray(local_value))
+        local_value = local_value.flat(Infinity);
+      
+      if (Array.isArray(population_obj[all_ot_population_keys[i]])) {
+        if (!Array.isArray(local_value)) {
+          population_obj[all_ot_population_keys[i]].push(local_value);
+        } else {
+          population_obj[all_ot_population_keys[i]] = population_obj[all_ot_population_keys[i]].concat(local_value);
+        }
+      } else {
+        if (!Array.isArray(local_value)) {
+          population_obj[all_ot_population_keys[i]] = [local_value];
+        } else {
+          population_obj[all_ot_population_keys[i]] = local_value;
+        }
+      }
+    }
+    
+    //Return statement
+    return population_obj;
+  };
+  
+  //saveUUDData() - Both initialises, then saves UUD data.
+  global.saveUUDData = function () {
+    //Declare local instance variables
+    console.time(`- Initialising UUD ..`);
+    var uud_obj = initialiseUUD();
+    console.timeEnd(`- Initialising UUD ..`);
+    
+    //Interpolate uud_obj
+    uud_obj = interpolateUUD(uud_obj);
+    saveUUDObject(uud_obj);
+  };
+  
+  global.saveUUDObject = function (arg0_uud_obj) {
+    //Convert from parameters
+    var uud_obj = arg0_uud_obj;
+    
+    //Save uud_obj
+    console.time(`- Saving UUD object ..`);
+    FileManager.saveFileAsJSON(config.defines.common.input_file_paths.processed_uud_cities, uud_obj);
+    console.timeEnd(`- Saving UUD object ..`);
   };
 }
