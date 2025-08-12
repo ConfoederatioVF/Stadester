@@ -1,5 +1,16 @@
 //Initialise functions
 {
+	global.cacheRadialBuffers = function () { //[WIP] - Finish function body
+		//Declare local instance variables
+		var input_file_path = config.defines.common.input_file_paths.stadester_areas;
+		var stadester_obj = JSON.parse(fs.readFileSync(input_file_path, "utf8"));
+		
+		//Iterate over all_cities and compute
+		var all_cities = Object.keys(stadester_obj);
+		
+		
+	};
+	
 	global.getCoordsPixel = function (arg0_coords) {
 		//Convert from parameters
 		var coords = arg0_coords;
