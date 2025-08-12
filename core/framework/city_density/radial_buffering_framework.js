@@ -5,7 +5,7 @@
 		var input_file_path = config.defines.common.input_file_paths.stadester_areas;
 		var stadester_obj = JSON.parse(fs.readFileSync(input_file_path, "utf8"));
 		
-		//Iterate over all_cities and compute
+		//Iterate over all_cities and check if .area would be large enough at latitude to cover multiple gridcells. If not, skip it
 		var all_cities = Object.keys(stadester_obj);
 		
 		
