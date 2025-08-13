@@ -24,8 +24,9 @@ config.defines.common = {
     processed_stadester_cities: `./input/uud/processed_stadester_cities.json`,
     uud_cities: "./input/uud/uud_cities.json",
     
+    ghsl_csv: "./input/GHSL/GHS_UCDB_MTUC_GLOBE_R2024A.csv",
     ghsl_folder: "./input/GHSL/geojson/",
-    ghsl_population_folder: "./input/GHSL/population_rasters",
+    ghsl_population_folder: "./input/GHSL/population_rasters/",
     ghsl_population_prefix: "GHS_POP_",
     ghsl_population_suffix: ".png",
     ghsl_urban_areas_prefix: "GHS_urban_",

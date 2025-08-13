@@ -197,21 +197,32 @@
     //Return statement
     return `${date} ${month} ${year} ${hour}:${min}:${sec}`;
   };
-
+  
   global.parseEuropeanNumber = function (arg0_string) {
-    //Convert from parameters
+    // Convert from parameters
     var string = arg0_string;
-
-    //Guard clause if number is not a string
-    if (typeof string != "string") return string;
-
-    //Declare local instance variables
-    var normalised_input = string.trim()
-      .replace(/[^0-9,.-]/g, "")
-    .replace(/,/, ".");
+    
+    // Guard clause if number is not a string
+    if (typeof string !== "string") return string;
+    
+    // Remove all non-numeric characters except . and ,
+    var normalised_input = string.trim().replace(/[^0-9.,-]/g, "");
+    
+    // Remove all dots (thousands separators)
+    normalised_input = normalised_input.replace(/\./g, "");
+    
+    // Replace the last comma with a dot (decimal separator)
+    var lastCommaIndex = normalised_input.lastIndexOf(",");
+    if (lastCommaIndex !== -1) {
+      normalised_input =
+        normalised_input.substring(0, lastCommaIndex) +
+        "." +
+        normalised_input.substring(lastCommaIndex + 1);
+    }
+    
     var parsed_number = parseFloat(normalised_input);
-
-    //Return statement
+    
+    // Return statement
     return parsed_number;
   };
 
