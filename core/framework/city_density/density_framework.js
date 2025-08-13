@@ -437,7 +437,7 @@
 	};
 	
 	//2.1. Calculate .centre_density (A) from rank ordinal of actual density
-	global.calculateCitiesCentreDensities = function (arg0_stadester_obj) { //[WIP] - Finish function body
+	global.calculateCitiesCentreDensities = function (arg0_stadester_obj) {
 		//Convert from parameters
 		var stadester_obj = (arg0_stadester_obj) ? arg0_stadester_obj : getProcessedStadesterObject();
 		

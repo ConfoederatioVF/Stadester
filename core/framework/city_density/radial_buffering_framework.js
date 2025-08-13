@@ -74,6 +74,23 @@
 	};
 	
 	//2. Use imputed populations within gridcell radii to buffer population by scaling rings to target over substrata
+	global.generateStadesterRasterForYear = function (arg0_year, arg1_options) {
+		//Convert from parameters
+		var year = parseInt(arg0_year);
+		var options = (arg1_options) ? arg1_options : {};
+		
+		//Declare local instance variables
+		
+	};
+	
+	global.generateStadesterRasters = function () {
+	
+	};
+	
+	global.getStadesterBufferingObject = function () {
+		//Return statement
+		return FileManager.loadFileAsJSON(config.defines.common.input_file_paths.stadester_output);
+	};
 	
 	//3. End process function
 }

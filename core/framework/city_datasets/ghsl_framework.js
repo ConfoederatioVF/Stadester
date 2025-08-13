@@ -33,7 +33,7 @@
 	 * @param {Object} [arg1_options]
 	 *  @param {Object} [arg1_options.ghsl_obj=getGHSLObject()]
 	 */
-	global.generateGHSLPopulationRaster = function (arg0_year, arg1_options) { //[WIP] - Finish function body
+	global.generateGHSLPopulationRaster = function (arg0_year, arg1_options) {
 		//Convert from parameters
 		var year = returnSafeNumber(arg0_year);
 		var options = (arg1_options) ? arg1_options : {};
@@ -44,6 +44,7 @@
 		//Declare local instance variables
 		var common_defines = config.defines.common;
 		var ghsl_years = config.ghsl.processing.years;
+		var output_file_path = `${common_defines.output_file_paths.ghsl_urban_folder}${common_defines.output_file_paths.ghsl_urban_prefix}${year}.png`;
 		
 		var area_year = ghsl_years[0];
 		
@@ -53,11 +54,11 @@
 				area_year = ghsl_years[i];
 			} else { break; }
 		
-		var ghsl_colourmap_file_path = `${common_defines.input_file_paths.ghsl_urban_areas_folder}${common_defines.input_file_paths.ghsl_urban_areas_prefix}${area_year}`;
+		var ghsl_colourmap_file_path = `${common_defines.input_file_paths.ghsl_urban_areas_folder}${common_defines.input_file_paths.ghsl_urban_areas_prefix}${area_year}${common_defines.input_file_paths.ghsl_urban_areas_suffix}`;
 		var ghsl_colourmap_raster = loadImage(ghsl_colourmap_file_path);
 		var ghsl_dictionary = {};
 		var ghsl_pop_file_path = `${common_defines.input_file_paths.ghsl_population_folder}/${common_defines.input_file_paths.ghsl_population_prefix}${year}${common_defines.input_file_paths.ghsl_population_suffix}`;
-		//var ghsl_pop_raster = loadNumberRasterImage(ghsl_pop_file_path);
+		var ghsl_pop_raster = loadNumberRasterImage(ghsl_pop_file_path);
 		var raster_scalars = {};
 		var raster_sums = {};
 		
@@ -112,6 +113,50 @@
 		}
 		
 		//Save scaled raster from ghsl_pop_raster, mask only defined urban areas
+		saveNumberRasterImage({
+			file_path: output_file_path,
+			height: 2160,
+			width: 4320,
+			
+			function: function (arg0_index) {
+				//Convert from parameters
+				var index = arg0_index;
+				
+				//Declare local instance variables
+				var byte_index = arg0_index*4; //Index must be multiplied by 4 since we are using loadImage(), and not loadNumberRasterImage()
+				var local_colour = [
+					ghsl_colourmap_raster.data[byte_index],
+					ghsl_colourmap_raster.data[byte_index + 1],
+					ghsl_colourmap_raster.data[byte_index + 2],
+					ghsl_colourmap_raster.data[byte_index + 3]
+				].join(",");
+				var local_scalar = raster_scalars[local_colour];
+				var local_value = ghsl_pop_raster.data[index];
+				
+				if (local_scalar != undefined) {
+					//Return statement
+					return local_value*local_scalar;
+				} else {
+					//Return statement
+					if (local_colour == "0,0,0,0")
+						return 0;
+				}
+			}
+		});
+		console.log(`- Generated GHSL raster for ${year}, saved in ${output_file_path}.`);
+	};
+	
+	global.generateGHSLPopulationRasters = function () {
+		//Declare local instance variables
+		var common_defines = config.defines.common;
+		var ghsl_obj = getGHSLObject();
+		var ghsl_years = config.ghsl.processing.years;
+		
+		var ghsl_domain = [ghsl_years[0], ghsl_years[ghsl_years.length - 1]];
+		
+		//Iterate over all years in ghsl_domain
+		for (let i = ghsl_domain[0]; i <= ghsl_domain[1]; i++)
+			generateGHSLPopulationRaster(i, { ghsl_obj: ghsl_obj });
 	};
 	
 	global.getGHSLObject = function () {

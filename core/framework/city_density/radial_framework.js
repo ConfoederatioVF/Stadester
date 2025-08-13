@@ -218,9 +218,4 @@
 		//Return statement
 		return pixels;
 	};
-	
-	//2. End process function
-	global.processDensityRings = function (arg0_stadester_obj) { //[WIP] - Finish function body
-	
-	};
 }

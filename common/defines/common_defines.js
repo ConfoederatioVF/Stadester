@@ -31,6 +31,7 @@ config.defines.common = {
     ghsl_population_suffix: ".png",
     ghsl_urban_areas_folder: "./input/GHSL/urban_area_rasters/",
     ghsl_urban_areas_prefix: "GHS_urban_",
+    ghsl_urban_areas_suffix: ".png",
     
     substrata_folder: `./inut/hyde/population`,
     substrata_prefix: `substrata_pop__`,
@@ -38,7 +39,12 @@ config.defines.common = {
   },
   output_file_paths: {
     ghsl_urban_areas_folder: "./input/GHSL/urban_area_rasters/",
-    ghsl_urban_areas_prefix: "GHS_urban_"
+    ghsl_urban_areas_prefix: "GHS_urban_",
+    ghsl_urban_folder: "./input/GHSL/urban_rasters/",
+    ghsl_urban_prefix: "GHSL_",
+    
+    stadester_base_rasters_folder: "./output/stadester_base_rasters/",
+    stadester_rasters_folder: "./output/stadester_rasters/"
   },
 
   prefix: "Stadestér",
