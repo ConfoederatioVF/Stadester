@@ -26,4 +26,17 @@
 		//Return statement
 		return GHSLGeoJSONToRaster(input_file_path, output_file_path);
 	};
+	
+	/**
+	 * Scales all GHSL population rasters to global population, in addition to linearly interpolating GHSL at a 1-year step between its default 5-year interval rasters.
+	 */
+	global.scaleGHSLPopulationRastersToGlobalPopulation = function () { //[WIP] - Finish function body
+		//Declare local instance variables
+		var ghsl_years = config.ghsl.processing.years;
+		var world_population_obj = getWorldPopulationObject();
+		
+		var ghsl_domain = [ghsl_years[0], ghsl_years[ghsl_years.length - 1]];
+		
+		//Iterate over all years in ghsl_domain and scale rasters
+	};
 }

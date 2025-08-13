@@ -16,15 +16,23 @@ config.defines.common = {
     flattened_stadester_cities: `./input/uud/flattened_stadester_cities.json`,
     hyde_population: `./input/hyde/population/`,
       hyde_substrata_prefix: `substrata_pop__`,
-    ghsl_folder: "./input/GHSL/geojson/",
-    ghsl_urban_areas_prefix: "GHS_urban_",
     populstat_cities: "./input/populstat_cities/populstat_cities.json",
     processed_uud_cities: "./input/uud/processed_uud_cities.json",
     stadester_areas: `./input/uud/stadester_areas.json`,
     stadester_output: `./input/uud/stadester.json`,
     stadester_cities: `./input/uud/stadester_cities.json`,
     processed_stadester_cities: `./input/uud/processed_stadester_cities.json`,
-    uud_cities: "./input/uud/uud_cities.json"
+    uud_cities: "./input/uud/uud_cities.json",
+    
+    ghsl_folder: "./input/GHSL/geojson/",
+    ghsl_population_folder: "./input/GHSL/population_rasters",
+    ghsl_population_prefix: "GHS_POP_",
+    ghsl_population_suffix: ".png",
+    ghsl_urban_areas_prefix: "GHS_urban_",
+    
+    substrata_folder: `./inut/hyde/population`,
+    substrata_prefix: `substrata_pop__`,
+    substrata_suffix: `_number.png`
   },
   output_file_paths: {
     ghsl_urban_areas_folder: "./input/GHSL/urban_area_rasters/",

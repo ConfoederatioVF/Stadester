@@ -5,5 +5,6 @@ global.config = {
   population_density: {},
   populstat: {},
   uud: {},
+  velkscala: {},
   wikipedia: {}
 };

@@ -1,6 +1,6 @@
 //Initialise functions
 {
-	global.cacheRadialBuffers = function () { //[WIP] - Finish function body
+	global.cacheRadialBuffers = function () {
 		//Declare local instance variables
 		var density_processing_obj = config.population_density.processing;
 		var input_file_path = config.defines.common.input_file_paths.stadester_areas;
