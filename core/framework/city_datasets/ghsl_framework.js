@@ -27,6 +27,12 @@
 		return GHSLGeoJSONToRaster(input_file_path, output_file_path);
 	};
 	
+	/**
+	 * Generates a GHSL population raster for a specific year.
+	 * @param arg0_year
+	 * @param {Object} [arg1_options]
+	 *  @param {Object} [arg1_options.ghsl_obj=getGHSLObject()]
+	 */
 	global.generateGHSLPopulationRaster = function (arg0_year, arg1_options) { //[WIP] - Finish function body
 		//Convert from parameters
 		var year = returnSafeNumber(arg0_year);
@@ -49,10 +55,63 @@
 		
 		var ghsl_colourmap_file_path = `${common_defines.input_file_paths.ghsl_urban_areas_folder}${common_defines.input_file_paths.ghsl_urban_areas_prefix}${area_year}`;
 		var ghsl_colourmap_raster = loadImage(ghsl_colourmap_file_path);
+		var ghsl_dictionary = {};
 		var ghsl_pop_file_path = `${common_defines.input_file_paths.ghsl_population_folder}/${common_defines.input_file_paths.ghsl_population_prefix}${year}${common_defines.input_file_paths.ghsl_population_suffix}`;
-		var ghsl_pop_raster = loadNumberRasterImage(ghsl_pop_file_path);
+		//var ghsl_pop_raster = loadNumberRasterImage(ghsl_pop_file_path);
+		var raster_scalars = {};
+		var raster_sums = {};
 		
-		//
+		//Populate ghsl_dictionary - maps RGBA colours to city objects
+		var all_ghsl_keys = Object.keys(options.ghsl_obj);
+		
+		for (let i = 0; i < all_ghsl_keys.length; i++) {
+			let local_city = options.ghsl_obj[all_ghsl_keys[i]];
+			let local_colour = encodeNumberAsRGBA(local_city.id);
+			
+			ghsl_dictionary[local_colour.join(",")] = local_city;
+		}
+		
+		//Operate over the current ghsl_pop_raster, and fetch raster_scalars for each city
+		operateNumberRasterImage({
+			file_path: ghsl_pop_file_path,
+			function: function (arg0_index, arg1_number) {
+				//Convert from parameters
+				var index = arg0_index;
+				var number = arg1_number;
+				
+				//Declare local instance variables
+				var local_city = ghsl_dictionary[[
+					ghsl_colourmap_raster.data[index],
+					ghsl_colourmap_raster.data[index + 1],
+					ghsl_colourmap_raster.data[index + 2],
+					ghsl_colourmap_raster.data[index + 3]
+				].join(",")];
+				
+				if (local_city)
+					modifyValue(raster_sums, local_city.key, number);
+			}
+		});
+		
+		//Iterate over all_raster_sums; Populate raster_scalars object
+		var all_raster_sums = Object.keys(raster_sums);
+		
+		for (let i = 0; i < all_raster_sums.length; i++) {
+			let local_city = options.ghsl_obj[all_raster_sums[i]];
+			let local_value = raster_sums[all_raster_sums[i]];
+			
+			//Internal guard clause if local_city does not exist for the present year
+			if (!local_city) continue;
+			
+			//Check local_city.population at the time
+			let local_population = local_city.population[year];
+			let local_scalar = 1;
+			
+			if (local_population != undefined)
+				local_scalar = local_population/local_value;
+			raster_scalars[encodeNumberAsRGBA(local_city.id).join(",")] = local_scalar;
+		}
+		
+		//Save scaled raster from ghsl_pop_raster, mask only defined urban areas
 	};
 	
 	global.getGHSLObject = function () {
