@@ -29,6 +29,7 @@ config.defines.common = {
     ghsl_population_folder: "./input/GHSL/population_rasters/",
     ghsl_population_prefix: "GHS_POP_",
     ghsl_population_suffix: ".png",
+    ghsl_urban_areas_folder: "./input/GHSL/urban_area_rasters/",
     ghsl_urban_areas_prefix: "GHS_urban_",
     
     substrata_folder: `./inut/hyde/population`,

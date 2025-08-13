@@ -27,6 +27,34 @@
 		return GHSLGeoJSONToRaster(input_file_path, output_file_path);
 	};
 	
+	global.generateGHSLPopulationRaster = function (arg0_year, arg1_options) { //[WIP] - Finish function body
+		//Convert from parameters
+		var year = returnSafeNumber(arg0_year);
+		var options = (arg1_options) ? arg1_options : {};
+		
+		//Initialise options
+		if (!options.ghsl_obj) options.ghsl_obj = getGHSLObject();
+		
+		//Declare local instance variables
+		var common_defines = config.defines.common;
+		var ghsl_years = config.ghsl.processing.years;
+		
+		var area_year = ghsl_years[0];
+		
+		//Iterate over all ghsl_years to find the base year
+		for (let i = 0; i < ghsl_years.length; i++)
+			if (ghsl_years[i] <= year) {
+				area_year = ghsl_years[i];
+			} else { break; }
+		
+		var ghsl_colourmap_file_path = `${common_defines.input_file_paths.ghsl_urban_areas_folder}${common_defines.input_file_paths.ghsl_urban_areas_prefix}${area_year}`;
+		var ghsl_colourmap_raster = loadImage(ghsl_colourmap_file_path);
+		var ghsl_pop_file_path = `${common_defines.input_file_paths.ghsl_population_folder}/${common_defines.input_file_paths.ghsl_population_prefix}${year}${common_defines.input_file_paths.ghsl_population_suffix}`;
+		var ghsl_pop_raster = loadNumberRasterImage(ghsl_pop_file_path);
+		
+		//
+	};
+	
 	global.getGHSLObject = function () {
 		//Declare local instance variables
 		var common_defines = config.defines.common;
@@ -59,15 +87,31 @@
 			//Iterate over ghsl_dictionary and assign keys based on them
 			for (let x = 0; x < all_ghsl_dictionary_keys.length; x++) {
 				actual_city[all_ghsl_dictionary_keys[x]] = {};
+				let local_obj = actual_city[all_ghsl_dictionary_keys[x]];
 				let local_prefix = ghsl_dictionary[all_ghsl_dictionary_keys[x]];
+				let local_years = [];
 				
 				//Iterate over all ghsl_years
 				for (let y = 0; y < ghsl_years.length; y++) {
 					let local_value = local_city[`${local_prefix}${ghsl_years[y]}`];
 					
-					if (local_value && local_value != "")
-						actual_city[all_ghsl_dictionary_keys[x]][ghsl_years[y]] = parseEuropeanNumber(local_value[0]);
+					if (local_value && local_value != "") {
+						local_obj[ghsl_years[y]] = parseEuropeanNumber(local_value[0]);
+						local_years.push(ghsl_years[y]);
+					}
 				}
+				
+				//Perform cubic spline interpolation over all values
+				let all_local_years = [];
+				let local_domain = [local_years[0], local_years[local_years.length - 1]];
+				
+				//Fill all_local_years
+				for (let y = local_domain[0]; y < local_domain[1]; y++)
+					all_local_years.push(y);
+				
+				//Cubic spline interpolate local_obj if possible
+				if (local_obj && Object.keys(local_obj).length > 2)
+					local_obj = cubicSplineInterpolationObject(local_obj, { years: all_local_years });
 			}
 		} catch (e) {
 			console.error(ghsl_csv[all_ghsl_keys[i]], e);
