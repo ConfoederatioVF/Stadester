@@ -82,15 +82,51 @@
 		if (!options.stadester_obj) options.stadester_obj = getStadesterBufferingObject();
 		
 		//Declare local instance variables
+		var all_stadester_keys = Object.keys(options.stadester_obj);
 		
+		//Iterate over all_stadester_keys and check for any annular buffers to scale
 	};
 	
 	global.generateStadesterRasters = function () { //[WIP] - Finish function body
 	
 	};
 	
-	global.getPixelsInRadius = function (arg0_pixel, arg1_radius) { //[WIP] - Finish function body
+	global.getPixelsInAnnulus = function (arg0_pixel, arg1_distance) {
+		const [cx, cy] = arg0_pixel;
+		const r = parseInt(arg1_distance);
+		
+		// You can adjust thickness here (0.5 gives a 1-pixel thick ring)
+		const rMin = (r - 0.5) * (r - 0.5);
+		const rMax = (r + 0.5) * (r + 0.5);
+		
+		const pixels = [];
+		for (let dx = -r - 1; dx <= r + 1; dx++) {
+			for (let dy = -r - 1; dy <= r + 1; dy++) {
+				const distSq = dx * dx + dy * dy;
+				if (distSq > rMin && distSq <= rMax) {
+					pixels.push([cx + dx, cy + dy]);
+				}
+			}
+		}
+		return pixels;
+	};
 	
+	global.getPixelsInRadius = function (arg0_pixel, arg1_radius) {
+		const [cx, cy] = arg0_pixel;
+		const r = arg1_radius;
+		const pixels = [];
+		
+		// Bounding box for the circle
+		for (let x = Math.floor(cx - r); x <= Math.ceil(cx + r); x++) {
+			for (let y = Math.floor(cy - r); y <= Math.ceil(cy + r); y++) {
+				const dx = x - cx;
+				const dy = y - cy;
+				if (dx * dx + dy * dy <= r * r) {
+					pixels.push([x, y]);
+				}
+			}
+		}
+		return pixels;
 	};
 	
 	global.getStadesterBufferingObject = function () {
