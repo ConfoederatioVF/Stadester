@@ -155,8 +155,50 @@
 			return [sum_x/sum_weights, sum_y/sum_weights];
 		};
 		
-		global.getCentresOfGravityOverTime = function () {
+		global.getCentresOfGravityOverTime = function (arg0_options) { //[WIP] - Finish function body
+			//Convert from parameters
+			var options = (arg0_options) ? arg0_options : {};
+			
 			//Declare local instance variables
+			var common_defines = config.defines.common;
+			var hyde_years = config.uud.processing.hyde_years;
+			var return_obj = {};
+			var uud_domain = config.uud.processing.uud_domain;
+			
+			//Iterate over all hyde_years in the uud_domain
+			for (let i = 0; i < hyde_years.length; i++)
+				if (hyde_years[i] >= uud_domain[0] && hyde_years[i] <= uud_domain[1]) {
+					//Fetch centre of gravity from selected raster
+					let local_values = [];
+					let selected_file_path;
+					let stadester_base_raster_file_path = `${common_defines.output_file_paths.stadester_base_rasters_folder}${common_defines.output_file_paths.stadester_base_rasters_prefix}${hyde_years[i]}.png`;
+					let stadester_raster_file_path = `${common_defines.output_file_paths.stadester_rasters_folder}${common_defines.output_file_paths.stadester_rasters_prefix}${hyde_years[i]}.png`;
+					
+					selected_file_path = (options.is_stadester_base) ?
+						stadester_base_raster_file_path : stadester_raster_file_path;
+					
+					//Operate over the present raster
+					operateNumberRasterImage({
+						file_path: selected_file_path,
+						function: function (arg0_index, arg1_number) {
+							//Convert from parameters
+							var local_index = arg0_index/4;
+							var local_number = arg1_number;
+							
+							//Declare local instance variables
+							var local_pixel = [local_index % 4320, Math.floor(local_index/4320)];
+							
+							if (local_number > 0)
+								local_values.push([local_pixel[0], local_pixel[1], local_number]);
+						}
+					});
+					
+					return_obj[hyde_years[i]] = getCentreOfGravity(local_values);
+					console.log(`- ${getHYDEYearName(hyde_years[i])}, centre of gravity:`, return_obj[hyde_years[i]]);
+				}
+			
+			//Return statement
+			return return_obj;
 		};
 	}
 	
