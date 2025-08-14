@@ -209,6 +209,10 @@
 						console.warn(`- Warning! ${local_cities[x].name} has a pixel with a population of more than 10M!`);
 						console.warn(` - Actual population:`, local_sum_population);
 						console.warn(`- Current scalar:`, current_scalar);
+						console.log(` - Using original local_value:`, local_value/current_scalar);
+						console.log(`  - Radial buffers:`, local_radial_buffers);
+						
+						modifyValue(pixel_obj, all_local_pixels[y], local_value/current_scalar);
 					} else {
 						modifyValue(pixel_obj, all_local_pixels[y], local_value);
 					}
