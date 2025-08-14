@@ -73,8 +73,22 @@
 		return [Math.round(x), Math.round(y)];
 	};
 	
+	/**
+	 * getHYDEYearName() - Fetches the formal name of a HYDE year given a year integer.
+	 * @param {number} arg0_year
+	 *
+	 * @returns {String}
+	 */
+	global.getHYDEYearName = function (arg0_year) {
+		//Convert from parameters
+		var year = parseInt(arg0_year);
+		
+		//Return statement
+		return `${Math.abs(year)}${(year >= 0) ? "AD" : "BC"}`;
+	};
+	
 	//2. Use imputed populations within gridcell radii to buffer population by scaling rings to target over substrata
-	global.generateStadesterRasterForYear = function (arg0_year, arg1_options) { //[WIP] - Finish function body
+	global.generateStadesterRasterForYear = function (arg0_year, arg1_options) {
 		//Convert from parameters
 		var year = parseInt(arg0_year);
 		var options = (arg1_options) ? arg1_options : {};
@@ -83,12 +97,143 @@
 		
 		//Declare local instance variables
 		var all_stadester_keys = Object.keys(options.stadester_obj);
+		var common_defines = config.defines.common;
+		var output_file_path = `${common_defines.output_file_paths.stadester_base_rasters_folder}/${common_defines.output_file_paths.stadester_base_rasters_prefix}${year}.png`;
+		var pixel_dictionary = {};
+		var pixel_obj = {};
+		var substrata_file_path = `${common_defines.input_file_paths.substrata_folder}${common_defines.input_file_paths.substrata_prefix}${getHYDEYearName(year)}${common_defines.input_file_paths.substrata_suffix}`;
+		var substrata_raster = loadNumberRasterImage(substrata_file_path);
 		
-		//Iterate over all_stadester_keys and check for any annular buffers to scale
+		//Iterate over all_stadester_keys and populate pixel_dictionary based on .coords and year
+		for (let i = 0; i < all_stadester_keys.length; i++) try {
+			let is_in_domain = false;
+			let local_city = options.stadester_obj[all_stadester_keys[i]];
+			let local_pixel = getCoordsPixel(local_city.coords);
+			
+			let all_population_keys = Object.keys(local_city.population).map(Number);
+			let local_domain = [Math.min(...all_population_keys), Math.max(...all_population_keys)];
+			
+			if (!pixel_dictionary[local_pixel.join(",")])
+				pixel_dictionary[local_pixel.join(",")] = [];
+			
+			//Check to make sure that population is within domain
+			if (
+				(year >= local_domain[0] && year <= local_domain[1]) ||
+				(local_domain[1] >= 1975 && year >= 1975)
+			)
+				pixel_dictionary[local_pixel.join(",")].push(local_city);
+		} catch (e) { console.error(`Error parsing ${all_stadester_keys[i]}:`, e); }
+		
+		//Iterate over all_pixel_keys in pixel_dictionary; populate pixel_obj
+		var all_pixel_keys = Object.keys(pixel_dictionary);
+		
+		for (let i = 0; i < all_pixel_keys.length; i++) {
+			let local_cities = pixel_dictionary[all_pixel_keys[i]];
+				if (local_cities.length == 0) continue; //Internal guard clause if local_cities is empty
+			
+			//Iterate over all local_cities
+			for (let x = 0; x < local_cities.length; x++) {
+				let local_pixels = {};
+				let local_radial_buffers = [];
+				let local_sum_population = 0;
+				
+				//Iterate over all_population_keys; all_radial_buffer_keys
+				if (local_cities[x].population) {
+					let all_population_keys = Object.keys(local_cities[x].population);
+					
+					for (let y = 0; y < all_population_keys.length; y++)
+						if (parseInt(all_population_keys[y]) <= year)
+							local_sum_population = local_cities[x].population[all_population_keys[y]];
+				}
+				if (local_cities[x].radial_buffers) {
+					let all_radial_buffer_keys = Object.keys(local_cities[x].radial_buffers);
+					
+					for (let y = 0; y < all_radial_buffer_keys.length; y++)
+						if (parseInt(all_radial_buffer_keys[y]) <= year)
+							local_radial_buffers = local_cities[x].radial_buffers[all_radial_buffer_keys[y]];
+				}
+				
+				//Populate local_pixels
+				if (local_radial_buffers.length > 0) {
+					if (local_radial_buffers.length == 1) {
+						local_pixels[all_pixel_keys[i]] = local_sum_population;
+					} else if (local_radial_buffers.length > 1) {
+						local_pixels[all_pixel_keys[i]] = local_radial_buffers[0];
+						
+						for (let y = 1; y < local_radial_buffers.length; y++) {
+							let annular_pixels = getPixelsInAnnulus(
+								all_pixel_keys[i].split(",").map(Number), y);
+							let annular_sum = 0;
+							
+							for (let z = 0; z < annular_pixels.length; z++) {
+								let local_value = substrata_raster.data[annular_pixels[z][0]*substrata_raster.width + annular_pixels[z][1]];
+								
+								annular_sum += local_value;
+							}
+							if (annular_sum == 0) continue; //Internal guard clause if annular_sum is not applicable
+							
+							//Compute annular_scalar; push scaled annular pixels to local_pixels
+							let annular_scalar = local_radial_buffers[y]/annular_sum;
+							
+							for (let z = 0; z < annular_pixels.length; z++) {
+								let local_value = substrata_raster.data[annular_pixels[z][1]*substrata_raster.width + annular_pixels[z][0]];
+								
+								//Scale by annular_scalar;
+								local_value *= annular_scalar;
+								local_pixels[
+									[annular_pixels[z][0], annular_pixels[z][1]].join(",")
+								] = local_value;
+							}
+						}
+					}
+				} else {
+					local_pixels[all_pixel_keys[i]] = local_sum_population;
+				}
+				//console.log(`- Local radial buffers:`, local_radial_buffers, `local_sum_population:`, local_sum_population);
+				
+				//Push all_local_pixels to pixel_obj
+				let all_local_pixels = Object.keys(local_pixels);
+				
+				//if (all_local_pixels.length > 0) console.log(`- Pixels defined for ${all_pixel_keys[i]}: ${all_local_pixels.length}`);
+				for (let y = 0; y < all_local_pixels.length; y++)
+					modifyValue(pixel_obj, all_local_pixels[y], local_pixels[all_local_pixels[y]]);
+			}
+		}
+		
+		//Save Stadester raster
+		saveNumberRasterImage({
+			file_path: output_file_path,
+			height: 2160,
+			width: 4320,
+			
+			function: function (arg0_index) {
+				//Convert from parameters
+				var index = arg0_index;
+				
+				//Declare local instance variables
+				var pixel = [index % 4320, Math.floor(index/4320)];
+				
+				//Check if pixel_obj has a valid entry
+				if (pixel_obj[pixel.join(",")])
+					//Return statement
+					return pixel_obj[pixel.join(",")];
+				return 0;
+			}
+		});
+		console.log(`- Saved Stadestér raster for ${year} to ${output_file_path}.`);
+		console.log(` - Pixel dictionary length:`, Object.keys(pixel_dictionary).length);
+		console.log(` - Pixel object keys:`, Object.keys(pixel_obj));
 	};
 	
-	global.generateStadesterRasters = function () { //[WIP] - Finish function body
-	
+	global.generateStadesterRasters = function () {
+		//Declare local instance variables
+		var hyde_years = config.uud.processing.hyde_years;
+		var stadester_buffering_obj = getStadesterBufferingObject();
+		var uud_domain = config.uud.processing.uud_domain;
+		
+		for (let i = 0; i < hyde_years.length; i++)
+			if (hyde_years[i] >= uud_domain[0] && hyde_years[i] <= uud_domain[1])
+				generateStadesterRasterForYear(hyde_years[i], { stadester_obj: stadester_buffering_obj });
 	};
 	
 	global.getPixelsInAnnulus = function (arg0_pixel, arg1_distance) {
@@ -135,4 +280,46 @@
 	};
 	
 	//3. End process function
+	global.processStadester = function () {
+		//Declare local instance variables
+		var common_defines = config.defines.common;
+		var copy_operations = []; //[[input_file_path, output_file_path]];
+		var ghsl_folder = common_defines.output_file_paths.ghsl_urban_folder;
+		var stadester_base_folder = common_defines.output_file_paths.stadester_base_rasters_folder;
+		
+		var all_ghsl_files = fs.readdirSync(ghsl_folder)
+			.filter((file) => path.extname(file).toLowerCase() == ".png");
+		var all_stadester_files = fs.readdirSync(stadester_base_folder)
+			.filter((file) => path.extname(file).toLowerCase() == ".png");
+		
+		//Iterate over all_stadester_files
+		for (let i = 0; i < all_stadester_files.length; i++) {
+			let local_split_file_name = all_stadester_files[i].split("_");
+				local_split_file_name[local_split_file_name.length - 1].replace(".png", "");
+			let local_year = parseInt(local_split_file_name[local_split_file_name.length - 1]);
+			
+			copy_operations.push([
+				`${stadester_base_folder}${all_stadester_files[i]}`,
+				`${common_defines.output_file_paths.stadester_rasters_folder}${common_defines.output_file_paths.stadester_rasters_prefix}${local_year}.png`
+			]);
+		}
+		
+		//Iterate over all_ghsl_files
+		for (let i = 0; i < all_ghsl_files.length; i++) {
+			let local_split_file_name = all_stadester_files[i].split("_");
+				local_split_file_name[local_split_file_name.length - 1].replace(".png", "");
+			let local_year = parseInt(local_split_file_name[local_split_file_name.length - 1]);
+			
+			copy_operations.push([
+				`${ghsl_folder}${all_ghsl_files[i]}`,
+				`${common_defines.output_file_paths.stadester_rasters_folder}${common_defines.output_file_paths.stadester_rasters_prefix}${local_year}.png`
+			]);
+		}
+		
+		console.log(`- Merge operations (copy_operations):`, copy_operations);
+		
+		//Iterate over all copy_operations and copy each file synchronously
+		for (let i = 0; i < copy_operations.length; i++)
+			fs.copyFileSync(copy_operations[i][0], copy_operations[i][1]);
+	};
 }
