@@ -193,10 +193,26 @@
 				
 				//Push all_local_pixels to pixel_obj
 				let all_local_pixels = Object.keys(local_pixels);
+				let current_sum = 0;
+				
+				//Scale all_local_pixels to local_sum_population first
+				for (let y = 0; y < all_local_pixels.length; y++)
+					current_sum += local_pixels[all_local_pixels[y]];
+				
+				let current_scalar = local_sum_population/current_sum;
 				
 				//if (all_local_pixels.length > 0) console.log(`- Pixels defined for ${all_pixel_keys[i]}: ${all_local_pixels.length}`);
-				for (let y = 0; y < all_local_pixels.length; y++)
-					modifyValue(pixel_obj, all_local_pixels[y], local_pixels[all_local_pixels[y]]);
+				for (let y = 0; y < all_local_pixels.length; y++) {
+					let local_value = local_pixels[all_local_pixels[y]]*current_scalar;
+					
+					if (local_value >= 10000000) {
+						console.warn(`- Warning! ${local_cities[x].name} has a pixel with a population of more than 10M!`);
+						console.warn(` - Actual population:`, local_sum_population);
+						console.warn(`- Current scalar:`, current_scalar);
+					} else {
+						modifyValue(pixel_obj, all_local_pixels[y], local_value);
+					}
+				}
 			}
 		}
 		
@@ -223,6 +239,7 @@
 		console.log(`- Saved Stadestér raster for ${year} to ${output_file_path}.`);
 		console.log(` - Pixel dictionary length:`, Object.keys(pixel_dictionary).length);
 		console.log(` - Pixel object keys:`, Object.keys(pixel_obj));
+		console.log(` - Urban Population: ${parseNumber(getImageSum(output_file_path))}`);
 	};
 	
 	global.generateStadesterRasters = function () {
@@ -306,7 +323,7 @@
 		
 		//Iterate over all_ghsl_files
 		for (let i = 0; i < all_ghsl_files.length; i++) {
-			let local_split_file_name = all_stadester_files[i].split("_");
+			let local_split_file_name = all_ghsl_files[i].split("_");
 				local_split_file_name[local_split_file_name.length - 1].replace(".png", "");
 			let local_year = parseInt(local_split_file_name[local_split_file_name.length - 1]);
 			
@@ -319,7 +336,9 @@
 		console.log(`- Merge operations (copy_operations):`, copy_operations);
 		
 		//Iterate over all copy_operations and copy each file synchronously
-		for (let i = 0; i < copy_operations.length; i++)
+		for (let i = 0; i < copy_operations.length; i++) {
+			console.log(` - Copying ${copy_operations[i][0]} to ${copy_operations[i][1]}`);
 			fs.copyFileSync(copy_operations[i][0], copy_operations[i][1]);
+		}
 	};
 }
