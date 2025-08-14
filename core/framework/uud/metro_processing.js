@@ -59,40 +59,45 @@
 		return stadester_obj;
 	};
 	
-	global.flattenStadesterMetros = function () {
+	global.flattenStadesterMetros = function (arg0_do_not_flatten_metros) {
+		//Convert from parameters
+		var do_not_flatten_metros = arg0_do_not_flatten_metros;
+		
 		//Declare local instance variables
 		var stadester_obj = getStadesterObject();
 			stadester_obj = removeStadesterDuplicates(stadester_obj);
 			global.stadester_obj = stadester_obj;
-		
-		//Iterate over all_cities in stadester_obj
-		var all_cities = Object.keys(stadester_obj);
-		
-		for (let i = 0; i < all_cities.length; i++) {
-			var local_city = stadester_obj[all_cities[i]];
-			var metro_obj = getStadesterMetroObject(local_city);
+			
+		if (!do_not_flatten_metros) {
+			//Iterate over all_cities in stadester_obj
+			var all_cities = Object.keys(stadester_obj);
+			
+			for (let i = 0; i < all_cities.length; i++) {
+				var local_city = stadester_obj[all_cities[i]];
+				var metro_obj = getStadesterMetroObject(local_city);
 				if (metro_obj) {
 					metro_obj = stadester_obj[metro_obj.key];
 					if (metro_obj.key == local_city.key) continue; //Internal guard clause for self-intersections
 				}
-			
-			//Subtract overlapping .population values in local_city from metro_obj.population
-			if (metro_obj) {
-				var all_local_population_keys = Object.keys(local_city.population);
 				
-				for (let x = 0; x < all_local_population_keys.length; x++)
-					if (
-						!isNaN(metro_obj.population[all_local_population_keys[x]]) &&
-						!isNaN(local_city.population[all_local_population_keys[x]])
-					) {
-						local_city.metro_key = metro_obj.key;
-						metro_obj.population[all_local_population_keys[x]] -= local_city.population[all_local_population_keys[x]];
-					}
+				//Subtract overlapping .population values in local_city from metro_obj.population
+				if (metro_obj) {
+					var all_local_population_keys = Object.keys(local_city.population);
+					
+					for (let x = 0; x < all_local_population_keys.length; x++)
+						if (
+							!isNaN(metro_obj.population[all_local_population_keys[x]]) &&
+							!isNaN(local_city.population[all_local_population_keys[x]])
+						) {
+							local_city.metro_key = metro_obj.key;
+							metro_obj.population[all_local_population_keys[x]] -= local_city.population[all_local_population_keys[x]];
+						}
+				}
 			}
+			
+			//Distribute excess negative values across metros
+			stadester_obj = distributeNegativeValuesAcrossMetros(stadester_obj);
 		}
-		
-		//Distribute excess negative values across metros
-		stadester_obj = distributeNegativeValuesAcrossMetros(stadester_obj);
 		
 		//Save file as flattened_stadester_cities.json
 		console.log(`Saved raw metro-adjusted Stadestér dump.`);
