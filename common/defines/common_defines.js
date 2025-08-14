@@ -51,6 +51,7 @@ config.defines.common = {
   
   ghsl_domain: [1975, 2025],
   stadester_base_domain: [-3000, 1975],
+  stadester_y_offset: -2, //The Stadestér Y offset needed to realign itself with HYDE
 
   prefix: "Stadestér",
   startup_message: "Stadestér. Type 'help' for help."
