@@ -59,7 +59,7 @@
 			
 			//Return statement
 			return data_records;
-		}
+		};
 		
 		global.getStadesterCityCount = function () {
 			getPopulatedPixelsCount(config.defines.common.output_file_paths.stadester_rasters_folder);
@@ -88,12 +88,76 @@
 	
 	//1.1. Number of cities with radial buffers; generate non-metro corrected base-case
 	{
-	
+		global.generateMetroCorrectedBase = function () {
+			//Generate metro corrected Stadestér database
+			parseUUDToStadester();
+			flattenStadesterMetros();
+			fixStadesterErrors();
+			
+			processCitiesAreas();
+			cacheRadialBuffers();
+			generateStadesterRasters();
+			processStadester();
+		};
+		
+		global.generateNonMetroCorrectedBase = function () {
+			//Generate non-metro correctied Stadestér database
+			parseUUDToStadester();
+			flattenStadesterMetros(true);
+			fixStadesterErrors();
+			
+			processCitiesAreas();
+			cacheRadialBuffers();
+			generateStadesterRasters();
+			processStadester();
+		};
+		
+		global.getNumberOfCitiesWithRadialBuffers = function () {
+			//Declare local instance variables
+			var stadester_obj = getStadesterBufferingObject();
+			
+			//Declare local instance variables
+			var all_stadester_keys = Object.keys(stadester_obj);
+			var radial_buffers_records = 0;
+			
+			for (let i = 0; i < all_stadester_keys.length; i++) {
+				let local_city = stadester_obj[all_stadester_keys[i]];
+				
+				if (local_city.radial_buffers)
+					radial_buffers_records++;
+			}
+			
+			//Return statement
+			return radial_buffers_records;
+		};
 	}
 	
 	//2. Validation plots compared to GHSL (centre of gravity)
 	{
-	
+		global.getCentreOfGravity = function (arg0_coords) {
+			//Convert from parameters
+			var coords = arg0_coords;
+			
+			//Declare local instance variables
+			var sum_weights = 0;
+			var sum_x = 0;
+			var sum_y = 0;
+			
+			//Iterate over all coords
+			for (let [local_x, local_y, local_weight] of coords) {
+				sum_x += local_x*local_weight;
+				sum_y += local_y*local_weight;
+				sum_weights += local_weight;
+			}
+			
+			//Return statement
+			if (sum_weights == 0) console.error(`Total weight is zero, cannot compute centre of gravity.`);
+			return [sum_x/sum_weights, sum_y/sum_weights];
+		};
+		
+		global.getCentresOfGravityOverTime = function () {
+			//Declare local instance variables
+		};
 	}
 	
 	//3. Eoscala regional graphs: 120 cities by population/area/density per region
