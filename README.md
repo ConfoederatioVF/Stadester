@@ -68,6 +68,11 @@ Raw dumps of demographic data, cleaned and refined, are available for the follow
 
 This repository is currently in production and may be subject to frequent updates. __Stadestér__ is a sub-project of both **Eoscala** and **Velkscala**.
 
+<img src = "https://i.postimg.cc/3KRRL9Nc/stadester-base-ghsl-city-count-logarithmic.png">
+
+<div align = "center">Figure 4. Number of cities available in Stadestér-GHSL over time, plotted against a logarithmic scale and computed urban population.</div>
+<br>
+
 **Footnotes.**
 
 [1] Woytinski and Woytinski 1950, Winkler-Prins 1950, Clark 1967 Lower, Clark 1967 Upper, Tuve 1970, Winkler Prins 1970, McEvedy and Jones 1978, Durand 1974 Lower, Durand 1974 Upper, Durand 1977 Lower, Durand 1977 Upper, McEvedy and Jones 1978, Biraben 1980, Richards 1980, Griger 1980, Merrick et al. 1986, Eric 1987, Bogue 1985, Demeny 1988, Stern K. 1990, United Nations 1990, WRI 1990, Kapitsa 1997, Liu and Jiang 1997, Kremer 1993, Klein Goldewijk and Battjes 1995, Maddison 2001, PRB 1973-2016, HYDE 2010-2020, UN 2015, UN 2019-2023, US Census Bureau 2017, Macrotrends 2025, and Gapminder were principally used as the main sources of estimation for global population over the long run, subject to geometric mean merging over their respective domains.
