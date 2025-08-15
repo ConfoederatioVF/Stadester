@@ -161,7 +161,7 @@
 			
 			//Declare local instance variables
 			var common_defines = config.defines.common;
-			var hyde_years = config.uud.processing.hyde_years;
+			var hyde_years = config.uud.processing.hyde_years.concat([2024, 2025]);
 			var return_obj = {};
 			var uud_domain = config.uud.processing.uud_domain;
 			
