@@ -1,7 +1,7 @@
 # Stadestér
 <img src = "https://i.postimg.cc/cJn6F4hc/stadester-japan-1900-2020.png" width = "1080">
 
-<div align = "center">Figure 1. Uniform 1ha/ihb. visualisation of cities in Stadestér-Base in East Asia, 1900 and 2025.</div>
+<div align = "center">Figure 1. Uniform 1ha/ihb. visualisation of cities in Stadestér Base in East Asia, 1900 and 2025.</div>
 <br>
 
 <img src = "https://i.postimg.cc/3ND2B1zL/crd-coat-of-arms-logo.png" height = "64"/> <img src = "https://i.postimg.cc/HxNQXRvc/ctd-coat-of-arms-logo.png" height = "64"/>
