@@ -155,7 +155,7 @@
 			return [sum_x/sum_weights, sum_y/sum_weights];
 		};
 		
-		global.getCentresOfGravityOverTime = function (arg0_options) { //[WIP] - Finish function body
+		global.getCentresOfGravityOverTime = function (arg0_options) {
 			//Convert from parameters
 			var options = (arg0_options) ? arg0_options : {};
 			
