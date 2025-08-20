@@ -33,6 +33,7 @@ config.defines.common = {
     ghsl_urban_areas_prefix: "GHS_urban_",
     ghsl_urban_areas_suffix: ".png",
     
+    regions_file_path: "./input/regional_subdivisions.png",
     substrata_folder: `./input/hyde/population/`,
     substrata_prefix: `substrata_pop__`,
     substrata_suffix: `_number.png`
@@ -46,7 +47,11 @@ config.defines.common = {
     stadester_base_rasters_folder: "./output/stadester_base_rasters/",
     stadester_base_rasters_prefix: "stadester_base_",
     stadester_rasters_folder: "./output/stadester_rasters/",
-    stadester_rasters_prefix: "stadester_"
+    stadester_rasters_prefix: "stadester_",
+    
+    //Stadester Visualisations
+    regional_cogs_base: "./output/regional_cogs_base.json",
+    regional_cogs_ghsl: "./output/regional_cogs_ghsl.json"
   },
   
   ghsl_domain: [1975, 2025],
