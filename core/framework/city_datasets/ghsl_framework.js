@@ -168,6 +168,7 @@
 		
 		//Iterate over all_ghsl_keys in ghsl_csv
 		var all_ghsl_keys = Object.keys(ghsl_csv);
+		var coords_dictionary = {};
 		var ghsl_dictionary = {
 			area: `MT_UCA_KM2_`,
 			density: `MT_POP_DEN_`,
@@ -220,6 +221,61 @@
 		} catch (e) {
 			console.error(ghsl_csv[all_ghsl_keys[i]], e);
 		}
+		
+		//Assign .coords by going over all GHSL urban area rasters and populating coords_dictionary
+		let ghsl_rasters = {};
+		let ghsl_urban_area_folder = `${common_defines.input_file_paths.ghsl_urban_areas_folder}`;
+		
+		//Iterate over all .png files in ghsl_urban_area_folder
+		fs.readdirSync(ghsl_urban_area_folder).filter((file) => path.extname(file).toLowerCase() === ".png")
+			.forEach((file) => {
+				let local_file_path = path.join(ghsl_urban_area_folder, file);
+				ghsl_rasters[local_file_path] = loadNumberRasterImage(local_file_path);
+			});
+		
+		//Iterate over all_ghsl_rasters
+		let all_ghsl_rasters = Object.keys(ghsl_rasters);
+		
+		for (let i = 0; i < all_ghsl_rasters.length; i++) {
+			operateNumberRasterImage({
+				file_path: all_ghsl_rasters[i],
+				function: function (arg0_index, arg1_number) {
+					//Convert from parameters
+					let index = arg0_index;
+					let number = arg1_number;
+					
+					//Declare local instance variables
+					let local_pixel = [index % 4320, Math.floor(index/4320)];
+					
+					//Set coords_dictionary array
+					if (!coords_dictionary[number]) coords_dictionary[number] = [];
+					coords_dictionary[number].push(local_pixel);
+				}
+			});
+		}
+		
+		//Collapse coords_dictionary; iterate over all_coords_dictionary_keys
+		let all_coords_dictionary_keys = Object.keys(coords_dictionary);
+		
+		for (let i = 0; i < all_coords_dictionary_keys.length; i++) {
+			let local_value = coords_dictionary[all_coords_dictionary_keys[i]];
+			
+			coords_dictionary[all_coords_dictionary_keys[i]] = getPolygonCentroid(
+				coords_dictionary[all_coords_dictionary_keys[i]], 0.1
+			);
+		}
+		
+		//Assign coords_dictionary centroids to .coords for all_return_keys
+		let all_return_keys = Object.keys(return_obj);
+		
+		for (let i = 0; i < all_return_keys.length; i++) {
+			let local_city = return_obj[all_return_keys[i]];
+			
+			if (coords_dictionary[local_city.id])
+				local_city.coords = getEquirectangularPixelCoords(...coords_dictionary[local_city.id]);
+		}
+		
+		FileManager.saveFileAsJSON(common_defines.output_file_paths.ghsl_output, return_obj);
 		
 		//Return statement
 		return return_obj;

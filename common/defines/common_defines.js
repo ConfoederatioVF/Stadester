@@ -39,6 +39,7 @@ config.defines.common = {
     substrata_suffix: `_number.png`
   },
   output_file_paths: {
+    ghsl_output: "./output/ghsl.json",
     ghsl_urban_areas_folder: "./input/GHSL/urban_area_rasters/",
     ghsl_urban_areas_prefix: "GHS_urban_",
     ghsl_urban_folder: "./input/GHSL/urban_rasters/",
