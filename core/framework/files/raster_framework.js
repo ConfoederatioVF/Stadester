@@ -3,86 +3,21 @@
 {
 	//1. Centroid of polygon given a range of [x, y] points
 	{
-		// Helper: Point-in-polygon test (ray casting)
-		global.pointInPolygon = function (point, polygon) {
-			let [x, y] = point;
-			let inside = false;
-			for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
-				let [xi, yi] = polygon[i];
-				let [xj, yj] = polygon[j];
-				let intersect =
-					yi > y !== yj > y &&
-					x < ((xj - xi) * (y - yi)) / (yj - yi + 0.0000001) + xi;
-				if (intersect) inside = !inside;
-			}
-			return inside;
-		}
-
-		// Helper: Distance from point to polygon edge
-		global.pointToPolygonDist = function (point, polygon) {
-			let minDist = Infinity;
-			for (let i = 0; i < polygon.length; i++) {
-				let a = polygon[i];
-				let b = polygon[(i + 1) % polygon.length];
-				minDist = Math.min(minDist, pointToSegmentDist(point, a, b));
-			}
-			return minDist;
-		}
-
-		// Helper: Distance from point to segment
-		global.pointToSegmentDist = function ([px, py], [x1, y1], [x2, y2]) {
-			let dx = x2 - x1;
-			let dy = y2 - y1;
-			if (dx === 0 && dy === 0) {
-				// Segment is a point
-				dx = px - x1;
-				dy = py - y1;
-				return Math.sqrt(dx * dx + dy * dy);
-			}
-			let t = ((px - x1) * dx + (py - y1) * dy) / (dx * dx + dy * dy);
-			t = Math.max(0, Math.min(1, t));
-			let x = x1 + t * dx;
-			let y = y1 + t * dy;
-			dx = px - x;
-			dy = py - y;
-			return Math.sqrt(dx * dx + dy * dy);
-		}
-
 		// Main: Find pole of inaccessibility (GIS centroid)
-		global.getPolygonCentroid = function (points, precision = 1.0) {
-			if (!points || points.length === 0) return null;
-			if (points.length === 1) return points[0];
-			if (points.length === 2) {
-				// Midpoint
-				return [
-					(points[0][0] + points[1][0]) / 2,
-					(points[0][1] + points[1][1]) / 2
-				];
+		global.getPolygonCentroid = function (pixels) {
+			if (!pixels.length) return null;
+			
+			let sumX = 0;
+			let sumY = 0;
+			
+			for (const [x, y] of pixels) {
+				sumX += x;
+				sumY += y;
 			}
-			// For 3+ points, use the polygon centroid formula (center of mass)
-			let area = 0, cx = 0, cy = 0;
-			for (let i = 0, len = points.length; i < len; i++) {
-				let [x0, y0] = points[i];
-				let [x1, y1] = points[(i + 1) % len];
-				let a = x0 * y1 - x1 * y0;
-				area += a;
-				cx += (x0 + x1) * a;
-				cy += (y0 + y1) * a;
-			}
-			area *= 0.5;
-			if (area === 0) {
-				// Degenerate polygon, just average the points
-				let sumX = 0, sumY = 0;
-				for (const [x, y] of points) {
-					sumX += x;
-					sumY += y;
-				}
-				return [sumX / points.length, sumY / points.length];
-			}
-			cx /= (6 * area);
-			cy /= (6 * area);
-			return [cx, cy];
-		}
+			
+			const n = pixels.length;
+			return [sumX / n, sumY / n];
+		};
 	}
 	
 	//2. Coordinate conversions
