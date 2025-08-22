@@ -281,7 +281,9 @@
 			
 			if (coords_dictionary[local_city.id]) {
 				local_city.pixel_coords = coords_dictionary[local_city.id];
-				local_city.coords = getEquirectangularPixelCoords(local_city.pixel_coords[0], local_city.pixel_coords[1]);
+				let local_coords = getEquirectangularPixelCoords(local_city.pixel_coords[0], local_city.pixel_coords[1]);
+				
+				local_city.coords = [local_coords[1], local_coords[0]];
 			}
 			
 		}
