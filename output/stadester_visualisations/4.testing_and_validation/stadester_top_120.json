@@ -1,0 +1,8636 @@
+{
+  "area": {
+    "stadester-Mumbaî-India": {
+      "name": "Mumbaî",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        18.9581934,
+        72.8320729
+      ],
+      "pixel_coords": [
+        3033,
+        1307
+      ],
+      "area": 38496.89252248321
+    },
+    "ghsl-Dhaka; Cumilla; Narayanganj; Gazipur; Narsingdi; Noakhali; Munshiganj; Lakshmipur-Bangladesh": {
+      "name": "Dhaka; Cumilla; Narayanganj; Gazipur; Narsingdi; Noakhali; Munshiganj; Lakshmipur",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        23.537634408602145,
+        90.71236559139788
+      ],
+      "pixel_coords": [
+        3248,
+        1362
+      ],
+      "area": 6611
+    },
+    "ghsl-Shenzhen; Guangzhou; Foshan; Dongguan; Jiangmen; Shunde; Zhongshan; Chancheng; Liwan District; Haizhu District; Panyu; Jianghai; Guangming; Nanshan District; Longhua; Futian District; Bao'an District; Luohu District; Longgang; Tianhe District; Yuexiu District; Baiyun District; Nanhai; Pengjiang-China": {
+      "name": "Shenzhen; Guangzhou; Foshan; Dongguan; Jiangmen; Shunde; Zhongshan; Chancheng; Liwan District; Haizhu District; Panyu; Jianghai; Guangming; Nanshan District; Longhua; Futian District; Bao'an District; Luohu District; Longgang; Tianhe District; Yuexiu District; Baiyun District; Nanhai; Pengjiang",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        23.011111111111106,
+        113.39444444444445
+      ],
+      "pixel_coords": [
+        3520,
+        1356
+      ],
+      "area": 6454
+    },
+    "stadester-Cali-Colombia": {
+      "name": "Cali",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        3.4516467,
+        -76.5319854
+      ],
+      "pixel_coords": [
+        1241,
+        1121
+      ],
+      "area": 5285.197708083368
+    },
+    "stadester-Valenciennes-France": {
+      "name": "Valenciennes",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        50.357113,
+        3.518332
+      ],
+      "pixel_coords": [
+        2202,
+        1684
+      ],
+      "area": 5239.876768829662
+    },
+    "ghsl-Tokyo; Yokohama; Kawasaki; Saitama; Chiba; Setagaya; Ota; Nerima; Adachi; Edogawa; Funabashi; Kawaguchi; Itabashi; Hachioji; Suginami; Koto; Ichikawa; Matsudo; Katsushika; Fujisawa; Machida; Shinagawa; Kashiwa; Yokosuka; Kawagoe; Kita; Shinjuku; Koshigaya; Tokorozawa; Nakano; Toshima; Meguro; Sumida; Ichihara; Fuchu; Hiratsuka; Minato; Soka; Chigasaki; Yamato; Kasukabe; Chofu; Shibuya; Bunkyo; Ageo; Atsugi; Arakawa; Taito; Nishitokyo; Yachiyo; Kodaira; Mitaka; Odawara; Nagareyama; Tachikawa; Narashino; Kamakura; Sakura; Hino; Hadano; Urayasu; Niiza; Chuo; Noda; Sayama; Kuki; Higashimurayama; Iruma; Tama; Asaka; Musashino; Koga; Misato; Toda; Abiko; Ebina; Zama; Kokubunji; Koganei; Konosu; Higashikurume; Fujimino; Akishima; Kamagaya; Fujimi; Toride; Sakado; Isehara; Yotsukaido; Inagi; Yashio; Higashiyamato; Ayase; Wako; Akiruno; Gyoda; Hanno; Komae; Kiyose; Okegawa; Kunitachi; Shiki; Warabi; Yoshikawa; Musashimurayama; Tsurugashima; Moriya; Kitamoto; Shiroi; Sodegaura; Hasuda; Fussa; Zushi; Hidaka; Hamura; Shiraoka; Satte; Chiyoda; Minamiashigara-Japan": {
+      "name": "Tokyo; Yokohama; Kawasaki; Saitama; Chiba; Setagaya; Ota; Nerima; Adachi; Edogawa; Funabashi; Kawaguchi; Itabashi; Hachioji; Suginami; Koto; Ichikawa; Matsudo; Katsushika; Fujisawa; Machida; Shinagawa; Kashiwa; Yokosuka; Kawagoe; Kita; Shinjuku; Koshigaya; Tokorozawa; Nakano; Toshima; Meguro; Sumida; Ichihara; Fuchu; Hiratsuka; Minato; Soka; Chigasaki; Yamato; Kasukabe; Chofu; Shibuya; Bunkyo; Ageo; Atsugi; Arakawa; Taito; Nishitokyo; Yachiyo; Kodaira; Mitaka; Odawara; Nagareyama; Tachikawa; Narashino; Kamakura; Sakura; Hino; Hadano; Urayasu; Niiza; Chuo; Noda; Sayama; Kuki; Higashimurayama; Iruma; Tama; Asaka; Musashino; Koga; Misato; Toda; Abiko; Ebina; Zama; Kokubunji; Koganei; Konosu; Higashikurume; Fujimino; Akishima; Kamagaya; Fujimi; Toride; Sakado; Isehara; Yotsukaido; Inagi; Yashio; Higashiyamato; Ayase; Wako; Akiruno; Gyoda; Hanno; Komae; Kiyose; Okegawa; Kunitachi; Shiki; Warabi; Yoshikawa; Musashimurayama; Tsurugashima; Moriya; Kitamoto; Shiroi; Sodegaura; Hasuda; Fussa; Zushi; Hidaka; Hamura; Shiraoka; Satte; Chiyoda; Minamiashigara",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        35.666666666666664,
+        139.58847736625518
+      ],
+      "pixel_coords": [
+        3835,
+        1507
+      ],
+      "area": 5191.000000000003
+    },
+    "ghsl-Jakarta; Bekasi; Tangerang; South Tangerang; Depok; Bogor; Serang; Sukabumi; Cianjur-Indonesia": {
+      "name": "Jakarta; Bekasi; Tangerang; South Tangerang; Depok; Bogor; Serang; Sukabumi; Cianjur",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        -6.355158730158749,
+        106.8095238095238
+      ],
+      "pixel_coords": [
+        3441,
+        1003
+      ],
+      "area": 4614
+    },
+    "ghsl-Los Angeles; Long Beach; Anaheim; Santa Ana; Irvine; Glendale; San Bernardino; Fontana; Huntington Beach; Ontario; Garden Grove; Rancho Cucamonga; Pomona; Torrance; Pasadena; Fullerton; Orange; Inglewood; Downey; El Monte; Costa Mesa; West Covina; Norwalk; Burbank; South Gate; Carson; Santa Monica-United States": {
+      "name": "Los Angeles; Long Beach; Anaheim; Santa Ana; Irvine; Glendale; San Bernardino; Fontana; Huntington Beach; Ontario; Garden Grove; Rancho Cucamonga; Pomona; Torrance; Pasadena; Fullerton; Orange; Inglewood; Downey; El Monte; Costa Mesa; West Covina; Norwalk; Burbank; South Gate; Carson; Santa Monica",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        33.97089947089947,
+        -118.13624338624338
+      ],
+      "pixel_coords": [
+        742,
+        1487
+      ],
+      "area": 4498
+    },
+    "stadester-Hiroshima-Japan": {
+      "name": "Hiroshima",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        34.3852894,
+        132.4553055
+      ],
+      "pixel_coords": [
+        3749,
+        1492
+      ],
+      "area": 3986.445938251848
+    },
+    "ghsl-Hajipur; Muzaffarpur-India": {
+      "name": "Hajipur; Muzaffarpur",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        25.845238095238102,
+        85.51190476190476
+      ],
+      "pixel_coords": [
+        3186,
+        1390
+      ],
+      "area": 3166
+    },
+    "ghsl-Shanghai; Pudong; Taicang; Baoshan District; Putuo District; Changning District; Jing'an District; Xuhui District; Hongkou District; Huangpu District; Yangpu District; Qingpu; Songjiang; Minhang; Jiading; Fengxian District-China": {
+      "name": "Shanghai; Pudong; Taicang; Baoshan District; Putuo District; Changning District; Jing'an District; Xuhui District; Hongkou District; Huangpu District; Yangpu District; Qingpu; Songjiang; Minhang; Jiading; Fengxian District",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        31.214285714285715,
+        121.36111111111114
+      ],
+      "pixel_coords": [
+        3616,
+        1454
+      ],
+      "area": 3128
+    },
+    "ghsl-New York; Newark; Jersey City; Yonkers; Paterson; Elizabeth; New Rochelle; Mount Vernon; Brentwood; Hempstead; Levittown; New Brunswick-United States": {
+      "name": "New York; Newark; Jersey City; Yonkers; Paterson; Elizabeth; New Rochelle; Mount Vernon; Brentwood; Hempstead; Levittown; New Brunswick",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        40.72272727272727,
+        -73.97272727272727
+      ],
+      "pixel_coords": [
+        1272,
+        1568
+      ],
+      "area": 3031
+    },
+    "ghsl-Miami; Hialeah; Fort Lauderdale; Pembroke Pines; Hollywood; Coral Springs; Kendall; West Palm Beach; Miramar; Pompano Beach; Sunrise; Miami Beach; Boca Raton; Deerfield Beach; Weston; Riviera Beach-United States": {
+      "name": "Miami; Hialeah; Fort Lauderdale; Pembroke Pines; Hollywood; Coral Springs; Kendall; West Palm Beach; Miramar; Pompano Beach; Sunrise; Miami Beach; Boca Raton; Deerfield Beach; Weston; Riviera Beach",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        26.07870370370371,
+        -80.24305555555557
+      ],
+      "pixel_coords": [
+        1197,
+        1392
+      ],
+      "area": 2784
+    },
+    "stadester-New York-United States": {
+      "name": "New York",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        40.7127753,
+        -74.0059728
+      ],
+      "pixel_coords": [
+        1271,
+        1568
+      ],
+      "area": 2745.7648093686134
+    },
+    "ghsl-Bangkok; Nonthaburi; Pak Kret; Rangsit; Samut Sakhon; Om Noi; Samut Prakan-Thailand": {
+      "name": "Bangkok; Nonthaburi; Pak Kret; Rangsit; Samut Sakhon; Om Noi; Samut Prakan",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        13.776041666666671,
+        100.52604166666663
+      ],
+      "pixel_coords": [
+        3366,
+        1245
+      ],
+      "area": 2697
+    },
+    "ghsl-Quezon City; Manila; Caloocan; Antipolo; Taguig; Pasig; Valenzuela; Para�aque; Dasmari�as; San Jose del Monte; Las Pi�as; Bacoor; Makati; Muntinlupa; Marikina; Calamba; Mandaluyong; Pasay; Bi�an; Imus; Malabon; Santa Rosa; San Pedro; General Trias; Cabuyao; Malolos; Navotas; Meycauayan; Baliwag; Trece Martires; San Juan; Carmona; Cavite City-Philippines": {
+      "name": "Quezon City; Manila; Caloocan; Antipolo; Taguig; Pasig; Valenzuela; Para�aque; Dasmari�as; San Jose del Monte; Las Pi�as; Bacoor; Makati; Muntinlupa; Marikina; Calamba; Mandaluyong; Pasay; Bi�an; Imus; Malabon; Santa Rosa; San Pedro; General Trias; Cabuyao; Malolos; Navotas; Meycauayan; Baliwag; Trece Martires; San Juan; Carmona; Cavite City",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        14.583333333333343,
+        120.94097222222223
+      ],
+      "pixel_coords": [
+        3611,
+        1255
+      ],
+      "area": 2555
+    },
+    "ghsl-Kolkata; Howrah; Maheshtala; Maheshtala; Rajpur Sonarpur; Bally; Serampore; Baranagar; Uluberia; Hugli-Chunchura; Chandannagar; Kalyani; Budge Budge; Baruipur; Pujali; New Town; Barrackpore; New Barrackpore; Barasat-India": {
+      "name": "Kolkata; Howrah; Maheshtala; Maheshtala; Rajpur Sonarpur; Bally; Serampore; Baranagar; Uluberia; Hugli-Chunchura; Chandannagar; Kalyani; Budge Budge; Baruipur; Pujali; New Town; Barrackpore; New Barrackpore; Barasat",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        22.637681159420296,
+        88.27536231884056
+      ],
+      "pixel_coords": [
+        3219,
+        1351
+      ],
+      "area": 2482
+    },
+    "ghsl-Nagoya; Gifu; Ichinomiya; Yokkaichi; Kasugai; Tsu; Suzuka; Anjo; Ogaki; Kariya; Komaki; Kakamigahara; Kuwana; Seto; Handa; Tokai; Konan; Obu; Nisshin; Ama; Kitanagoya; Chita; Owariasahi; Hekinan; Chiryu; Toyoake; Kiyosu; Hashima; Miyoshi; Tsushima; Mizuho; Iwakura; Takahama; Yamagata-Japan": {
+      "name": "Nagoya; Gifu; Ichinomiya; Yokkaichi; Kasugai; Tsu; Suzuka; Anjo; Ogaki; Kariya; Komaki; Kakamigahara; Kuwana; Seto; Handa; Tokai; Konan; Obu; Nisshin; Ama; Kitanagoya; Chita; Owariasahi; Hekinan; Chiryu; Toyoake; Kiyosu; Hashima; Miyoshi; Tsushima; Mizuho; Iwakura; Takahama; Yamagata",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        35.08169934640523,
+        136.80555555555554
+      ],
+      "pixel_coords": [
+        3801,
+        1500
+      ],
+      "area": 2400.999999999999
+    },
+    "ghsl-Seoul; Incheon; Suwon; Goyang; Seongnam; Bucheon; Namyangju; Ansan-si; Anyang; Uijeongbu; Siheung; Gwangmyeong; Gunpo; Hanam; Osan; Guri; Uiwang; Gwacheon-South Korea": {
+      "name": "Seoul; Incheon; Suwon; Goyang; Seongnam; Bucheon; Namyangju; Ansan-si; Anyang; Uijeongbu; Siheung; Gwangmyeong; Gunpo; Hanam; Osan; Guri; Uiwang; Gwacheon",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        37.472222222222214,
+        126.88194444444446
+      ],
+      "pixel_coords": [
+        3682,
+        1529
+      ],
+      "area": 2282
+    },
+    "ghsl-Osaka; Kobe; Kyoto; Sakai; Higashiosaka; Nishinomiya; Amagasaki; Hirakata; Toyonaka; Suita; Takatsuki; Akashi; Ibaraki; Yao; Kakogawa; Neyagawa; Itami; Kishiwada; Uji; Kawanishi; Moriguchi; Kadoma; Daito; Matsubara; Habikino; Kawachinagano; Ikeda; Izumisano; Ashiya; Takasago; Kaizuka; Settsu; Nagaokakyo; Katano; Izumiotsu; Yawata; Kashiwara; Fujiidera; Sennan; Hannan; Osakasayama; Takaishi; Muko; Shimamoto-Japan": {
+      "name": "Osaka; Kobe; Kyoto; Sakai; Higashiosaka; Nishinomiya; Amagasaki; Hirakata; Toyonaka; Suita; Takatsuki; Akashi; Ibaraki; Yao; Kakogawa; Neyagawa; Itami; Kishiwada; Uji; Kawanishi; Moriguchi; Kadoma; Daito; Matsubara; Habikino; Kawachinagano; Ikeda; Izumisano; Ashiya; Takasago; Kaizuka; Settsu; Nagaokakyo; Katano; Izumiotsu; Yawata; Kashiwara; Fujiidera; Sennan; Hannan; Osakasayama; Takaishi; Muko; Shimamoto",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        34.68452380952381,
+        135.35317460317464
+      ],
+      "pixel_coords": [
+        3784,
+        1496
+      ],
+      "area": 2245.9999999999995
+    },
+    "ghsl-Buenos Aires; Lan�s; Avellaneda; Vicente L�pez; Gregorio de Laferrere; Merlo; Jos� C. Paz; Quilmes; Banfield; Lan�s Oeste; Lan�s Este; Gonz�lez Cat�n; Isidro Casanova; Virrey del Pino; Moreno; Berazategui; San Miguel; Rafael Castillo; Monte Grande; Villa Madero; Santa Mar�a; Mor�n; Florencio Varela; Lomas de Zamora; Temperley; Presidente Derqui; Bernal; Trujui; Castelar; San Justo; Ituzaing�; Libertad; Ramos Mej�a; Caseros; San Jos�-Argentina": {
+      "name": "Buenos Aires; Lan�s; Avellaneda; Vicente L�pez; Gregorio de Laferrere; Merlo; Jos� C. Paz; Quilmes; Banfield; Lan�s Oeste; Lan�s Este; Gonz�lez Cat�n; Isidro Casanova; Virrey del Pino; Moreno; Berazategui; San Miguel; Rafael Castillo; Monte Grande; Villa Madero; Santa Mar�a; Mor�n; Florencio Varela; Lomas de Zamora; Temperley; Presidente Derqui; Bernal; Trujui; Castelar; San Justo; Ituzaing�; Libertad; Ramos Mej�a; Caseros; San Jos�",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -34.661616161616166,
+        -58.56060606060606
+      ],
+      "pixel_coords": [
+        1457,
+        664
+      ],
+      "area": 2186
+    },
+    "ghsl-Beijing; Shunyi; Mentougou; Dongcheng; Chaoyang; Haidian; Xicheng; Fengtai; Shijingshan; Daxing-China": {
+      "name": "Beijing; Shunyi; Mentougou; Dongcheng; Chaoyang; Haidian; Xicheng; Fengtai; Shijingshan; Daxing",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        39.92753623188406,
+        116.31884057971013
+      ],
+      "pixel_coords": [
+        3555,
+        1559
+      ],
+      "area": 2179
+    },
+    "ghsl-Ghaziabad; Gurugram; Noida; New Delhi; Bahadurgarh; Faridabad; Manesar-India": {
+      "name": "Ghaziabad; Gurugram; Noida; New Delhi; Bahadurgarh; Faridabad; Manesar",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        28.608695652173914,
+        77.18840579710144
+      ],
+      "pixel_coords": [
+        3086,
+        1423
+      ],
+      "area": 2139
+    },
+    "ghsl-Mexico City; Ecatepec; Nezahualc�yotl; Naucalpan de Ju�rez; Tlalnepantla; Chimalhuac�n; Atizap�n de Zaragoza; Ciudad L�pez Mateos; Cuautitlan Izcalli; Ojo de Agua; Xico; Ixtapaluca; Nicol�s Romero; Coacalco; Buenavista; Chalco de D�az Covarrubias; Huixquilucan de Degollado; Santa Fe; Interlomas-M�xico": {
+      "name": "Mexico City; Ecatepec; Nezahualc�yotl; Naucalpan de Ju�rez; Tlalnepantla; Chimalhuac�n; Atizap�n de Zaragoza; Ciudad L�pez Mateos; Cuautitlan Izcalli; Ojo de Agua; Xico; Ixtapaluca; Nicol�s Romero; Coacalco; Buenavista; Chalco de D�az Covarrubias; Huixquilucan de Degollado; Santa Fe; Interlomas",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        19.456989247311824,
+        -99.14516129032258
+      ],
+      "pixel_coords": [
+        970,
+        1313
+      ],
+      "area": 2134
+    },
+    "ghsl-S�o Paulo; Guarulhos; Sao Bernardo do Campo; Santo Andre; Osasco; Mogi das Cruzes; Mau�; Diadema; Carapicu�ba; Itaquaquecetuba; Barueri; Suzano; Cotia; Tabo�o da Serra; Embu das Artes; Itapevi; Ferraz de Vasconcelos; S�o Caetano do Sul; Itapecerica da Serra; Jandira; Ribeir�o Pires; Po�-Brazil": {
+      "name": "S�o Paulo; Guarulhos; Sao Bernardo do Campo; Santo Andre; Osasco; Mogi das Cruzes; Mau�; Diadema; Carapicu�ba; Itaquaquecetuba; Barueri; Suzano; Cotia; Tabo�o da Serra; Embu das Artes; Itapevi; Ferraz de Vasconcelos; S�o Caetano do Sul; Itapecerica da Serra; Jandira; Ribeir�o Pires; Po�",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -23.574712643678154,
+        -46.61206896551724
+      ],
+      "pixel_coords": [
+        1600,
+        797
+      ],
+      "area": 2111
+    },
+    "ghsl-Chicago; Evanston; Elmhurst-United States": {
+      "name": "Chicago; Evanston; Elmhurst",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        41.87179487179487,
+        -87.8034188034188
+      ],
+      "pixel_coords": [
+        1106,
+        1582
+      ],
+      "area": 2046
+    },
+    "ghsl-Jieyang; Shantou; Chaozhou; Puning; Chaonan; Chaoyang; Jinping; Longhu; Chao'an; Rongcheng District; Xiangqiao; Jiedong County-China": {
+      "name": "Jieyang; Shantou; Chaozhou; Puning; Chaonan; Chaoyang; Jinping; Longhu; Chao'an; Rongcheng District; Xiangqiao; Jiedong County",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        23.41666666666667,
+        116.46568627450984
+      ],
+      "pixel_coords": [
+        3557,
+        1361
+      ],
+      "area": 1961
+    },
+    "ghsl-Houston; Pasadena; Sugar Land-United States": {
+      "name": "Houston; Pasadena; Sugar Land",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        29.714285714285708,
+        -95.46428571428571
+      ],
+      "pixel_coords": [
+        1014,
+        1436
+      ],
+      "area": 1859
+    },
+    "ghsl-Suzhou; Wuxi; Suzhou Industrial Park; Binhu; Xinwu; Liangxi; Xishan; Huishan; Gusu District; Xiangcheng District; Wuzhong District; Kunshan; Wujiang-China": {
+      "name": "Suzhou; Wuxi; Suzhou Industrial Park; Binhu; Xinwu; Liangxi; Xishan; Huishan; Gusu District; Xiangcheng District; Wuzhong District; Kunshan; Wujiang",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        31.41666666666667,
+        120.57407407407408
+      ],
+      "pixel_coords": [
+        3606,
+        1457
+      ],
+      "area": 1802
+    },
+    "ghsl-Johannesburg; Soweto; Randburg; Roodepoort; Krugersdorp; Sandton-South Africa": {
+      "name": "Johannesburg; Soweto; Randburg; Roodepoort; Krugersdorp; Sandton",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        -26.20238095238095,
+        28.02380952380952
+      ],
+      "pixel_coords": [
+        2496,
+        765
+      ],
+      "area": 1756
+    },
+    "ghsl-Cairo; Giza; Shubra al Khayma; Helwan; New Cairo; Fifteenth Of May; Al-Obour-Egypt": {
+      "name": "Cairo; Giza; Shubra al Khayma; Helwan; New Cairo; Fifteenth Of May; Al-Obour",
+      "region": "maghreb_egypt",
+      "colour": [
+        239,
+        188,
+        112
+      ],
+      "coords": [
+        30.015624999999993,
+        31.229166666666657
+      ],
+      "pixel_coords": [
+        2534,
+        1440
+      ],
+      "area": 1680
+    },
+    "ghsl-London; Westminster; City of London-United Kingdom": {
+      "name": "London; Westminster; City of London",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        51.50225225225225,
+        -0.19819819819818463
+      ],
+      "pixel_coords": [
+        2157,
+        1698
+      ],
+      "area": 1649
+    },
+    "ghsl-Toronto; Mississauga; Brampton; Markham; Vaughan; Richmond Hill; Oakville-Canada": {
+      "name": "Toronto; Mississauga; Brampton; Markham; Vaughan; Richmond Hill; Oakville",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        43.69791666666667,
+        -79.5451388888889
+      ],
+      "pixel_coords": [
+        1205,
+        1604
+      ],
+      "area": 1620
+    },
+    "stadester-São Paulo-Brazil": {
+      "name": "São Paulo",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -23.5557714,
+        -46.6395571
+      ],
+      "pixel_coords": [
+        1600,
+        797
+      ],
+      "area": 1616.0329956929359
+    },
+    "ghsl-San Jose; San Francisco; Oakland; Fremont; Hayward; Sunnyvale; Santa Clara; Berkeley; Richmond; San Mateo; Daly City; Redwood City; Milpitas; Mountain View; Alameda; Palo Alto; South San Francisco; Cupertino-United States": {
+      "name": "San Jose; San Francisco; Oakland; Fremont; Hayward; Sunnyvale; Santa Clara; Berkeley; Richmond; San Mateo; Daly City; Redwood City; Milpitas; Mountain View; Alameda; Palo Alto; South San Francisco; Cupertino",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        37.568627450980394,
+        -122.17647058823529
+      ],
+      "pixel_coords": [
+        693,
+        1530
+      ],
+      "area": 1614
+    },
+    "ghsl-Melbourne-Australia": {
+      "name": "Melbourne",
+      "region": "oceania",
+      "colour": [
+        0,
+        205,
+        143
+      ],
+      "coords": [
+        -37.85714285714285,
+        145.04365079365084
+      ],
+      "pixel_coords": [
+        3900,
+        625
+      ],
+      "area": 1611
+    },
+    "ghsl-Hangzhou; Shaoxing; Xiaoshan District; Xihu District; Gongshu District; Keqiao; Yuhang District; Linping; Shangcheng; Binjiang District; Yuecheng-China": {
+      "name": "Hangzhou; Shaoxing; Xiaoshan District; Xihu District; Gongshu District; Keqiao; Yuhang District; Linping; Shangcheng; Binjiang District; Yuecheng",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        30.185185185185183,
+        120.23148148148147
+      ],
+      "pixel_coords": [
+        3602,
+        1442
+      ],
+      "area": 1546.9999999999995
+    },
+    "ghsl-Moscow; Balashikha; Mytishchi; Khimki; Korolyov; Lyubertsy; Krasnogorsk; Shchyolkovo; Dolgoprudny; Pushkino-Russia": {
+      "name": "Moscow; Balashikha; Mytishchi; Khimki; Korolyov; Lyubertsy; Krasnogorsk; Shchyolkovo; Dolgoprudny; Pushkino",
+      "region": "eastern_europe_and_russia",
+      "colour": [
+        20,
+        114,
+        30
+      ],
+      "coords": [
+        55.76973684210526,
+        37.63596491228071
+      ],
+      "pixel_coords": [
+        2611,
+        1749
+      ],
+      "area": 1545
+    },
+    "stadester-Tehrân-Iran": {
+      "name": "Tehrân",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        35.7218583,
+        51.3346954
+      ],
+      "pixel_coords": [
+        2776,
+        1508
+      ],
+      "area": 1515.3488404654022
+    },
+    "ghsl-Ho Chi Minh City; Th? ??c; Th? D?u M?t; Thu?n An; D? An; Bi�n H�a-Vietnam": {
+      "name": "Ho Chi Minh City; Th? ??c; Th? D?u M?t; Thu?n An; D? An; Bi�n H�a",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        10.833333333333329,
+        106.6904761904762
+      ],
+      "pixel_coords": [
+        3440,
+        1209
+      ],
+      "area": 1487
+    },
+    "stadester-Benin City (agglomeration?)-Nigeria": {
+      "name": "Benin City (agglomeration?)",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        6.334986,
+        5.6037465
+      ],
+      "pixel_coords": [
+        2227,
+        1156
+      ],
+      "area": 1440.0919134738954
+    },
+    "ghsl-Paris; Argenteuil; Saint-Denis; Boulogne-Billancourt; Montreuil-France": {
+      "name": "Paris; Argenteuil; Saint-Denis; Boulogne-Billancourt; Montreuil",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        48.842261904761905,
+        2.321428571428555
+      ],
+      "pixel_coords": [
+        2187,
+        1666
+      ],
+      "area": 1421
+    },
+    "ghsl-Sydney-Australia": {
+      "name": "Sydney",
+      "region": "oceania",
+      "colour": [
+        0,
+        205,
+        143
+      ],
+      "coords": [
+        -33.849999999999994,
+        151.04166666666669
+      ],
+      "pixel_coords": [
+        3972,
+        673
+      ],
+      "area": 1378
+    },
+    "ghsl-Kozhikode-India": {
+      "name": "Kozhikode",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        11.25,
+        75.75
+      ],
+      "pixel_coords": [
+        3069,
+        1215
+      ],
+      "area": 1341
+    },
+    "ghsl-Kuala Lumpur; Kajang; Klang; Subang Jaya; Petaling Jaya; Selayang; Shah Alam; Ampang Jaya-Malaysia": {
+      "name": "Kuala Lumpur; Kajang; Klang; Subang Jaya; Petaling Jaya; Selayang; Shah Alam; Ampang Jaya",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        3.0833333333333286,
+        101.56944444444446
+      ],
+      "pixel_coords": [
+        3378,
+        1117
+      ],
+      "area": 1340
+    },
+    "stadester-Chicago-United States": {
+      "name": "Chicago",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        41.8781136,
+        -87.6297982
+      ],
+      "pixel_coords": [
+        1108,
+        1582
+      ],
+      "area": 1307.2277379377203
+    },
+    "ghsl-Phoenix; Glendale; Scottsdale; Peoria; Surprise; Avondale-United States": {
+      "name": "Phoenix; Glendale; Scottsdale; Peoria; Surprise; Avondale",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        33.55833333333334,
+        -112.11666666666666
+      ],
+      "pixel_coords": [
+        814,
+        1482
+      ],
+      "area": 1304
+    },
+    "ghsl-Surabaya; Sidoarjo; Bangil; Mojokerto-Indonesia": {
+      "name": "Surabaya; Sidoarjo; Bangil; Mojokerto",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        -7.44047619047619,
+        112.61904761904765
+      ],
+      "pixel_coords": [
+        3511,
+        990
+      ],
+      "area": 1304
+    },
+    "ghsl-Washington; Arlington; Alexandria; Silver Spring; Gaithersburg; Bethesda; Rockville; Reston; College Park; Fairfax; Hyattsville-United States": {
+      "name": "Washington; Arlington; Alexandria; Silver Spring; Gaithersburg; Bethesda; Rockville; Reston; College Park; Fairfax; Hyattsville",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        38.90740740740741,
+        -77.05555555555557
+      ],
+      "pixel_coords": [
+        1235,
+        1546
+      ],
+      "area": 1301
+    },
+    "ghsl-Rio de Janeiro; Duque de Caxias; Nova Igua�u; Belford Roxo; Sao Joao de Meriti; Mesquita; Nil�polis; Queimados; Zona Norte do Rio de Janeiro-Brazil": {
+      "name": "Rio de Janeiro; Duque de Caxias; Nova Igua�u; Belford Roxo; Sao Joao de Meriti; Mesquita; Nil�polis; Queimados; Zona Norte do Rio de Janeiro",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -22.85526315789474,
+        -43.42982456140351
+      ],
+      "pixel_coords": [
+        1638,
+        805
+      ],
+      "area": 1285
+    },
+    "ghsl-Istanbul-Turkey": {
+      "name": "Istanbul",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        41.01666666666667,
+        28.912499999999994
+      ],
+      "pixel_coords": [
+        2506,
+        1572
+      ],
+      "area": 1269
+    },
+    "ghsl-Kochi; Ernakulam-India": {
+      "name": "Kochi; Ernakulam",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        10.083333333333329,
+        76.28571428571428
+      ],
+      "pixel_coords": [
+        3075,
+        1201
+      ],
+      "area": 1266
+    },
+    "ghsl-Detroit; Sterling Heights; Warren; Dearborn; Royal Oak-United States": {
+      "name": "Detroit; Sterling Heights; Warren; Dearborn; Royal Oak",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        42.3768115942029,
+        -83.21376811594202
+      ],
+      "pixel_coords": [
+        1161,
+        1588
+      ],
+      "area": 1251.0000000000005
+    },
+    "ghsl-Dallas; Plano; Garland; Mesquite; Carrollton; Richardson-United States": {
+      "name": "Dallas; Plano; Garland; Mesquite; Carrollton; Richardson",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        32.88461538461539,
+        -96.83333333333334
+      ],
+      "pixel_coords": [
+        997,
+        1474
+      ],
+      "area": 1237
+    },
+    "ghsl-Colombo; Kaduwela; Moratuwa; Maharagama; Kesbewa; Negombo; Sri Jayawardenepura Kotte; Kolonnawa; Kalutara; Gampaha-Sri Lanka": {
+      "name": "Colombo; Kaduwela; Moratuwa; Maharagama; Kesbewa; Negombo; Sri Jayawardenepura Kotte; Kolonnawa; Kalutara; Gampaha",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        6.944444444444443,
+        79.875
+      ],
+      "pixel_coords": [
+        3118,
+        1163
+      ],
+      "area": 1206
+    },
+    "ghsl-Lagos; Ikeja-Nigeria": {
+      "name": "Lagos; Ikeja",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        6.574074074074076,
+        3.240740740740705
+      ],
+      "pixel_coords": [
+        2198,
+        1158
+      ],
+      "area": 1199
+    },
+    "stadester-Shanghai-China": {
+      "name": "Shanghai",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        31.230416,
+        121.473701
+      ],
+      "pixel_coords": [
+        3617,
+        1454
+      ],
+      "area": 1198.0054685696223
+    },
+    "ghsl-Denver; Aurora; Lakewood; Thornton; Centennial; Westminster-United States": {
+      "name": "Denver; Aurora; Lakewood; Thornton; Centennial; Westminster",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        39.742424242424235,
+        -105.02272727272727
+      ],
+      "pixel_coords": [
+        899,
+        1556
+      ],
+      "area": 1194
+    },
+    "stadester-Moskva-Russia": {
+      "name": "Moskva",
+      "region": "eastern_europe_and_russia",
+      "colour": [
+        20,
+        114,
+        30
+      ],
+      "coords": [
+        55.7568721,
+        37.6150527
+      ],
+      "pixel_coords": [
+        2611,
+        1749
+      ],
+      "area": 1187.8903952721435
+    },
+    "ghsl-Owerri-Nigeria": {
+      "name": "Owerri",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        5.5,
+        7.000000000000028
+      ],
+      "pixel_coords": [
+        2244,
+        1146
+      ],
+      "area": 1144
+    },
+    "ghsl-Seattle; Bellevue-United States": {
+      "name": "Seattle; Bellevue",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        47.60606060606061,
+        -122.3560606060606
+      ],
+      "pixel_coords": [
+        691,
+        1651
+      ],
+      "area": 1123
+    },
+    "ghsl-Accra; Tema-Ghana": {
+      "name": "Accra; Tema",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        5.635416666666671,
+        -0.1979166666666572
+      ],
+      "pixel_coords": [
+        2157,
+        1147
+      ],
+      "area": 1121
+    },
+    "ghsl-Maharajganj; Barharia-India": {
+      "name": "Maharajganj; Barharia",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        26.291666666666664,
+        84.41666666666669
+      ],
+      "pixel_coords": [
+        3173,
+        1395
+      ],
+      "area": 1120
+    },
+    "ghsl-Riyadh-Saudi Arabia": {
+      "name": "Riyadh",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        24.666666666666657,
+        46.68055555555554
+      ],
+      "pixel_coords": [
+        2720,
+        1375
+      ],
+      "area": 1108
+    },
+    "ghsl-Onitsha; Nnewi-Nigeria": {
+      "name": "Onitsha; Nnewi",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        6.053030303030297,
+        6.893939393939377
+      ],
+      "pixel_coords": [
+        2242,
+        1152
+      ],
+      "area": 1090
+    },
+    "ghsl-Chennai; Tambaram; Avadi-India": {
+      "name": "Chennai; Tambaram; Avadi",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        13.047619047619051,
+        80.17857142857144
+      ],
+      "pixel_coords": [
+        3122,
+        1236
+      ],
+      "area": 1052
+    },
+    "ghsl-Montreal; Laval; Longueuil-Canada": {
+      "name": "Montreal; Laval; Longueuil",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        45.55555555555555,
+        -73.67592592592592
+      ],
+      "pixel_coords": [
+        1275,
+        1626
+      ],
+      "area": 1020
+    },
+    "ghsl-Nanjing; Luhe; Pukou; Jianye District; Xuanwu District; Yuhuatai District; Jiangning; Qinhuai District; Gulou District; Qixia District; ????-China": {
+      "name": "Nanjing; Luhe; Pukou; Jianye District; Xuanwu District; Yuhuatai District; Jiangning; Qinhuai District; Gulou District; Qixia District; ????",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        32.03703703703704,
+        118.71296296296299
+      ],
+      "pixel_coords": [
+        3584,
+        1464
+      ],
+      "area": 1012
+    },
+    "ghsl-Bengaluru-India": {
+      "name": "Bengaluru",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        12.958333333333329,
+        77.54166666666669
+      ],
+      "pixel_coords": [
+        3090,
+        1235
+      ],
+      "area": 1008
+    },
+    "ghsl-Bandung; Cimahi-Indonesia": {
+      "name": "Bandung; Cimahi",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        -6.904761904761912,
+        107.57142857142856
+      ],
+      "pixel_coords": [
+        3450,
+        997
+      ],
+      "area": 988
+    },
+    "ghsl-Lima; Callao-Peru": {
+      "name": "Lima; Callao",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -12.06410256410257,
+        -77.03846153846155
+      ],
+      "pixel_coords": [
+        1235,
+        935
+      ],
+      "area": 984
+    },
+    "ghsl-New Taipei; Taipei; Taoyuan; Keelung-Taiwan": {
+      "name": "New Taipei; Taipei; Taoyuan; Keelung",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        25.04166666666667,
+        121.45833333333337
+      ],
+      "pixel_coords": [
+        3617,
+        1380
+      ],
+      "area": 972
+    },
+    "ghsl-Khartoum; Omdurman; Bahri; East Nile-Sudan": {
+      "name": "Khartoum; Omdurman; Bahri; East Nile",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        15.553030303030297,
+        32.49242424242425
+      ],
+      "pixel_coords": [
+        2549,
+        1266
+      ],
+      "area": 958
+    },
+    "ghsl-Luanda-Angola": {
+      "name": "Luanda",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        -8.870370370370367,
+        13.25
+      ],
+      "pixel_coords": [
+        2319,
+        973
+      ],
+      "area": 936
+    },
+    "ghsl-Hanoi; T? S?n-Vietnam": {
+      "name": "Hanoi; T? S?n",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        21.027777777777786,
+        105.81944444444446
+      ],
+      "pixel_coords": [
+        3429,
+        1332
+      ],
+      "area": 925
+    },
+    "stadester-Qâhirah, Al- (agglomeration)-Egypt": {
+      "name": "Qâhirah, Al- (agglomeration)",
+      "region": "maghreb_egypt",
+      "colour": [
+        239,
+        188,
+        112
+      ],
+      "coords": [
+        30.0444196,
+        31.2357116
+      ],
+      "pixel_coords": [
+        2534,
+        1440
+      ],
+      "area": 908.3914928290346
+    },
+    "ghsl-Dar es-Salaam-Tanzania": {
+      "name": "Dar es-Salaam",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        -6.833333333333343,
+        39.22916666666666
+      ],
+      "pixel_coords": [
+        2630,
+        997
+      ],
+      "area": 907
+    },
+    "ghsl-Lahore; Sheikhupura; Ferozewala-Pakistan": {
+      "name": "Lahore; Sheikhupura; Ferozewala",
+      "region": "central_asia",
+      "colour": [
+        41,
+        193,
+        175
+      ],
+      "coords": [
+        31.53787878787879,
+        74.24242424242422
+      ],
+      "pixel_coords": [
+        3050,
+        1458
+      ],
+      "area": 898
+    },
+    "ghsl-Hyderabad; Sikandarabad-India": {
+      "name": "Hyderabad; Sikandarabad",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        17.42708333333333,
+        78.39583333333331
+      ],
+      "pixel_coords": [
+        3100,
+        1289
+      ],
+      "area": 889
+    },
+    "ghsl-Tamluk; Kolaghat; Bagnan-India": {
+      "name": "Tamluk; Kolaghat; Bagnan",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        22.39999999999999,
+        87.86666666666667
+      ],
+      "pixel_coords": [
+        3214,
+        1348
+      ],
+      "area": 889
+    },
+    "ghsl-Essen; Duisburg; Bochum; Gelsenkirchen; Oberhausen; M�lheim an der Ruhr; Herne; Bottrop; Recklinghausen; Moers-Germany": {
+      "name": "Essen; Duisburg; Bochum; Gelsenkirchen; Oberhausen; M�lheim an der Ruhr; Herne; Bottrop; Recklinghausen; Moers",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        51.492063492063494,
+        6.904761904761898
+      ],
+      "pixel_coords": [
+        2242,
+        1697
+      ],
+      "area": 880
+    },
+    "ghsl-Chengdu; Jinjiang; Tianfu New Area; Shuangliu; Wuhou; Qingyang; Chenghua; Jinniu; Pidu; Xindu-China": {
+      "name": "Chengdu; Jinjiang; Tianfu New Area; Shuangliu; Wuhou; Qingyang; Chenghua; Jinniu; Pidu; Xindu",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        30.703125,
+        104
+      ],
+      "pixel_coords": [
+        3408,
+        1448
+      ],
+      "area": 879.9999999999998
+    },
+    "ghsl-Portland; Vancouver; Gresham; Hillsboro; Beaverton; Tigard-United States": {
+      "name": "Portland; Vancouver; Gresham; Hillsboro; Beaverton; Tigard",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        45.513888888888886,
+        -122.625
+      ],
+      "pixel_coords": [
+        688,
+        1626
+      ],
+      "area": 877
+    },
+    "ghsl-Mesa; Chandler; Gilbert; Tempe-United States": {
+      "name": "Mesa; Chandler; Gilbert; Tempe",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        33.40277777777778,
+        -111.84722222222223
+      ],
+      "pixel_coords": [
+        817,
+        1480
+      ],
+      "area": 867
+    },
+    "ghsl-Dubai; Sharjah; Ajman-United Arab Emirates": {
+      "name": "Dubai; Sharjah; Ajman",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        25.316666666666663,
+        55.349999999999966
+      ],
+      "pixel_coords": [
+        2824,
+        1383
+      ],
+      "area": 854
+    },
+    "ghsl-Las Vegas; Henderson; North Las Vegas-United States": {
+      "name": "Las Vegas; Henderson; North Las Vegas",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        36.125,
+        -115.125
+      ],
+      "pixel_coords": [
+        778,
+        1513
+      ],
+      "area": 851
+    },
+    "ghsl-Karachi-Pakistan": {
+      "name": "Karachi",
+      "region": "central_asia",
+      "colour": [
+        41,
+        193,
+        175
+      ],
+      "coords": [
+        24.891666666666666,
+        67.05000000000001
+      ],
+      "pixel_coords": [
+        2964,
+        1378
+      ],
+      "area": 834
+    },
+    "ghsl-Linyi; Linyi National High-Tech Zone; Luozhuang; Lanshan; Yihe New Area; Hedong-China": {
+      "name": "Linyi; Linyi National High-Tech Zone; Luozhuang; Lanshan; Yihe New Area; Hedong",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        34.99999999999999,
+        118.2833333333333
+      ],
+      "pixel_coords": [
+        3579,
+        1500
+      ],
+      "area": 829
+    },
+    "ghsl-Tehran; Eslamshahr; Qods-Iran": {
+      "name": "Tehran; Eslamshahr; Qods",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        35.673611111111114,
+        51.28472222222223
+      ],
+      "pixel_coords": [
+        2775,
+        1508
+      ],
+      "area": 825
+    },
+    "ghsl-Kampala; Kira; Nansana; Entebbe; Wakiso-Uganda": {
+      "name": "Kampala; Kira; Nansana; Entebbe; Wakiso",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        0.30555555555555713,
+        32.555555555555515
+      ],
+      "pixel_coords": [
+        2550,
+        1083
+      ],
+      "area": 810
+    },
+    "ghsl-Durban-South Africa": {
+      "name": "Durban",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        -29.851851851851848,
+        30.944444444444457
+      ],
+      "pixel_coords": [
+        2531,
+        721
+      ],
+      "area": 807
+    },
+    "ghsl-Quanzhou; Fengze; Luojang; Shishi; Licheng-China": {
+      "name": "Quanzhou; Fengze; Luojang; Shishi; Licheng",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        24.816666666666663,
+        118.49166666666667
+      ],
+      "pixel_coords": [
+        3581,
+        1377
+      ],
+      "area": 801.0000000000003
+    },
+    "ghsl-Santiago-Chile": {
+      "name": "Santiago",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -33.49242424242426,
+        -70.6969696969697
+      ],
+      "pixel_coords": [
+        1311,
+        678
+      ],
+      "area": 801
+    },
+    "stadester-Sõul-South Korea": {
+      "name": "Sõul",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        37.550263,
+        126.9970831
+      ],
+      "pixel_coords": [
+        3683,
+        1530
+      ],
+      "area": 785.2874458905591
+    },
+    "ghsl-Milan; Monza-Italy": {
+      "name": "Milan; Monza",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        45.53431372549019,
+        9.156862745098039
+      ],
+      "pixel_coords": [
+        2269,
+        1626
+      ],
+      "area": 785
+    },
+    "ghsl-Perth; Joondalup-Australia": {
+      "name": "Perth; Joondalup",
+      "region": "oceania",
+      "colour": [
+        0,
+        205,
+        143
+      ],
+      "coords": [
+        -31.922222222222217,
+        115.81666666666672
+      ],
+      "pixel_coords": [
+        3549,
+        696
+      ],
+      "area": 784
+    },
+    "ghsl-San Diego; Chula Vista; El Cajon-United States": {
+      "name": "San Diego; Chula Vista; El Cajon",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        32.726190476190474,
+        -117.1547619047619
+      ],
+      "pixel_coords": [
+        754,
+        1472
+      ],
+      "area": 778
+    },
+    "ghsl-Wuhan; Hongshan; Hanyang District; Wuchang District; Dongxihu District; Qiaokou District; Jianghan District; Jiang'an District; Qingshan District-China": {
+      "name": "Wuhan; Hongshan; Hanyang District; Wuchang District; Dongxihu District; Qiaokou District; Jianghan District; Jiang'an District; Qingshan District",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        30.58333333333333,
+        114.31666666666672
+      ],
+      "pixel_coords": [
+        3531,
+        1447
+      ],
+      "area": 772
+    },
+    "stadester-Rio de Janeiro-Brazil": {
+      "name": "Rio de Janeiro",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -22.9068467,
+        -43.1728965
+      ],
+      "pixel_coords": [
+        1641,
+        805
+      ],
+      "area": 768.9312413636968
+    },
+    "ghsl-Sacramento; Elk Grove; Roseville-United States": {
+      "name": "Sacramento; Elk Grove; Roseville",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        38.57142857142858,
+        -121.47619047619047
+      ],
+      "pixel_coords": [
+        702,
+        1542
+      ],
+      "area": 759
+    },
+    "stadester-Philadelphia-United States": {
+      "name": "Philadelphia",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        39.9525839,
+        -75.1652215
+      ],
+      "pixel_coords": [
+        1258,
+        1559
+      ],
+      "area": 754.5924062814937
+    },
+    "ghsl-Ponnani; Kuttippuram; Chavakkad; Guruvayur; Kunnamkulam; Valanchery; Vengad; Thriprayar; Cranganore; Valiyaparambu-India": {
+      "name": "Ponnani; Kuttippuram; Chavakkad; Guruvayur; Kunnamkulam; Valanchery; Vengad; Thriprayar; Cranganore; Valiyaparambu",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        10.916666666666671,
+        76.04166666666669
+      ],
+      "pixel_coords": [
+        3072,
+        1211
+      ],
+      "area": 754
+    },
+    "stadester-Chicoutimi-Canada": {
+      "name": "Chicoutimi",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        48.4120995,
+        -71.0511299
+      ],
+      "pixel_coords": [
+        1307,
+        1660
+      ],
+      "area": 751.101883246925
+    },
+    "ghsl-Manchester; Salford-United Kingdom": {
+      "name": "Manchester; Salford",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        53.495614035087726,
+        -2.2938596491228225
+      ],
+      "pixel_coords": [
+        2132,
+        1721
+      ],
+      "area": 751
+    },
+    "ghsl-Orlando; Kissimmee-United States": {
+      "name": "Orlando; Kissimmee",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        28.58333333333333,
+        -81.41666666666667
+      ],
+      "pixel_coords": [
+        1183,
+        1423
+      ],
+      "area": 750
+    },
+    "ghsl-Shenyang; Tiexi; Yuhong; Huanggu; Shenhe; Dadong; Heping; Sujiatun; Shenbei; Hunnan-China": {
+      "name": "Shenyang; Tiexi; Yuhong; Huanggu; Shenhe; Dadong; Heping; Sujiatun; Shenbei; Hunnan",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        41.766666666666666,
+        123.35833333333335
+      ],
+      "pixel_coords": [
+        3640,
+        1581
+      ],
+      "area": 748
+    },
+    "ghsl-Mumbai; Thane; Navi Mumbai; Bhiwandi-India": {
+      "name": "Mumbai; Thane; Navi Mumbai; Bhiwandi",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        19.089285714285722,
+        72.85119047619045
+      ],
+      "pixel_coords": [
+        3034,
+        1309
+      ],
+      "area": 738
+    },
+    "stadester-London-United Kingdom": {
+      "name": "London",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        51.5072178,
+        -0.1275862
+      ],
+      "pixel_coords": [
+        2158,
+        1698
+      ],
+      "area": 724.6613370083685
+    },
+    "ghsl-Kollam-India": {
+      "name": "Kollam",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        9.125,
+        76.47916666666669
+      ],
+      "pixel_coords": [
+        3077,
+        1189
+      ],
+      "area": 710
+    },
+    "ghsl-Saint Petersburg; Clearwater-United States": {
+      "name": "Saint Petersburg; Clearwater",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        27.846153846153847,
+        -82.76282051282051
+      ],
+      "pixel_coords": [
+        1166,
+        1414
+      ],
+      "area": 705
+    },
+    "ghsl-Brisbane; Logan City-Australia": {
+      "name": "Brisbane; Logan City",
+      "region": "oceania",
+      "colour": [
+        0,
+        205,
+        143
+      ],
+      "coords": [
+        -27.48958333333333,
+        153.01041666666663
+      ],
+      "pixel_coords": [
+        3996,
+        750
+      ],
+      "area": 701
+    },
+    "ghsl-Jeddah-Saudi Arabia": {
+      "name": "Jeddah",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        21.513888888888886,
+        39.1527777777778
+      ],
+      "pixel_coords": [
+        2629,
+        1338
+      ],
+      "area": 696
+    },
+    "ghsl-Cape Town-South Africa": {
+      "name": "Cape Town",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        -33.95512820512822,
+        18.538461538461547
+      ],
+      "pixel_coords": [
+        2382,
+        672
+      ],
+      "area": 695
+    },
+    "ghsl-Xi'an; Yanta; Jingkai; Weiyang; Lianhu; Gaoxin; Qujiang New District; Hangtianjidi; Changan; Xixian New Area; Beilin; Xincheng; Baqiao; Chanba-China": {
+      "name": "Xi'an; Yanta; Jingkai; Weiyang; Lianhu; Gaoxin; Qujiang New District; Hangtianjidi; Changan; Xixian New Area; Beilin; Xincheng; Baqiao; Chanba",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        34.226190476190474,
+        108.88095238095235
+      ],
+      "pixel_coords": [
+        3466,
+        1490
+      ],
+      "area": 691
+    },
+    "ghsl-Baghdad-Iraq": {
+      "name": "Baghdad",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        33.34259259259259,
+        44.37037037037035
+      ],
+      "pixel_coords": [
+        2692,
+        1480
+      ],
+      "area": 688
+    },
+    "ghsl-Berlin-Germany": {
+      "name": "Berlin",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        52.48888888888889,
+        13.366666666666674
+      ],
+      "pixel_coords": [
+        2320,
+        1709
+      ],
+      "area": 686.9999999999998
+    },
+    "ghsl-Birmingham; Wolverhampton-United Kingdom": {
+      "name": "Birmingham; Wolverhampton",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        52.509803921568626,
+        -2.0049019607843093
+      ],
+      "pixel_coords": [
+        2135,
+        1710
+      ],
+      "area": 685
+    },
+    "ghsl-Monterrey; Guadalupe; Apodaca; San Nicolas de los Garza; General Escobedo-M�xico": {
+      "name": "Monterrey; Guadalupe; Apodaca; San Nicolas de los Garza; General Escobedo",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        25.697916666666657,
+        -100.33333333333333
+      ],
+      "pixel_coords": [
+        956,
+        1388
+      ],
+      "area": 685
+    },
+    "ghsl-Madrid; M�stoles; Legan�s; Alcorc�n; Fuenlabrada; Getafe; Parla; Alcobendas-Spain": {
+      "name": "Madrid; M�stoles; Legan�s; Alcorc�n; Fuenlabrada; Getafe; Parla; Alcobendas",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        40.416666666666664,
+        -3.7638888888888573
+      ],
+      "pixel_coords": [
+        2114,
+        1564
+      ],
+      "area": 680
+    },
+    "ghsl-Yogyakarta; Klaten-Indonesia": {
+      "name": "Yogyakarta; Klaten",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        -7.759259259259252,
+        110.4537037037037
+      ],
+      "pixel_coords": [
+        3485,
+        986
+      ],
+      "area": 677.9999999999998
+    }
+  },
+  "density": {
+    "stadester-Ghazni-Afghanistan": {
+      "name": "Ghazni",
+      "region": "central_asia",
+      "colour": [
+        41,
+        193,
+        175
+      ],
+      "coords": [
+        33.5471303,
+        68.4221352
+      ],
+      "pixel_coords": [
+        2981,
+        1482
+      ],
+      "density": 1348.5877103734222
+    },
+    "stadester-Jiulong-China": {
+      "name": "Jiulong",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        29.0001899,
+        101.50729
+      ],
+      "pixel_coords": [
+        3378,
+        1428
+      ],
+      "density": 1258.4785769006294
+    },
+    "stadester-Sikandarâbâd Cantonment-India": {
+      "name": "Sikandarâbâd Cantonment",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        28.4511246,
+        77.6954889
+      ],
+      "pixel_coords": [
+        3092,
+        1421
+      ],
+      "density": 1241.6396599019881
+    },
+    "stadester-Taxila-Pakistan": {
+      "name": "Taxila",
+      "region": "central_asia",
+      "colour": [
+        41,
+        193,
+        175
+      ],
+      "coords": [
+        33.7462826,
+        72.8397317
+      ],
+      "pixel_coords": [
+        3034,
+        1484
+      ],
+      "density": 1196.2237099445858
+    },
+    "stadester-Kozhikode-India": {
+      "name": "Kozhikode",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        11.2488425,
+        75.78392099999999
+      ],
+      "pixel_coords": [
+        3069,
+        1214
+      ],
+      "density": 1183.5391248789504
+    },
+    "stadester-Katowice-Poland": {
+      "name": "Katowice",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        50.26489189999999,
+        19.0237815
+      ],
+      "pixel_coords": [
+        2388,
+        1683
+      ],
+      "density": 1181.5980299784
+    },
+    "stadester-Banhâ-Egypt": {
+      "name": "Banhâ",
+      "region": "maghreb_egypt",
+      "colour": [
+        239,
+        188,
+        112
+      ],
+      "coords": [
+        30.4659929,
+        31.1848307
+      ],
+      "pixel_coords": [
+        2534,
+        1445
+      ],
+      "density": 1179.1215378334998
+    },
+    "stadester-Wandsbek-Germany": {
+      "name": "Wandsbek",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        53.58772279999999,
+        10.0924149
+      ],
+      "pixel_coords": [
+        2281,
+        1723
+      ],
+      "density": 1175.9327020939563
+    },
+    "stadester-Wetter (Ruhr)-Germany": {
+      "name": "Wetter (Ruhr)",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        51.3860225,
+        7.3914998
+      ],
+      "pixel_coords": [
+        2248,
+        1696
+      ],
+      "density": 1175.8540316879
+    },
+    "stadester-Essen-Germany": {
+      "name": "Essen",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        51.4575573,
+        7.0224632
+      ],
+      "pixel_coords": [
+        2244,
+        1697
+      ],
+      "density": 1168.3694434278364
+    },
+    "stadester-Salerno-Italy": {
+      "name": "Salerno",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        40.6813313,
+        14.7743583
+      ],
+      "pixel_coords": [
+        2337,
+        1568
+      ],
+      "density": 1151.530526429195
+    },
+    "stadester-Brussel-Belgium": {
+      "name": "Brussel",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        50.84770289999999,
+        4.357200100000001
+      ],
+      "pixel_coords": [
+        2212,
+        1690
+      ],
+      "density": 1147.7003182987237
+    },
+    "stadester-Stockton-on-Tees-United Kingdom": {
+      "name": "Stockton-on-Tees",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        54.5704551,
+        -1.3289821
+      ],
+      "pixel_coords": [
+        2144,
+        1734
+      ],
+      "density": 1134.0787222324827
+    },
+    "stadester-Cannes-France": {
+      "name": "Cannes",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        43.5539499,
+        7.0170217
+      ],
+      "pixel_coords": [
+        2244,
+        1602
+      ],
+      "density": 1133.7433094169837
+    },
+    "stadester-Burg-Germany": {
+      "name": "Burg",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        52.2709013,
+        11.8553502
+      ],
+      "pixel_coords": [
+        2302,
+        1707
+      ],
+      "density": 1108.398540696186
+    },
+    "stadester-Birmingham-United Kingdom": {
+      "name": "Birmingham",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        52.4822694,
+        -1.8900078
+      ],
+      "pixel_coords": [
+        2137,
+        1709
+      ],
+      "density": 1078.7804739975902
+    },
+    "stadester-Lancaster-United Kingdom": {
+      "name": "Lancaster",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        54.0449072,
+        -2.799346700000001
+      ],
+      "pixel_coords": [
+        2126,
+        1728
+      ],
+      "density": 1078.4068111012716
+    },
+    "stadester-Zefat-Israel": {
+      "name": "Zefat",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        32.964648,
+        35.495997
+      ],
+      "pixel_coords": [
+        2585,
+        1475
+      ],
+      "density": 1068.1708154989838
+    },
+    "stadester-Virovitica (town)-Croatia": {
+      "name": "Virovitica (town)",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        45.83203410000001,
+        17.386757
+      ],
+      "pixel_coords": [
+        2368,
+        1629
+      ],
+      "density": 1061.0477300600837
+    },
+    "stadester-Nagasaki-Japan": {
+      "name": "Nagasaki",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        32.7503334,
+        129.8778888
+      ],
+      "pixel_coords": [
+        3718,
+        1473
+      ],
+      "density": 1060.9679185898112
+    },
+    "stadester-Cobh-Ireland": {
+      "name": "Cobh",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        51.8530415,
+        -8.295090499999999
+      ],
+      "pixel_coords": [
+        2060,
+        1702
+      ],
+      "density": 1057.3310429797084
+    },
+    "stadester-Brighton-United Kingdom": {
+      "name": "Brighton",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        50.8229402,
+        -0.1362672
+      ],
+      "pixel_coords": [
+        2158,
+        1689
+      ],
+      "density": 1053.924734943918
+    },
+    "stadester-Holguín-Cuba": {
+      "name": "Holguín",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        20.8872981,
+        -76.2599062
+      ],
+      "pixel_coords": [
+        1244,
+        1330
+      ],
+      "density": 1053.4041124177315
+    },
+    "stadester-Amarapura-Myanmar": {
+      "name": "Amarapura",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        21.9038842,
+        96.0493896
+      ],
+      "pixel_coords": [
+        3312,
+        1342
+      ],
+      "density": 1045.735935424754
+    },
+    "stadester-Bytom-Poland": {
+      "name": "Bytom",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        50.3483816,
+        18.9157175
+      ],
+      "pixel_coords": [
+        2386,
+        1684
+      ],
+      "density": 1042.0379382955107
+    },
+    "stadester-Nürnberg-Germany": {
+      "name": "Nürnberg",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        49.45428810000001,
+        11.0745641
+      ],
+      "pixel_coords": [
+        2292,
+        1673
+      ],
+      "density": 1037.9950027632738
+    },
+    "stadester-Bar-le-Duc-France": {
+      "name": "Bar-le-Duc",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        48.7748253,
+        5.1599327
+      ],
+      "pixel_coords": [
+        2221,
+        1665
+      ],
+      "density": 1036.952925398744
+    },
+    "stadester-Liverpool-United Kingdom": {
+      "name": "Liverpool",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        53.4083714,
+        -2.9915726
+      ],
+      "pixel_coords": [
+        2124,
+        1720
+      ],
+      "density": 1032.412731285555
+    },
+    "stadester-Massa-Italy": {
+      "name": "Massa",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        44.035489,
+        10.1395361
+      ],
+      "pixel_coords": [
+        2281,
+        1608
+      ],
+      "density": 1029.7104483227579
+    },
+    "stadester-Patna-India": {
+      "name": "Patna",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        25.5940947,
+        85.1375645
+      ],
+      "pixel_coords": [
+        3181,
+        1387
+      ],
+      "density": 1022.039308299705
+    },
+    "stadester-Avallon-France": {
+      "name": "Avallon",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        47.48,
+        3.9
+      ],
+      "pixel_coords": [
+        2206,
+        1649
+      ],
+      "density": 1021.38790740534
+    },
+    "stadester-Elblag-Poland": {
+      "name": "Elblag",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        54.1560613,
+        19.4044897
+      ],
+      "pixel_coords": [
+        2392,
+        1729
+      ],
+      "density": 1016.005442999
+    },
+    "stadester-Vitória-Brazil": {
+      "name": "Vitória",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -20.3196711,
+        -40.3385246
+      ],
+      "pixel_coords": [
+        1675,
+        836
+      ],
+      "density": 1013.3482743562517
+    },
+    "stadester-Bayonne-France": {
+      "name": "Bayonne",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        43.4933798,
+        -1.4757394
+      ],
+      "pixel_coords": [
+        2142,
+        1601
+      ],
+      "density": 1008.4564932008036
+    },
+    "stadester-Perth-Australia": {
+      "name": "Perth",
+      "region": "oceania",
+      "colour": [
+        0,
+        205,
+        143
+      ],
+      "coords": [
+        -31.9513993,
+        115.8616783
+      ],
+      "pixel_coords": [
+        3550,
+        696
+      ],
+      "density": 1007.3990335247212
+    },
+    "stadester-Montréal-Canada": {
+      "name": "Montréal",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        45.5018869,
+        -73.56739189999999
+      ],
+      "pixel_coords": [
+        1277,
+        1626
+      ],
+      "density": 1005.9038699910004
+    },
+    "stadester-Fujieda-Japan": {
+      "name": "Fujieda",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        34.8673376,
+        138.2575386
+      ],
+      "pixel_coords": [
+        3819,
+        1498
+      ],
+      "density": 1004.5668924312253
+    },
+    "stadester-Akko-Israel": {
+      "name": "Akko",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        32.933052,
+        35.082678
+      ],
+      "pixel_coords": [
+        2580,
+        1475
+      ],
+      "density": 1000.69364836367
+    },
+    "stadester-Brugge-Belgium": {
+      "name": "Brugge",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        51.20845079999999,
+        3.2250586
+      ],
+      "pixel_coords": [
+        2198,
+        1694
+      ],
+      "density": 997.1450141921516
+    },
+    "stadester-Agadez-Niger": {
+      "name": "Agadez",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        16.9741689,
+        7.986535
+      ],
+      "pixel_coords": [
+        2255,
+        1283
+      ],
+      "density": 996.9887691496638
+    },
+    "stadester-Bragança-Portugal": {
+      "name": "Bragança",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        41.8061131,
+        -6.756737999999999
+      ],
+      "pixel_coords": [
+        2078,
+        1581
+      ],
+      "density": 995.7144351483706
+    },
+    "stadester-Beograd-Serbia": {
+      "name": "Beograd",
+      "region": "eastern_europe_and_russia",
+      "colour": [
+        20,
+        114,
+        30
+      ],
+      "coords": [
+        44.8125449,
+        20.46123
+      ],
+      "pixel_coords": [
+        2405,
+        1617
+      ],
+      "density": 990.9515367773765
+    },
+    "stadester-Huancavelica-Peru": {
+      "name": "Huancavelica",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -12.7861978,
+        -74.9764024
+      ],
+      "pixel_coords": [
+        1260,
+        926
+      ],
+      "density": 990.3863804457013
+    },
+    "stadester-Gliwice-Poland": {
+      "name": "Gliwice",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        50.2921738,
+        18.6673092
+      ],
+      "pixel_coords": [
+        2384,
+        1683
+      ],
+      "density": 989.0124814248311
+    },
+    "stadester-Ensenada-Mexico": {
+      "name": "Ensenada",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        31.8557021,
+        -116.6057392
+      ],
+      "pixel_coords": [
+        760,
+        1462
+      ],
+      "density": 986.9967813281528
+    },
+    "stadester-Cacheu (commune)-Guinea-Bissau": {
+      "name": "Cacheu (commune)",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        12.2732631,
+        -16.1669156
+      ],
+      "pixel_coords": [
+        1965,
+        1227
+      ],
+      "density": 986.0679683974845
+    },
+    "stadester-Montceau-les-Mines-France": {
+      "name": "Montceau-les-Mines",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        46.67413,
+        4.362979
+      ],
+      "pixel_coords": [
+        2212,
+        1640
+      ],
+      "density": 984.2424613446824
+    },
+    "stadester-Lanzhou-China": {
+      "name": "Lanzhou",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        36.0613799,
+        103.83417
+      ],
+      "pixel_coords": [
+        3406,
+        1512
+      ],
+      "density": 981.676974514334
+    },
+    "stadester-Heidelberg-Germany": {
+      "name": "Heidelberg",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        49.3987524,
+        8.6724335
+      ],
+      "pixel_coords": [
+        2264,
+        1672
+      ],
+      "density": 980.4026405130408
+    },
+    "stadester-Arbon-Rorschach-Switzerland": {
+      "name": "Arbon-Rorschach",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        47.4788825,
+        9.4916808
+      ],
+      "pixel_coords": [
+        2273,
+        1649
+      ],
+      "density": 977.0357058457048
+    },
+    "stadester-Montbéliard-France": {
+      "name": "Montbéliard",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        47.510356,
+        6.798466
+      ],
+      "pixel_coords": [
+        2241,
+        1650
+      ],
+      "density": 972.2056092190095
+    },
+    "stadester-Suva (agglomeration)-Fiji": {
+      "name": "Suva (agglomeration)",
+      "region": "oceania",
+      "colour": [
+        0,
+        205,
+        143
+      ],
+      "coords": [
+        -18.1265564,
+        178.439908
+      ],
+      "pixel_coords": [
+        4301,
+        862
+      ],
+      "density": 970.2335692090726
+    },
+    "stadester-Creusot, Le --France": {
+      "name": "Creusot, Le -",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        46.80535099999999,
+        4.4278
+      ],
+      "pixel_coords": [
+        2213,
+        1641
+      ],
+      "density": 969.3288442456436
+    },
+    "stadester-Sebinkarahisar-Turkey": {
+      "name": "Sebinkarahisar",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        40.28849599999999,
+        38.422166
+      ],
+      "pixel_coords": [
+        2621,
+        1563
+      ],
+      "density": 967.9801074788165
+    },
+    "stadester-Chatham-United Kingdom": {
+      "name": "Chatham",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        51.380952,
+        0.52213
+      ],
+      "pixel_coords": [
+        2166,
+        1696
+      ],
+      "density": 966.4438028610537
+    },
+    "stadester-Gardiz-Afghanistan": {
+      "name": "Gardiz",
+      "region": "central_asia",
+      "colour": [
+        41,
+        193,
+        175
+      ],
+      "coords": [
+        33.6042793,
+        69.2281531
+      ],
+      "pixel_coords": [
+        2990,
+        1483
+      ],
+      "density": 966.1921514177534
+    },
+    "stadester-Yarumal-Colombia": {
+      "name": "Yarumal",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        6.961969,
+        -75.4190689
+      ],
+      "pixel_coords": [
+        1254,
+        1163
+      ],
+      "density": 965.8693043648832
+    },
+    "stadester-Denain-France": {
+      "name": "Denain",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        50.3268982,
+        3.3934812
+      ],
+      "pixel_coords": [
+        2200,
+        1683
+      ],
+      "density": 965.2711748046963
+    },
+    "stadester-Panamá City-Panama": {
+      "name": "Panamá City",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        8.9823792,
+        -79.51986959999999
+      ],
+      "pixel_coords": [
+        1205,
+        1187
+      ],
+      "density": 963.2949789449385
+    },
+    "stadester-Ahmadnagar-India": {
+      "name": "Ahmadnagar",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        19.0948287,
+        74.74797889999999
+      ],
+      "pixel_coords": [
+        3056,
+        1309
+      ],
+      "density": 962.5767887742065
+    },
+    "stadester-Rostov-Russia": {
+      "name": "Rostov",
+      "region": "eastern_europe_and_russia",
+      "colour": [
+        20,
+        114,
+        30
+      ],
+      "coords": [
+        47.2357137,
+        39.701505
+      ],
+      "pixel_coords": [
+        2636,
+        1646
+      ],
+      "density": 961.8897118237146
+    },
+    "stadester-North Vancouver-Canada": {
+      "name": "North Vancouver",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        49.3199816,
+        -123.0724139
+      ],
+      "pixel_coords": [
+        683,
+        1671
+      ],
+      "density": 961.3672616347203
+    },
+    "stadester-Krivodol-Bulgaria": {
+      "name": "Krivodol",
+      "region": "eastern_europe_and_russia",
+      "colour": [
+        20,
+        114,
+        30
+      ],
+      "coords": [
+        43.3682573,
+        23.4751109
+      ],
+      "pixel_coords": [
+        2441,
+        1600
+      ],
+      "density": 959.980777987405
+    },
+    "stadester-Wicklow-Ireland": {
+      "name": "Wicklow",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        52.9807857,
+        -6.046806
+      ],
+      "pixel_coords": [
+        2087,
+        1715
+      ],
+      "density": 955.5897841042542
+    },
+    "stadester-Oakland-California": {
+      "name": "Oakland",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        37.8043514,
+        -122.2711639
+      ],
+      "pixel_coords": [
+        692,
+        1533
+      ],
+      "density": 955.2376763620487
+    },
+    "stadester-Santos-Brazil": {
+      "name": "Santos",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -23.9592201,
+        -46.3317787
+      ],
+      "pixel_coords": [
+        1604,
+        792
+      ],
+      "density": 953.4789809903209
+    },
+    "stadester-Mannheim-Germany": {
+      "name": "Mannheim",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        49.4873329,
+        8.4646441
+      ],
+      "pixel_coords": [
+        2261,
+        1673
+      ],
+      "density": 953.2981818854826
+    },
+    "stadester-Jaunpur-India": {
+      "name": "Jaunpur",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        25.7464145,
+        82.68370329999999
+      ],
+      "pixel_coords": [
+        3152,
+        1388
+      ],
+      "density": 953.0333806182401
+    },
+    "stadester-Olesnica-Poland": {
+      "name": "Olesnica",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        51.2134346,
+        17.3898504
+      ],
+      "pixel_coords": [
+        2368,
+        1694
+      ],
+      "density": 952.889426947379
+    },
+    "stadester-Chorzów-Poland": {
+      "name": "Chorzów",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        50.29395410000001,
+        18.9544814
+      ],
+      "pixel_coords": [
+        2387,
+        1683
+      ],
+      "density": 951.3861485389175
+    },
+    "stadester-San Marino (city)-San Marino": {
+      "name": "San Marino (city)",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        43.9355907,
+        12.4472806
+      ],
+      "pixel_coords": [
+        2309,
+        1607
+      ],
+      "density": 950.3773251341511
+    },
+    "stadester-Ambâla-India": {
+      "name": "Ambâla",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        30.3752011,
+        76.782122
+      ],
+      "pixel_coords": [
+        3081,
+        1444
+      ],
+      "density": 948.0270441748575
+    },
+    "stadester-Motherwell-United Kingdom": {
+      "name": "Motherwell",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        55.78320919999999,
+        -3.9810968
+      ],
+      "pixel_coords": [
+        2112,
+        1749
+      ],
+      "density": 947.6598307055239
+    },
+    "stadester-Qabis-Tunisia": {
+      "name": "Qabis",
+      "region": "maghreb_egypt",
+      "colour": [
+        239,
+        188,
+        112
+      ],
+      "coords": [
+        33.888077,
+        10.0975221
+      ],
+      "pixel_coords": [
+        2281,
+        1486
+      ],
+      "density": 946.1525630402098
+    },
+    "stadester-Liège-Belgium": {
+      "name": "Liège",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        50.6402286,
+        5.5689372
+      ],
+      "pixel_coords": [
+        2226,
+        1687
+      ],
+      "density": 945.6797023511456
+    },
+    "stadester-Gällivare-Sweden": {
+      "name": "Gällivare",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        67.1379,
+        20.6593618
+      ],
+      "pixel_coords": [
+        2407,
+        1885
+      ],
+      "density": 944.2783050956025
+    },
+    "stadester-Pila-Poland": {
+      "name": "Pila",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        53.1509671,
+        16.7382266
+      ],
+      "pixel_coords": [
+        2360,
+        1717
+      ],
+      "density": 943.2553905673951
+    },
+    "stadester-Surgidero de Batabanó-Cuba": {
+      "name": "Surgidero de Batabanó",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        22.6875359,
+        -82.29362929999999
+      ],
+      "pixel_coords": [
+        1172,
+        1352
+      ],
+      "density": 943.0039710943092
+    },
+    "stadester-Rapperswil-Switzerland": {
+      "name": "Rapperswil",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        47.2266239,
+        8.818437399999999
+      ],
+      "pixel_coords": [
+        2265,
+        1646
+      ],
+      "density": 942.7939590977203
+    },
+    "stadester-Zeila-Somalia": {
+      "name": "Zeila",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        11.3536874,
+        43.4753136
+      ],
+      "pixel_coords": [
+        2681,
+        1216
+      ],
+      "density": 937.6181822258011
+    },
+    "stadester-Bogaziliyan-Turkey": {
+      "name": "Bogaziliyan",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        38.963745,
+        35.243322
+      ],
+      "pixel_coords": [
+        2582,
+        1547
+      ],
+      "density": 935.2476435931669
+    },
+    "stadester-Puerto Wilches-Colombia": {
+      "name": "Puerto Wilches",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        7.3483695,
+        -73.9029954
+      ],
+      "pixel_coords": [
+        1273,
+        1168
+      ],
+      "density": 934.3262318734653
+    },
+    "stadester-Retalhuleu-Guatemala": {
+      "name": "Retalhuleu",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        14.5245485,
+        -91.685788
+      ],
+      "pixel_coords": [
+        1059,
+        1254
+      ],
+      "density": 933.8727530980427
+    },
+    "stadester-Lille-France": {
+      "name": "Lille",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        50.624378,
+        3.0678588
+      ],
+      "pixel_coords": [
+        2196,
+        1687
+      ],
+      "density": 931.5261091141465
+    },
+    "stadester-Karâchi (agglomeration)-Pakistan": {
+      "name": "Karâchi (agglomeration)",
+      "region": "central_asia",
+      "colour": [
+        41,
+        193,
+        175
+      ],
+      "coords": [
+        24.8607343,
+        67.0011364
+      ],
+      "pixel_coords": [
+        2964,
+        1378
+      ],
+      "density": 930.1901081107815
+    },
+    "stadester-Bremen-Germany": {
+      "name": "Bremen",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        53.07929619999999,
+        8.8016937
+      ],
+      "pixel_coords": [
+        2265,
+        1716
+      ],
+      "density": 929.0126461389787
+    },
+    "stadester-Kalisz-Poland": {
+      "name": "Kalisz",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        51.76727990000001,
+        18.0853462
+      ],
+      "pixel_coords": [
+        2377,
+        1701
+      ],
+      "density": 928.7272188720557
+    },
+    "stadester-Kogarah-Australia": {
+      "name": "Kogarah",
+      "region": "oceania",
+      "colour": [
+        0,
+        205,
+        143
+      ],
+      "coords": [
+        -33.9643523,
+        151.1372588
+      ],
+      "pixel_coords": [
+        3973,
+        672
+      ],
+      "density": 928.1411055530746
+    },
+    "stadester-Ahmadâbâd-India": {
+      "name": "Ahmadâbâd",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        23.022505,
+        72.5713621
+      ],
+      "pixel_coords": [
+        3030,
+        1356
+      ],
+      "density": 925.1763009254748
+    },
+    "stadester-Thionville-France": {
+      "name": "Thionville",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        49.357328,
+        6.1685835
+      ],
+      "pixel_coords": [
+        2234,
+        1672
+      ],
+      "density": 925.0351604306295
+    },
+    "stadester-Caracas-Venezuela": {
+      "name": "Caracas",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        10.4805937,
+        -66.90360629999999
+      ],
+      "pixel_coords": [
+        1357,
+        1205
+      ],
+      "density": 925.0345091459551
+    },
+    "stadester-Siegburg-Germany": {
+      "name": "Siegburg",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        50.7998719,
+        7.212027200000001
+      ],
+      "pixel_coords": [
+        2246,
+        1689
+      ],
+      "density": 924.2850098209472
+    },
+    "stadester-Van-Turkey": {
+      "name": "Van",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        38.5012085,
+        43.3729793
+      ],
+      "pixel_coords": [
+        2680,
+        1542
+      ],
+      "density": 924.2387167180589
+    },
+    "stadester-Ciudad de México-Mexico": {
+      "name": "Ciudad de México",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        19.4326077,
+        -99.133208
+      ],
+      "pixel_coords": [
+        970,
+        1313
+      ],
+      "density": 923.4866227113887
+    },
+    "stadester-Polonaruwa-Sri Lanka": {
+      "name": "Polonaruwa",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        7.914703,
+        81.0001183
+      ],
+      "pixel_coords": [
+        3132,
+        1174
+      ],
+      "density": 922.8226499263717
+    },
+    "stadester-Artemivs'k-Ukraine": {
+      "name": "Artemivs'k",
+      "region": "eastern_europe_and_russia",
+      "colour": [
+        20,
+        114,
+        30
+      ],
+      "coords": [
+        48.5986674,
+        37.9980367
+      ],
+      "pixel_coords": [
+        2615,
+        1663
+      ],
+      "density": 922.1279136041255
+    },
+    "stadester-Kortrijk-Belgium": {
+      "name": "Kortrijk",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        50.8270689,
+        3.2603645
+      ],
+      "pixel_coords": [
+        2199,
+        1689
+      ],
+      "density": 918.0825592431854
+    },
+    "stadester-Condé-sur-l'Escaut-France": {
+      "name": "Condé-sur-l'Escaut",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        50.448651,
+        3.593407
+      ],
+      "pixel_coords": [
+        2203,
+        1685
+      ],
+      "density": 917.8351302551036
+    },
+    "stadester-Khiva-Uzbekistan": {
+      "name": "Khiva",
+      "region": "central_asia",
+      "colour": [
+        41,
+        193,
+        175
+      ],
+      "coords": [
+        41.3895075,
+        60.3414529
+      ],
+      "pixel_coords": [
+        2884,
+        1576
+      ],
+      "density": 913.995309423462
+    },
+    "stadester-Saint Peter Port-United Kingdom": {
+      "name": "Saint Peter Port",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        55.378051,
+        -3.435973
+      ],
+      "pixel_coords": [
+        2118,
+        1744
+      ],
+      "density": 913.1588403108218
+    },
+    "stadester-Bridgetown (agglomeration)-Barbados": {
+      "name": "Bridgetown (agglomeration)",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        13.0971177,
+        -59.6132388
+      ],
+      "pixel_coords": [
+        1444,
+        1237
+      ],
+      "density": 912.8996103437687
+    },
+    "stadester-Dubrovnik (town)-Croatia": {
+      "name": "Dubrovnik (town)",
+      "region": "eastern_europe_and_russia",
+      "colour": [
+        20,
+        114,
+        30
+      ],
+      "coords": [
+        42.65066059999999,
+        18.0944238
+      ],
+      "pixel_coords": [
+        2377,
+        1591
+      ],
+      "density": 912.4448217709295
+    },
+    "stadester-Kampala-Uganda": {
+      "name": "Kampala",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        0.3151692,
+        32.5816313
+      ],
+      "pixel_coords": [
+        2550,
+        1083
+      ],
+      "density": 911.2706295600215
+    },
+    "stadester-Zary-Poland": {
+      "name": "Zary",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        51.6420121,
+        15.1369992
+      ],
+      "pixel_coords": [
+        2341,
+        1699
+      ],
+      "density": 910.5845148908772
+    },
+    "stadester-Lens-France": {
+      "name": "Lens",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        50.42893000000001,
+        2.83183
+      ],
+      "pixel_coords": [
+        2193,
+        1685
+      ],
+      "density": 909.0800093881089
+    },
+    "stadester-Cazin-Bosnia and Herzegovina": {
+      "name": "Cazin",
+      "region": "eastern_europe_and_russia",
+      "colour": [
+        20,
+        114,
+        30
+      ],
+      "coords": [
+        44.96664519999999,
+        15.942035
+      ],
+      "pixel_coords": [
+        2351,
+        1619
+      ],
+      "density": 908.7538936214783
+    },
+    "stadester-Shenyang-China": {
+      "name": "Shenyang",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        41.804778,
+        123.432968
+      ],
+      "pixel_coords": [
+        3641,
+        1581
+      ],
+      "density": 905.4939604691913
+    },
+    "stadester-Aachen-Germany": {
+      "name": "Aachen",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        50.7753455,
+        6.083886800000001
+      ],
+      "pixel_coords": [
+        2233,
+        1689
+      ],
+      "density": 905.3108437557645
+    },
+    "stadester-Aït Melloul-Morocco": {
+      "name": "Aït Melloul",
+      "region": "maghreb_egypt",
+      "colour": [
+        239,
+        188,
+        112
+      ],
+      "coords": [
+        30.33792829999999,
+        -9.5040247
+      ],
+      "pixel_coords": [
+        2045,
+        1444
+      ],
+      "density": 904.9436421565179
+    },
+    "stadester-Barauni-India": {
+      "name": "Barauni",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        25.4657481,
+        85.99139230000002
+      ],
+      "pixel_coords": [
+        3191,
+        1385
+      ],
+      "density": 904.1920220460131
+    },
+    "stadester-Shizuoka-Japan": {
+      "name": "Shizuoka",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        34.9755668,
+        138.3826773
+      ],
+      "pixel_coords": [
+        3820,
+        1499
+      ],
+      "density": 904.1553532685974
+    },
+    "stadester-Johannesburg-South Africa": {
+      "name": "Johannesburg",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        -26.205647,
+        28.0337185
+      ],
+      "pixel_coords": [
+        2496,
+        765
+      ],
+      "density": 903.5557761257414
+    },
+    "stadester-Gorna Orjachovica-Bulgaria": {
+      "name": "Gorna Orjachovica",
+      "region": "eastern_europe_and_russia",
+      "colour": [
+        20,
+        114,
+        30
+      ],
+      "coords": [
+        43.1208016,
+        25.6896757
+      ],
+      "pixel_coords": [
+        2468,
+        1597
+      ],
+      "density": 903.1969906896096
+    },
+    "stadester-Kitakyûshû-Japan": {
+      "name": "Kitakyûshû",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        33.8834976,
+        130.8751773
+      ],
+      "pixel_coords": [
+        3730,
+        1486
+      ],
+      "density": 902.6107292360352
+    },
+    "stadester-Leuven-Belgium": {
+      "name": "Leuven",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        50.8791453,
+        4.7024648
+      ],
+      "pixel_coords": [
+        2216,
+        1690
+      ],
+      "density": 901.8113506591646
+    },
+    "stadester-Petrozavodsk-Russia": {
+      "name": "Petrozavodsk",
+      "region": "eastern_europe_and_russia",
+      "colour": [
+        20,
+        114,
+        30
+      ],
+      "coords": [
+        61.77816170000001,
+        34.3640396
+      ],
+      "pixel_coords": [
+        2572,
+        1821
+      ],
+      "density": 900.5877178314212
+    },
+    "stadester-Anamorós-El Salvador": {
+      "name": "Anamorós",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        13.7400704,
+        -87.8721602
+      ],
+      "pixel_coords": [
+        1105,
+        1244
+      ],
+      "density": 899.7848203281745
+    },
+    "stadester-Hurstville-Australia": {
+      "name": "Hurstville",
+      "region": "oceania",
+      "colour": [
+        0,
+        205,
+        143
+      ],
+      "coords": [
+        -33.9645633,
+        151.1010187
+      ],
+      "pixel_coords": [
+        3973,
+        672
+      ],
+      "density": 899.1324438822273
+    },
+    "stadester-Tadjourah-Djibouti": {
+      "name": "Tadjourah",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        11.7873808,
+        42.8810929
+      ],
+      "pixel_coords": [
+        2674,
+        1221
+      ],
+      "density": 898.7030186258378
+    },
+    "stadester-Butiaba-Uganda": {
+      "name": "Butiaba",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        1.815151,
+        31.324287
+      ],
+      "pixel_coords": [
+        2535,
+        1101
+      ],
+      "density": 898.0454658046177
+    }
+  },
+  "density_ghsl": {
+    "ghsl-Ar Rujum-#N/A": {
+      "name": "Ar Rujum",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        15.5,
+        43.583333333333314
+      ],
+      "pixel_coords": [
+        2683,
+        1266
+      ],
+      "density_ghsl": 120276
+    },
+    "ghsl-Al Ma`azibah-#N/A": {
+      "name": "Al Ma`azibah",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        15.416666666666671,
+        43.25
+      ],
+      "pixel_coords": [
+        2679,
+        1265
+      ],
+      "density_ghsl": 96826
+    },
+    "ghsl-Al Qal`ah; Jabal Muqbil-#N/A": {
+      "name": "Al Qal`ah; Jabal Muqbil",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        15.666666666666657,
+        43.45833333333334
+      ],
+      "pixel_coords": [
+        2681,
+        1268
+      ],
+      "density_ghsl": 84643
+    },
+    "ghsl-Jotsoma; Phezhu-#N/A": {
+      "name": "Jotsoma; Phezhu",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        25.66666666666667,
+        94
+      ],
+      "pixel_coords": [
+        3288,
+        1388
+      ],
+      "density_ghsl": 76517.99999999996
+    },
+    "ghsl-Karora-#N/A": {
+      "name": "Karora",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        17.75,
+        38.33333333333334
+      ],
+      "pixel_coords": [
+        2620,
+        1293
+      ],
+      "density_ghsl": 75898
+    },
+    "ghsl-Tiquisio-Colombia": {
+      "name": "Tiquisio",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        8.583333333333329,
+        -74.33333333333334
+      ],
+      "pixel_coords": [
+        1268,
+        1183
+      ],
+      "density_ghsl": 71999
+    },
+    "ghsl-Al Jama'im-#N/A": {
+      "name": "Al Jama'im",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        15.416666666666671,
+        43.416666666666686
+      ],
+      "pixel_coords": [
+        2681,
+        1265
+      ],
+      "density_ghsl": 66726
+    },
+    "ghsl-Sarvestan-Iran": {
+      "name": "Sarvestan",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        29.333333333333336,
+        53.16666666666666
+      ],
+      "pixel_coords": [
+        2798,
+        1432
+      ],
+      "density_ghsl": 63654
+    },
+    "ghsl-Zahr al Husayb; Al Irshad az Zira`i-#N/A": {
+      "name": "Zahr al Husayb; Al Irshad az Zira`i",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        15.75,
+        43.5
+      ],
+      "pixel_coords": [
+        2682,
+        1269
+      ],
+      "density_ghsl": 61876
+    },
+    "ghsl-Al Ghawl; As Salb-#N/A": {
+      "name": "Al Ghawl; As Salb",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        15.916666666666657,
+        43.583333333333314
+      ],
+      "pixel_coords": [
+        2683,
+        1271
+      ],
+      "density_ghsl": 61855
+    },
+    "ghsl-Natinga-#N/A": {
+      "name": "Natinga",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        4.25,
+        33.95833333333334
+      ],
+      "pixel_coords": [
+        2567,
+        1131
+      ],
+      "density_ghsl": 57894
+    },
+    "ghsl-`Ozlat Habat-#N/A": {
+      "name": "`Ozlat Habat",
+      "density_ghsl": 57244
+    },
+    "ghsl-Bangarmau-India": {
+      "name": "Bangarmau",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        26.916666666666664,
+        80.16666666666669
+      ],
+      "pixel_coords": [
+        3122,
+        1403
+      ],
+      "density_ghsl": 54961.000000000044
+    },
+    "ghsl-Bike-#N/A": {
+      "name": "Bike",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        9.583333333333343,
+        41.16666666666666
+      ],
+      "pixel_coords": [
+        2654,
+        1195
+      ],
+      "density_ghsl": 53879
+    },
+    "ghsl-Lintou-China": {
+      "name": "Lintou",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        21.666666666666657,
+        111
+      ],
+      "pixel_coords": [
+        3492,
+        1340
+      ],
+      "density_ghsl": 53345.99999999999
+    },
+    "ghsl-Ath Thahirah-#N/A": {
+      "name": "Ath Thahirah",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        16.41666666666667,
+        43.333333333333314
+      ],
+      "pixel_coords": [
+        2680,
+        1277
+      ],
+      "density_ghsl": 51089
+    },
+    "ghsl-Inticho-#N/A": {
+      "name": "Inticho",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        14.333333333333329,
+        39.08333333333334
+      ],
+      "pixel_coords": [
+        2629,
+        1252
+      ],
+      "density_ghsl": 50845.000000000044
+    },
+    "ghsl-Pingchang County-China": {
+      "name": "Pingchang County",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        31.583333333333336,
+        107.08333333333331
+      ],
+      "pixel_coords": [
+        3444,
+        1459
+      ],
+      "density_ghsl": 48985.000000000015
+    },
+    "ghsl-Nimule-South Sudan": {
+      "name": "Nimule",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        3.583333333333343,
+        32.04166666666666
+      ],
+      "pixel_coords": [
+        2544,
+        1123
+      ],
+      "density_ghsl": 47528
+    },
+    "ghsl-Ar Rawnah; Ar Rawnah-#N/A": {
+      "name": "Ar Rawnah; Ar Rawnah",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        13.833333333333329,
+        43.75
+      ],
+      "pixel_coords": [
+        2685,
+        1246
+      ],
+      "density_ghsl": 47293
+    },
+    "ghsl-????????; ????????; ????????????-Russia": {
+      "name": "????????; ????????; ????????????",
+      "region": "eastern_europe_and_russia",
+      "colour": [
+        20,
+        114,
+        30
+      ],
+      "coords": [
+        58,
+        38.83333333333334
+      ],
+      "pixel_coords": [
+        2626,
+        1776
+      ],
+      "density_ghsl": 45711.99999999997
+    },
+    "ghsl-Longshui-China": {
+      "name": "Longshui",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        29.583333333333336,
+        105.75
+      ],
+      "pixel_coords": [
+        3429,
+        1435
+      ],
+      "density_ghsl": 45428.99999999997
+    },
+    "ghsl-Aliganj-India": {
+      "name": "Aliganj",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        27.5,
+        79.125
+      ],
+      "pixel_coords": [
+        3109,
+        1410
+      ],
+      "density_ghsl": 45152
+    },
+    "ghsl-Toraghundi-#N/A": {
+      "name": "Toraghundi",
+      "region": "central_asia",
+      "colour": [
+        41,
+        193,
+        175
+      ],
+      "coords": [
+        35.25000000000001,
+        62.25000000000003
+      ],
+      "pixel_coords": [
+        2907,
+        1503
+      ],
+      "density_ghsl": 44485
+    },
+    "ghsl-Dianjiang-China": {
+      "name": "Dianjiang",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        30.33333333333333,
+        107.29166666666669
+      ],
+      "pixel_coords": [
+        3447,
+        1444
+      ],
+      "density_ghsl": 44316.999999999985
+    },
+    "ghsl-Al Masaliyah; Hadnan; As Sanahif; Mayhal Hadnan; Najd Mashra`ah; Hadabah; Al Mayhal Mashra`ah; Dhi `Unqub; Namah; Al Qiblah; Akamat Yafi`; As Sat; Al `Ursum; Ar Rahbah; Ad Daribah; Ar Rajhah-Yemen": {
+      "name": "Al Masaliyah; Hadnan; As Sanahif; Mayhal Hadnan; Najd Mashra`ah; Hadabah; Al Mayhal Mashra`ah; Dhi `Unqub; Namah; Al Qiblah; Akamat Yafi`; As Sat; Al `Ursum; Ar Rahbah; Ad Daribah; Ar Rajhah",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        13.583333333333329,
+        43.916666666666686
+      ],
+      "pixel_coords": [
+        2687,
+        1243
+      ],
+      "density_ghsl": 43706
+    },
+    "ghsl-Dhupguri-India": {
+      "name": "Dhupguri",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        26.583333333333336,
+        88.95833333333337
+      ],
+      "pixel_coords": [
+        3227,
+        1399
+      ],
+      "density_ghsl": 43258.99999999999
+    },
+    "ghsl-Rongchang-China": {
+      "name": "Rongchang",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        29.416666666666664,
+        105.58333333333337
+      ],
+      "pixel_coords": [
+        3427,
+        1432
+      ],
+      "density_ghsl": 43086.000000000015
+    },
+    "ghsl-Sareyn-Iran": {
+      "name": "Sareyn",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        38.166666666666664,
+        48
+      ],
+      "pixel_coords": [
+        2736,
+        1538
+      ],
+      "density_ghsl": 42718.999999999985
+    },
+    "ghsl-Hechuan-China": {
+      "name": "Hechuan",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        30,
+        106.20833333333331
+      ],
+      "pixel_coords": [
+        3434,
+        1440
+      ],
+      "density_ghsl": 42250.00000000002
+    },
+    "ghsl-Al Hudayyah; Huen Sedekh-#N/A": {
+      "name": "Al Hudayyah; Huen Sedekh",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        14.333333333333329,
+        43.666666666666686
+      ],
+      "pixel_coords": [
+        2684,
+        1252
+      ],
+      "density_ghsl": 41879
+    },
+    "ghsl-Neragyatanahalli-#N/A": {
+      "name": "Neragyatanahalli",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        12.333333333333343,
+        76.91666666666669
+      ],
+      "pixel_coords": [
+        3083,
+        1228
+      ],
+      "density_ghsl": 41670
+    },
+    "ghsl-`Adan Barakah; Suq al Hurriyah; Al Khawamis-Yemen": {
+      "name": "`Adan Barakah; Suq al Hurriyah; Al Khawamis",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        13.833333333333329,
+        43.75
+      ],
+      "pixel_coords": [
+        2685,
+        1246
+      ],
+      "density_ghsl": 41312
+    },
+    "ghsl-Bhola-Bangladesh": {
+      "name": "Bhola",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        22.75,
+        90.58333333333331
+      ],
+      "pixel_coords": [
+        3247,
+        1353
+      ],
+      "density_ghsl": 41213.000000000015
+    },
+    "ghsl-Wusheng-China": {
+      "name": "Wusheng",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        30.416666666666664,
+        106.25
+      ],
+      "pixel_coords": [
+        3435,
+        1444
+      ],
+      "density_ghsl": 41185.000000000015
+    },
+    "ghsl-Shehong-China": {
+      "name": "Shehong",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        30.91666666666667,
+        105.33333333333337
+      ],
+      "pixel_coords": [
+        3424,
+        1451
+      ],
+      "density_ghsl": 40796.00000000001
+    },
+    "ghsl-Kharameh-Iran": {
+      "name": "Kharameh",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        29.499999999999993,
+        53.25
+      ],
+      "pixel_coords": [
+        2799,
+        1434
+      ],
+      "density_ghsl": 40335
+    },
+    "ghsl-Togechane; Tog Wajaale-Ethiopia": {
+      "name": "Togechane; Tog Wajaale",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        9.666666666666671,
+        43.25
+      ],
+      "pixel_coords": [
+        2679,
+        1196
+      ],
+      "density_ghsl": 39610.00000000003
+    },
+    "ghsl-Jalpaiguri-India": {
+      "name": "Jalpaiguri",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        26.583333333333336,
+        88.66666666666669
+      ],
+      "pixel_coords": [
+        3224,
+        1399
+      ],
+      "density_ghsl": 39244.99999999998
+    },
+    "ghsl-Bugama-Nigeria": {
+      "name": "Bugama",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        4.75,
+        6.833333333333343
+      ],
+      "pixel_coords": [
+        2242,
+        1137
+      ],
+      "density_ghsl": 39034
+    },
+    "ghsl-Jingbian-China": {
+      "name": "Jingbian",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        37.666666666666664,
+        108.75
+      ],
+      "pixel_coords": [
+        3465,
+        1532
+      ],
+      "density_ghsl": 38487.999999999985
+    },
+    "ghsl-??????? ?????-#N/A": {
+      "name": "??????? ?????",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        29.499999999999993,
+        53.33333333333334
+      ],
+      "pixel_coords": [
+        2800,
+        1434
+      ],
+      "density_ghsl": 38421
+    },
+    "ghsl-Sikandra Rao-India": {
+      "name": "Sikandra Rao",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        27.75,
+        78.33333333333331
+      ],
+      "pixel_coords": [
+        3100,
+        1413
+      ],
+      "density_ghsl": 37996.99999999999
+    },
+    "ghsl-Hudur-Somalia": {
+      "name": "Hudur",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        4.166666666666671,
+        43.833333333333314
+      ],
+      "pixel_coords": [
+        2686,
+        1130
+      ],
+      "density_ghsl": 37918.999999999985
+    },
+    "ghsl-Tulak-#N/A": {
+      "name": "Tulak",
+      "region": "central_asia",
+      "colour": [
+        41,
+        193,
+        175
+      ],
+      "coords": [
+        34,
+        63.66666666666666
+      ],
+      "pixel_coords": [
+        2924,
+        1488
+      ],
+      "density_ghsl": 37643
+    },
+    "ghsl-Xishui-China": {
+      "name": "Xishui",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        28.33333333333333,
+        106.16666666666669
+      ],
+      "pixel_coords": [
+        3434,
+        1419
+      ],
+      "density_ghsl": 37465.000000000015
+    },
+    "ghsl-Yuechi-China": {
+      "name": "Yuechi",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        30.58333333333333,
+        106.41666666666669
+      ],
+      "pixel_coords": [
+        3437,
+        1447
+      ],
+      "density_ghsl": 37296.00000000002
+    },
+    "ghsl-Sandila-India": {
+      "name": "Sandila",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        27.083333333333336,
+        80.5
+      ],
+      "pixel_coords": [
+        3126,
+        1405
+      ],
+      "density_ghsl": 37209
+    },
+    "ghsl-Derudeib-#N/A": {
+      "name": "Derudeib",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        17.583333333333343,
+        36
+      ],
+      "pixel_coords": [
+        2592,
+        1291
+      ],
+      "density_ghsl": 37123
+    },
+    "ghsl-Bisalpur-India": {
+      "name": "Bisalpur",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        28.33333333333333,
+        79.75
+      ],
+      "pixel_coords": [
+        3117,
+        1419
+      ],
+      "density_ghsl": 36970
+    },
+    "ghsl-Koohanjan-#N/A": {
+      "name": "Koohanjan",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        29.249999999999993,
+        52.91666666666666
+      ],
+      "pixel_coords": [
+        2795,
+        1431
+      ],
+      "density_ghsl": 36867
+    },
+    "ghsl-Gobindaganj-Bangladesh": {
+      "name": "Gobindaganj",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        25.16666666666667,
+        89.33333333333331
+      ],
+      "pixel_coords": [
+        3232,
+        1382
+      ],
+      "density_ghsl": 36434.99999999999
+    },
+    "ghsl-Mojiang Hani Autonomous County-China": {
+      "name": "Mojiang Hani Autonomous County",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        23.5,
+        101.66666666666669
+      ],
+      "pixel_coords": [
+        3380,
+        1362
+      ],
+      "density_ghsl": 36274.00000000001
+    },
+    "ghsl-Qaraziadin-Iran": {
+      "name": "Qaraziadin",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        38.91666666666667,
+        45
+      ],
+      "pixel_coords": [
+        2700,
+        1547
+      ],
+      "density_ghsl": 36262.99999999998
+    },
+    "ghsl-U�ge-Angola": {
+      "name": "U�ge",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        -7.583333333333329,
+        15
+      ],
+      "pixel_coords": [
+        2340,
+        989
+      ],
+      "density_ghsl": 35812.00000000002
+    },
+    "ghsl-El Hawata-Sudan": {
+      "name": "El Hawata",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        13.416666666666657,
+        34.583333333333314
+      ],
+      "pixel_coords": [
+        2575,
+        1240
+      ],
+      "density_ghsl": 35727.00000000001
+    },
+    "ghsl-Famenin-Iran": {
+      "name": "Famenin",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        35.166666666666664,
+        48.91666666666666
+      ],
+      "pixel_coords": [
+        2747,
+        1501
+      ],
+      "density_ghsl": 35515
+    },
+    "ghsl-Garasse-#N/A": {
+      "name": "Garasse",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        5.916666666666671,
+        37.25
+      ],
+      "pixel_coords": [
+        2607,
+        1151
+      ],
+      "density_ghsl": 35322.99999999999
+    },
+    "ghsl-Khall-Pakistan": {
+      "name": "Khall",
+      "region": "central_asia",
+      "colour": [
+        41,
+        193,
+        175
+      ],
+      "coords": [
+        34.916666666666664,
+        71.91666666666666
+      ],
+      "pixel_coords": [
+        3023,
+        1498
+      ],
+      "density_ghsl": 35131.00000000002
+    },
+    "ghsl-Manakhah-#N/A": {
+      "name": "Manakhah",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        15.083333333333343,
+        43.666666666666686
+      ],
+      "pixel_coords": [
+        2684,
+        1261
+      ],
+      "density_ghsl": 34912
+    },
+    "ghsl-Yingshan-China": {
+      "name": "Yingshan",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        31.08333333333333,
+        106.5
+      ],
+      "pixel_coords": [
+        3438,
+        1453
+      ],
+      "density_ghsl": 34699.00000000001
+    },
+    "ghsl-Kebkabiya-Sudan": {
+      "name": "Kebkabiya",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        13.666666666666671,
+        24.083333333333314
+      ],
+      "pixel_coords": [
+        2449,
+        1244
+      ],
+      "density_ghsl": 34642
+    },
+    "ghsl-Shahganj-India": {
+      "name": "Shahganj",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        26.083333333333336,
+        82.66666666666669
+      ],
+      "pixel_coords": [
+        3152,
+        1393
+      ],
+      "density_ghsl": 34589.999999999985
+    },
+    "ghsl-Ghatampur-India": {
+      "name": "Ghatampur",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        26.166666666666664,
+        80.08333333333331
+      ],
+      "pixel_coords": [
+        3121,
+        1394
+      ],
+      "density_ghsl": 34401
+    },
+    "ghsl-Jamame-Somalia": {
+      "name": "Jamame",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        0.0833333333333286,
+        42.66666666666666
+      ],
+      "pixel_coords": [
+        2672,
+        1080
+      ],
+      "density_ghsl": 34397
+    },
+    "ghsl-Narus-South Sudan": {
+      "name": "Narus",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        4.5,
+        34.12500000000003
+      ],
+      "pixel_coords": [
+        2569,
+        1134
+      ],
+      "density_ghsl": 34360
+    },
+    "ghsl-Bishan-China": {
+      "name": "Bishan",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        29.583333333333336,
+        106.16666666666669
+      ],
+      "pixel_coords": [
+        3434,
+        1435
+      ],
+      "density_ghsl": 34355.00000000003
+    },
+    "ghsl-Longquanyi-China": {
+      "name": "Longquanyi",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        30.58333333333333,
+        104.25
+      ],
+      "pixel_coords": [
+        3411,
+        1447
+      ],
+      "density_ghsl": 34093
+    },
+    "ghsl-Krishnanagar-India": {
+      "name": "Krishnanagar",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        23.41666666666667,
+        88.45833333333337
+      ],
+      "pixel_coords": [
+        3221,
+        1361
+      ],
+      "density_ghsl": 33839.000000000015
+    },
+    "ghsl-Filtu-Ethiopia": {
+      "name": "Filtu",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        5.166666666666671,
+        40.58333333333334
+      ],
+      "pixel_coords": [
+        2647,
+        1142
+      ],
+      "density_ghsl": 33827.999999999985
+    },
+    "ghsl-Meshkan-#N/A": {
+      "name": "Meshkan",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        36.58333333333333,
+        58.083333333333314
+      ],
+      "pixel_coords": [
+        2856,
+        1519
+      ],
+      "density_ghsl": 33665
+    },
+    "ghsl-Ad Darumah; Al Mawdi`; Ar Rahah; Al Ashraf; Jar`an; Lakamah; Qard; Qarda'-#N/A": {
+      "name": "Ad Darumah; Al Mawdi`; Ar Rahah; Al Ashraf; Jar`an; Lakamah; Qard; Qarda'",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        14.666666666666671,
+        43.666666666666686
+      ],
+      "pixel_coords": [
+        2684,
+        1256
+      ],
+      "density_ghsl": 33664
+    },
+    "ghsl-Jais-India": {
+      "name": "Jais",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        26.333333333333336,
+        81.5
+      ],
+      "pixel_coords": [
+        3138,
+        1396
+      ],
+      "density_ghsl": 33610.00000000003
+    },
+    "ghsl-Safipur-India": {
+      "name": "Safipur",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        26.750000000000007,
+        80.33333333333331
+      ],
+      "pixel_coords": [
+        3124,
+        1401
+      ],
+      "density_ghsl": 33423
+    },
+    "ghsl-Shinkot-#N/A": {
+      "name": "Shinkot",
+      "region": "central_asia",
+      "colour": [
+        41,
+        193,
+        175
+      ],
+      "coords": [
+        33.75,
+        64.83333333333334
+      ],
+      "pixel_coords": [
+        2938,
+        1485
+      ],
+      "density_ghsl": 33336
+    },
+    "ghsl-Shahrak-#N/A": {
+      "name": "Shahrak",
+      "region": "central_asia",
+      "colour": [
+        41,
+        193,
+        175
+      ],
+      "coords": [
+        34.16666666666667,
+        64.25
+      ],
+      "pixel_coords": [
+        2931,
+        1490
+      ],
+      "density_ghsl": 33331
+    },
+    "ghsl-Al `Udayn-#N/A": {
+      "name": "Al `Udayn",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        14,
+        44
+      ],
+      "pixel_coords": [
+        2688,
+        1247
+      ],
+      "density_ghsl": 33267
+    },
+    "ghsl-Shamsabad-India": {
+      "name": "Shamsabad",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        27.083333333333336,
+        78.08333333333331
+      ],
+      "pixel_coords": [
+        3097,
+        1405
+      ],
+      "density_ghsl": 32973.00000000003
+    },
+    "ghsl-Jalesar-India": {
+      "name": "Jalesar",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        27.5,
+        78.25
+      ],
+      "pixel_coords": [
+        3099,
+        1410
+      ],
+      "density_ghsl": 32806.00000000002
+    },
+    "ghsl-Burka-Ethiopia": {
+      "name": "Burka",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        8.833333333333329,
+        41.5
+      ],
+      "pixel_coords": [
+        2658,
+        1186
+      ],
+      "density_ghsl": 32767.000000000004
+    },
+    "ghsl-Kavar-Iran": {
+      "name": "Kavar",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        29.249999999999993,
+        52.66666666666666
+      ],
+      "pixel_coords": [
+        2792,
+        1431
+      ],
+      "density_ghsl": 32558
+    },
+    "ghsl-Nanxi-China": {
+      "name": "Nanxi",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        28.916666666666664,
+        104.91666666666669
+      ],
+      "pixel_coords": [
+        3419,
+        1427
+      ],
+      "density_ghsl": 32537.000000000007
+    },
+    "ghsl-Al Mirqab; Al Marakib; Al Masili; Al Jabal; Akamat as Sayl; Ash Shiraj; An Naqil; Dhi Salih-#N/A": {
+      "name": "Al Mirqab; Al Marakib; Al Masili; Al Jabal; Akamat as Sayl; Ash Shiraj; An Naqil; Dhi Salih",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        14.416666666666671,
+        43.87499999999997
+      ],
+      "pixel_coords": [
+        2686,
+        1253
+      ],
+      "density_ghsl": 32474
+    },
+    "ghsl-Seka-Ethiopia": {
+      "name": "Seka",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        7.666666666666657,
+        36.66666666666666
+      ],
+      "pixel_coords": [
+        2600,
+        1171
+      ],
+      "density_ghsl": 32227.99999999999
+    },
+    "ghsl-Hillat Ashat-#N/A": {
+      "name": "Hillat Ashat",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        18.75,
+        37.33333333333334
+      ],
+      "pixel_coords": [
+        2608,
+        1305
+      ],
+      "density_ghsl": 31850
+    },
+    "ghsl-Yenice-Turkey": {
+      "name": "Yenice",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        37,
+        35
+      ],
+      "pixel_coords": [
+        2580,
+        1524
+      ],
+      "density_ghsl": 31813.00000000001
+    },
+    "ghsl-B�tou-Republic of the Congo": {
+      "name": "B�tou",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        3.0833333333333286,
+        18.5
+      ],
+      "pixel_coords": [
+        2382,
+        1117
+      ],
+      "density_ghsl": 31782
+    },
+    "ghsl-Khayran-#N/A": {
+      "name": "Khayran",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        16.08333333333333,
+        43.333333333333314
+      ],
+      "pixel_coords": [
+        2680,
+        1272
+      ],
+      "density_ghsl": 31550.000000000025
+    },
+    "ghsl-Pengshui-China": {
+      "name": "Pengshui",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        29.333333333333336,
+        108.08333333333331
+      ],
+      "pixel_coords": [
+        3456,
+        1432
+      ],
+      "density_ghsl": 31492.00000000001
+    },
+    "ghsl-Nanbu-China": {
+      "name": "Nanbu",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        31.41666666666667,
+        106
+      ],
+      "pixel_coords": [
+        3432,
+        1457
+      ],
+      "density_ghsl": 31289.000000000022
+    },
+    "ghsl-Hamero-#N/A": {
+      "name": "Hamero",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        7.75,
+        42.16666666666666
+      ],
+      "pixel_coords": [
+        2666,
+        1173
+      ],
+      "density_ghsl": 31268.999999999996
+    },
+    "ghsl-Amber; Kunda; Amer Chak No. 1-India": {
+      "name": "Amber; Kunda; Amer Chak No. 1",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        27.000000000000007,
+        75.83333333333334
+      ],
+      "pixel_coords": [
+        3070,
+        1404
+      ],
+      "density_ghsl": 31234.000000000007
+    },
+    "ghsl-Utraula-India": {
+      "name": "Utraula",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        27.333333333333336,
+        82.33333333333337
+      ],
+      "pixel_coords": [
+        3148,
+        1408
+      ],
+      "density_ghsl": 31203.999999999993
+    },
+    "ghsl-Lezhi-China": {
+      "name": "Lezhi",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        30.33333333333333,
+        105
+      ],
+      "pixel_coords": [
+        3420,
+        1444
+      ],
+      "density_ghsl": 31161.999999999996
+    },
+    "ghsl-Buram-Sudan": {
+      "name": "Buram",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        10.916666666666671,
+        25.083333333333343
+      ],
+      "pixel_coords": [
+        2461,
+        1211
+      ],
+      "density_ghsl": 31086.99999999998
+    },
+    "ghsl-Meichuan-China": {
+      "name": "Meichuan",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        30.166666666666664,
+        115.58333333333337
+      ],
+      "pixel_coords": [
+        3547,
+        1441
+      ],
+      "density_ghsl": 30931.000000000007
+    },
+    "ghsl-Bendaravadi; Deshavalli; Banagavadi-#N/A": {
+      "name": "Bendaravadi; Deshavalli; Banagavadi",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        12.416666666666671,
+        76.83333333333331
+      ],
+      "pixel_coords": [
+        3082,
+        1229
+      ],
+      "density_ghsl": 30908
+    },
+    "ghsl-Daying-China": {
+      "name": "Daying",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        30.58333333333333,
+        105.20833333333331
+      ],
+      "pixel_coords": [
+        3422,
+        1447
+      ],
+      "density_ghsl": 30898.00000000002
+    },
+    "ghsl-As Sayyid-Yemen": {
+      "name": "As Sayyid",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        13.75,
+        44.083333333333314
+      ],
+      "pixel_coords": [
+        2689,
+        1245
+      ],
+      "density_ghsl": 30886
+    },
+    "ghsl-Wegeda-Ethiopia": {
+      "name": "Wegeda",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        11.416666666666671,
+        38.16666666666666
+      ],
+      "pixel_coords": [
+        2618,
+        1217
+      ],
+      "density_ghsl": 30885.000000000004
+    },
+    "ghsl-Faridpur-India": {
+      "name": "Faridpur",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        28.25,
+        79.5
+      ],
+      "pixel_coords": [
+        3114,
+        1419
+      ],
+      "density_ghsl": 30816.999999999975
+    },
+    "ghsl-Kibet-Ethiopia": {
+      "name": "Kibet",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        8.083333333333329,
+        38.24999999999997
+      ],
+      "pixel_coords": [
+        2619,
+        1177
+      ],
+      "density_ghsl": 30724.000000000022
+    },
+    "ghsl-Siyana-India": {
+      "name": "Siyana",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        28.66666666666667,
+        78
+      ],
+      "pixel_coords": [
+        3096,
+        1424
+      ],
+      "density_ghsl": 30651.00000000001
+    },
+    "ghsl-Bhinga-India": {
+      "name": "Bhinga",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        27.75,
+        81.91666666666669
+      ],
+      "pixel_coords": [
+        3143,
+        1413
+      ],
+      "density_ghsl": 30418
+    },
+    "ghsl-Wereta-Ethiopia": {
+      "name": "Wereta",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        12,
+        37.66666666666666
+      ],
+      "pixel_coords": [
+        2612,
+        1224
+      ],
+      "density_ghsl": 30329.999999999993
+    },
+    "ghsl-Kattappana-India": {
+      "name": "Kattappana",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        9.75,
+        77.08333333333331
+      ],
+      "pixel_coords": [
+        3085,
+        1197
+      ],
+      "density_ghsl": 30315.000000000022
+    },
+    "ghsl-Tongrim-North Korea": {
+      "name": "Tongrim",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        39.91666666666667,
+        124.66666666666669
+      ],
+      "pixel_coords": [
+        3656,
+        1559
+      ],
+      "density_ghsl": 30132
+    },
+    "ghsl-Sahabad-India": {
+      "name": "Sahabad",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        28.58333333333333,
+        79
+      ],
+      "pixel_coords": [
+        3108,
+        1423
+      ],
+      "density_ghsl": 30132
+    },
+    "ghsl-Weixin-China": {
+      "name": "Weixin",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        27.91666666666667,
+        105
+      ],
+      "pixel_coords": [
+        3420,
+        1415
+      ],
+      "density_ghsl": 30096.999999999978
+    },
+    "ghsl-Chhibramau-India": {
+      "name": "Chhibramau",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        27.166666666666664,
+        79.41666666666669
+      ],
+      "pixel_coords": [
+        3113,
+        1406
+      ],
+      "density_ghsl": 30067.999999999996
+    },
+    "ghsl-Kangdong-North Korea": {
+      "name": "Kangdong",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        39.16666666666667,
+        126.08333333333337
+      ],
+      "pixel_coords": [
+        3673,
+        1550
+      ],
+      "density_ghsl": 30040.999999999985
+    },
+    "ghsl-Soku-Nigeria": {
+      "name": "Soku",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        4.75,
+        6.666666666666657
+      ],
+      "pixel_coords": [
+        2240,
+        1137
+      ],
+      "density_ghsl": 30030
+    },
+    "ghsl-Hardoi-India": {
+      "name": "Hardoi",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        27.416666666666664,
+        80.08333333333331
+      ],
+      "pixel_coords": [
+        3121,
+        1409
+      ],
+      "density_ghsl": 30015.00000000001
+    },
+    "ghsl-Aleta Wendo-Ethiopia": {
+      "name": "Aleta Wendo",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        6.666666666666671,
+        38.41666666666666
+      ],
+      "pixel_coords": [
+        2621,
+        1160
+      ],
+      "density_ghsl": 29971.999999999985
+    },
+    "ghsl-Hargele-#N/A": {
+      "name": "Hargele",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        5.25,
+        42.16666666666666
+      ],
+      "pixel_coords": [
+        2666,
+        1143
+      ],
+      "density_ghsl": 29946.00000000002
+    },
+    "ghsl-Bolo-Nigeria": {
+      "name": "Bolo",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        4.666666666666657,
+        7.166666666666657
+      ],
+      "pixel_coords": [
+        2246,
+        1136
+      ],
+      "density_ghsl": 29690.999999999978
+    },
+    "ghsl-El Afweyn-#N/A": {
+      "name": "El Afweyn",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        10,
+        47.166666666666686
+      ],
+      "pixel_coords": [
+        2726,
+        1200
+      ],
+      "density_ghsl": 29556
+    },
+    "ghsl-Ed Al Fursan-Sudan": {
+      "name": "Ed Al Fursan",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        11.5,
+        24.25
+      ],
+      "pixel_coords": [
+        2451,
+        1218
+      ],
+      "density_ghsl": 29513.999999999993
+    },
+    "ghsl-Tongjiang County-China": {
+      "name": "Tongjiang County",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        31.916666666666664,
+        107.16666666666669
+      ],
+      "pixel_coords": [
+        3446,
+        1463
+      ],
+      "density_ghsl": 29353
+    },
+    "ghsl-Jhenaidah-Bangladesh": {
+      "name": "Jhenaidah",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        23.583333333333343,
+        89.16666666666669
+      ],
+      "pixel_coords": [
+        3230,
+        1363
+      ],
+      "density_ghsl": 29261.000000000004
+    }
+  },
+  "population": {
+    "ghsl-Shenzhen; Guangzhou; Foshan; Dongguan; Jiangmen; Shunde; Zhongshan; Chancheng; Liwan District; Haizhu District; Panyu; Jianghai; Guangming; Nanshan District; Longhua; Futian District; Bao'an District; Luohu District; Longgang; Tianhe District; Yuexiu District; Baiyun District; Nanhai; Pengjiang-China": {
+      "name": "Shenzhen; Guangzhou; Foshan; Dongguan; Jiangmen; Shunde; Zhongshan; Chancheng; Liwan District; Haizhu District; Panyu; Jianghai; Guangming; Nanshan District; Longhua; Futian District; Bao'an District; Luohu District; Longgang; Tianhe District; Yuexiu District; Baiyun District; Nanhai; Pengjiang",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        23.011111111111106,
+        113.39444444444445
+      ],
+      "pixel_coords": [
+        3520,
+        1356
+      ],
+      "population": 42987704
+    },
+    "ghsl-Jakarta; Bekasi; Tangerang; South Tangerang; Depok; Bogor; Serang; Sukabumi; Cianjur-Indonesia": {
+      "name": "Jakarta; Bekasi; Tangerang; South Tangerang; Depok; Bogor; Serang; Sukabumi; Cianjur",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        -6.355158730158749,
+        106.8095238095238
+      ],
+      "pixel_coords": [
+        3441,
+        1003
+      ],
+      "population": 40545126
+    },
+    "ghsl-Dhaka; Cumilla; Narayanganj; Gazipur; Narsingdi; Noakhali; Munshiganj; Lakshmipur-Bangladesh": {
+      "name": "Dhaka; Cumilla; Narayanganj; Gazipur; Narsingdi; Noakhali; Munshiganj; Lakshmipur",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        23.537634408602145,
+        90.71236559139788
+      ],
+      "pixel_coords": [
+        3248,
+        1362
+      ],
+      "population": 37307160
+    },
+    "ghsl-Tokyo; Yokohama; Kawasaki; Saitama; Chiba; Setagaya; Ota; Nerima; Adachi; Edogawa; Funabashi; Kawaguchi; Itabashi; Hachioji; Suginami; Koto; Ichikawa; Matsudo; Katsushika; Fujisawa; Machida; Shinagawa; Kashiwa; Yokosuka; Kawagoe; Kita; Shinjuku; Koshigaya; Tokorozawa; Nakano; Toshima; Meguro; Sumida; Ichihara; Fuchu; Hiratsuka; Minato; Soka; Chigasaki; Yamato; Kasukabe; Chofu; Shibuya; Bunkyo; Ageo; Atsugi; Arakawa; Taito; Nishitokyo; Yachiyo; Kodaira; Mitaka; Odawara; Nagareyama; Tachikawa; Narashino; Kamakura; Sakura; Hino; Hadano; Urayasu; Niiza; Chuo; Noda; Sayama; Kuki; Higashimurayama; Iruma; Tama; Asaka; Musashino; Koga; Misato; Toda; Abiko; Ebina; Zama; Kokubunji; Koganei; Konosu; Higashikurume; Fujimino; Akishima; Kamagaya; Fujimi; Toride; Sakado; Isehara; Yotsukaido; Inagi; Yashio; Higashiyamato; Ayase; Wako; Akiruno; Gyoda; Hanno; Komae; Kiyose; Okegawa; Kunitachi; Shiki; Warabi; Yoshikawa; Musashimurayama; Tsurugashima; Moriya; Kitamoto; Shiroi; Sodegaura; Hasuda; Fussa; Zushi; Hidaka; Hamura; Shiraoka; Satte; Chiyoda; Minamiashigara-Japan": {
+      "name": "Tokyo; Yokohama; Kawasaki; Saitama; Chiba; Setagaya; Ota; Nerima; Adachi; Edogawa; Funabashi; Kawaguchi; Itabashi; Hachioji; Suginami; Koto; Ichikawa; Matsudo; Katsushika; Fujisawa; Machida; Shinagawa; Kashiwa; Yokosuka; Kawagoe; Kita; Shinjuku; Koshigaya; Tokorozawa; Nakano; Toshima; Meguro; Sumida; Ichihara; Fuchu; Hiratsuka; Minato; Soka; Chigasaki; Yamato; Kasukabe; Chofu; Shibuya; Bunkyo; Ageo; Atsugi; Arakawa; Taito; Nishitokyo; Yachiyo; Kodaira; Mitaka; Odawara; Nagareyama; Tachikawa; Narashino; Kamakura; Sakura; Hino; Hadano; Urayasu; Niiza; Chuo; Noda; Sayama; Kuki; Higashimurayama; Iruma; Tama; Asaka; Musashino; Koga; Misato; Toda; Abiko; Ebina; Zama; Kokubunji; Koganei; Konosu; Higashikurume; Fujimino; Akishima; Kamagaya; Fujimi; Toride; Sakado; Isehara; Yotsukaido; Inagi; Yashio; Higashiyamato; Ayase; Wako; Akiruno; Gyoda; Hanno; Komae; Kiyose; Okegawa; Kunitachi; Shiki; Warabi; Yoshikawa; Musashimurayama; Tsurugashima; Moriya; Kitamoto; Shiroi; Sodegaura; Hasuda; Fussa; Zushi; Hidaka; Hamura; Shiraoka; Satte; Chiyoda; Minamiashigara",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        35.666666666666664,
+        139.58847736625518
+      ],
+      "pixel_coords": [
+        3835,
+        1507
+      ],
+      "population": 33496985
+    },
+    "ghsl-Ghaziabad; Gurugram; Noida; New Delhi; Bahadurgarh; Faridabad; Manesar-India": {
+      "name": "Ghaziabad; Gurugram; Noida; New Delhi; Bahadurgarh; Faridabad; Manesar",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        28.608695652173914,
+        77.18840579710144
+      ],
+      "pixel_coords": [
+        3086,
+        1423
+      ],
+      "population": 31422508
+    },
+    "ghsl-Shanghai; Pudong; Taicang; Baoshan District; Putuo District; Changning District; Jing'an District; Xuhui District; Hongkou District; Huangpu District; Yangpu District; Qingpu; Songjiang; Minhang; Jiading; Fengxian District-China": {
+      "name": "Shanghai; Pudong; Taicang; Baoshan District; Putuo District; Changning District; Jing'an District; Xuhui District; Hongkou District; Huangpu District; Yangpu District; Qingpu; Songjiang; Minhang; Jiading; Fengxian District",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        31.214285714285715,
+        121.36111111111114
+      ],
+      "pixel_coords": [
+        3616,
+        1454
+      ],
+      "population": 30678616
+    },
+    "ghsl-Quezon City; Manila; Caloocan; Antipolo; Taguig; Pasig; Valenzuela; Para�aque; Dasmari�as; San Jose del Monte; Las Pi�as; Bacoor; Makati; Muntinlupa; Marikina; Calamba; Mandaluyong; Pasay; Bi�an; Imus; Malabon; Santa Rosa; San Pedro; General Trias; Cabuyao; Malolos; Navotas; Meycauayan; Baliwag; Trece Martires; San Juan; Carmona; Cavite City-Philippines": {
+      "name": "Quezon City; Manila; Caloocan; Antipolo; Taguig; Pasig; Valenzuela; Para�aque; Dasmari�as; San Jose del Monte; Las Pi�as; Bacoor; Makati; Muntinlupa; Marikina; Calamba; Mandaluyong; Pasay; Bi�an; Imus; Malabon; Santa Rosa; San Pedro; General Trias; Cabuyao; Malolos; Navotas; Meycauayan; Baliwag; Trece Martires; San Juan; Carmona; Cavite City",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        14.583333333333343,
+        120.94097222222223
+      ],
+      "pixel_coords": [
+        3611,
+        1255
+      ],
+      "population": 25921189
+    },
+    "ghsl-Cairo; Giza; Shubra al Khayma; Helwan; New Cairo; Fifteenth Of May; Al-Obour-Egypt": {
+      "name": "Cairo; Giza; Shubra al Khayma; Helwan; New Cairo; Fifteenth Of May; Al-Obour",
+      "region": "maghreb_egypt",
+      "colour": [
+        239,
+        188,
+        112
+      ],
+      "coords": [
+        30.015624999999993,
+        31.229166666666657
+      ],
+      "pixel_coords": [
+        2534,
+        1440
+      ],
+      "population": 25230325
+    },
+    "ghsl-Kolkata; Howrah; Maheshtala; Maheshtala; Rajpur Sonarpur; Bally; Serampore; Baranagar; Uluberia; Hugli-Chunchura; Chandannagar; Kalyani; Budge Budge; Baruipur; Pujali; New Town; Barrackpore; New Barrackpore; Barasat-India": {
+      "name": "Kolkata; Howrah; Maheshtala; Maheshtala; Rajpur Sonarpur; Bally; Serampore; Baranagar; Uluberia; Hugli-Chunchura; Chandannagar; Kalyani; Budge Budge; Baruipur; Pujali; New Town; Barrackpore; New Barrackpore; Barasat",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        22.637681159420296,
+        88.27536231884056
+      ],
+      "pixel_coords": [
+        3219,
+        1351
+      ],
+      "population": 23314585
+    },
+    "ghsl-Seoul; Incheon; Suwon; Goyang; Seongnam; Bucheon; Namyangju; Ansan-si; Anyang; Uijeongbu; Siheung; Gwangmyeong; Gunpo; Hanam; Osan; Guri; Uiwang; Gwacheon-South Korea": {
+      "name": "Seoul; Incheon; Suwon; Goyang; Seongnam; Bucheon; Namyangju; Ansan-si; Anyang; Uijeongbu; Siheung; Gwangmyeong; Gunpo; Hanam; Osan; Guri; Uiwang; Gwacheon",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        37.472222222222214,
+        126.88194444444446
+      ],
+      "pixel_coords": [
+        3682,
+        1529
+      ],
+      "population": 22261692
+    },
+    "ghsl-Karachi-Pakistan": {
+      "name": "Karachi",
+      "region": "central_asia",
+      "colour": [
+        41,
+        193,
+        175
+      ],
+      "coords": [
+        24.891666666666666,
+        67.05000000000001
+      ],
+      "pixel_coords": [
+        2964,
+        1378
+      ],
+      "population": 21031703
+    },
+    "ghsl-Mumbai; Thane; Navi Mumbai; Bhiwandi-India": {
+      "name": "Mumbai; Thane; Navi Mumbai; Bhiwandi",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        19.089285714285722,
+        72.85119047619045
+      ],
+      "pixel_coords": [
+        3034,
+        1309
+      ],
+      "population": 20453270
+    },
+    "ghsl-S�o Paulo; Guarulhos; Sao Bernardo do Campo; Santo Andre; Osasco; Mogi das Cruzes; Mau�; Diadema; Carapicu�ba; Itaquaquecetuba; Barueri; Suzano; Cotia; Tabo�o da Serra; Embu das Artes; Itapevi; Ferraz de Vasconcelos; S�o Caetano do Sul; Itapecerica da Serra; Jandira; Ribeir�o Pires; Po�-Brazil": {
+      "name": "S�o Paulo; Guarulhos; Sao Bernardo do Campo; Santo Andre; Osasco; Mogi das Cruzes; Mau�; Diadema; Carapicu�ba; Itaquaquecetuba; Barueri; Suzano; Cotia; Tabo�o da Serra; Embu das Artes; Itapevi; Ferraz de Vasconcelos; S�o Caetano do Sul; Itapecerica da Serra; Jandira; Ribeir�o Pires; Po�",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -23.574712643678154,
+        -46.61206896551724
+      ],
+      "pixel_coords": [
+        1600,
+        797
+      ],
+      "population": 19485158
+    },
+    "ghsl-Bangkok; Nonthaburi; Pak Kret; Rangsit; Samut Sakhon; Om Noi; Samut Prakan-Thailand": {
+      "name": "Bangkok; Nonthaburi; Pak Kret; Rangsit; Samut Sakhon; Om Noi; Samut Prakan",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        13.776041666666671,
+        100.52604166666663
+      ],
+      "pixel_coords": [
+        3366,
+        1245
+      ],
+      "population": 19048032
+    },
+    "ghsl-Mexico City; Ecatepec; Nezahualc�yotl; Naucalpan de Ju�rez; Tlalnepantla; Chimalhuac�n; Atizap�n de Zaragoza; Ciudad L�pez Mateos; Cuautitlan Izcalli; Ojo de Agua; Xico; Ixtapaluca; Nicol�s Romero; Coacalco; Buenavista; Chalco de D�az Covarrubias; Huixquilucan de Degollado; Santa Fe; Interlomas-M�xico": {
+      "name": "Mexico City; Ecatepec; Nezahualc�yotl; Naucalpan de Ju�rez; Tlalnepantla; Chimalhuac�n; Atizap�n de Zaragoza; Ciudad L�pez Mateos; Cuautitlan Izcalli; Ojo de Agua; Xico; Ixtapaluca; Nicol�s Romero; Coacalco; Buenavista; Chalco de D�az Covarrubias; Huixquilucan de Degollado; Santa Fe; Interlomas",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        19.456989247311824,
+        -99.14516129032258
+      ],
+      "pixel_coords": [
+        970,
+        1313
+      ],
+      "population": 18913672.999999966
+    },
+    "ghsl-Beijing; Shunyi; Mentougou; Dongcheng; Chaoyang; Haidian; Xicheng; Fengtai; Shijingshan; Daxing-China": {
+      "name": "Beijing; Shunyi; Mentougou; Dongcheng; Chaoyang; Haidian; Xicheng; Fengtai; Shijingshan; Daxing",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        39.92753623188406,
+        116.31884057971013
+      ],
+      "pixel_coords": [
+        3555,
+        1559
+      ],
+      "population": 18150576
+    },
+    "stadester-New York-United States": {
+      "name": "New York",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        40.7127753,
+        -74.0059728
+      ],
+      "pixel_coords": [
+        1271,
+        1568
+      ],
+      "population": 16152299
+    },
+    "ghsl-Bengaluru-India": {
+      "name": "Bengaluru",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        12.958333333333329,
+        77.54166666666669
+      ],
+      "pixel_coords": [
+        3090,
+        1235
+      ],
+      "population": 15178533
+    },
+    "ghsl-Osaka; Kobe; Kyoto; Sakai; Higashiosaka; Nishinomiya; Amagasaki; Hirakata; Toyonaka; Suita; Takatsuki; Akashi; Ibaraki; Yao; Kakogawa; Neyagawa; Itami; Kishiwada; Uji; Kawanishi; Moriguchi; Kadoma; Daito; Matsubara; Habikino; Kawachinagano; Ikeda; Izumisano; Ashiya; Takasago; Kaizuka; Settsu; Nagaokakyo; Katano; Izumiotsu; Yawata; Kashiwara; Fujiidera; Sennan; Hannan; Osakasayama; Takaishi; Muko; Shimamoto-Japan": {
+      "name": "Osaka; Kobe; Kyoto; Sakai; Higashiosaka; Nishinomiya; Amagasaki; Hirakata; Toyonaka; Suita; Takatsuki; Akashi; Ibaraki; Yao; Kakogawa; Neyagawa; Itami; Kishiwada; Uji; Kawanishi; Moriguchi; Kadoma; Daito; Matsubara; Habikino; Kawachinagano; Ikeda; Izumisano; Ashiya; Takasago; Kaizuka; Settsu; Nagaokakyo; Katano; Izumiotsu; Yawata; Kashiwara; Fujiidera; Sennan; Hannan; Osakasayama; Takaishi; Muko; Shimamoto",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        34.68452380952381,
+        135.35317460317464
+      ],
+      "pixel_coords": [
+        3784,
+        1496
+      ],
+      "population": 15072543.000000024
+    },
+    "ghsl-Ho Chi Minh City; Th? ??c; Th? D?u M?t; Thu?n An; D? An; Bi�n H�a-Vietnam": {
+      "name": "Ho Chi Minh City; Th? ??c; Th? D?u M?t; Thu?n An; D? An; Bi�n H�a",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        10.833333333333329,
+        106.6904761904762
+      ],
+      "pixel_coords": [
+        3440,
+        1209
+      ],
+      "population": 14557830
+    },
+    "ghsl-Moscow; Balashikha; Mytishchi; Khimki; Korolyov; Lyubertsy; Krasnogorsk; Shchyolkovo; Dolgoprudny; Pushkino-Russia": {
+      "name": "Moscow; Balashikha; Mytishchi; Khimki; Korolyov; Lyubertsy; Krasnogorsk; Shchyolkovo; Dolgoprudny; Pushkino",
+      "region": "eastern_europe_and_russia",
+      "colour": [
+        20,
+        114,
+        30
+      ],
+      "coords": [
+        55.76973684210526,
+        37.63596491228071
+      ],
+      "pixel_coords": [
+        2611,
+        1749
+      ],
+      "population": 14384082
+    },
+    "ghsl-Lahore; Sheikhupura; Ferozewala-Pakistan": {
+      "name": "Lahore; Sheikhupura; Ferozewala",
+      "region": "central_asia",
+      "colour": [
+        41,
+        193,
+        175
+      ],
+      "coords": [
+        31.53787878787879,
+        74.24242424242422
+      ],
+      "pixel_coords": [
+        3050,
+        1458
+      ],
+      "population": 14305060
+    },
+    "ghsl-Istanbul-Turkey": {
+      "name": "Istanbul",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        41.01666666666667,
+        28.912499999999994
+      ],
+      "pixel_coords": [
+        2506,
+        1572
+      ],
+      "population": 14259754.000000011
+    },
+    "ghsl-New York; Newark; Jersey City; Yonkers; Paterson; Elizabeth; New Rochelle; Mount Vernon; Brentwood; Hempstead; Levittown; New Brunswick-United States": {
+      "name": "New York; Newark; Jersey City; Yonkers; Paterson; Elizabeth; New Rochelle; Mount Vernon; Brentwood; Hempstead; Levittown; New Brunswick",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        40.72272727272727,
+        -73.97272727272727
+      ],
+      "pixel_coords": [
+        1272,
+        1568
+      ],
+      "population": 14197659
+    },
+    "ghsl-Buenos Aires; Lan�s; Avellaneda; Vicente L�pez; Gregorio de Laferrere; Merlo; Jos� C. Paz; Quilmes; Banfield; Lan�s Oeste; Lan�s Este; Gonz�lez Cat�n; Isidro Casanova; Virrey del Pino; Moreno; Berazategui; San Miguel; Rafael Castillo; Monte Grande; Villa Madero; Santa Mar�a; Mor�n; Florencio Varela; Lomas de Zamora; Temperley; Presidente Derqui; Bernal; Trujui; Castelar; San Justo; Ituzaing�; Libertad; Ramos Mej�a; Caseros; San Jos�-Argentina": {
+      "name": "Buenos Aires; Lan�s; Avellaneda; Vicente L�pez; Gregorio de Laferrere; Merlo; Jos� C. Paz; Quilmes; Banfield; Lan�s Oeste; Lan�s Este; Gonz�lez Cat�n; Isidro Casanova; Virrey del Pino; Moreno; Berazategui; San Miguel; Rafael Castillo; Monte Grande; Villa Madero; Santa Mar�a; Mor�n; Florencio Varela; Lomas de Zamora; Temperley; Presidente Derqui; Bernal; Trujui; Castelar; San Justo; Ituzaing�; Libertad; Ramos Mej�a; Caseros; San Jos�",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -34.661616161616166,
+        -58.56060606060606
+      ],
+      "pixel_coords": [
+        1457,
+        664
+      ],
+      "population": 14179912
+    },
+    "ghsl-Los Angeles; Long Beach; Anaheim; Santa Ana; Irvine; Glendale; San Bernardino; Fontana; Huntington Beach; Ontario; Garden Grove; Rancho Cucamonga; Pomona; Torrance; Pasadena; Fullerton; Orange; Inglewood; Downey; El Monte; Costa Mesa; West Covina; Norwalk; Burbank; South Gate; Carson; Santa Monica-United States": {
+      "name": "Los Angeles; Long Beach; Anaheim; Santa Ana; Irvine; Glendale; San Bernardino; Fontana; Huntington Beach; Ontario; Garden Grove; Rancho Cucamonga; Pomona; Torrance; Pasadena; Fullerton; Orange; Inglewood; Downey; El Monte; Costa Mesa; West Covina; Norwalk; Burbank; South Gate; Carson; Santa Monica",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        33.97089947089947,
+        -118.13624338624338
+      ],
+      "pixel_coords": [
+        742,
+        1487
+      ],
+      "population": 13474333
+    },
+    "ghsl-Kinshasa-Democratic Republic of the Congo": {
+      "name": "Kinshasa",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        -4.380952380952394,
+        15.273809523809518
+      ],
+      "pixel_coords": [
+        2343,
+        1027
+      ],
+      "population": 12945683
+    },
+    "ghsl-Lagos; Ikeja-Nigeria": {
+      "name": "Lagos; Ikeja",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        6.574074074074076,
+        3.240740740740705
+      ],
+      "pixel_coords": [
+        2198,
+        1158
+      ],
+      "population": 12846045
+    },
+    "ghsl-Luanda-Angola": {
+      "name": "Luanda",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        -8.870370370370367,
+        13.25
+      ],
+      "pixel_coords": [
+        2319,
+        973
+      ],
+      "population": 11672134
+    },
+    "ghsl-Suzhou; Wuxi; Suzhou Industrial Park; Binhu; Xinwu; Liangxi; Xishan; Huishan; Gusu District; Xiangcheng District; Wuzhong District; Kunshan; Wujiang-China": {
+      "name": "Suzhou; Wuxi; Suzhou Industrial Park; Binhu; Xinwu; Liangxi; Xishan; Huishan; Gusu District; Xiangcheng District; Wuzhong District; Kunshan; Wujiang",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        31.41666666666667,
+        120.57407407407408
+      ],
+      "pixel_coords": [
+        3606,
+        1457
+      ],
+      "population": 11540430
+    },
+    "ghsl-Chennai; Tambaram; Avadi-India": {
+      "name": "Chennai; Tambaram; Avadi",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        13.047619047619051,
+        80.17857142857144
+      ],
+      "pixel_coords": [
+        3122,
+        1236
+      ],
+      "population": 11466400
+    },
+    "ghsl-Lima; Callao-Peru": {
+      "name": "Lima; Callao",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -12.06410256410257,
+        -77.03846153846155
+      ],
+      "pixel_coords": [
+        1235,
+        935
+      ],
+      "population": 10828104
+    },
+    "ghsl-Jieyang; Shantou; Chaozhou; Puning; Chaonan; Chaoyang; Jinping; Longhu; Chao'an; Rongcheng District; Xiangqiao; Jiedong County-China": {
+      "name": "Jieyang; Shantou; Chaozhou; Puning; Chaonan; Chaoyang; Jinping; Longhu; Chao'an; Rongcheng District; Xiangqiao; Jiedong County",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        23.41666666666667,
+        116.46568627450984
+      ],
+      "pixel_coords": [
+        3557,
+        1361
+      ],
+      "population": 10579303
+    },
+    "ghsl-Bogota; Soacha-Colombia": {
+      "name": "Bogota; Soacha",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        4.635416666666671,
+        -74.14583333333333
+      ],
+      "pixel_coords": [
+        1270,
+        1135
+      ],
+      "population": 10419361
+    },
+    "ghsl-London; Westminster; City of London-United Kingdom": {
+      "name": "London; Westminster; City of London",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        51.50225225225225,
+        -0.19819819819818463
+      ],
+      "pixel_coords": [
+        2157,
+        1698
+      ],
+      "population": 10408332
+    },
+    "ghsl-Rio de Janeiro; Duque de Caxias; Nova Igua�u; Belford Roxo; Sao Joao de Meriti; Mesquita; Nil�polis; Queimados; Zona Norte do Rio de Janeiro-Brazil": {
+      "name": "Rio de Janeiro; Duque de Caxias; Nova Igua�u; Belford Roxo; Sao Joao de Meriti; Mesquita; Nil�polis; Queimados; Zona Norte do Rio de Janeiro",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -22.85526315789474,
+        -43.42982456140351
+      ],
+      "pixel_coords": [
+        1638,
+        805
+      ],
+      "population": 9853693
+    },
+    "ghsl-Hajipur; Muzaffarpur-India": {
+      "name": "Hajipur; Muzaffarpur",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        25.845238095238102,
+        85.51190476190476
+      ],
+      "pixel_coords": [
+        3186,
+        1390
+      ],
+      "population": 9755303
+    },
+    "ghsl-New Taipei; Taipei; Taoyuan; Keelung-Taiwan": {
+      "name": "New Taipei; Taipei; Taoyuan; Keelung",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        25.04166666666667,
+        121.45833333333337
+      ],
+      "pixel_coords": [
+        3617,
+        1380
+      ],
+      "population": 9686521
+    },
+    "ghsl-Hyderabad; Sikandarabad-India": {
+      "name": "Hyderabad; Sikandarabad",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        17.42708333333333,
+        78.39583333333331
+      ],
+      "pixel_coords": [
+        3100,
+        1289
+      ],
+      "population": 9455230
+    },
+    "ghsl-Tehran; Eslamshahr; Qods-Iran": {
+      "name": "Tehran; Eslamshahr; Qods",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        35.673611111111114,
+        51.28472222222223
+      ],
+      "pixel_coords": [
+        2775,
+        1508
+      ],
+      "population": 9363124
+    },
+    "ghsl-Paris; Argenteuil; Saint-Denis; Boulogne-Billancourt; Montreuil-France": {
+      "name": "Paris; Argenteuil; Saint-Denis; Boulogne-Billancourt; Montreuil",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        48.842261904761905,
+        2.321428571428555
+      ],
+      "pixel_coords": [
+        2187,
+        1666
+      ],
+      "population": 9328385
+    },
+    "stadester-Moskva-Russia": {
+      "name": "Moskva",
+      "region": "eastern_europe_and_russia",
+      "colour": [
+        20,
+        114,
+        30
+      ],
+      "coords": [
+        55.7568721,
+        37.6150527
+      ],
+      "pixel_coords": [
+        2611,
+        1749
+      ],
+      "population": 9089572
+    },
+    "stadester-Shanghai-China": {
+      "name": "Shanghai",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        31.230416,
+        121.473701
+      ],
+      "pixel_coords": [
+        3617,
+        1454
+      ],
+      "population": 9056464
+    },
+    "ghsl-Dar es-Salaam-Tanzania": {
+      "name": "Dar es-Salaam",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        -6.833333333333343,
+        39.22916666666666
+      ],
+      "pixel_coords": [
+        2630,
+        997
+      ],
+      "population": 8918525
+    },
+    "ghsl-Bandung; Cimahi-Indonesia": {
+      "name": "Bandung; Cimahi",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        -6.904761904761912,
+        107.57142857142856
+      ],
+      "pixel_coords": [
+        3450,
+        997
+      ],
+      "population": 8691181
+    },
+    "ghsl-Johannesburg; Soweto; Randburg; Roodepoort; Krugersdorp; Sandton-South Africa": {
+      "name": "Johannesburg; Soweto; Randburg; Roodepoort; Krugersdorp; Sandton",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        -26.20238095238095,
+        28.02380952380952
+      ],
+      "pixel_coords": [
+        2496,
+        765
+      ],
+      "population": 8592843
+    },
+    "ghsl-Chongqing; Dadukou; Jiulongpo; Banan; Liangjiang New Area; Shapingba; Yuzhong; Yubei; Jiangbei-China": {
+      "name": "Chongqing; Dadukou; Jiulongpo; Banan; Liangjiang New Area; Shapingba; Yuzhong; Yubei; Jiangbei",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        29.55952380952381,
+        106.5
+      ],
+      "pixel_coords": [
+        3438,
+        1434
+      ],
+      "population": 8449690
+    },
+    "ghsl-Kuala Lumpur; Kajang; Klang; Subang Jaya; Petaling Jaya; Selayang; Shah Alam; Ampang Jaya-Malaysia": {
+      "name": "Kuala Lumpur; Kajang; Klang; Subang Jaya; Petaling Jaya; Selayang; Shah Alam; Ampang Jaya",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        3.0833333333333286,
+        101.56944444444446
+      ],
+      "pixel_coords": [
+        3378,
+        1117
+      ],
+      "population": 8413206
+    },
+    "ghsl-Wuhan; Hongshan; Hanyang District; Wuchang District; Dongxihu District; Qiaokou District; Jianghan District; Jiang'an District; Qingshan District-China": {
+      "name": "Wuhan; Hongshan; Hanyang District; Wuchang District; Dongxihu District; Qiaokou District; Jianghan District; Jiang'an District; Qingshan District",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        30.58333333333333,
+        114.31666666666672
+      ],
+      "pixel_coords": [
+        3531,
+        1447
+      ],
+      "population": 8079484
+    },
+    "ghsl-Nanjing; Luhe; Pukou; Jianye District; Xuanwu District; Yuhuatai District; Jiangning; Qinhuai District; Gulou District; Qixia District; ????-China": {
+      "name": "Nanjing; Luhe; Pukou; Jianye District; Xuanwu District; Yuhuatai District; Jiangning; Qinhuai District; Gulou District; Qixia District; ????",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        32.03703703703704,
+        118.71296296296299
+      ],
+      "pixel_coords": [
+        3584,
+        1464
+      ],
+      "population": 8061029
+    },
+    "ghsl-Riyadh-Saudi Arabia": {
+      "name": "Riyadh",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        24.666666666666657,
+        46.68055555555554
+      ],
+      "pixel_coords": [
+        2720,
+        1375
+      ],
+      "population": 7970319
+    },
+    "ghsl-Ahmedabad-India": {
+      "name": "Ahmedabad",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        23.04166666666667,
+        72.54166666666669
+      ],
+      "pixel_coords": [
+        3030,
+        1356
+      ],
+      "population": 7898650
+    },
+    "ghsl-Nagoya; Gifu; Ichinomiya; Yokkaichi; Kasugai; Tsu; Suzuka; Anjo; Ogaki; Kariya; Komaki; Kakamigahara; Kuwana; Seto; Handa; Tokai; Konan; Obu; Nisshin; Ama; Kitanagoya; Chita; Owariasahi; Hekinan; Chiryu; Toyoake; Kiyosu; Hashima; Miyoshi; Tsushima; Mizuho; Iwakura; Takahama; Yamagata-Japan": {
+      "name": "Nagoya; Gifu; Ichinomiya; Yokkaichi; Kasugai; Tsu; Suzuka; Anjo; Ogaki; Kariya; Komaki; Kakamigahara; Kuwana; Seto; Handa; Tokai; Konan; Obu; Nisshin; Ama; Kitanagoya; Chita; Owariasahi; Hekinan; Chiryu; Toyoake; Kiyosu; Hashima; Miyoshi; Tsushima; Mizuho; Iwakura; Takahama; Yamagata",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        35.08169934640523,
+        136.80555555555554
+      ],
+      "pixel_coords": [
+        3801,
+        1500
+      ],
+      "population": 7880477.999999997
+    },
+    "stadester-London-United Kingdom": {
+      "name": "London",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        51.5072178,
+        -0.1275862
+      ],
+      "pixel_coords": [
+        2158,
+        1698
+      ],
+      "population": 7742000
+    },
+    "ghsl-Kozhikode-India": {
+      "name": "Kozhikode",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        11.25,
+        75.75
+      ],
+      "pixel_coords": [
+        3069,
+        1215
+      ],
+      "population": 7612130
+    },
+    "stadester-São Paulo-Brazil": {
+      "name": "São Paulo",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -23.5557714,
+        -46.6395571
+      ],
+      "pixel_coords": [
+        1600,
+        797
+      ],
+      "population": 7391957
+    },
+    "ghsl-Tianjin; Nankai; Hedong; Hexi; Hebei; Hongqiao; Heping; Xiqing; Beichen; Dongli District-China": {
+      "name": "Tianjin; Nankai; Hedong; Hexi; Hebei; Hongqiao; Heping; Xiqing; Beichen; Dongli District",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        39.13888888888888,
+        117.15277777777783
+      ],
+      "pixel_coords": [
+        3565,
+        1549
+      ],
+      "population": 7330648
+    },
+    "ghsl-Addis Ababa-Ethiopia": {
+      "name": "Addis Ababa",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        9,
+        38.708333333333314
+      ],
+      "pixel_coords": [
+        2624,
+        1188
+      ],
+      "population": 7280463
+    },
+    "stadester-Chicago-United States": {
+      "name": "Chicago",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        41.8781136,
+        -87.6297982
+      ],
+      "pixel_coords": [
+        1108,
+        1582
+      ],
+      "population": 7157958
+    },
+    "ghsl-Khartoum; Omdurman; Bahri; East Nile-Sudan": {
+      "name": "Khartoum; Omdurman; Bahri; East Nile",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        15.553030303030297,
+        32.49242424242425
+      ],
+      "pixel_coords": [
+        2549,
+        1266
+      ],
+      "population": 7114789
+    },
+    "ghsl-Surat-India": {
+      "name": "Surat",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        21.16666666666667,
+        72.79166666666669
+      ],
+      "pixel_coords": [
+        3033,
+        1334
+      ],
+      "population": 7100723
+    },
+    "ghsl-Chengdu; Jinjiang; Tianfu New Area; Shuangliu; Wuhou; Qingyang; Chenghua; Jinniu; Pidu; Xindu-China": {
+      "name": "Chengdu; Jinjiang; Tianfu New Area; Shuangliu; Wuhou; Qingyang; Chenghua; Jinniu; Pidu; Xindu",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        30.703125,
+        104
+      ],
+      "pixel_coords": [
+        3408,
+        1448
+      ],
+      "population": 7095390.000000004
+    },
+    "stadester-Qâhirah, Al- (agglomeration)-Egypt": {
+      "name": "Qâhirah, Al- (agglomeration)",
+      "region": "maghreb_egypt",
+      "colour": [
+        239,
+        188,
+        112
+      ],
+      "coords": [
+        30.0444196,
+        31.2357116
+      ],
+      "pixel_coords": [
+        2534,
+        1440
+      ],
+      "population": 6951438
+    },
+    "ghsl-Alexandria-Egypt": {
+      "name": "Alexandria",
+      "region": "maghreb_egypt",
+      "colour": [
+        239,
+        188,
+        112
+      ],
+      "coords": [
+        31.218750000000007,
+        29.9375
+      ],
+      "pixel_coords": [
+        2519,
+        1454
+      ],
+      "population": 6931369
+    },
+    "ghsl-Baghdad-Iraq": {
+      "name": "Baghdad",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        33.34259259259259,
+        44.37037037037035
+      ],
+      "pixel_coords": [
+        2692,
+        1480
+      ],
+      "population": 6891722
+    },
+    "ghsl-Hangzhou; Shaoxing; Xiaoshan District; Xihu District; Gongshu District; Keqiao; Yuhang District; Linping; Shangcheng; Binjiang District; Yuecheng-China": {
+      "name": "Hangzhou; Shaoxing; Xiaoshan District; Xihu District; Gongshu District; Keqiao; Yuhang District; Linping; Shangcheng; Binjiang District; Yuecheng",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        30.185185185185183,
+        120.23148148148147
+      ],
+      "pixel_coords": [
+        3602,
+        1442
+      ],
+      "population": 6874393.000000002
+    },
+    "ghsl-Surabaya; Sidoarjo; Bangil; Mojokerto-Indonesia": {
+      "name": "Surabaya; Sidoarjo; Bangil; Mojokerto",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        -7.44047619047619,
+        112.61904761904765
+      ],
+      "pixel_coords": [
+        3511,
+        990
+      ],
+      "population": 6856993
+    },
+    "ghsl-Pune; Pimpri-Chinchwad-India": {
+      "name": "Pune; Pimpri-Chinchwad",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        18.555555555555557,
+        73.80555555555554
+      ],
+      "pixel_coords": [
+        3045,
+        1302
+      ],
+      "population": 6674000
+    },
+    "ghsl-Nairobi-Kenya": {
+      "name": "Nairobi",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        -1.2777777777777715,
+        36.861111111111114
+      ],
+      "pixel_coords": [
+        2602,
+        1064
+      ],
+      "population": 6646257
+    },
+    "ghsl-Santiago-Chile": {
+      "name": "Santiago",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -33.49242424242426,
+        -70.6969696969697
+      ],
+      "pixel_coords": [
+        1311,
+        678
+      ],
+      "population": 6633767
+    },
+    "ghsl-Abidjan; Abobo; Yopougon; Cocody; Koumassi; Port-Bou�t; Adjam�; Marcory; Att�coub�; Anyama; Le Plateau; Treichville-C�te d'Ivoire": {
+      "name": "Abidjan; Abobo; Yopougon; Cocody; Koumassi; Port-Bou�t; Adjam�; Marcory; Att�coub�; Anyama; Le Plateau; Treichville",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        5.36666666666666,
+        -4.066666666666691
+      ],
+      "pixel_coords": [
+        2111,
+        1144
+      ],
+      "population": 6450316
+    },
+    "ghsl-Amman; Zarqa; Sahab; Al-Ruseifa-Jordan": {
+      "name": "Amman; Zarqa; Sahab; Al-Ruseifa",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        31.999999999999993,
+        35.940476190476176
+      ],
+      "pixel_coords": [
+        2591,
+        1464
+      ],
+      "population": 6425246
+    },
+    "ghsl-Luxor; New Thebes-Egypt": {
+      "name": "Luxor; New Thebes",
+      "region": "maghreb_egypt",
+      "colour": [
+        239,
+        188,
+        112
+      ],
+      "coords": [
+        25.66666666666667,
+        32.5
+      ],
+      "pixel_coords": [
+        2550,
+        1388
+      ],
+      "population": 6314420
+    },
+    "stadester-Sõul-South Korea": {
+      "name": "Sõul",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        37.550263,
+        126.9970831
+      ],
+      "pixel_coords": [
+        3683,
+        1530
+      ],
+      "population": 6259111
+    },
+    "ghsl-Kabul; Paghman-Afghanistan": {
+      "name": "Kabul; Paghman",
+      "region": "central_asia",
+      "colour": [
+        41,
+        193,
+        175
+      ],
+      "coords": [
+        34.53333333333333,
+        69.09999999999997
+      ],
+      "pixel_coords": [
+        2989,
+        1494
+      ],
+      "population": 6254679
+    },
+    "ghsl-Yangon-Myanmar": {
+      "name": "Yangon",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        16.875,
+        96.125
+      ],
+      "pixel_coords": [
+        3313,
+        1282
+      ],
+      "population": 6190958
+    },
+    "ghsl-Shenyang; Tiexi; Yuhong; Huanggu; Shenhe; Dadong; Heping; Sujiatun; Shenbei; Hunnan-China": {
+      "name": "Shenyang; Tiexi; Yuhong; Huanggu; Shenhe; Dadong; Heping; Sujiatun; Shenbei; Hunnan",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        41.766666666666666,
+        123.35833333333335
+      ],
+      "pixel_coords": [
+        3640,
+        1581
+      ],
+      "population": 6175250
+    },
+    "stadester-Mumbaî-India": {
+      "name": "Mumbaî",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        18.9581934,
+        72.8320729
+      ],
+      "pixel_coords": [
+        3033,
+        1307
+      ],
+      "population": 6035058
+    },
+    "ghsl-Accra; Tema-Ghana": {
+      "name": "Accra; Tema",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        5.635416666666671,
+        -0.1979166666666572
+      ],
+      "pixel_coords": [
+        2157,
+        1147
+      ],
+      "population": 5890466
+    },
+    "stadester-Beijing-China": {
+      "name": "Beijing",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        39.904211,
+        116.407395
+      ],
+      "pixel_coords": [
+        3556,
+        1558
+      ],
+      "population": 5862646
+    },
+    "ghsl-Onitsha; Nnewi-Nigeria": {
+      "name": "Onitsha; Nnewi",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        6.053030303030297,
+        6.893939393939377
+      ],
+      "pixel_coords": [
+        2242,
+        1152
+      ],
+      "population": 5788296
+    },
+    "ghsl-Miami; Hialeah; Fort Lauderdale; Pembroke Pines; Hollywood; Coral Springs; Kendall; West Palm Beach; Miramar; Pompano Beach; Sunrise; Miami Beach; Boca Raton; Deerfield Beach; Weston; Riviera Beach-United States": {
+      "name": "Miami; Hialeah; Fort Lauderdale; Pembroke Pines; Hollywood; Coral Springs; Kendall; West Palm Beach; Miramar; Pompano Beach; Sunrise; Miami Beach; Boca Raton; Deerfield Beach; Weston; Riviera Beach",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        26.07870370370371,
+        -80.24305555555557
+      ],
+      "pixel_coords": [
+        1197,
+        1392
+      ],
+      "population": 5733042
+    },
+    "ghsl-Madrid; M�stoles; Legan�s; Alcorc�n; Fuenlabrada; Getafe; Parla; Alcobendas-Spain": {
+      "name": "Madrid; M�stoles; Legan�s; Alcorc�n; Fuenlabrada; Getafe; Parla; Alcobendas",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        40.416666666666664,
+        -3.7638888888888573
+      ],
+      "pixel_coords": [
+        2114,
+        1564
+      ],
+      "population": 5680137
+    },
+    "ghsl-Faisalabad-Pakistan": {
+      "name": "Faisalabad",
+      "region": "central_asia",
+      "colour": [
+        41,
+        193,
+        175
+      ],
+      "coords": [
+        31.44444444444445,
+        73.02777777777777
+      ],
+      "pixel_coords": [
+        3036,
+        1457
+      ],
+      "population": 5676793
+    },
+    "ghsl-Hefei; Shushan; Yaohai; Baohe; Luyang; Feixi; Feidong-China": {
+      "name": "Hefei; Shushan; Yaohai; Baohe; Luyang; Feixi; Feidong",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        31.816666666666663,
+        117.25
+      ],
+      "pixel_coords": [
+        3567,
+        1461
+      ],
+      "population": 5646049
+    },
+    "ghsl-Toronto; Mississauga; Brampton; Markham; Vaughan; Richmond Hill; Oakville-Canada": {
+      "name": "Toronto; Mississauga; Brampton; Markham; Vaughan; Richmond Hill; Oakville",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        43.69791666666667,
+        -79.5451388888889
+      ],
+      "pixel_coords": [
+        1205,
+        1604
+      ],
+      "population": 5566382
+    },
+    "ghsl-Yaound�-Cameroon": {
+      "name": "Yaound�",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        3.8611111111111,
+        11.4722222222222
+      ],
+      "pixel_coords": [
+        2297,
+        1126
+      ],
+      "population": 5479204
+    },
+    "stadester-Wetter (Ruhr)-Germany": {
+      "name": "Wetter (Ruhr)",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        51.3860225,
+        7.3914998
+      ],
+      "pixel_coords": [
+        2248,
+        1696
+      ],
+      "population": 5462021
+    },
+    "ghsl-Xi'an; Yanta; Jingkai; Weiyang; Lianhu; Gaoxin; Qujiang New District; Hangtianjidi; Changan; Xixian New Area; Beilin; Xincheng; Baqiao; Chanba-China": {
+      "name": "Xi'an; Yanta; Jingkai; Weiyang; Lianhu; Gaoxin; Qujiang New District; Hangtianjidi; Changan; Xixian New Area; Beilin; Xincheng; Baqiao; Chanba",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        34.226190476190474,
+        108.88095238095235
+      ],
+      "pixel_coords": [
+        3466,
+        1490
+      ],
+      "population": 5427863.000000004
+    },
+    "ghsl-Mashhad-Iran": {
+      "name": "Mashhad",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        36.33333333333333,
+        59.458333333333314
+      ],
+      "pixel_coords": [
+        2873,
+        1516
+      ],
+      "population": 5377005
+    },
+    "ghsl-Chicago; Evanston; Elmhurst-United States": {
+      "name": "Chicago; Evanston; Elmhurst",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        41.87179487179487,
+        -87.8034188034188
+      ],
+      "pixel_coords": [
+        1106,
+        1582
+      ],
+      "population": 5348728.000000004
+    },
+    "stadester-Paris-France": {
+      "name": "Paris",
+      "region": "europe",
+      "colour": [
+        47,
+        97,
+        170
+      ],
+      "coords": [
+        48.8575475,
+        2.3513765
+      ],
+      "pixel_coords": [
+        2188,
+        1666
+      ],
+      "population": 5256347
+    },
+    "ghsl-Lucknow; Barabanki-India": {
+      "name": "Lucknow; Barabanki",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        26.883333333333333,
+        80.98333333333335
+      ],
+      "pixel_coords": [
+        3131,
+        1402
+      ],
+      "population": 5214964
+    },
+    "ghsl-Kampala; Kira; Nansana; Entebbe; Wakiso-Uganda": {
+      "name": "Kampala; Kira; Nansana; Entebbe; Wakiso",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        0.30555555555555713,
+        32.555555555555515
+      ],
+      "pixel_coords": [
+        2550,
+        1083
+      ],
+      "population": 5177878
+    },
+    "ghsl-Chattogram-Bangladesh": {
+      "name": "Chattogram",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        22.38095238095238,
+        91.76190476190476
+      ],
+      "pixel_coords": [
+        3261,
+        1348
+      ],
+      "population": 5175717
+    },
+    "stadester-Rio de Janeiro-Brazil": {
+      "name": "Rio de Janeiro",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -22.9068467,
+        -43.1728965
+      ],
+      "pixel_coords": [
+        1641,
+        805
+      ],
+      "population": 5154146
+    },
+    "ghsl-Zhengzhou; Jinshui District; Huiji; Zhongyuan; Erqi; Guancheng-China": {
+      "name": "Zhengzhou; Jinshui District; Huiji; Zhongyuan; Erqi; Guancheng",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        34.78333333333333,
+        113.59999999999997
+      ],
+      "pixel_coords": [
+        3523,
+        1497
+      ],
+      "population": 5126112
+    },
+    "ghsl-Singapore-Singapore": {
+      "name": "Singapore",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        1.3333333333333286,
+        103.75
+      ],
+      "pixel_coords": [
+        3405,
+        1096
+      ],
+      "population": 5117759
+    },
+    "ghsl-Kano-Nigeria": {
+      "name": "Kano",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        12,
+        8.5
+      ],
+      "pixel_coords": [
+        2262,
+        1224
+      ],
+      "population": 5110616
+    },
+    "ghsl-Kochi; Ernakulam-India": {
+      "name": "Kochi; Ernakulam",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        10.083333333333329,
+        76.28571428571428
+      ],
+      "pixel_coords": [
+        3075,
+        1201
+      ],
+      "population": 5069022
+    },
+    "ghsl-Hanoi; T? S?n-Vietnam": {
+      "name": "Hanoi; T? S?n",
+      "region": "southeast_asia",
+      "colour": [
+        97,
+        144,
+        163
+      ],
+      "coords": [
+        21.027777777777786,
+        105.81944444444446
+      ],
+      "pixel_coords": [
+        3429,
+        1332
+      ],
+      "population": 4965520
+    },
+    "ghsl-Kumasi-Ghana": {
+      "name": "Kumasi",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        6.708333333333343,
+        -1.625
+      ],
+      "pixel_coords": [
+        2140,
+        1160
+      ],
+      "population": 4923115
+    },
+    "ghsl-Rawalpindi; Islamabad-Pakistan": {
+      "name": "Rawalpindi; Islamabad",
+      "region": "central_asia",
+      "colour": [
+        41,
+        193,
+        175
+      ],
+      "coords": [
+        33.61111111111111,
+        73.02777777777777
+      ],
+      "pixel_coords": [
+        3036,
+        1483
+      ],
+      "population": 4913528
+    },
+    "ghsl-Saint Petersburg-Russia": {
+      "name": "Saint Petersburg",
+      "region": "eastern_europe_and_russia",
+      "colour": [
+        20,
+        114,
+        30
+      ],
+      "coords": [
+        59.91666666666667,
+        30.307291666666686
+      ],
+      "pixel_coords": [
+        2523,
+        1799
+      ],
+      "population": 4878966
+    },
+    "stadester-Philadelphia-United States": {
+      "name": "Philadelphia",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        39.9525839,
+        -75.1652215
+      ],
+      "pixel_coords": [
+        1258,
+        1559
+      ],
+      "population": 4853649
+    },
+    "ghsl-Jeddah-Saudi Arabia": {
+      "name": "Jeddah",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        21.513888888888886,
+        39.1527777777778
+      ],
+      "pixel_coords": [
+        2629,
+        1338
+      ],
+      "population": 4842257
+    },
+    "ghsl-Hong Kong; Kowloon-China": {
+      "name": "Hong Kong; Kowloon",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        22.305555555555557,
+        114.125
+      ],
+      "pixel_coords": [
+        3529,
+        1347
+      ],
+      "population": 4810522.999999996
+    },
+    "ghsl-Mogadishu-Somalia": {
+      "name": "Mogadishu",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        2.041666666666657,
+        45.29166666666666
+      ],
+      "pixel_coords": [
+        2703,
+        1104
+      ],
+      "population": 4798453
+    },
+    "ghsl-Colombo; Kaduwela; Moratuwa; Maharagama; Kesbewa; Negombo; Sri Jayawardenepura Kotte; Kolonnawa; Kalutara; Gampaha-Sri Lanka": {
+      "name": "Colombo; Kaduwela; Moratuwa; Maharagama; Kesbewa; Negombo; Sri Jayawardenepura Kotte; Kolonnawa; Kalutara; Gampaha",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        6.944444444444443,
+        79.875
+      ],
+      "pixel_coords": [
+        3118,
+        1163
+      ],
+      "population": 4720933
+    },
+    "ghsl-San Jose; San Francisco; Oakland; Fremont; Hayward; Sunnyvale; Santa Clara; Berkeley; Richmond; San Mateo; Daly City; Redwood City; Milpitas; Mountain View; Alameda; Palo Alto; South San Francisco; Cupertino-United States": {
+      "name": "San Jose; San Francisco; Oakland; Fremont; Hayward; Sunnyvale; Santa Clara; Berkeley; Richmond; San Mateo; Daly City; Redwood City; Milpitas; Mountain View; Alameda; Palo Alto; South San Francisco; Cupertino",
+      "region": "northern_america",
+      "colour": [
+        87,
+        122,
+        175
+      ],
+      "coords": [
+        37.568627450980394,
+        -122.17647058823529
+      ],
+      "pixel_coords": [
+        693,
+        1530
+      ],
+      "population": 4718349
+    },
+    "ghsl-Santo Domingo-Dominican Republic": {
+      "name": "Santo Domingo",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        18.46666666666667,
+        -69.96666666666665
+      ],
+      "pixel_coords": [
+        1320,
+        1301
+      ],
+      "population": 4593164
+    },
+    "ghsl-Harbin; Daoli; Nangang; Daowai; Pingfang; Xiangfang-China": {
+      "name": "Harbin; Daoli; Nangang; Daowai; Pingfang; Xiangfang",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        45.736111111111114,
+        126.625
+      ],
+      "pixel_coords": [
+        3679,
+        1628
+      ],
+      "population": 4591886
+    },
+    "ghsl-Casablanca; Mohammedia-Morocco": {
+      "name": "Casablanca; Mohammedia",
+      "region": "maghreb_egypt",
+      "colour": [
+        239,
+        188,
+        112
+      ],
+      "coords": [
+        33.60000000000001,
+        -7.599999999999994
+      ],
+      "pixel_coords": [
+        2068,
+        1483
+      ],
+      "population": 4577677
+    },
+    "ghsl-Dubai; Sharjah; Ajman-United Arab Emirates": {
+      "name": "Dubai; Sharjah; Ajman",
+      "region": "middle_east",
+      "colour": [
+        198,
+        130,
+        129
+      ],
+      "coords": [
+        25.316666666666663,
+        55.349999999999966
+      ],
+      "pixel_coords": [
+        2824,
+        1383
+      ],
+      "population": 4565478
+    },
+    "stadester-Tôkyô-Japan": {
+      "name": "Tôkyô",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        35.6764225,
+        139.650027
+      ],
+      "pixel_coords": [
+        3835,
+        1508
+      ],
+      "population": 4498700
+    },
+    "stadester-Tianjin-China": {
+      "name": "Tianjin",
+      "region": "eastasia",
+      "colour": [
+        173,
+        62,
+        62
+      ],
+      "coords": [
+        39.0850999,
+        117.19937
+      ],
+      "pixel_coords": [
+        3566,
+        1549
+      ],
+      "population": 4494121
+    },
+    "ghsl-Douala-Cameroon": {
+      "name": "Douala",
+      "region": "sub_saharan_africa",
+      "colour": [
+        155,
+        101,
+        77
+      ],
+      "coords": [
+        4.049999999999997,
+        9.683333333333309
+      ],
+      "pixel_coords": [
+        2276,
+        1128
+      ],
+      "population": 4457862
+    },
+    "ghsl-Kanpur; Unnao-India": {
+      "name": "Kanpur; Unnao",
+      "region": "indian_subcontinent",
+      "colour": [
+        214,
+        144,
+        83
+      ],
+      "coords": [
+        26.483333333333327,
+        80.28333333333336
+      ],
+      "pixel_coords": [
+        3123,
+        1397
+      ],
+      "population": 4413625
+    },
+    "ghsl-Belo Horizonte; Belo Horizonte; Contagem; Betim; Ibirit�-Brazil": {
+      "name": "Belo Horizonte; Belo Horizonte; Contagem; Betim; Ibirit�",
+      "region": "latin_america",
+      "colour": [
+        71,
+        165,
+        101
+      ],
+      "coords": [
+        -19.891666666666666,
+        -44.02499999999998
+      ],
+      "pixel_coords": [
+        1631,
+        841
+      ],
+      "population": 4376747
+    },
+    "ghsl-Sydney-Australia": {
+      "name": "Sydney",
+      "region": "oceania",
+      "colour": [
+        0,
+        205,
+        143
+      ],
+      "coords": [
+        -33.849999999999994,
+        151.04166666666669
+      ],
+      "pixel_coords": [
+        3972,
+        673
+      ],
+      "population": 4375394
+    }
+  }
+}

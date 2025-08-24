@@ -1,6 +1,8 @@
 //Initialise AI-generated helper functions - [WIP] - Should be refactored at a later date
 //AI Policy: Quarantine
 {
+	const { PNG } = require("pngjs");
+	
 	//1. Centroid of polygon given a range of [x, y] points
 	{
 		// Main: Find pole of inaccessibility (GIS centroid)
@@ -26,6 +28,146 @@
 			const lng = (x / width) * 360 - 180;
 			const lat = 90 - (y / height) * 180;
 			return [lng, lat];
+		};
+	}
+	
+	//3. Voronoi transformations
+	{
+		/**
+		 * Generates a Voronoi diagram from a PNG colormap.
+		 * Each pixel is assigned the color of the nearest non-transparent pixel.
+		 * Uses a fast raster scan algorithm.
+		 * @param {string} inputPath - Path to input PNG.
+		 * @param {string} outputPath - Path to output PNG.
+		 */
+		global.generateVoronoiFromPNG = function (inputPath, outputPath) {
+			fs.createReadStream(inputPath)
+			.pipe(new PNG())
+			.on("parsed", function () {
+				const width = this.width;
+				const height = this.height;
+				const data = this.data;
+				
+				// Step 1: Prepare seed map and distance map
+				const seedMap = new Array(width * height);
+				for (let y = 0; y < height; y++) {
+					for (let x = 0; x < width; x++) {
+						const idx = (width * y + x) << 2;
+						const alpha = data[idx + 3];
+						if (alpha > 0) {
+							seedMap[width * y + x] = { sx: x, sy: y, dist: 0 };
+						} else {
+							seedMap[width * y + x] = { sx: -1, sy: -1, dist: Infinity };
+						}
+					}
+					if (y % 32 === 0 || y === height - 1) {
+						console.log(`Seed map: processed row ${y + 1} / ${height}`);
+					}
+				}
+				
+				// Step 2: Forward raster scan (top-left to bottom-right)
+				for (let y = 0; y < height; y++) {
+					for (let x = 0; x < width; x++) {
+						const idx = width * y + x;
+						const cur = seedMap[idx];
+						if (x > 0) {
+							const left = seedMap[idx - 1];
+							if (left.sx !== -1) {
+								const dx = x - left.sx;
+								const dy = y - left.sy;
+								const dist = dx * dx + dy * dy;
+								if (dist < cur.dist) {
+									cur.sx = left.sx;
+									cur.sy = left.sy;
+									cur.dist = dist;
+								}
+							}
+						}
+						if (y > 0) {
+							const top = seedMap[idx - width];
+							if (top.sx !== -1) {
+								const dx = x - top.sx;
+								const dy = y - top.sy;
+								const dist = dx * dx + dy * dy;
+								if (dist < cur.dist) {
+									cur.sx = top.sx;
+									cur.sy = top.sy;
+									cur.dist = dist;
+								}
+							}
+						}
+					}
+					if (y % 32 === 0 || y === height - 1) {
+						console.log(`Forward scan: processed row ${y + 1} / ${height}`);
+					}
+				}
+				
+				// Step 3: Backward raster scan (bottom-right to top-left)
+				for (let y = height - 1; y >= 0; y--) {
+					for (let x = width - 1; x >= 0; x--) {
+						const idx = width * y + x;
+						const cur = seedMap[idx];
+						if (x < width - 1) {
+							const right = seedMap[idx + 1];
+							if (right.sx !== -1) {
+								const dx = x - right.sx;
+								const dy = y - right.sy;
+								const dist = dx * dx + dy * dy;
+								if (dist < cur.dist) {
+									cur.sx = right.sx;
+									cur.sy = right.sy;
+									cur.dist = dist;
+								}
+							}
+						}
+						if (y < height - 1) {
+							const bottom = seedMap[idx + width];
+							if (bottom.sx !== -1) {
+								const dx = x - bottom.sx;
+								const dy = y - bottom.sy;
+								const dist = dx * dx + dy * dy;
+								if (dist < cur.dist) {
+									cur.sx = bottom.sx;
+									cur.sy = bottom.sy;
+									cur.dist = dist;
+								}
+							}
+						}
+					}
+					if (y % 32 === 0 || y === 0) {
+						console.log(`Backward scan: processed row ${height - y} / ${height}`);
+					}
+				}
+				
+				// Step 4: Write output PNG
+				for (let y = 0; y < height; y++) {
+					for (let x = 0; x < width; x++) {
+						const idx = (width * y + x) << 2;
+						const seed = seedMap[width * y + x];
+						if (seed.sx !== -1) {
+							const seedIdx = (width * seed.sy + seed.sx) << 2;
+							this.data[idx] = data[seedIdx];
+							this.data[idx + 1] = data[seedIdx + 1];
+							this.data[idx + 2] = data[seedIdx + 2];
+							this.data[idx + 3] = data[seedIdx + 3];
+						} else {
+							this.data[idx] = 0;
+							this.data[idx + 1] = 0;
+							this.data[idx + 2] = 0;
+							this.data[idx + 3] = 0;
+						}
+					}
+					if (y % 32 === 0 || y === height - 1) {
+						console.log(`Writing output: processed row ${y + 1} / ${height}`);
+					}
+				}
+				
+				this.pack()
+				.pipe(fs.createWriteStream(outputPath))
+				.on("finish", () => {
+					console.log("Voronoi diagram generated:", outputPath);
+				});
+			});
 		};
 	}
 }

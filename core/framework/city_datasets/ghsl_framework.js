@@ -159,6 +159,7 @@
 			generateGHSLPopulationRaster(i, { ghsl_obj: ghsl_obj });
 	};
 	
+	//Returns a GHSL object.
 	global.getGHSLObject = function () {
 		//Declare local instance variables
 		var common_defines = config.defines.common;
@@ -226,6 +227,7 @@
 		//Assign .coords by going over all GHSL urban area rasters and populating coords_dictionary
 		let ghsl_rasters = {};
 		let ghsl_urban_area_folder = `${common_defines.input_file_paths.ghsl_urban_areas_folder}`;
+		let regions_raster = loadImage(`${common_defines.input_file_paths.voronoi_regions_file_path}`);
 		
 		//Iterate over all .png files in ghsl_urban_area_folder
 		fs.readdirSync(ghsl_urban_area_folder).filter((file) => path.extname(file).toLowerCase() === ".png")
@@ -282,8 +284,17 @@
 			if (coords_dictionary[local_city.id]) {
 				local_city.pixel_coords = coords_dictionary[local_city.id];
 				let local_coords = getEquirectangularPixelCoords(local_city.pixel_coords[0], local_city.pixel_coords[1]);
+				let local_index = (local_city.pixel_coords[1]*4320 + local_city.pixel_coords[0])*4;
 				
 				local_city.coords = [local_coords[1], local_coords[0]];
+				
+				try {
+					local_city.region = config.defines.regions[[
+						regions_raster.data[local_index],
+						regions_raster.data[local_index + 1],
+						regions_raster.data[local_index + 2]
+					].join(",")].key;
+				} catch (e) { console.error(local_city.name, `(${i}/${all_return_keys.length}) has no region.`); }
 			}
 			
 		}
