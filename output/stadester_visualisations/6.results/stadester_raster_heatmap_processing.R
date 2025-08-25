@@ -8,7 +8,7 @@ library(tidyterra)
 library(sf) # Used for st_graticule()
 library(rnaturalearth)
 library(gridExtra)
-library(scales) # Load the scales library for SI labels
+library(scales) # *** CHANGE: Load the scales library for SI labels ***
 
 # -----------------------------------------------------------------------------
 # Configuration
@@ -29,12 +29,12 @@ decode_rgba_to_numeric <- function(png_path) {
   g <- floor(img[,,2] * 255)
   b <- floor(img[,,3] * 255)
   a <- floor(img[,,4] * 255)
-
+  
   decoded_matrix <- as.numeric(r) * 2^24 +
     as.numeric(g) * 2^16 +
     as.numeric(b) * 2^8  +
     as.numeric(a)
-
+  
   dim(decoded_matrix) <- dim(r)
   return(decoded_matrix)
 }
@@ -88,63 +88,43 @@ print(paste("Starting to process", length(files_to_process), "raster images...")
 for (file_path in files_to_process) {
   year <- gsub("^stadester_|.png$", "", basename(file_path))
   print(paste("Processing:", basename(file_path)))
-
+  
   # 1. Decode PNG and create a SpatRaster object
   numeric_matrix <- decode_rgba_to_numeric(file_path)
   wgs84_raster <- rast(numeric_matrix, crs = wgs84_crs, ext = c(-180, 180, -90, 90))
-
+  
   # 2. Reproject the raster
   equal_earth_raster <- project(wgs84_raster, equal_earth_crs, method = "bilinear")
-
+  
   # 3. Set all zero values to NA to make them transparent
   data_raster <- classify(equal_earth_raster, cbind(0, 0, NA), right = TRUE)
-
-  # *** CHANGE: Start of new code block for dynamic legend breaks ***
-  # Get the min and max values from the raster to ensure they are on the legend
-  min_max_vals <- minmax(data_raster)
-  min_val <- min_max_vals[1,1]
-  max_val <- min_max_vals[2,1]
-
-  # Check for a valid data range. If the raster is empty, let ggplot decide the breaks.
-  if (!is.infinite(min_val) && !is.infinite(max_val) && min_val < max_val) {
-    # Get the standard log breaks that ggplot would normally create
-    standard_log_breaks <- scales::breaks_log()(c(min_val, max_val))
-    
-    # Combine the min/max values with the standard breaks, ensuring no duplicates and proper order
-    custom_breaks <- sort(unique(c(min_val, standard_log_breaks, max_val)))
-  } else {
-    # Fallback to default breaks if the raster is empty or has no range
-    custom_breaks <- waiver() 
-  }
-  # *** CHANGE: End of new code block ***
-
+  
   # 4. Create the plot with the correct layers
   p <- ggplot() +
     # Layer 1: The graticules, drawn first to be in the background.
     geom_sf(data = graticules_equal_earth, color = "gray50", linetype = "solid", size = 0.25) +
-
+    
     # Layer 2: Black landmass background
     geom_sf(data = land_equal_earth, fill = "black", color = NA) +
-
+    
     # Layer 3: Logarithmic heatmap data
     geom_spatraster(data = data_raster, aes(fill = lyr.1)) +
-
+    
     # Layer 4: Coastlines for detail, drawn on top of the heatmap
     geom_sf(data = coastlines_equal_earth, color = "gray20", size = 0.2) +
-
-    # *** CHANGE: Use the new custom_breaks in the scale function ***
+    
+    # *** CHANGE: Define the color scale with SI unit labels ***
     scale_fill_viridis_c(
       option = "plasma",
       trans = "log10",
       na.value = "transparent",
       name = "Population",
-      breaks = custom_breaks, # Use our dynamically generated breaks
-      labels = label_number(scale_cut = cut_si(""), accuracy = .1) # Added accuracy for better formatting of min/max
+      labels = label_number(scale_cut = cut_si(""))
     ) +
-
+    
     # Set the coordinate system. This clips everything to the globe's boundary.
     coord_sf(crs = equal_earth_crs, expand = FALSE) +
-
+    
     # Add titles and a clean theme
     labs(
       title = paste("Year:", year),
@@ -161,7 +141,7 @@ for (file_path in files_to_process) {
       plot.title = element_text(hjust = 0.5),
       plot.subtitle = element_text(hjust = 0.5)
     )
-
+  
   plot_list[[file_path]] <- p
 }
 
@@ -181,11 +161,11 @@ for (i in 1:num_grids) {
   start_index <- (i - 1) * plots_per_grid + 1
   end_index <- min(i * plots_per_grid, length(plot_list))
   grid_plots <- plot_list[start_index:end_index]
-
+  
   final_grid <- do.call("grid.arrange", c(grid_plots, ncol = num_cols, nrow = num_rows))
-
+  
   output_filename <- paste0("output_grid_", i, ".png")
-
+  
   ggsave(
     output_filename,
     plot = final_grid,
