@@ -32,6 +32,7 @@ global.cubic_spline = require("cubic-spline");
 global.fs = require("fs");
 global.GeoTIFF = require('geotiff');
 global.JSDOM = require("jsdom").JSDOM;
+global.json2csv = require("json2csv");
 global.mathjs = require("mathjs");
 global.ml_matrix = require("ml-matrix");
 global.netcdfjs = require("netcdfjs");

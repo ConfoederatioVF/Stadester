@@ -1,4 +1,0 @@
-//Initialise functions
-{
-	
-}

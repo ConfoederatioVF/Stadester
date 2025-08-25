@@ -170,6 +170,19 @@ module.exports = {
     fs.writeFileSync("./database.json", JSON.stringify(main, null, 2));
     console.log(`Saved main DB to ${file_path}`);
   },
+	
+	saveFileAsCSV: function (arg0_file_path, arg1_object_array) {
+		//Convert from parameters
+		let file_path = arg0_file_path;
+		let object_array = arg1_object_array;
+		
+		//Declare local instance variables
+		let json2csv_parser = new json2csv.Parser();
+		let new_csv = json2csv_parser.parse(object_array);
+		
+		fs.writeFileSync(file_path, new_csv);
+		console.log(`Saved CSV to ${file_path}`);
+	},
 
   saveFileAsJSON: function (arg0_file_path, arg1_data) {
     //Convert from parameters

@@ -19,6 +19,7 @@
     "h5wasm": "^0.7.9",
     "install": "^0.13.0",
     "jsdom": "^26.1.0",
+    "json2csv": "^6.0.0-alpha.2",
     "lambert-w-function": "^5.0.0",
     "libsvm-js": "^0.2.1",
     "mathjs": "^14.3.0",

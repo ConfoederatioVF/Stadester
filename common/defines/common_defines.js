@@ -57,6 +57,10 @@ config.defines.common = {
     regional_cogs_ghsl: "./output/regional_cogs_ghsl.json",
 		
 		//4. Testing and Validation
+		hyde_urbanisation_csv: "./output/stadester_visualisations/4.testing_and_validation/urban_and_rural_population.csv",
+		region_population_totals: "./output/stadester_visualisations/4.testing_and_validation/regional_population_totals.json",
+		regional_urbanisation: "./output/stadester_visualisations/4.testing_and_validation/regional_urbanisation.json",
+		regional_urbanisation_csv: "./output/stadester_visualisations/4.testing_and_validation/regional_urbanisation.csv",
 		top_120_table: "./output/stadester_visualisations/4.testing_and_validation/stadester_top_120.json"
   },
   
