@@ -42,14 +42,16 @@ decode_rgba_to_numeric <- function(png_path) {
 # -----------------------------------------------------------------------------
 # Data Preparation
 # -----------------------------------------------------------------------------
-# Find files matching one or more digits
+# *** CHANGE: Update pattern to find positive and negative years ***
+# The "-?" part matches an optional negative sign.
 file_list <- list.files(
   path = raster_dir,
-  pattern = "^stadester_\\d+\\.png$",
+  pattern = "^stadester_-?\\d+\\.png$",
   full.names = TRUE
 )
 
 # Perform a "natural sort" to ensure correct numerical order
+# This part works correctly for negative numbers without modification
 numeric_parts <- as.numeric(gsub("^stadester_|.png$", "", basename(file_list)))
 file_list <- file_list[order(numeric_parts)]
 
@@ -86,8 +88,18 @@ plot_list <- list()
 print(paste("Starting to process", length(files_to_process), "raster images..."))
 
 for (file_path in files_to_process) {
-  year <- gsub("^stadester_|.png$", "", basename(file_path))
-  print(paste("Processing:", basename(file_path)))
+  # Extract the year part of the filename as a string
+  year_str <- gsub("^stadester_|.png$", "", basename(file_path))
+  
+  # *** CHANGE: Format the year for display (e.g., "-500" becomes "500 BC") ***
+  year_num <- as.numeric(year_str)
+  if (year_num < 0) {
+    display_year <- paste(abs(year_num), "BC")
+  } else {
+    display_year <- paste(abs(year_num), "AD")
+  }
+  
+  print(paste("Processing year:", display_year))
   
   # 1. Decode PNG to get the original data
   numeric_matrix <- decode_rgba_to_numeric(file_path)
@@ -97,8 +109,7 @@ for (file_path in files_to_process) {
   equal_earth_raster <- project(wgs84_raster, equal_earth_crs, method = "bilinear")
   data_raster <- classify(equal_earth_raster, cbind(0, 0, NA), right = TRUE)
   
-  # *** CORRECTED LOGIC: Control the scale directly from the original data ***
-  # Find all non-zero values from the original matrix
+  # Logic to control the scale directly from the original data
   positive_vals <- numeric_matrix[numeric_matrix > 0]
   
   # Initialize scale arguments to their defaults
@@ -111,17 +122,11 @@ for (file_path in files_to_process) {
     max_val <- max(positive_vals)
     
     if (min_val < max_val) {
-      # Set the scale limits to the TRUE min and max
       scale_limits <- c(min_val, max_val)
-      
-      # Generate standard log breaks within this true range
       standard_log_breaks <- scales::breaks_log()(c(min_val, max_val))
-      
-      # Create the final breaks vector, ensuring min and max are included
       scale_breaks <- sort(unique(c(min_val, standard_log_breaks, max_val)))
     }
   }
-  # *** END OF CORRECTED LOGIC ***
   
   # 4. Create the plot
   p <- ggplot() +
@@ -130,21 +135,22 @@ for (file_path in files_to_process) {
     geom_spatraster(data = data_raster, aes(fill = lyr.1)) +
     geom_sf(data = coastlines_equal_earth, color = "gray20", size = 0.2) +
     
-    # Use the scale arguments we just defined
     scale_fill_viridis_c(
       option = "plasma",
       trans = "log10",
       na.value = "transparent",
       name = "Population",
-      limits = scale_limits, # Force the scale to use the true data range
-      breaks = scale_breaks, # Provide the breaks based on that same range
+      limits = scale_limits,
+      breaks = scale_breaks,
       labels = label_number(scale_cut = cut_si(""), accuracy = .1) 
     ) +
     
     coord_sf(crs = equal_earth_crs, expand = FALSE) +
+    
+    # *** CHANGE: Use the formatted display_year for the plot title ***
     labs(
-      title = paste("Year:", year),
-      subtitle = "Urban Population"
+      title = paste("Year:", display_year),
+      subtitle = "Average Urban Population\n(Bilinear Interpolation)"
     ) +
     theme_minimal() +
     theme(
