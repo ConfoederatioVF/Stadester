@@ -8,7 +8,7 @@ library(tidyterra)
 library(sf) # Used for st_graticule()
 library(rnaturalearth)
 library(gridExtra)
-library(scales) # *** CHANGE: Load the scales library for SI labels ***
+library(scales) 
 
 # -----------------------------------------------------------------------------
 # Configuration
@@ -89,52 +89,67 @@ for (file_path in files_to_process) {
   year <- gsub("^stadester_|.png$", "", basename(file_path))
   print(paste("Processing:", basename(file_path)))
   
-  # 1. Decode PNG and create a SpatRaster object
+  # 1. Decode PNG to get the original data
   numeric_matrix <- decode_rgba_to_numeric(file_path)
+  
+  # 2. Create SpatRaster and reproject 
   wgs84_raster <- rast(numeric_matrix, crs = wgs84_crs, ext = c(-180, 180, -90, 90))
-  
-  # 2. Reproject the raster
   equal_earth_raster <- project(wgs84_raster, equal_earth_crs, method = "bilinear")
-  
-  # 3. Set all zero values to NA to make them transparent
   data_raster <- classify(equal_earth_raster, cbind(0, 0, NA), right = TRUE)
   
-  # 4. Create the plot with the correct layers
+  # *** CORRECTED LOGIC: Control the scale directly from the original data ***
+  # Find all non-zero values from the original matrix
+  positive_vals <- numeric_matrix[numeric_matrix > 0]
+  
+  # Initialize scale arguments to their defaults
+  scale_limits <- NULL
+  scale_breaks <- waiver()
+  
+  # Only override the defaults if there is a valid range of data
+  if (length(positive_vals) > 1) {
+    min_val <- min(positive_vals)
+    max_val <- max(positive_vals)
+    
+    if (min_val < max_val) {
+      # Set the scale limits to the TRUE min and max
+      scale_limits <- c(min_val, max_val)
+      
+      # Generate standard log breaks within this true range
+      standard_log_breaks <- scales::breaks_log()(c(min_val, max_val))
+      
+      # Create the final breaks vector, ensuring min and max are included
+      scale_breaks <- sort(unique(c(min_val, standard_log_breaks, max_val)))
+    }
+  }
+  # *** END OF CORRECTED LOGIC ***
+  
+  # 4. Create the plot
   p <- ggplot() +
-    # Layer 1: The graticules, drawn first to be in the background.
     geom_sf(data = graticules_equal_earth, color = "gray50", linetype = "solid", size = 0.25) +
-    
-    # Layer 2: Black landmass background
     geom_sf(data = land_equal_earth, fill = "black", color = NA) +
-    
-    # Layer 3: Logarithmic heatmap data
     geom_spatraster(data = data_raster, aes(fill = lyr.1)) +
-    
-    # Layer 4: Coastlines for detail, drawn on top of the heatmap
     geom_sf(data = coastlines_equal_earth, color = "gray20", size = 0.2) +
     
-    # *** CHANGE: Define the color scale with SI unit labels ***
+    # Use the scale arguments we just defined
     scale_fill_viridis_c(
       option = "plasma",
       trans = "log10",
       na.value = "transparent",
       name = "Population",
-      labels = label_number(scale_cut = cut_si(""))
+      limits = scale_limits, # Force the scale to use the true data range
+      breaks = scale_breaks, # Provide the breaks based on that same range
+      labels = label_number(scale_cut = cut_si(""), accuracy = .1) 
     ) +
     
-    # Set the coordinate system. This clips everything to the globe's boundary.
     coord_sf(crs = equal_earth_crs, expand = FALSE) +
-    
-    # Add titles and a clean theme
     labs(
       title = paste("Year:", year),
       subtitle = "Urban Population"
     ) +
-    # Use a minimal theme that doesn't add its own borders or grids
     theme_minimal() +
     theme(
       panel.background = element_rect(fill = "white", color = NA),
-      panel.grid = element_blank(), # We drew our own graticules
+      panel.grid = element_blank(),
       axis.text = element_blank(),
       axis.ticks = element_blank(),
       axis.title = element_blank(),
