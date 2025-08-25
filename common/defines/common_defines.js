@@ -58,10 +58,14 @@ config.defines.common = {
 		
 		//4. Testing and Validation
 		hyde_urbanisation_csv: "./output/stadester_visualisations/4.testing_and_validation/urban_and_rural_population.csv",
-		region_population_totals: "./output/stadester_visualisations/4.testing_and_validation/regional_population_totals.json",
-		regional_urbanisation: "./output/stadester_visualisations/4.testing_and_validation/regional_urbanisation.json",
-		regional_urbanisation_csv: "./output/stadester_visualisations/4.testing_and_validation/regional_urbanisation.csv",
-		top_120_table: "./output/stadester_visualisations/4.testing_and_validation/stadester_top_120.json"
+		top_120_table: "./output/stadester_visualisations/4.testing_and_validation/stadester_top_120.json",
+		
+		//6. Results
+		region_population_totals: "./output/stadester_visualisations/6.results/regional_population_totals.json",
+		regional_datapoints: "./output/stadester_visualisations/6.results/regional_datapoints.json",
+		regional_datapoints_csv: "./output/stadester_visualisations/6.results/regional_datapoints.csv",
+		regional_urbanisation: "./output/stadester_visualisations/6.results/regional_urbanisation.json",
+		regional_urbanisation_csv: "./output/stadester_visualisations/6.results/regional_urbanisation.csv",
   },
   
   ghsl_domain: [1975, 2025],
