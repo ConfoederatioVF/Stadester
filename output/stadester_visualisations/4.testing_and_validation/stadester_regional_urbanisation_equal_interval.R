@@ -61,11 +61,14 @@ for (current_region in regions) {
     }
     
     # Convert year to factor for equal interval x-axis
+    # Define the desired year breaks and ensure they are in the factor levels
+    year_breaks <- c(-10000, -3000, 0, 1000, 1700, 1800, 1950, 1975, 2000, 2025)
+    all_years <- sort(unique(c(region_df$year, year_breaks)))
     plot_df <- region_df %>%
       mutate(
         urban_share_scaled = scaler(urban_share, min_pop, max_pop),
         rural_share_scaled = scaler(rural_share, min_pop, max_pop),
-        year_factor = factor(year, levels = sort(unique(year)))
+        year_factor = factor(year, levels = as.character(all_years))
       )
     
     # 4. --- Manually Define Secondary Axis Breaks and Labels ---
@@ -73,7 +76,12 @@ for (current_region in regions) {
     sec_axis_breaks_scaled <- scaler(sec_axis_breaks_values, min_pop, max_pop)
     sec_axis_labels <- scales::percent(sec_axis_breaks_values, accuracy = 1)
     
-    # 5. --- Create the Plot ---
+    # 5. --- Calculate log10 breaks for Y axis, always including min and max ---
+    log_breaks <- 10^(floor(log10(min_pop)):ceiling(log10(max_pop)))
+    # Ensure min_pop and max_pop are included as breaks
+    log_breaks <- sort(unique(c(log_breaks, min_pop, max_pop)))
+    
+    # 6. --- Create the Plot ---
     p <- ggplot(plot_df, aes(x = year_factor)) +
       geom_line(aes(y = total_population, color = "Total Population", group = 1), size = 1, na.rm = TRUE) +
       geom_line(aes(y = urban_population, color = "Urban Population", group = 1), size = 1, na.rm = TRUE) +
@@ -84,6 +92,7 @@ for (current_region in regions) {
       # --- Scales and Axes ---
       scale_y_log10(
         name = "Population (Log Scale)",
+        breaks = log_breaks,
         labels = label_number(scale_cut = cut_si("")),
         sec.axis = sec_axis(
           trans = ~ .,
@@ -95,7 +104,8 @@ for (current_region in regions) {
       
       scale_x_discrete(
         name = "Year",
-        labels = levels(plot_df$year_factor)
+        breaks = as.character(year_breaks),
+        labels = as.character(year_breaks)
       ) +
       
       scale_color_manual(name = "Metric", values = line_colors) +
