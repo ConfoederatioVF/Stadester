@@ -5,9 +5,10 @@ library(terra)
 library(png)
 library(ggplot2)
 library(tidyterra)
-library(sf)
+library(sf) # Used for st_graticule()
 library(rnaturalearth)
 library(gridExtra)
+library(scales) # Load the scales library for SI labels
 
 # -----------------------------------------------------------------------------
 # Configuration
@@ -16,180 +17,184 @@ library(gridExtra)
 raster_dir <- "./6.results/stadester_rasters/"
 
 # Define the Coordinate Reference Systems (CRS)
-# Input CRS is WGS84 Equirectangular
 wgs84_crs <- "EPSG:4326"
-# Target CRS is Equal Earth
-equal_earth_crs <- "+proj=eqearth +datum=WGS84 +ellps=WGS84"
+equal_earth_crs <- "+proj=eqearth +datum=WGS84"
 
 # -----------------------------------------------------------------------------
 # Helper Function to Decode Pixel Values
 # -----------------------------------------------------------------------------
-# This function reads a PNG file and decodes its RGBA pixels into a single
-# numeric value based on the specified bitwise formula.
-# The formula `((r << 24) | (g << 16) | (b << 8) | a)` is emulated using
-# arithmetic operations to avoid potential signed integer issues in R.
 decode_rgba_to_numeric <- function(png_path) {
-  # Read the PNG file into a 4-layer array (Height x Width x RGBA)
-  # The values are in the range [0, 1]
   img <- readPNG(png_path)
-  
-  # Scale RGBA values from [0, 1] to integers [0, 255]
   r <- floor(img[,,1] * 255)
   g <- floor(img[,,2] * 255)
   b <- floor(img[,,3] * 255)
   a <- floor(img[,,4] * 255)
-  
-  # Use arithmetic to create a unique numeric value for each pixel.
-  # This avoids bitwise operations on large numbers which can be tricky in R.
-  # Using as.numeric to handle potentially large integer values.
+
   decoded_matrix <- as.numeric(r) * 2^24 +
     as.numeric(g) * 2^16 +
     as.numeric(b) * 2^8  +
     as.numeric(a)
-  
-  # Reshape the vector back into a matrix with the original dimensions
+
   dim(decoded_matrix) <- dim(r)
-  
   return(decoded_matrix)
 }
 
 # -----------------------------------------------------------------------------
 # Data Preparation
 # -----------------------------------------------------------------------------
-# Get a list of all PNG files in the directory
-# The pattern ensures we only get the files we're interested in.
+# Find files matching one or more digits
 file_list <- list.files(
   path = raster_dir,
-  pattern = "^stadester_\\d{4}\\.png$",
+  pattern = "^stadester_\\d+\\.png$",
   full.names = TRUE
 )
 
-# Sort the file list to ensure chronological order
-file_list <- sort(file_list)
+# Perform a "natural sort" to ensure correct numerical order
+numeric_parts <- as.numeric(gsub("^stadester_|.png$", "", basename(file_list)))
+file_list <- file_list[order(numeric_parts)]
 
-# We only want to display the first 120 images as specified
-files_to_process <- head(file_list, 120)
+# Select all images EXCEPT the last one
+files_to_process <- head(file_list, -1)
 
-# Fetch and reproject the base coastlines for the map
-# Using rnaturalearth to get a simple features (sf) object for coastlines.
-print("Fetching and reprojecting coastlines...")
+# Ensure we are processing at most 120 files
+if (length(files_to_process) > 120) {
+  files_to_process <- files_to_process[1:120]
+}
+
+# --- Prepare map layers that will be used for every plot ---
+print("Fetching and reprojecting map layers...")
+
+# Fetch LAND polygons for the black background
+land_sf <- ne_countries(scale = "medium", returnclass = "sf")
+land_equal_earth <- st_transform(land_sf, crs = equal_earth_crs)
+
+# Fetch coastlines for detail
 coastlines_sf <- ne_coastline(scale = "medium", returnclass = "sf")
 coastlines_equal_earth <- st_transform(coastlines_sf, crs = equal_earth_crs)
-print("Coastlines ready.")
+
+# Create a proper graticule layer for the grid lines.
+graticules_sf <- sf::st_graticule(lat = seq(-80, 80, 20), lon = seq(-180, 180, 30))
+graticules_equal_earth <- st_transform(graticules_sf, crs = equal_earth_crs)
+
+print("Map layers ready.")
 
 # -----------------------------------------------------------------------------
-# Main Processing Loop: Read, Decode, Reproject, and Plot Rasters
+# Main Processing Loop
 # -----------------------------------------------------------------------------
-# This loop will iterate through each file, process it, and create a ggplot map.
-# The maps will be stored in a list for later arrangement into grids.
 plot_list <- list()
 
 print(paste("Starting to process", length(files_to_process), "raster images..."))
 
 for (file_path in files_to_process) {
-  year <- sub(".*_(\\d{4})\\.png$", "\\1", file_path)
+  year <- gsub("^stadester_|.png$", "", basename(file_path))
   print(paste("Processing:", basename(file_path)))
-  
-  # 1. Decode the PNG to a numeric matrix
+
+  # 1. Decode PNG and create a SpatRaster object
   numeric_matrix <- decode_rgba_to_numeric(file_path)
-  
-  # 2. Create a SpatRaster object from the matrix
-  # The input raster is a 4320x2160 WGS84 Equirectangular raster
-  wgs84_raster <- rast(numeric_matrix, crs = wgs84_crs)
-  
-  # Set the correct global extent for a WGS84 raster
-  ext(wgs84_raster) <- c(-180, 180, -90, 90)
-  
-  # 3. Reproject the raster to the Equal Earth projection
-  # The 'bilinear' method is a good default for continuous data.
+  wgs84_raster <- rast(numeric_matrix, crs = wgs84_crs, ext = c(-180, 180, -90, 90))
+
+  # 2. Reproject the raster
   equal_earth_raster <- project(wgs84_raster, equal_earth_crs, method = "bilinear")
-  
-  # Replace 0s with NA so they don't appear on the logarithmic scale
-  # and can be made transparent.
-  equal_earth_raster[equal_earth_raster == 0] <- NA
-  
-  # 4. Create the heatmap plot using ggplot2 and tidyterra
+
+  # 3. Set all zero values to NA to make them transparent
+  data_raster <- classify(equal_earth_raster, cbind(0, 0, NA), right = TRUE)
+
+  # *** CHANGE: Start of new code block for dynamic legend breaks ***
+  # Get the min and max values from the raster to ensure they are on the legend
+  min_max_vals <- minmax(data_raster)
+  min_val <- min_max_vals[1,1]
+  max_val <- min_max_vals[2,1]
+
+  # Check for a valid data range. If the raster is empty, let ggplot decide the breaks.
+  if (!is.infinite(min_val) && !is.infinite(max_val) && min_val < max_val) {
+    # Get the standard log breaks that ggplot would normally create
+    standard_log_breaks <- scales::breaks_log()(c(min_val, max_val))
+    
+    # Combine the min/max values with the standard breaks, ensuring no duplicates and proper order
+    custom_breaks <- sort(unique(c(min_val, standard_log_breaks, max_val)))
+  } else {
+    # Fallback to default breaks if the raster is empty or has no range
+    custom_breaks <- waiver() 
+  }
+  # *** CHANGE: End of new code block ***
+
+  # 4. Create the plot with the correct layers
   p <- ggplot() +
-    # Use tidyterra's geom_spatraster for direct plotting of SpatRaster objects
-    geom_spatraster(data = equal_earth_raster, aes(fill = lyr.1)) +
-    
-    # Add the reprojected coastlines
-    geom_sf(data = coastlines_equal_earth, color = "black", size = 0.2) +
-    
-    # Apply a logarithmic color scale for the heatmap effect
+    # Layer 1: The graticules, drawn first to be in the background.
+    geom_sf(data = graticules_equal_earth, color = "gray50", linetype = "solid", size = 0.25) +
+
+    # Layer 2: Black landmass background
+    geom_sf(data = land_equal_earth, fill = "black", color = NA) +
+
+    # Layer 3: Logarithmic heatmap data
+    geom_spatraster(data = data_raster, aes(fill = lyr.1)) +
+
+    # Layer 4: Coastlines for detail, drawn on top of the heatmap
+    geom_sf(data = coastlines_equal_earth, color = "gray20", size = 0.2) +
+
+    # *** CHANGE: Use the new custom_breaks in the scale function ***
     scale_fill_viridis_c(
       option = "plasma",
       trans = "log10",
       na.value = "transparent",
-      name = "Value (log scale)"
+      name = "Population",
+      breaks = custom_breaks, # Use our dynamically generated breaks
+      labels = label_number(scale_cut = cut_si(""), accuracy = .1) # Added accuracy for better formatting of min/max
     ) +
-    
-    # Add titles and theme adjustments
+
+    # Set the coordinate system. This clips everything to the globe's boundary.
+    coord_sf(crs = equal_earth_crs, expand = FALSE) +
+
+    # Add titles and a clean theme
     labs(
       title = paste("Year:", year),
-      subtitle = "Equal Earth Projection",
-      x = NULL,
-      y = NULL
+      subtitle = "Urban Population"
     ) +
+    # Use a minimal theme that doesn't add its own borders or grids
     theme_minimal() +
     theme(
-      panel.background = element_rect(fill = "gray90", color = NA),
-      panel.grid = element_blank(),
+      panel.background = element_rect(fill = "white", color = NA),
+      panel.grid = element_blank(), # We drew our own graticules
       axis.text = element_blank(),
       axis.ticks = element_blank(),
-      plot.title = element_text(hjust = 0.5) # Center title
+      axis.title = element_blank(),
+      plot.title = element_text(hjust = 0.5),
+      plot.subtitle = element_text(hjust = 0.5)
     )
-  
-  # Add the plot to our list of plots
+
   plot_list[[file_path]] <- p
 }
 
 print("All raster images have been processed and plotted.")
 
 # -----------------------------------------------------------------------------
-# Arrange Plots into 3x4 Grids
+# Arrange Plots into 3x4 Grids and SAVE TO FILES
 # -----------------------------------------------------------------------------
-# The task is to display the plots in 3x4 grids. Since there are 120 plots,
-# this will result in 10 pages/grids of 12 plots each.
-
-# Define grid dimensions
 plots_per_grid <- 12
 num_cols <- 4
 num_rows <- 3
-
-# Calculate the total number of grids needed
 num_grids <- ceiling(length(plot_list) / plots_per_grid)
 
-print(paste("Arranging", length(plot_list), "plots into", num_grids, "grids of 3x4..."))
+print(paste("Arranging", length(plot_list), "plots into", num_grids, "grids and saving to files..."))
 
 for (i in 1:num_grids) {
-  # Determine the start and end index for the plots on the current grid
   start_index <- (i - 1) * plots_per_grid + 1
   end_index <- min(i * plots_per_grid, length(plot_list))
-  
-  # Get the subset of plots for the current grid
   grid_plots <- plot_list[start_index:end_index]
-  
-  # Arrange the plots into a grid
-  # The 'do.call' method is used to pass the list of plots to grid.arrange
+
   final_grid <- do.call("grid.arrange", c(grid_plots, ncol = num_cols, nrow = num_rows))
-  
-  # You can either print the grid to the screen or save it to a file
-  # To print to the plot viewer:
-  print(paste("Displaying Grid", i))
-  plot(final_grid)
-  
-  # --- Optional: Save each grid to a file ---
-  # output_filename <- paste0("output_grid_", i, ".png")
-  # ggsave(
-  #   output_filename,
-  #   plot = final_grid,
-  #   width = 16,
-  #   height = 12,
-  #   units = "in",
-  #   dpi = 150
-  # )
-  # print(paste("Saved", output_filename))
+
+  output_filename <- paste0("output_grid_", i, ".png")
+
+  ggsave(
+    output_filename,
+    plot = final_grid,
+    width = 38.88,
+    height = 19.44,
+    units = "in",
+    dpi = 150
+  )
+  print(paste("Saved:", output_filename))
 }
 
-print("Script finished.")
+print("Script finished. Check your working directory for the output PNG files.")
