@@ -40,10 +40,48 @@ decode_rgba_to_numeric <- function(png_path) {
 }
 
 # -----------------------------------------------------------------------------
+# Helper Function to Extract and Transform Coordinates
+# -----------------------------------------------------------------------------
+extract_and_transform_pixels <- function(numeric_matrix) {
+  # Create initial WGS84 raster to get coordinates
+  wgs84_raster <- rast(numeric_matrix, crs = wgs84_crs, ext = c(-180, 180, -90, 90))
+  
+  # Extract coordinates and values of non-zero pixels
+  coords_vals <- as.data.frame(wgs84_raster, xy = TRUE, na.rm = FALSE)
+  coords_vals <- coords_vals[coords_vals[,3] > 0 & !is.na(coords_vals[,3]), ]
+  
+  if (nrow(coords_vals) == 0) {
+    return(data.frame(x = numeric(0), y = numeric(0), value = numeric(0)))
+  }
+  
+  names(coords_vals) <- c("x", "y", "value")
+  
+  # Convert to sf points for coordinate transformation
+  points_sf <- st_as_sf(coords_vals, coords = c("x", "y"), crs = wgs84_crs)
+  
+  # Transform to Equal Earth projection
+  points_equal_earth <- st_transform(points_sf, crs = equal_earth_crs)
+  
+  # Extract transformed coordinates
+  transformed_coords <- st_coordinates(points_equal_earth)
+  
+  # Create result data frame with transformed coordinates and values
+  result <- data.frame(
+    x = transformed_coords[,1],
+    y = transformed_coords[,2], 
+    value = points_equal_earth$value
+  )
+  
+  # Sort by value (lowest to highest) so highest values are drawn last (on top)
+  result <- result[order(result$value), ]
+  
+  return(result)
+}
+
+# -----------------------------------------------------------------------------
 # Data Preparation
 # -----------------------------------------------------------------------------
-# *** CHANGE: Update pattern to find positive and negative years ***
-# The "-?" part matches an optional negative sign.
+# Update pattern to find positive and negative years
 file_list <- list.files(
   path = raster_dir,
   pattern = "^stadester_-?\\d+\\.png$",
@@ -51,7 +89,6 @@ file_list <- list.files(
 )
 
 # Perform a "natural sort" to ensure correct numerical order
-# This part works correctly for negative numbers without modification
 numeric_parts <- as.numeric(gsub("^stadester_|.png$", "", basename(file_list)))
 file_list <- file_list[order(numeric_parts)]
 
@@ -88,39 +125,26 @@ plot_list <- list()
 print(paste("Starting to process", length(files_to_process), "raster images..."))
 
 for (file_path in files_to_process) {
-  # Extract the year part of the filename as a string
   year_str <- gsub("^stadester_|.png$", "", basename(file_path))
-  
-  # *** CHANGE: Format the year for display (e.g., "-500" becomes "500 BC") ***
   year_num <- as.numeric(year_str)
-  if (year_num < 0) {
-    display_year <- paste(abs(year_num), "BC")
-  } else {
-    display_year <- paste(abs(year_num), "AD")
-  }
+  display_year <- if (year_num < 0) paste(abs(year_num), "BC") else paste(year_num, "AD")
   
   print(paste("Processing year:", display_year))
   
-  # 1. Decode PNG to get the original data
+  # 1. Decode PNG
   numeric_matrix <- decode_rgba_to_numeric(file_path)
   
-  # 2. Create SpatRaster and reproject 
-  wgs84_raster <- rast(numeric_matrix, crs = wgs84_crs, ext = c(-180, 180, -90, 90))
-  equal_earth_raster <- project(wgs84_raster, equal_earth_crs, method = "bilinear")
-  data_raster <- classify(equal_earth_raster, cbind(0, 0, NA), right = TRUE)
+  # 2. Extract non-zero pixels and transform their coordinates (sorted by value)
+  pixel_data <- extract_and_transform_pixels(numeric_matrix)
   
-  # Logic to control the scale directly from the original data
-  positive_vals <- numeric_matrix[numeric_matrix > 0]
-  
-  # Initialize scale arguments to their defaults
+  # Logic to control the scale
+  positive_vals_original <- numeric_matrix[numeric_matrix > 0]
   scale_limits <- NULL
   scale_breaks <- waiver()
   
-  # Only override the defaults if there is a valid range of data
-  if (length(positive_vals) > 1) {
-    min_val <- min(positive_vals)
-    max_val <- max(positive_vals)
-    
+  if (length(positive_vals_original) > 1) {
+    min_val <- min(positive_vals_original)
+    max_val <- max(positive_vals_original)
     if (min_val < max_val) {
       scale_limits <- c(min_val, max_val)
       standard_log_breaks <- scales::breaks_log()(c(min_val, max_val))
@@ -128,14 +152,26 @@ for (file_path in files_to_process) {
     }
   }
   
-  # 4. Create the plot
+  # 3. Create the plot
   p <- ggplot() +
+    # Layer 1: Graticules (Bottom)
     geom_sf(data = graticules_equal_earth, color = "gray50", linetype = "solid", size = 0.25) +
+    # Layer 2: Black landmass
     geom_sf(data = land_equal_earth, fill = "black", color = NA) +
-    geom_spatraster(data = data_raster, aes(fill = lyr.1)) +
+    # Layer 3: Coastlines (for context, drawn on land)
     geom_sf(data = coastlines_equal_earth, color = "gray20", size = 0.2) +
     
-    scale_fill_viridis_c(
+    # Layer 4: Population Data as squares (Top Layer)
+    {if (nrow(pixel_data) > 0) {
+      geom_point(
+        data = pixel_data, 
+        aes(x = x, y = y, color = value), 
+        shape = 15,  # Square shape
+        size = 0.8   # Adjust size as needed
+      )
+    }} +
+    
+    scale_color_viridis_c(
       option = "plasma",
       trans = "log10",
       na.value = "transparent",
@@ -147,10 +183,9 @@ for (file_path in files_to_process) {
     
     coord_sf(crs = equal_earth_crs, expand = FALSE) +
     
-    # *** CHANGE: Use the formatted display_year for the plot title ***
     labs(
       title = paste("Year:", display_year),
-      subtitle = "Average Urban Population\n(Bilinear Interpolation)"
+      subtitle = "Urban Population\n(Maximum Gridcell Value)"
     ) +
     theme_minimal() +
     theme(
@@ -192,6 +227,7 @@ for (i in 1:num_grids) {
     plot = final_grid,
     width = 38.88,
     height = 19.44,
+    limitsize = FALSE,
     units = "in",
     dpi = 150
   )

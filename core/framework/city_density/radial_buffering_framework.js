@@ -139,7 +139,8 @@
 				
 				//Iterate over all_population_keys; all_radial_buffer_keys
 				if (local_cities[x].population) {
-					let all_population_keys = Object.keys(local_cities[x].population);
+					let all_population_keys = Object.keys(local_cities[x].population).map(Number)
+						.sort((a, b) => a - b);
 					
 					for (let y = 0; y < all_population_keys.length; y++)
 						if (parseInt(all_population_keys[y]) <= year)
@@ -155,8 +156,9 @@
 				
 				//Populate local_pixels
 				if (local_radial_buffers.length > 0) {
+					//console.log(`Local radial buffers for ${local_cities[x].name}: ${local_radial_buffers.length}`);
 					if (local_radial_buffers.length == 1) {
-						local_pixels[all_pixel_keys[i]] = local_sum_population;
+						modifyValue(local_pixels, all_pixel_keys[i], local_sum_population);
 					} else if (local_radial_buffers.length > 1) {
 						local_pixels[all_pixel_keys[i]] = local_radial_buffers[0];
 						
@@ -187,7 +189,7 @@
 						}
 					}
 				} else {
-					local_pixels[all_pixel_keys[i]] = local_sum_population;
+					modifyValue(local_pixels, all_pixel_keys[i], local_sum_population);
 				}
 				//console.log(`- Local radial buffers:`, local_radial_buffers, `local_sum_population:`, local_sum_population);
 				
@@ -200,6 +202,7 @@
 					current_sum += local_pixels[all_local_pixels[y]];
 				
 				let current_scalar = local_sum_population/current_sum;
+				//console.log(`${local_cities[x].name}: ${local_sum_population}/${current_sum} = ${current_scalar}`);
 				
 				//if (all_local_pixels.length > 0) console.log(`- Pixels defined for ${all_pixel_keys[i]}: ${all_local_pixels.length}`);
 				for (let y = 0; y < all_local_pixels.length; y++) {
