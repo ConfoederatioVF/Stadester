@@ -180,7 +180,7 @@ module.exports = {
 		let json2csv_parser = new json2csv.Parser();
 		let new_csv = json2csv_parser.parse(object_array);
 		
-		fs.writeFileSync(file_path, new_csv);
+		fs.writeFileSync(file_path, new_csv, "utf8");
 		console.log(`Saved CSV to ${file_path}`);
 	},
 

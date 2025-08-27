@@ -19,8 +19,8 @@
 		
 		//Iterate over all_hyde_keys
 		for (let i = 0; i < hyde_world_urban_obj.Year.length; i++) {
-			return_obj.hyde_rural_population[hyde_world_urban_obj.Year[i]] = hyde_world_urban_obj["Rural population (HYDE estimates and UN projections)"];
-			return_obj.hyde_urban_population[hyde_world_urban_obj.Year[i]] = hyde_world_urban_obj["Urban population (HYDE estimates and UN projections)"];
+			return_obj.hyde_rural_population[hyde_world_urban_obj.Year[i]] = hyde_world_urban_obj["Rural population (HYDE estimates and UN projections)"][i];
+			return_obj.hyde_urban_population[hyde_world_urban_obj.Year[i]] = hyde_world_urban_obj["Urban population (HYDE estimates and UN projections)"][i];
 		}
 		
 		//Iterate over all stadester_rasters for all hyde_years

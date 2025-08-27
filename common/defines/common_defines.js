@@ -57,7 +57,7 @@ config.defines.common = {
     regional_cogs_ghsl: "./output/regional_cogs_ghsl.json",
 		
 		//2. Background
-		urban_rural_population_csv: "./output/global_urban_rural_population.csv",
+		urban_rural_population_csv: "./output/stadester_visualisations/2.background/global_urban_rural_population.csv",
 		
 		//4. Testing and Validation
 		hyde_urbanisation_csv: "./output/stadester_visualisations/4.testing_and_validation/urban_and_rural_population.csv",
@@ -69,6 +69,10 @@ config.defines.common = {
 		regional_datapoints_csv: "./output/stadester_visualisations/6.results/regional_datapoints.csv",
 		regional_urbanisation: "./output/stadester_visualisations/6.results/regional_urbanisation.json",
 		regional_urbanisation_csv: "./output/stadester_visualisations/6.results/regional_urbanisation.csv",
+		
+		//7. Appendix
+		appendix_folder: "./output/stadester_visualisations/7.appendix/",
+		largest_120_csv_suffix: "_largest_120.csv",
   },
   
   ghsl_domain: [1975, 2025],
