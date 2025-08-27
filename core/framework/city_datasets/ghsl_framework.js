@@ -283,6 +283,8 @@
 			
 			if (coords_dictionary[local_city.id]) {
 				local_city.pixel_coords = coords_dictionary[local_city.id];
+				local_city.pixel_coords = [Math.round(local_city.pixel_coords[0]), Math.round(local_city.pixel_coords[1])];
+				
 				let local_coords = getEquirectangularPixelCoords(local_city.pixel_coords[0], local_city.pixel_coords[1]);
 				let local_index = (local_city.pixel_coords[1]*4320 + local_city.pixel_coords[0])*4;
 				

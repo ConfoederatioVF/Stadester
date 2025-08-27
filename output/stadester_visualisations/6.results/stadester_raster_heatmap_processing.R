@@ -167,7 +167,7 @@ for (file_path in files_to_process) {
         data = pixel_data, 
         aes(x = x, y = y, color = value), 
         shape = 15,  # Square shape
-        size = 0.8   # Adjust size as needed
+        size = 0.4   # Adjust size as needed
       )
     }} +
     
