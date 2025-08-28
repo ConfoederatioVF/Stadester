@@ -14,7 +14,7 @@ library(scales)
 # Configuration
 # -----------------------------------------------------------------------------
 # Set the path to the directory containing your raster images
-raster_dir <- "./6.results/stadester_rasters/"
+raster_dir <- "./6.results/stadester_urban_rasters/"
 
 # Define the Coordinate Reference Systems (CRS)
 wgs84_crs <- "EPSG:4326"
@@ -84,21 +84,21 @@ extract_and_transform_pixels <- function(numeric_matrix) {
 # Update pattern to find positive and negative years
 file_list <- list.files(
   path = raster_dir,
-  pattern = "^stadester_-?\\d+\\.png$",
+  pattern = "^stadester_urban_-?\\d+\\.png$",
   full.names = TRUE
 )
 
 # Perform a "natural sort" to ensure correct numerical order
-numeric_parts <- as.numeric(gsub("^stadester_|.png$", "", basename(file_list)))
+numeric_parts <- as.numeric(gsub("^stadester_urban_|.png$", "", basename(file_list)))
 file_list <- file_list[order(numeric_parts)]
 
 # Select all images EXCEPT the last one
 files_to_process <- head(file_list, -1)
 
 # Ensure we are processing at most 120 files
-if (length(files_to_process) > 120) {
-  files_to_process <- files_to_process[1:120]
-}
+#if (length(files_to_process) > 120) {
+#  files_to_process <- files_to_process[1:120]
+#}
 
 # --- Prepare map layers that will be used for every plot ---
 print("Fetching and reprojecting map layers...")
@@ -125,7 +125,7 @@ plot_list <- list()
 print(paste("Starting to process", length(files_to_process), "raster images..."))
 
 for (file_path in files_to_process) {
-  year_str <- gsub("^stadester_|.png$", "", basename(file_path))
+  year_str <- gsub("^stadester_urban_|.png$", "", basename(file_path))
   year_num <- as.numeric(year_str)
   display_year <- if (year_num < 0) paste(abs(year_num), "BC") else paste(year_num, "AD")
   
@@ -206,9 +206,9 @@ print("All raster images have been processed and plotted.")
 # -----------------------------------------------------------------------------
 # Arrange Plots into 3x4 Grids and SAVE TO FILES
 # -----------------------------------------------------------------------------
-plots_per_grid <- 12
+plots_per_grid <- 16
 num_cols <- 4
-num_rows <- 3
+num_rows <- 4
 num_grids <- ceiling(length(plot_list) / plots_per_grid)
 
 print(paste("Arranging", length(plot_list), "plots into", num_grids, "grids and saving to files..."))
@@ -226,7 +226,7 @@ for (i in 1:num_grids) {
     output_filename,
     plot = final_grid,
     width = 38.88,
-    height = 19.44,
+    height = 19.44*1.25,
     limitsize = FALSE,
     units = "in",
     dpi = 150

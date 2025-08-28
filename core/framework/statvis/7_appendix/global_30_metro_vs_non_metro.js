@@ -28,6 +28,15 @@
 			["stadester-London-United Kingdom", "ghsl-London; Westminster; City of London-United Kingdom"],
 			
 			//15-20
+			["stadester-Los Angeles-California", "ghsl-Los Angeles; Long Beach; Anaheim; Santa Ana; Irvine; Glendale; San Bernardino; Fontana; Huntington Beach; Ontario; Garden Grove; Rancho Cucamonga; Pomona; Torrance; Pasadena; Fullerton; Orange; Inglewood; Downey; El Monte; Costa Mesa; West Covina; Norwalk; Burbank; South Gate; Carson; Santa Monica-United States"],
+			["stadester-Manila-Philippines", "ghsl-Quezon City; Manila; Caloocan; Antipolo; Taguig; Pasig; Valenzuela; Para�aque; Dasmari�as; San Jose del Monte; Las Pi�as; Bacoor; Makati; Muntinlupa; Marikina; Calamba; Mandaluyong; Pasay; Bi�an; Imus; Malabon; Santa Rosa; San Pedro; General Trias; Cabuyao; Malolos; Navotas; Meycauayan; Baliwag; Trece Martires; San Juan; Carmona; Cavite City-Philippines"],
+			["stadester-Ciudad de México-Mexico", "ghsl-Mexico City; Ecatepec; Nezahualc�yotl; Naucalpan de Ju�rez; Tlalnepantla; Chimalhuac�n; Atizap�n de Zaragoza; Ciudad L�pez Mateos; Cuautitlan Izcalli; Ojo de Agua; Xico; Ixtapaluca; Nicol�s Romero; Coacalco; Buenavista; Chalco de D�az Covarrubias; Huixquilucan de Degollado; Santa Fe; Interlomas-M�xico"],
+			["stadester-Moskva-Russia", "ghsl-Moscow; Balashikha; Mytishchi; Khimki; Korolyov; Lyubertsy; Krasnogorsk; Shchyolkovo; Dolgoprudny; Pushkino-Russia"],
+			["stadester-Mumbaî-India", "ghsl-Mumbai; Thane; Navi Mumbai; Bhiwandi-India"]
+			
+			//20-25
+			
+			//25-30
 		]
 	};
 }

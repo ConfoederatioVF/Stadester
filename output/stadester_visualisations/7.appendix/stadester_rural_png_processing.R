@@ -1,0 +1,273 @@
+# -----------------------------------------------------------------------------
+# Load Necessary Libraries
+# -----------------------------------------------------------------------------
+library(terra)
+library(png)
+library(ggplot2)
+library(tidyterra)
+library(sf) # Used for st_graticule()
+library(rnaturalearth)
+library(gridExtra)
+library(scales)
+library(magick) # For GIF creation
+
+# -----------------------------------------------------------------------------
+# Configuration
+# -----------------------------------------------------------------------------
+# Set the path to the directory containing your raster images
+raster_dir <- "./6.results/stadester_rural_rasters/"
+
+# Set the output directory for plots
+output_dir <- "./7.transformed_individual_plots/"
+
+# Set the prefix for raster files
+raster_prefix <- "stadester_rural_"
+
+# Define the Coordinate Reference Systems (CRS)
+wgs84_crs <- "EPSG:4326"
+equal_earth_crs <- "+proj=eqearth +datum=WGS84"
+
+# -----------------------------------------------------------------------------
+# Helper Function to Decode Pixel Values
+# -----------------------------------------------------------------------------
+decode_rgba_to_numeric <- function(png_path) {
+  img <- readPNG(png_path)
+  r <- floor(img[,,1] * 255)
+  g <- floor(img[,,2] * 255)
+  b <- floor(img[,,3] * 255)
+  a <- floor(img[,,4] * 255)
+  
+  decoded_matrix <- as.numeric(r) * 2^24 +
+    as.numeric(g) * 2^16 +
+    as.numeric(b) * 2^8  +
+    as.numeric(a)
+  
+  dim(decoded_matrix) <- dim(r)
+  return(decoded_matrix)
+}
+
+# -----------------------------------------------------------------------------
+# Helper Function to Extract and Transform Coordinates
+# -----------------------------------------------------------------------------
+extract_and_transform_pixels <- function(numeric_matrix) {
+  # Create initial WGS84 raster to get coordinates
+  wgs84_raster <- rast(numeric_matrix, crs = wgs84_crs, ext = c(-180, 180, -90, 90))
+  
+  # Extract coordinates and values of non-zero pixels
+  coords_vals <- as.data.frame(wgs84_raster, xy = TRUE, na.rm = FALSE)
+  coords_vals <- coords_vals[coords_vals[,3] > 0 & !is.na(coords_vals[,3]), ]
+  
+  if (nrow(coords_vals) == 0) {
+    return(data.frame(x = numeric(0), y = numeric(0), value = numeric(0)))
+  }
+  
+  names(coords_vals) <- c("x", "y", "value")
+  
+  # Convert to sf points for coordinate transformation
+  points_sf <- st_as_sf(coords_vals, coords = c("x", "y"), crs = wgs84_crs)
+  
+  # Transform to Equal Earth projection
+  points_equal_earth <- st_transform(points_sf, crs = equal_earth_crs)
+  
+  # Extract transformed coordinates
+  transformed_coords <- st_coordinates(points_equal_earth)
+  
+  # Create result data frame with transformed coordinates and values
+  result <- data.frame(
+    x = transformed_coords[,1],
+    y = transformed_coords[,2], 
+    value = points_equal_earth$value
+  )
+  
+  # Sort by value (lowest to highest) so highest values are drawn last (on top)
+  result <- result[order(result$value), ]
+  
+  return(result)
+}
+
+# -----------------------------------------------------------------------------
+# Data Preparation
+# -----------------------------------------------------------------------------
+# Update pattern to find positive and negative years
+file_list <- list.files(
+  path = raster_dir,
+  pattern = paste0("^", raster_prefix, "-?\\d+\\.png$"),
+  full.names = TRUE
+)
+
+# Perform a "natural sort" to ensure correct numerical order
+numeric_parts <- as.numeric(gsub(paste0("^", raster_prefix, "|.png$"), "", basename(file_list)))
+file_list <- file_list[order(numeric_parts)]
+
+# Select all images EXCEPT the last one
+files_to_process <- head(file_list, -1)
+
+# Ensure we are processing at most 120 files
+#if (length(files_to_process) > 120) {
+#  files_to_process <- files_to_process[1:120]
+#}
+
+# --- Prepare map layers that will be used for every plot ---
+print("Fetching and reprojecting map layers...")
+
+# Fetch LAND polygons for the black background
+land_sf <- ne_countries(scale = "medium", returnclass = "sf")
+land_equal_earth <- st_transform(land_sf, crs = equal_earth_crs)
+
+# Fetch coastlines for detail
+coastlines_sf <- ne_coastline(scale = "medium", returnclass = "sf")
+coastlines_equal_earth <- st_transform(coastlines_sf, crs = equal_earth_crs)
+
+# Create a proper graticule layer for the grid lines.
+graticules_sf <- sf::st_graticule(lat = seq(-80, 80, 20), lon = seq(-180, 180, 30))
+graticules_equal_earth <- st_transform(graticules_sf, crs = equal_earth_crs)
+
+print("Map layers ready.")
+
+# -----------------------------------------------------------------------------
+# Main Processing Loop
+# -----------------------------------------------------------------------------
+plot_list <- list()
+
+print(paste("Starting to process", length(files_to_process), "raster images..."))
+
+for (file_path in files_to_process) {
+  year_str <- gsub(paste0("^", raster_prefix, "|.png$"), "", basename(file_path))
+  year_num <- as.numeric(year_str)
+  display_year <- if (year_num < 0) paste(abs(year_num), "BC") else paste(abs(year_num), "AD")
+  
+  print(paste("Processing year:", display_year))
+  
+  # 1. Decode PNG
+  numeric_matrix <- decode_rgba_to_numeric(file_path)
+  
+  # 2. Extract non-zero pixels and transform their coordinates (sorted by value)
+  pixel_data <- extract_and_transform_pixels(numeric_matrix)
+  
+  # Logic to control the scale
+  positive_vals_original <- numeric_matrix[numeric_matrix > 0]
+  scale_limits <- NULL
+  scale_breaks <- waiver()
+  
+  if (length(positive_vals_original) > 1) {
+    min_val <- min(positive_vals_original)
+    max_val <- max(positive_vals_original)
+    if (min_val < max_val) {
+      scale_limits <- c(min_val, max_val)
+      standard_log_breaks <- scales::breaks_log()(c(min_val, max_val))
+      scale_breaks <- sort(unique(c(min_val, standard_log_breaks, max_val)))
+    }
+  }
+  
+  # 3. Create the plot
+  p <- ggplot() +
+    # Layer 1: Graticules (Bottom)
+    geom_sf(data = graticules_equal_earth, color = "gray50", linetype = "solid", size = 0.25) +
+    # Layer 2: Black landmass
+    geom_sf(data = land_equal_earth, fill = "black", color = NA) +
+    # Layer 3: Coastlines (for context, drawn on land)
+    geom_sf(data = coastlines_equal_earth, color = "gray20", size = 0.2) +
+    
+    # Layer 4: Population Data as squares (Top Layer)
+    {if (nrow(pixel_data) > 0) {
+      geom_point(
+        data = pixel_data, 
+        aes(x = x, y = y, color = value), 
+        shape = 15,  # Square shape
+        size = 0.4   # Adjust size as needed
+      )
+    }} +
+    
+    scale_color_viridis_c(
+      option = "plasma",
+      trans = "log10",
+      na.value = "transparent",
+      name = "Population",
+      limits = scale_limits,
+      breaks = scale_breaks,
+      labels = label_number(scale_cut = cut_si(""), accuracy = .1) 
+    ) +
+    
+    coord_sf(crs = equal_earth_crs, expand = FALSE) +
+    
+    labs(
+      title = paste("Year:", display_year),
+      subtitle = "Rural Population\n(Maximum Gridcell Value)"
+    ) +
+    theme_minimal() +
+    theme(
+      # This sets the background for the entire plot area
+      plot.background = element_rect(fill = "white", color = NA),
+      # This sets the background for the plotting panel only
+      panel.background = element_rect(fill = "white", color = NA),
+      panel.grid = element_blank(),
+      axis.text = element_blank(),
+      axis.ticks = element_blank(),
+      axis.title = element_blank(),
+      plot.title = element_text(hjust = 0.5),
+      plot.subtitle = element_text(hjust = 0.5)
+    )
+  
+  plot_list[[file_path]] <- p
+}
+
+print("All raster images have been processed and plotted.")
+
+# -----------------------------------------------------------------------------
+# SAVE Individual Plots TO FILES
+# -----------------------------------------------------------------------------
+print(paste("Saving", length(plot_list), "individual plots..."))
+
+# Create a directory for the output if it doesn't exist
+if (!dir.exists(output_dir)) {
+  dir.create(output_dir, recursive = TRUE)
+}
+
+# Loop through each plot in the list using its name (the original file path)
+output_pngs <- c()
+for (file_path in names(plot_list)) {
+  
+  # Extract the year string from the original filename to create a new, descriptive output filename
+  year_str <- gsub(paste0("^", raster_prefix, "|.png$"), "", basename(file_path))
+  output_filename <- file.path(output_dir, paste0(raster_prefix, year_str, ".png"))
+  
+  # Get the corresponding plot object
+  current_plot <- plot_list[[file_path]]
+  
+  # Save the individual plot to a file
+  ggsave(
+    filename = output_filename,
+    plot = current_plot,
+    width = 12,    # A reasonable width for a single map
+    height = 7,    # A reasonable height for a single map
+    units = "in",
+    dpi = 150,     # Match the original DPI
+    limitsize = FALSE
+  )
+  
+  output_pngs <- c(output_pngs, output_filename)
+  print(paste("Saved:", output_filename))
+}
+
+print(paste("Script finished. Check the '", output_dir, "' directory for the output PNG files.", sep=""))
+
+# -----------------------------------------------------------------------------
+# CREATE CHRONOLOGICAL GIF
+# -----------------------------------------------------------------------------
+print("Creating GIF from PNGs...")
+
+# Sort PNGs by year (chronological order)
+years <- as.numeric(gsub(paste0("^", raster_prefix, "|.png$"), "", basename(output_pngs)))
+ordered_pngs <- output_pngs[order(years)]
+
+# Read images with magick
+img_list <- image_read(ordered_pngs)
+
+# Create GIF (200ms per frame)
+gif <- image_animate(img_list, fps = 5) # 5 frames per second = 200ms per frame
+
+# Save GIF
+gif_path <- file.path(output_dir, paste0(raster_prefix, "chronological.gif"))
+image_write(gif, gif_path)
+
+print(paste("GIF saved to:", gif_path))
