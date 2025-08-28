@@ -25,7 +25,7 @@
 		
 		//Iterate over all stadester_rasters for all hyde_years
 		for (let i = 0; i < hyde_years.length; i++) {
-			let local_file_path = `${common_defines.output_file_paths.stadester_rasters_folder}${common_defines.output_file_paths.stadester_rasters_prefix}${hyde_years[i]}.png`;
+			let local_file_path = `${common_defines.output_file_paths.stadester_ghsl_rasters_folder}${common_defines.output_file_paths.stadester_ghsl_rasters_prefix}${hyde_years[i]}.png`;
 			let local_stadester_base_file_path = `${common_defines.output_file_paths.stadester_base_rasters_folder}${common_defines.output_file_paths.stadester_base_rasters_prefix}${hyde_years[i]}.png`;
 			
 			if (fs.existsSync(local_file_path)) {

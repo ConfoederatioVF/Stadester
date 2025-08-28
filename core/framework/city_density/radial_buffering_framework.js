@@ -141,10 +141,12 @@
 				if (local_cities[x].population) {
 					let all_population_keys = Object.keys(local_cities[x].population).map(Number)
 						.sort((a, b) => a - b);
+					let last_population = 0;
 					
 					for (let y = 0; y < all_population_keys.length; y++)
 						if (parseInt(all_population_keys[y]) <= year)
-							local_sum_population = local_cities[x].population[all_population_keys[y]];
+							last_population = local_cities[x].population[all_population_keys[y]];
+					local_sum_population += last_population;
 				}
 				if (local_cities[x].radial_buffers) {
 					let all_radial_buffer_keys = Object.keys(local_cities[x].radial_buffers);
@@ -201,7 +203,7 @@
 				for (let y = 0; y < all_local_pixels.length; y++)
 					current_sum += local_pixels[all_local_pixels[y]];
 				
-				let current_scalar = local_sum_population/current_sum;
+				let current_scalar = returnSafeNumber(local_sum_population/current_sum, 1);
 				//console.log(`${local_cities[x].name}: ${local_sum_population}/${current_sum} = ${current_scalar}`);
 				
 				//if (all_local_pixels.length > 0) console.log(`- Pixels defined for ${all_pixel_keys[i]}: ${all_local_pixels.length}`);
@@ -324,7 +326,7 @@
 			
 			copy_operations.push([
 				`${stadester_base_folder}${all_stadester_files[i]}`,
-				`${common_defines.output_file_paths.stadester_rasters_folder}${common_defines.output_file_paths.stadester_rasters_prefix}${local_year}.png`
+				`${common_defines.output_file_paths.stadester_ghsl_rasters_folder}${common_defines.output_file_paths.stadester_ghsl_rasters_prefix}${local_year}.png`
 			]);
 		}
 		
@@ -336,7 +338,7 @@
 			
 			copy_operations.push([
 				`${ghsl_folder}${all_ghsl_files[i]}`,
-				`${common_defines.output_file_paths.stadester_rasters_folder}${common_defines.output_file_paths.stadester_rasters_prefix}${local_year}.png`
+				`${common_defines.output_file_paths.stadester_ghsl_rasters_folder}${common_defines.output_file_paths.stadester_ghsl_rasters_prefix}${local_year}.png`
 			]);
 		}
 		

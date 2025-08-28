@@ -14,7 +14,7 @@
 		
 		let selected_file_path;
 		let stadester_base_raster_file_path = `${common_defines.output_file_paths.stadester_base_rasters_folder}${common_defines.output_file_paths.stadester_base_rasters_prefix}${year}.png`;
-		let stadester_raster_file_path = `${common_defines.output_file_paths.stadester_rasters_folder}${common_defines.output_file_paths.stadester_rasters_prefix}${year}.png`;
+		let stadester_raster_file_path = `${common_defines.output_file_paths.stadester_ghsl_rasters_folder}${common_defines.output_file_paths.stadester_ghsl_rasters_prefix}${year}.png`;
 		
 		selected_file_path = (options.is_stadester_base) ?
 			stadester_base_raster_file_path : stadester_raster_file_path;

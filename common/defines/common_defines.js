@@ -46,13 +46,27 @@ config.defines.common = {
     ghsl_urban_folder: "./input/GHSL/urban_rasters/",
     ghsl_urban_prefix: "GHSL_",
     
-    stadester_base_rasters_folder: "./output/stadester_base_rasters/",
-    stadester_base_rasters_prefix: "stadester_base_",
 		stadester_ghsl: "./output/stadester_ghsl.json",
 		stadester_global_population_rasters_folder: "./output/stadester_global_population_rasters/",
 		stadester_global_population_rasters_prefix: "stadester_global_population_",
-    stadester_rasters_folder: "./output/stadester_rasters/",
-    stadester_rasters_prefix: "stadester_",
+		
+		//RASTERS
+		//Stadestér-Base
+		stadester_base_rasters_folder: "./output/stadester_base_rasters/",
+		stadester_base_rasters_prefix: "stadester_base_",
+		//Stadestér-GHSL
+    stadester_ghsl_rasters_folder: "./output/stadester_ghsl_rasters/",
+		stadester_ghsl_rasters_prefix: "stadester_ghsl_",
+		//Stadestér Rural
+		stadester_rural_rasters_folder: "./output/stadester_rural_rasters/",
+		stadester_rural_rasters_prefix: "stadester_rural_",
+		//Stadestér Urban
+		stadester_urban_rasters_folder: "./output/stadester_urban_rasters/",
+		stadester_urban_rasters_prefix: "stadester_urban_",
+		
+		//Stadestér Population
+		stadester_population_rasters_folder: "./output/stadester_population_rasters/",
+		stadester_population_rasters_prefix: "stadester_population_",
     
     //Stadester Visualisations
     regional_cogs_base: "./output/regional_cogs_base.json",
