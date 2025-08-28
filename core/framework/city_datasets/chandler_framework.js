@@ -57,7 +57,8 @@
     //Lahore, Pakistan
     chandler_modelski_obj["Lahore-Pakistan"].population["1600"] = 200000; //Sack of Lahore wasn't that devastating
     chandler_modelski_obj["Lahore-Pakistan"].population["1622"] = 250000;
-    chandler_modelski_obj["Lahore-Pakistan"].population["1627"] = 255000;chandler_modelski_obj["Lahore-Pakistan"].population["1631"] = 284000;
+    chandler_modelski_obj["Lahore-Pakistan"].population["1627"] = 255000;
+		chandler_modelski_obj["Lahore-Pakistan"].population["1631"] = 284000;
     //Nanjing, China
     chandler_modelski_obj["Nanjing-China"].population["1970"] = 2000000; //10x error
     chandler_modelski_obj["Nanjing-China"].population["2000"] = 5448900; //Demonstrably false

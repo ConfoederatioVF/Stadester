@@ -36,13 +36,14 @@
       chandler_modelski: {
         data: getChandlerModelskiObject(),
         is_metro: true,
-        legacy_chandler_modelski_merging: true
+        //legacy_chandler_modelski_merging: true
+				precision: 0.1, semantic_precision: 1
       },
       devries: {
         data: getDeVriesCitiesObject(), precision: 0.1, semantic_precision: 1
       },
       buringh: {
-        data: getBuringhObject(), precision: 0.1, semantic_precision: 1
+        data: getBuringhObject(), precision: 0.05, semantic_precision: 1
       }
     };
     var return_obj = {};
@@ -94,7 +95,7 @@
           for (let y = 0; y < local_city_names.length; y++) try {
             local_uud_city = getFlattenedPopulstatCity(local_city_names[y], { populstat_obj: return_obj });
             
-            //Only find cities that are within 1 degree o f.coords
+            //Only find cities that are within 1 degree of .coords
             if (local_uud_city) {
               //Check if .latitude and .longitude are within 1 degree of .coords
               let latlng = local_uud_city.coords;

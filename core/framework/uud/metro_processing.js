@@ -97,6 +97,8 @@
 			
 			//Distribute excess negative values across metros
 			stadester_obj = distributeNegativeValuesAcrossMetros(stadester_obj);
+		} else {
+			console.log(`- Chose not to flatten Stadestér metros.`);
 		}
 		
 		//Save file as flattened_stadester_cities.json

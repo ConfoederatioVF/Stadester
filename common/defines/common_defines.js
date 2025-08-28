@@ -49,6 +49,8 @@ config.defines.common = {
     stadester_base_rasters_folder: "./output/stadester_base_rasters/",
     stadester_base_rasters_prefix: "stadester_base_",
 		stadester_ghsl: "./output/stadester_ghsl.json",
+		stadester_global_population_rasters_folder: "./output/stadester_global_population_rasters/",
+		stadester_global_population_rasters_prefix: "stadester_global_population_",
     stadester_rasters_folder: "./output/stadester_rasters/",
     stadester_rasters_prefix: "stadester_",
     

@@ -90,6 +90,7 @@
 	{
 		global.generateMetroCorrectedBase = function () {
 			//Generate metro corrected Stadestér database
+			initialiseUUD();
 			parseUUDToStadester();
 			flattenStadesterMetros();
 			fixStadesterErrors();
@@ -98,10 +99,12 @@
 			cacheRadialBuffers();
 			generateStadesterRasters();
 			processStadester();
+			getStadesterGHSLObject();
 		};
 		
 		global.generateNonMetroCorrectedBase = function () {
 			//Generate non-metro correctied Stadestér database
+			initialiseUUD();
 			parseUUDToStadester();
 			flattenStadesterMetros(true);
 			fixStadesterErrors();
@@ -110,6 +113,7 @@
 			cacheRadialBuffers();
 			generateStadesterRasters();
 			processStadester();
+			getStadesterGHSLObject();
 		};
 		
 		global.getNumberOfCitiesWithRadialBuffers = function () {
