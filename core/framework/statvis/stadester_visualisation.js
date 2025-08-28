@@ -100,6 +100,11 @@
 			generateStadesterRasters();
 			processStadester();
 			getStadesterGHSLObject();
+			
+			//Generate post-addendum rasters
+			generateStadesterUrbanRasters();
+			generateStadesterRuralRasters();
+			generateStadesterPopulationRasters();
 		};
 		
 		global.generateNonMetroCorrectedBase = function () {
@@ -114,6 +119,11 @@
 			generateStadesterRasters();
 			processStadester();
 			getStadesterGHSLObject();
+			
+			//Generate post-addendum rasters
+			generateStadesterUrbanRasters();
+			generateStadesterRuralRasters();
+			generateStadesterPopulationRasters();
 		};
 		
 		global.getNumberOfCitiesWithRadialBuffers = function () {

@@ -47,8 +47,6 @@ config.defines.common = {
     ghsl_urban_prefix: "GHSL_",
     
 		stadester_ghsl: "./output/stadester_ghsl.json",
-		stadester_global_population_rasters_folder: "./output/stadester_global_population_rasters/",
-		stadester_global_population_rasters_prefix: "stadester_global_population_",
 		
 		//RASTERS
 		//Stadestér-Base
