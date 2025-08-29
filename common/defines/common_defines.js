@@ -47,6 +47,7 @@ config.defines.common = {
     ghsl_urban_prefix: "GHSL_",
     
 		stadester_ghsl: "./output/stadester_ghsl.json",
+		stadester_ghsl_non_metro: "./output/stadester_ghsl_non_metro.json",
 		
 		//RASTERS
 		//Stadestér-Base
@@ -74,6 +75,7 @@ config.defines.common = {
 		urban_rural_population_csv: "./output/stadester_visualisations/2.background/global_urban_rural_population.csv",
 		
 		//4. Testing and Validation
+		angel_30_table: "./output/stadester_visualisations/4.testing_and_validation/angel_30.csv",
 		hyde_urbanisation_csv: "./output/stadester_visualisations/4.testing_and_validation/urban_and_rural_population.csv",
 		top_120_table: "./output/stadester_visualisations/4.testing_and_validation/stadester_top_120.json",
 		
