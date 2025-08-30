@@ -354,7 +354,7 @@
 					return Math.round(local_ghsl_raster.data[local_index]*local_scalar);
 				}
 			});
-			console.log(`- Saved ${local_output_path}, scalar = ${local_scalar}, adjusting old population ${parseNumber(current_population)} to ${parseNumber(world_population_obj[i])}.`);
+			console.log(`- Local GHSL raster: ${local_ghsl_raster.width}x${local_ghsl_raster.height}, Saved ${local_output_path}, scalar = ${local_scalar}, adjusting old population ${parseNumber(current_population)} to ${parseNumber(world_population_obj[i])}.`);
 		}
 	};
 }

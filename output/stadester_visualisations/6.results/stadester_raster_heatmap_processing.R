@@ -142,13 +142,26 @@ for (file_path in files_to_process) {
   scale_limits <- NULL
   scale_breaks <- waiver()
   
-  if (length(positive_vals_original) > 1) {
+  # --- MODIFIED LOGIC FOR COLORBAR ---
+  if (length(positive_vals_original) == 0) {
+    # All values are zero
+    scale_limits <- c(0, 0)
+    scale_breaks <- 0
+  } else if (length(positive_vals_original) == 1) {
+    # Only one nonzero value
+    scale_limits <- c(positive_vals_original[1], positive_vals_original[1])
+    scale_breaks <- positive_vals_original[1]
+  } else {
     min_val <- min(positive_vals_original)
     max_val <- max(positive_vals_original)
     if (min_val < max_val) {
       scale_limits <- c(min_val, max_val)
       standard_log_breaks <- scales::breaks_log()(c(min_val, max_val))
       scale_breaks <- sort(unique(c(min_val, standard_log_breaks, max_val)))
+    } else {
+      # All nonzero values are the same
+      scale_limits <- c(min_val, max_val)
+      scale_breaks <- min_val
     }
   }
   

@@ -88,25 +88,27 @@
 	};
 	
 	//2. Use imputed populations within gridcell radii to buffer population by scaling rings to target over substrata
-	global.generateStadesterRasterForYear = function (arg0_year, arg1_options) {
+	global.generateStadesterRasterForYear = function (arg0_year, arg1_options) { //[WIP] - Use GHS_POP instead after 1975
 		//Convert from parameters
-		var year = parseInt(arg0_year);
-		var options = (arg1_options) ? arg1_options : {};
+		let year = parseInt(arg0_year);
+		let options = (arg1_options) ? arg1_options : {};
 		
 		if (!options.stadester_obj) options.stadester_obj = getStadesterBufferingObject();
 		
 		//Declare local instance variables
-		var all_stadester_keys = Object.keys(options.stadester_obj);
-		var common_defines = config.defines.common;
-		var output_file_path = `${common_defines.output_file_paths.stadester_base_rasters_folder}/${common_defines.output_file_paths.stadester_base_rasters_prefix}${year}.png`;
-		var pixel_dictionary = {};
-		var pixel_obj = {};
-		var substrata_file_path = `${common_defines.input_file_paths.substrata_folder}${common_defines.input_file_paths.substrata_prefix}${getHYDEYearName(year)}${common_defines.input_file_paths.substrata_suffix}`;
-		var substrata_raster = loadNumberRasterImage(substrata_file_path);
+		let all_stadester_keys = Object.keys(options.stadester_obj);
+		let common_defines = config.defines.common;
+		let first_ghsl_year = config.ghsl.processing.years[0];
+		let output_file_path = `${common_defines.output_file_paths.stadester_base_rasters_folder}/${common_defines.output_file_paths.stadester_base_rasters_prefix}${year}.png`;
+		let pixel_dictionary = {};
+		let pixel_obj = {};
+		let substrata_file_path = `${common_defines.input_file_paths.substrata_folder}${common_defines.input_file_paths.substrata_prefix}${getHYDEYearName(year)}${common_defines.input_file_paths.substrata_suffix}`;
+			if (year >= first_ghsl_year)
+				substrata_file_path = `${common_defines.input_file_paths.ghsl_population_folder}${common_defines.input_file_paths.ghsl_population_prefix}${year}${common_defines.input_file_paths.ghsl_population_suffix}`;
+		let substrata_raster = loadNumberRasterImage(substrata_file_path);
 		
 		//Iterate over all_stadester_keys and populate pixel_dictionary based on .coords and year
 		for (let i = 0; i < all_stadester_keys.length; i++) try {
-			let is_in_domain = false;
 			let local_city = options.stadester_obj[all_stadester_keys[i]];
 			let local_pixel = getCoordsPixel(local_city.coords);
 			
@@ -125,7 +127,7 @@
 		} catch (e) { console.error(`Error parsing ${all_stadester_keys[i]}:`, e); }
 		
 		//Iterate over all_pixel_keys in pixel_dictionary; populate pixel_obj
-		var all_pixel_keys = Object.keys(pixel_dictionary);
+		let all_pixel_keys = Object.keys(pixel_dictionary);
 		
 		for (let i = 0; i < all_pixel_keys.length; i++) {
 			let local_cities = pixel_dictionary[all_pixel_keys[i]];
@@ -253,7 +255,7 @@
 	
 	global.generateStadesterRasters = function () {
 		//Declare local instance variables
-		var hyde_years = config.uud.processing.hyde_years;
+		var hyde_years = config.uud.processing.hyde_years.concat([2024, 2025]);
 		var stadester_buffering_obj = getStadesterBufferingObject();
 		var uud_domain = config.uud.processing.uud_domain;
 		
