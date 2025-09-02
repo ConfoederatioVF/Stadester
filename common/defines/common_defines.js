@@ -80,6 +80,7 @@ config.defines.common = {
 		top_120_table: "./output/stadester_visualisations/4.testing_and_validation/stadester_top_120.json",
 		
 		//6. Results
+		population_json: "./output/stadester_visualisations/6.results/population.json",
 		region_population_totals: "./output/stadester_visualisations/6.results/regional_population_totals.json",
 		regional_datapoints: "./output/stadester_visualisations/6.results/regional_datapoints.json",
 		regional_datapoints_csv: "./output/stadester_visualisations/6.results/regional_datapoints.csv",

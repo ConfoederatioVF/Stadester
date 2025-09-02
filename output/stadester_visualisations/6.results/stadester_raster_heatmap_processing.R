@@ -92,14 +92,6 @@ file_list <- list.files(
 numeric_parts <- as.numeric(gsub("^stadester_urban_|.png$", "", basename(file_list)))
 file_list <- file_list[order(numeric_parts)]
 
-# Select all images EXCEPT the last one
-files_to_process <- head(file_list, -1)
-
-# Ensure we are processing at most 120 files
-#if (length(files_to_process) > 120) {
-#  files_to_process <- files_to_process[1:120]
-#}
-
 # --- Prepare map layers that will be used for every plot ---
 print("Fetching and reprojecting map layers...")
 
@@ -141,16 +133,30 @@ for (file_path in files_to_process) {
   positive_vals_original <- numeric_matrix[numeric_matrix > 0]
   scale_limits <- NULL
   scale_breaks <- waiver()
+  scale_labels <- NULL
+  dummy_layer <- NULL
   
-  # --- MODIFIED LOGIC FOR COLORBAR ---
   if (length(positive_vals_original) == 0) {
     # All values are zero
-    scale_limits <- c(0, 0)
-    scale_breaks <- 0
+    # Use a small positive value for log scale, but label as "0"
+    scale_limits <- c(1, 1)
+    scale_breaks <- 1
+    scale_labels <- function(x) rep("0", length(x))
+    # Add a dummy invisible point to force colorbar
+    pixel_data <- data.frame(x = Inf, y = Inf, value = 1)
+    dummy_layer <- geom_point(
+      data = pixel_data,
+      aes(x = x, y = y, color = value),
+      shape = 15,
+      size = 0.4,
+      alpha = 0
+    )
   } else if (length(positive_vals_original) == 1) {
     # Only one nonzero value
     scale_limits <- c(positive_vals_original[1], positive_vals_original[1])
     scale_breaks <- positive_vals_original[1]
+    scale_labels <- label_number(scale_cut = cut_si(""), accuracy = .1)
+    dummy_layer <- NULL
   } else {
     min_val <- min(positive_vals_original)
     max_val <- max(positive_vals_original)
@@ -163,6 +169,8 @@ for (file_path in files_to_process) {
       scale_limits <- c(min_val, max_val)
       scale_breaks <- min_val
     }
+    scale_labels <- label_number(scale_cut = cut_si(""), accuracy = .1)
+    dummy_layer <- NULL
   }
   
   # 3. Create the plot
@@ -173,9 +181,8 @@ for (file_path in files_to_process) {
     geom_sf(data = land_equal_earth, fill = "black", color = NA) +
     # Layer 3: Coastlines (for context, drawn on land)
     geom_sf(data = coastlines_equal_earth, color = "gray20", size = 0.2) +
-    
     # Layer 4: Population Data as squares (Top Layer)
-    {if (nrow(pixel_data) > 0) {
+    {if (length(positive_vals_original) > 0) {
       geom_point(
         data = pixel_data, 
         aes(x = x, y = y, color = value), 
@@ -183,7 +190,8 @@ for (file_path in files_to_process) {
         size = 0.4   # Adjust size as needed
       )
     }} +
-    
+    # Add dummy layer if needed
+    dummy_layer +
     scale_color_viridis_c(
       option = "plasma",
       trans = "log10",
@@ -191,11 +199,9 @@ for (file_path in files_to_process) {
       name = "Population",
       limits = scale_limits,
       breaks = scale_breaks,
-      labels = label_number(scale_cut = cut_si(""), accuracy = .1) 
+      labels = scale_labels
     ) +
-    
     coord_sf(crs = equal_earth_crs, expand = FALSE) +
-    
     labs(
       title = paste("Year:", display_year),
       subtitle = "Urban Population\n(Maximum Gridcell Value)"
