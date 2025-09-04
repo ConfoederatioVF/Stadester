@@ -70,7 +70,7 @@
     chandler_modelski_obj["Skopje-Macedonia"] = chandler_modelski_obj["Skopje-Serbia"]; //Skopje is in Macedonia, not Serbia
       delete chandler_modelski_obj["Skopje-Serbia"];
     //Srirangapatna, India
-    chandler_modelski_obj["Srirangapatna-India"].population["1799"] = 38000; //This figure is too high
+    chandler_modelski_obj["Srirangapatna-India"].population["1780"] = 38000; //This figure is too high
     chandler_modelski_obj["Srirangapatna-India"].population["1799"] = 50000; //This figure is too high
     //Tbilisi, Georgia
     delete chandler_modelski_obj["Tbilisi-Georgia"].population["1100"]; //Zero entry
