@@ -14,6 +14,7 @@ config.defines.common = {
     devries_cities: "./input/devries/europop.csv",
     devries_coords: "./input/devries/city_coords.csv",
     flattened_stadester_cities: `./input/uud/flattened_stadester_cities.json`,
+		hyde_land_area: "./input/hyde/land_area.png/",
     hyde_population: `./input/hyde/population/`,
       hyde_substrata_prefix: `substrata_pop__`,
     populstat_cities: "./input/populstat_cities/populstat_cities.json",
