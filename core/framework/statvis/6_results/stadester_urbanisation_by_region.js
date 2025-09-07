@@ -101,37 +101,19 @@
 		let common_defines = config.defines.common;
 		let region_defines = config.defines.regions;
 		
-		let ghs_pop_folder = common_defines.input_file_paths.ghsl_population_folder;
-		let ghs_start_year = config.ghsl.processing.years[0];
 		let raster_paths = {};
 		let return_obj = {};
-		let substrata_pop_folder = common_defines.input_file_paths.substrata_folder;
+		let rural_pop_folder = common_defines.output_file_paths.stadester_rural_rasters_folder;
 		let voronoi_raster = loadImage(common_defines.input_file_paths.voronoi_regions_file_path);
 		
-		fs.readdirSync(ghs_pop_folder).filter((file) => {
-			let file_path =  path.join(ghs_pop_folder, file);
+		fs.readdirSync(rural_pop_folder).filter((file) => {
+			let file_path = path.join(rural_pop_folder, file);
 			
 			if (fs.statSync(file_path).isFile() && path.extname(file).toLowerCase() === ".png") {
 				let file_year = file.replace(".png", "")
-					.replace(common_defines.input_file_paths.ghsl_population_prefix, "");
+					.replace(common_defines.output_file_paths.stadester_rural_rasters_prefix, "");
 				
 				raster_paths[file_year] = file_path;
-			}
-		});
-		
-		fs.readdirSync(substrata_pop_folder).filter((file) => {
-			let file_path = path.join(substrata_pop_folder, file);
-			
-			if (fs.statSync(file_path).isFile() && path.extname(file).toLowerCase() === ".png") {
-				let file_year = file.replace(".png", "")
-					.replace(common_defines.input_file_paths.substrata_prefix, "")
-					.replace("AD_number", "")
-					.replace("BC_number", "");
-				if (file.includes("BC"))
-					file_year = `-${file_year}`;
-				
-				if (file_year < ghs_start_year)
-					raster_paths[file_year] = file_path;
 			}
 		});
 		

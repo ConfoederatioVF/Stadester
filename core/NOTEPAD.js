@@ -1,98 +1,87 @@
 /*
 //NOTEPAD.js file for future planning
 
-console main.population.chandler_modelski[
-
-//1. Estimate Baseline Cities
-global.estimateBaselineCityArea = function (arg0_city_obj) {
-	//Convert from parameters
-	var city_obj = arg0_city_obj;
-
-	//Declare local instance variables
-	var density_processing_obj = config.population_density.processing;
-
-	var area_growth_ratio = density_processing_obj.area_to_pop_growth_rate_ratio;
-	var baseline_density_per_ha = getAverage(density_processing_obj.baseline_density_per_ha);
-
-	//Calculate baseline city area
-	if (!city_obj.population[density_processing_obj.baseline_year])
-		city_obj.population = cubicSplineInterpolationObject(city_obj.population, {
-			years: [density_processing_obj.baseline_year]
-		});
-	var city_baseline_population = Math.abs(city_obj.population[density_processing_obj.baseline_year]); //Absolute value for handling corrective populations
-
-	if (!city_obj.area) city_obj.area = {};
-		if (city_baseline_population) {
-			var current_area = returnSafeNumber((city_baseline_population/baseline_density_per_ha)/100);
-			
-			city_obj.area[density_processing_obj.baseline_year] = current_area; //Area in km^2
-			
-			//Calculate RNI for population first; populate rni_obj
-			var all_population_keys = Object.keys(city_obj.population);
-			
-			if (all_population_keys.length >= 2) {
-				var rni_obj = {};
-				
-				//Iterate over all_population_keys
-				for (let i = 1; i < all_population_keys.length; i++)
-					if (parseInt(all_population_keys[i]) > density_processing_obj.baseline_year) {
-						var local_value = city_obj.population[all_population_keys[i]];
-						var local_rni = 0;
-						
-						if (local_value) {
-							var previous_value = city_obj.population[all_population_keys[i - 1]];
-							
-							local_rni = (local_value - previous_value)/previous_value;
-						} else if (local_value == 0) {
-							local_rni = 0;
-						}
-						
-						rni_obj[all_population_keys[i - 1]] = returnSafeNumber(local_rni, 0);
-					}
-				
-				city_obj.rni = rni_obj;
-				
-				//Iterate over all_rni_keys; establish area based on area_growth_ratio
-				var all_rni_keys = Object.keys(rni_obj);
-				
-				for (let i = 0; i < all_rni_keys.length - 1; i++) {
-					var local_rni = rni_obj[all_rni_keys[i + 1]];
-					
-					city_obj.area[all_rni_keys[i]] = current_area + current_area*local_rni*area_growth_ratio;
-					current_area = city_obj.area[all_rni_keys[i]];
-				}
-			}
-		}
-
-	//Return statement
-	return city_obj;
-};
-*/
-
-
-/*
-for (let y = 0; y < local_city_names.length; y++) try {
-	local_uud_city = getFlattenedPopulstatCity(local_city_names[y], { populstat_obj: return_obj });
-	
-	//Only find cities that are within 1 degree o f.coords
-	if (local_uud_city) {
-		//Check if .latitude and .longitude are within 1 degree of .coords
-		let latlng = local_uud_city.coords;
-		let ot_latlng = local_city.coords;
+global.getStadesterRegionalTotalPopulationObject = function () { //[WIP] - Rework to use finished rasters
+		//Declare local instance variables
+		let common_defines = config.defines.common;
+		let region_defines = config.defines.regions;
 		
-		if (Math.abs(latlng[0] - ot_latlng[0]) <= 1 && Math.abs(latlng[1] - ot_latlng[1]) <= 1) {
-			if (options.debug) {
-				local_uud_city.break_condition = [local_city_names[x], true];
-				local_uud_city.latlng = latlng;
-				local_uud_city.ot_latlng = ot_latlng;
+		let ghs_pop_folder = common_defines.input_file_paths.ghsl_population_folder;
+		let ghs_start_year = config.ghsl.processing.years[0];
+		let raster_paths = {};
+		let return_obj = {};
+		let substrata_pop_folder = common_defines.input_file_paths.substrata_folder;
+		let voronoi_raster = loadImage(common_defines.input_file_paths.voronoi_regions_file_path);
+		
+		fs.readdirSync(ghs_pop_folder).filter((file) => {
+			let file_path =  path.join(ghs_pop_folder, file);
+			
+			if (fs.statSync(file_path).isFile() && path.extname(file).toLowerCase() === ".png") {
+				let file_year = file.replace(".png", "")
+					.replace(common_defines.input_file_paths.ghsl_population_prefix, "");
+				
+				raster_paths[file_year] = file_path;
 			}
-			break;
+		});
+		
+		fs.readdirSync(substrata_pop_folder).filter((file) => {
+			let file_path = path.join(substrata_pop_folder, file);
+			
+			if (fs.statSync(file_path).isFile() && path.extname(file).toLowerCase() === ".png") {
+				let file_year = file.replace(".png", "")
+					.replace(common_defines.input_file_paths.substrata_prefix, "")
+					.replace("AD_number", "")
+					.replace("BC_number", "");
+				if (file.includes("BC"))
+					file_year = `-${file_year}`;
+				
+				if (file_year < ghs_start_year)
+					raster_paths[file_year] = file_path;
+			}
+		});
+		
+		raster_paths = sortObject(raster_paths, { mode: "ascending" });
+		
+		//Populate return_obj with regions
+		let all_region_keys = Object.keys(region_defines);
+		
+		for (let i = 0; i < all_region_keys.length; i++) {
+			let local_region = region_defines[all_region_keys[i]];
+			
+			if (!local_region.is_clone)
+				return_obj[local_region.key] = {};
 		}
-	}
-	
-	//Reset local_uud_city for next iteration
-	local_uud_city = undefined;
-} catch (e) {
-	console.error(e);
-}
- */
+		
+		//Iterate over all_raster_keys
+		let all_raster_keys = Object.keys(raster_paths);
+		
+		for (let i = 0; i < all_raster_keys.length; i++) {
+			let local_file_path = raster_paths[all_raster_keys[i]];
+			
+			console.log(`- Summing: ${local_file_path} ..`);
+			operateNumberRasterImage({
+				file_path: local_file_path,
+				function: function (arg0_index, arg1_number) {
+					//Convert from parameters
+					let index = arg0_index;
+					let number = arg1_number;
+					
+					//Declare local instance variables
+					let local_region = region_defines[[
+						voronoi_raster.data[index],
+						voronoi_raster.data[index + 1],
+						voronoi_raster.data[index + 2]
+					].join(",")];
+					
+					if (local_region)
+						modifyValue(return_obj[local_region.key], all_raster_keys[i], number);
+				}
+			});
+		}
+		
+		FileManager.saveFileAsJSON(common_defines.output_file_paths.region_population_totals, return_obj);
+		
+		//Return statement
+		return return_obj;
+	};
+*/

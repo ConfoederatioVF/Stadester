@@ -104,6 +104,7 @@
 			//Generate post-addendum rasters
 			generateStadesterUrbanRasters();
 			generateStadesterRuralRasters();
+				generateStadesterNorthernAmericaRasters();
 			generateStadesterPopulationRasters();
 		};
 		
@@ -123,6 +124,7 @@
 			//Generate post-addendum rasters
 			generateStadesterUrbanRasters();
 			generateStadesterRuralRasters();
+				generateStadesterNorthernAmericaRasters();
 			generateStadesterPopulationRasters();
 		};
 		

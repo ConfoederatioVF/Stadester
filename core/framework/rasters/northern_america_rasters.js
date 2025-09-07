@@ -5,7 +5,7 @@
 		let common_defines = config.defines.common;
 		let hyde_years = config.uud.processing.hyde_years.concat([2024, 2025]).sort((a, b) => a - b);
 		let land_area_raster = loadNumberRasterImage(common_defines.input_file_paths.hyde_land_area);
-			let northern_america_obj = config.velkscala.northern_america;
+		let northern_america_obj = getNorthernAmericaPopulationObject();
 		let raster_obj = {};
 		
 		let northern_america_domain = northern_america_obj.domain;
@@ -16,14 +16,16 @@
 		
 		for (let i = 0; i < all_png_files.length; i++)
 			all_png_files[i] = `${common_defines.input_file_paths.velkscala_northern_america_folder}/${all_png_files[i]}`;
-		for (let i = 0; i < all_png_files.length; i++)
+		for (let i = 0; i < all_png_files.length; i++) {
+			console.log(`- Loading ${all_png_files[i]} ..`);
 			raster_obj[all_png_files[i]] = loadImage(all_png_files[i]);
+		}
 		
 		//Iterate over all hyde_years; all_mask_keys in order
 		let all_mask_keys = Object.keys(northern_america_obj.areal_masks);
 		
 		for (let i = 0; i < hyde_years.length; i++) {
-			let local_file_path = `${common_defines.output_file_paths.stadester_population_rasters_folder}${common_defines.output_file_paths.stadester_population_rasters_prefix}${hyde_years[i]}.png`;
+			let local_file_path = `${common_defines.output_file_paths.stadester_rural_rasters_folder}${common_defines.output_file_paths.stadester_rural_rasters_prefix}${hyde_years[i]}.png`;
 			let total_sum_for_year = 0;
 			
 			//Iterate over all_mask_keys; process local_mask for all_png_files in raster_obj
@@ -31,14 +33,21 @@
 				let is_in_domain = false;
 				let local_mask = northern_america_obj.areal_masks[all_mask_keys[x]];
 				
+				//Internal guard clause if local_mask .is_clone
+				console.log(`- Processing local_mask ${local_mask.key}: (is_clone: ${local_mask.is_clone})`);
+				if (local_mask.is_clone) continue;
+				
 				let all_local_years;
-					if (typeof local_mask.population == "object") {
+					if (typeof local_mask.population === "object")
 						all_local_years = Object.keys(local_mask.population)
 							.map(Number).sort((a, b) => a - b);
+				let local_mask_domain = (all_local_years) ?
+					[all_local_years[0], all_local_years[all_local_years.length - 1]] : northern_america_domain;
+					if (!local_mask.domain) {
+						local_mask.domain = local_mask_domain;
 					} else {
-						all_local_years = northern_america_domain;
+						local_mask_domain = local_mask.domain;
 					}
-				let local_mask_domain = [all_local_years[0], all_local_years[all_local_years.length - 1]];
 				
 				//Check if local_mask has an applicable domain
 				if (hyde_years[i] >= local_mask_domain[0] && hyde_years[i] <= local_mask_domain[1])
@@ -47,17 +56,15 @@
 					} else if (local_mask.special_domain) {
 						is_in_domain = true;
 					}
-				//Internal guard clause if local_mask .is_clone
-				if (local_mask.is_clone) continue;
+				console.log(` - Domain: ${local_mask_domain.join(", ")}`);
 				
 				//If the mask is in domain; iterate over all_png_files in raster_obj to apply it
 				if (is_in_domain) {
 					let local_area = [];
+					total_sum_for_year = 0;
 					
 					//.density handling; calculate fetch sum area to set local_mask.population for that year
 					if (local_mask.density) {
-						//[WIP] - Finish local_mask.density handling
-						
 						for (let y = 0; y < all_png_files.length; y++) {
 							let local_raster = raster_obj[all_png_files[y]];
 							let local_raster_area = 0;
@@ -94,6 +101,8 @@
 						if (local_mask.population === undefined) local_mask.population = {};
 						local_mask.population[hyde_years[i]] = local_area*local_mask.density;
 					}
+					console.log(` - Local population:`, local_mask.population[hyde_years[i]]);
+					
 					//.population handling; scale to colour code
 					if (local_mask.population)
 						if (local_mask.population[hyde_years[i]]) {
@@ -167,13 +176,12 @@
 										
 										if (local_area_mask)
 											if (local_area_mask.key === local_mask.key) {
-												total_sum_for_year += local_value*local_scalar;
-												return local_value*local_scalar;
+												total_sum_for_year += Math.ceil(local_value*local_scalar);
+												return Math.ceil(local_value*local_scalar);
 											}
 									}
 									
 									//Return statement; default value otherwise
-									total_sum_for_year += local_value;
 									return local_value;
 								}
 							});
@@ -188,7 +196,7 @@
 	global.getNorthernAmericaPopulationObject = function () {
 		//Declare local instance variables
 		let hyde_years = config.uud.processing.hyde_years.concat([2024, 2025]).sort((a, b) => a - b);
-		let northern_america_obj = config.velkscala.northern_america;
+		let northern_america_obj = JSON.parse(JSON.stringify(config.velkscala.northern_america));
 		
 		let northern_america_domain = northern_america_obj.domain;
 		
@@ -231,7 +239,7 @@
 		
 		//Iterate over all_mask_keys and set their colourmap
 		for (let i = 0; i < all_mask_keys.length; i++) {
-			let local_mask = northern_america_obj.areal_masks[all_mask_keys[i]];
+			let local_mask = JSON.parse(JSON.stringify(northern_america_obj.areal_masks[all_mask_keys[i]]));
 			
 			let local_key = [local_mask.colour[0], local_mask.colour[1], local_mask.colour[2]].join(",");
 			
