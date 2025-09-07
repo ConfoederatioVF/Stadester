@@ -2,7 +2,20 @@ config.velkscala.northern_america = {
 	areal_masks: {
 		//0. Agricultural Areas
 		//0.1. McEvedy and Jones (Agricultural)
+		mcevedy_and_jones_agricultural: {
+			colour: `#34cc48`,
+			density: 0.4 //(km^2)
+		},
+		
 		//0.2. Nevle and Bird (https://www.researchgate.net/figure/Selected-features-of-the-Pre-Columbian-American-cultural-landscape-adapted-from-Denevan_fig1_234285204)
+		nevle_and_bird_agricultural: {
+			colour: `#3cf03c`,
+			density: 0.35 //(km^2) - Estimations from Williams (https://web.archive.org/web/20200922183825/https://twitter.com/RWArchaeology/status/1308447051752103938)
+		},
+		nevle_and_bird_irrigated: {
+			colour: `#adcb90`,
+			density: 15/2.58999 //(km^2) - Estimations from Williams (https://web.archive.org/web/20200922183825/https://twitter.com/RWArchaeology/status/1308447051752103938)
+		},
 		
 		//1. Localised Scaling
 		//1.1. Driver and Massey (https://sci-hub.se/https://doi.org/10.2307/1005714)
@@ -32,6 +45,22 @@ config.velkscala.northern_america = {
 		},
 		
 		//1.2. E. North American Population (Milner and Chaplin), (https://sci-hub.se/https://www.cambridge.org/core/journals/american-antiquity/article/abs/eastern-north-american-population-at-ca-ad-1500/DDC4DF121320C8CBA5BC9A4899C5DF1E
+		"milner_and_chaplin_0.3": {
+			colour: "#938901",
+			density: 0.3
+		},
+		"milner_and_chaplin_0.505": {
+			colour: "#b3a642",
+			density: 0.505
+		},
+		"milner_and_chaplin_0.9": {
+			colour: "#d2c471",
+			density: 0.9
+		},
+		"milner_and_chaplin_1.1": {
+			colour: "#f1e3a0",
+			density: 1.1
+		},
 		
 		//2. Regional Scaling
 		hawaiian_islands: { //[WIP] - Fetch scholarly estimates for Hawaii
@@ -175,8 +204,5 @@ config.velkscala.northern_america = {
 			scalar: 1000000
 		}
 	},
-	domain: [-10000, 1600], //Time domain for Project Centaur 0.5b (10000BC - 1600AD)
-	estimates: {
-	
-	}
+	domain: [-10000, 1600] //Time domain for Project Centaur 0.5b (10000BC - 1600AD)
 };
