@@ -178,9 +178,11 @@ config.velkscala.northern_america = {
 				"0": 0.12, //Figure taken from HYDE3.3
 				"1000": 0.38,
 				"1500": 0.76,
-				"1600": 0.2
+				"1600": 0.2,
+				"1800": 0.65 //Figure taken from Statista (https://www.statista.com/statistics/1066836/population-canada-since-1800/)
 			},
-			scalar: 1000000
+			scalar: 1000000,
+			special_domain: true
 		},
 		the_continental_usa: {
 			colour: [67, 134, 175],

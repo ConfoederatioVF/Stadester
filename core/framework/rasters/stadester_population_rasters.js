@@ -5,6 +5,7 @@
 		let common_defines = config.defines.common;
 		let first_ghsl_year = config.ghsl.processing.years[0];
 		let stadester_years = config.uud.processing.stadester_years;
+		let world_pop_obj = getWorldPopulationObject();
 		
 		//1. Prior to first_ghsl_year, simply add up stadester_rural and stadester_urban pixels
 		for (let i = 0; i < stadester_years.length; i++) {
@@ -38,6 +39,32 @@
 						return local_rural_population + local_urban_population;
 					}
 				});
+				
+				//Scale image to global population if possible
+				if (world_pop_obj[stadester_years[i]]) {
+					let current_population = getImageSum(local_population_file_path);
+					let target_population = world_pop_obj[stadester_years[i]];
+					
+					let local_scalar = target_population/current_population;
+					let local_raster = loadNumberRasterImage(local_population_file_path);
+					
+					saveNumberRasterImage({
+						file_path: local_population_file_path,
+						height: 2160,
+						width: 4320,
+						
+						function: function (arg0_index) {
+							//Convert from parameters
+							let index = arg0_index;
+							
+							//Return statement
+							if (local_raster.data[index])
+								return Math.ceil(local_raster.data[index]*local_scalar);
+							return 0;
+						}
+					});
+					console.log(` - Scalar: ${local_scalar}, Current Population: ${parseNumber(current_population)} | Target Population: ${parseNumber(target_population)}`);
+				}
 			}
 			//2. After first_ghsl_year, copy rasters from GHS_POP
 			else {
@@ -50,5 +77,16 @@
 			console.log(` - Global population: ${parseNumber(getImageSum(local_population_file_path))}`);
 		}
 		
+	};
+	
+	global.generateStadesterRasters = function () {
+		//1. Generate rasters to begin with
+		generateStadesterUrbanRasters();
+		generateStadesterRuralRasters();
+			generateStadesterNorthernAmericaRasters();
+		generateStadesterPopulationRasters();
+		
+		//2. Post-processing
+		processStadesterRuralRasters();
 	};
 }

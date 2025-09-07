@@ -71,29 +71,65 @@
 	global.getStadesterRegionalUrbanPopulationObject = function () {
 		//Declare local instance variables
 		let common_defines = config.defines.common;
-		let hyde_years = config.uud.processing.hyde_years.concat([2024, 2025]);
-		let stadester_ghsl_obj = FileManager.loadFileAsJSON(common_defines.output_file_paths.stadester_ghsl);
-		let urban_pop_obj = {};
-		let uud_domain = config.uud.processing.uud_domain;
+		let region_defines = config.defines.regions;
 		
-		//Iterate over all_stadester_ghsl_keys
-		let all_stadester_ghsl_keys = Object.keys(stadester_ghsl_obj);
+		let raster_paths = {};
+		let return_obj = {};
+		let stadester_urban_folder = common_defines.output_file_paths.stadester_urban_rasters_folder;
+		let voronoi_raster = loadImage(common_defines.input_file_paths.voronoi_regions_file_path);
 		
-		for (let i = 0; i < all_stadester_ghsl_keys.length; i++) {
-			let local_city = stadester_ghsl_obj[all_stadester_ghsl_keys[i]];
+		fs.readdirSync(stadester_urban_folder).filter((file) => {
+			let file_path = path.join(stadester_urban_folder, file);
 			
-			//Iterate over all overlapping HYDE keys in local_city.population
-			if (local_city.population && local_city.region)
-				for (let x = 0; x < hyde_years.length; x++)
-					if (local_city.population[hyde_years[x]])
-						if (hyde_years[x] >= uud_domain[0] && hyde_years[x] <= uud_domain[1]) {
-							if (!urban_pop_obj[local_city.region]) urban_pop_obj[local_city.region] = {};
-							modifyValue(urban_pop_obj[local_city.region], hyde_years[x], local_city.population[hyde_years[x]]);
-						}
+			if (fs.statSync(file_path).isFile() && path.extname(file).toLowerCase() === ".png") {
+				let file_year = file.replace(".png", "")
+				.replace(common_defines.output_file_paths.stadester_urban_rasters_prefix, "");
+				
+				raster_paths[file_year] = file_path;
+			}
+		});
+		
+		raster_paths = sortObject(raster_paths, { mode: "ascending" });
+		
+		//Populate return_obj with regions
+		let all_region_keys = Object.keys(region_defines);
+		
+		for (let i = 0; i < all_region_keys.length; i++) {
+			let local_region = region_defines[all_region_keys[i]];
+			
+			if (!local_region.is_clone)
+				return_obj[local_region.key] = {};
+		}
+		
+		//Iterate over all_raster_keys
+		let all_raster_keys = Object.keys(raster_paths);
+		
+		for (let i = 0; i < all_raster_keys.length; i++) {
+			let local_file_path = raster_paths[all_raster_keys[i]];
+			
+			console.log(`- Summing: ${local_file_path} ..`);
+			operateNumberRasterImage({
+				file_path: local_file_path,
+				function: function (arg0_index, arg1_number) {
+					//Convert from parameters
+					let index = arg0_index;
+					let number = arg1_number;
+					
+					//Declare local instance variables
+					let local_region = region_defines[[
+						voronoi_raster.data[index],
+						voronoi_raster.data[index + 1],
+						voronoi_raster.data[index + 2]
+					].join(",")];
+					
+					if (local_region)
+						modifyValue(return_obj[local_region.key], all_raster_keys[i], number);
+				}
+			});
 		}
 		
 		//Return statement
-		return urban_pop_obj;
+		return return_obj;
 	};
 	
 	global.getStadesterRegionalTotalPopulationObject = function () {
@@ -103,15 +139,15 @@
 		
 		let raster_paths = {};
 		let return_obj = {};
-		let rural_pop_folder = common_defines.output_file_paths.stadester_rural_rasters_folder;
+		let stadester_pop_folder = common_defines.output_file_paths.stadester_population_rasters_folder;
 		let voronoi_raster = loadImage(common_defines.input_file_paths.voronoi_regions_file_path);
 		
-		fs.readdirSync(rural_pop_folder).filter((file) => {
-			let file_path = path.join(rural_pop_folder, file);
+		fs.readdirSync(stadester_pop_folder).filter((file) => {
+			let file_path = path.join(stadester_pop_folder, file);
 			
 			if (fs.statSync(file_path).isFile() && path.extname(file).toLowerCase() === ".png") {
 				let file_year = file.replace(".png", "")
-					.replace(common_defines.output_file_paths.stadester_rural_rasters_prefix, "");
+					.replace(common_defines.output_file_paths.stadester_population_rasters_prefix, "");
 				
 				raster_paths[file_year] = file_path;
 			}

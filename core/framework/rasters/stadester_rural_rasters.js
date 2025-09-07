@@ -80,4 +80,45 @@
 				console.log(`- Finished writing ${local_rural_file_path} for Stadestér Rural.`);
 			}
 	};
+	
+	global.processStadesterRuralRasters = function () {
+		//Declare local instance variables
+		let common_defines = config.defines.common;
+		let stadester_years = config.uud.processing.stadester_years;
+		
+		//Iterate over all stadester_years for rural rasters
+		for (let i = 0; i < stadester_years.length; i++) {
+			let local_global_file_path = `${common_defines.output_file_paths.stadester_population_rasters_folder}${common_defines.output_file_paths.stadester_population_rasters_prefix}${stadester_years[i]}.png`;
+			let local_global_raster;
+				if (fs.existsSync(local_global_file_path))
+					local_global_raster = loadNumberRasterImage(local_global_file_path);
+			let local_rural_file_path = `${common_defines.output_file_paths.stadester_rural_rasters_folder}${common_defines.output_file_paths.stadester_rural_rasters_prefix}${stadester_years[i]}.png`;
+			let local_urban_file_path = `${common_defines.output_file_paths.stadester_urban_rasters_folder}${common_defines.output_file_paths.stadester_urban_rasters_prefix}${stadester_years[i]}.png`;
+			let local_urban_raster;
+				if (fs.existsSync(local_urban_file_path))
+					local_urban_raster = loadNumberRasterImage(local_urban_file_path);
+				
+			//Save local_rural_file_path as being the same as the global raster, but with urban pixels subtracted
+			saveNumberRasterImage({
+				file_path: local_rural_file_path,
+				height: 2160,
+				width: 4320,
+				
+				function: function (arg0_index) {
+					//Convert from parameters
+					let index = arg0_index;
+					
+					//Declare local instance variables
+					let local_global_population = 0;
+						if (local_global_raster) local_global_population = local_global_raster.data[index];
+					let local_urban_population = 0;
+						if (local_urban_raster) local_urban_population = local_urban_raster.data[index];
+					
+					//Return statement
+					return Math.max(local_global_population - local_urban_population, 0);
+				}
+			});
+			console.log(`- Finished post-processing for ${local_rural_file_path}.`);
+		}
+	};
 }
