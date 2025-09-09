@@ -16,7 +16,6 @@ config.defines.common = {
     flattened_stadester_cities: `./input/uud/flattened_stadester_cities.json`,
 		hyde_land_area: "./input/hyde/land_area.png/",
     hyde_population: `./input/hyde/population/`,
-      hyde_substrata_prefix: `substrata_pop__`,
     populstat_cities: "./input/populstat_cities/populstat_cities.json",
     processed_uud_cities: "./input/uud/processed_uud_cities.json",
     stadester_areas: `./input/uud/stadester_areas.json`,
@@ -37,7 +36,7 @@ config.defines.common = {
     regions_file_path: "./input/regional_subdivisions.png",
 		voronoi_regions_file_path: "./input/voronoi_subdivisions.png",
     substrata_folder: `./input/hyde/population/`,
-    substrata_prefix: `substrata_pop__`,
+    substrata_prefix: `substrata_pop_`,
     substrata_suffix: `_number.png`,
 		
 		//Velkscala

@@ -154,6 +154,7 @@
 		});
 		
 		raster_paths = sortObject(raster_paths, { mode: "ascending" });
+		console.log(`Raster paths:`, Object.values(raster_paths));
 		
 		//Populate return_obj with regions
 		let all_region_keys = Object.keys(region_defines);

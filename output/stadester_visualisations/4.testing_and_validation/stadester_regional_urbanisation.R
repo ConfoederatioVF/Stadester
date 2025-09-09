@@ -8,7 +8,7 @@ library(scales)
 library(cowplot)
 
 # Load the dataset from the specified relative file path
-file_path <- './4.testing_and_validation/regional_urbanisation.csv'
+file_path <- './6.results/regional_urbanisation.csv'
 regional_data <- read.csv(file_path)
 
 # Get the unique list of regions to create a plot for each one

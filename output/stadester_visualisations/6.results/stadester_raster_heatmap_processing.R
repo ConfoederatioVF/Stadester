@@ -114,9 +114,9 @@ print("Map layers ready.")
 # -----------------------------------------------------------------------------
 plot_list <- list()
 
-print(paste("Starting to process", length(files_to_process), "raster images..."))
+print(paste("Starting to process", length(file_list), "raster images..."))
 
-for (file_path in files_to_process) {
+for (file_path in file_list) {
   year_str <- gsub("^stadester_urban_|.png$", "", basename(file_path))
   year_num <- as.numeric(year_str)
   display_year <- if (year_num < 0) paste(abs(year_num), "BC") else paste(year_num, "AD")
