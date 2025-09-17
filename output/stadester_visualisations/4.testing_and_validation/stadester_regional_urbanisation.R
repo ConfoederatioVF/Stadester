@@ -137,7 +137,7 @@ if (length(plot_list) > 0) {
   print(final_plot)
   
   # To save the plot, you can use ggsave()
-  # ggsave("regional_urbanisation_grid.png", final_plot, width = 18, height = 20, dpi = 300)
+  ggsave("regional_urbanisation_grid.png", final_plot, width = 18, height = 20, dpi = 300)
 } else {
   print("No valid data was available to generate any plots.")
 }
