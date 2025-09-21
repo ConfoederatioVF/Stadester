@@ -1,0 +1,121 @@
+Area Rank,City,Area Value,Region,"Density Rank, Stadestér",City,Density Value (ihb/ha),Region,"Density Rank, GHSL",City,Density Value (ihb/km^2),Region,Population Rank,City,Population Value,Region
+1,Mumbaî,38496.89252,indian_subcontinent,1,Ghazni,1348.58771,central_asia,1,Ar Rujum,120276,middle_east,1,Shenzhen; Gu,42987704,eastasia
+2,Dhaka; Cumil,6611,indian_subcontinent,2,Jiulong,1258.478577,eastasia,2,Al Ma`azibah,96826,middle_east,2,Jakarta; Bek,40545126,southeast_asia
+3,Shenzhen; Gu,6454,eastasia,3,Sikandarâbâd,1241.63966,indian_subcontinent,3,Al Qal`ah; J,84643,middle_east,3,Dhaka; Cumil,37307160,indian_subcontinent
+4,Cali,5285.197708,latin_america,4,Taxila,1196.22371,central_asia,4,Jotsoma; Phe,76518,indian_subcontinent,4,Tokyo; Yokoh,33496985,eastasia
+5,Valenciennes,5239.876769,europe,5,Kozhikode,1183.539125,indian_subcontinent,5,Karora,75898,sub_saharan_africa,5,Ghaziabad; G,31422508,indian_subcontinent
+6,Tokyo; Yokoh,5191,eastasia,6,Katowice,1181.59803,europe,6,Tiquisio,71999,latin_america,6,Shanghai; Pu,30678616,eastasia
+7,Jakarta; Bek,4614,southeast_asia,7,Banhâ,1179.121538,maghreb_egypt,7,Al Jama'im,66726,middle_east,7,Quezon City;,25921189,southeast_asia
+8,Los Angeles;,4498,northern_america,8,Wandsbek,1175.932702,europe,8,Sarvestan,63654,middle_east,8,Cairo; Giza;,25230325,maghreb_egypt
+9,Hiroshima,3986.445938,eastasia,9,Wetter (Ruhr,1175.854032,europe,9,Zahr al Husa,61876,middle_east,9,Kolkata; How,23314585,indian_subcontinent
+10,Hajipur; Muz,3166,indian_subcontinent,10,Essen,1168.369443,europe,10,Al Ghawl; As,61855,middle_east,10,Seoul; Inche,22261692,eastasia
+11,Shanghai; Pu,3128,eastasia,11,Salerno,1151.530526,europe,11,Natinga,57894,sub_saharan_africa,11,Karachi,21031703,central_asia
+12,New York; Ne,3031,northern_america,12,Brussel,1147.700318,europe,12,Bangarmau,54961,indian_subcontinent,12,Mumbai; Than,20453270,indian_subcontinent
+13,Miami; Hiale,2784,northern_america,13,Stockton-on-,1134.078722,europe,13,Bike,53879,sub_saharan_africa,13,S�o Paulo; G,19485158,latin_america
+14,New York,2745.764809,northern_america,14,Cannes,1133.743309,europe,14,Lintou,53346,eastasia,14,Bangkok; Non,19048032,southeast_asia
+15,Bangkok; Non,2697,southeast_asia,15,Burg,1108.398541,europe,15,Ath Thahirah,51089,middle_east,15,Mexico City;,18913673,latin_america
+16,Quezon City;,2555,southeast_asia,16,Birmingham,1078.780474,europe,16,Inticho,50845,sub_saharan_africa,16,Beijing; Shu,18150576,eastasia
+17,Kolkata; How,2482,indian_subcontinent,17,Lancaster,1078.406811,europe,17,Pingchang Co,48985,eastasia,17,New York,16152299,northern_america
+18,Nagoya; Gifu,2401,eastasia,18,Zefat,1068.170815,middle_east,18,Nimule,47528,sub_saharan_africa,18,Bengaluru,15178533,indian_subcontinent
+19,Seoul; Inche,2282,eastasia,19,Virovitica (,1061.04773,europe,19,Ar Rawnah; A,47293,middle_east,19,Osaka; Kobe;,15072543,eastasia
+20,Osaka; Kobe;,2246,eastasia,20,Nagasaki,1060.967919,eastasia,20,????????; ??,45712,eastern_europe_and_russia,20,Ho Chi Minh ,14557830,southeast_asia
+21,Buenos Aires,2186,latin_america,21,Cobh,1057.331043,europe,21,Longshui,45429,eastasia,21,Moscow; Bala,14384082,eastern_europe_and_russia
+22,Beijing; Shu,2179,eastasia,22,Brighton,1053.924735,europe,22,Aliganj,45152,indian_subcontinent,22,Lahore; Shei,14305060,central_asia
+23,Ghaziabad; G,2139,indian_subcontinent,23,Holguín,1053.404112,latin_america,23,Toraghundi,44485,central_asia,23,Istanbul,14259754,middle_east
+24,Mexico City;,2134,latin_america,24,Amarapura,1045.735935,southeast_asia,24,Dianjiang,44317,eastasia,24,New York; Ne,14197659,northern_america
+25,S�o Paulo; G,2111,latin_america,25,Bytom,1042.037938,europe,25,Al Masaliyah,43706,middle_east,25,Buenos Aires,14179912,latin_america
+26,Chicago; Eva,2046,northern_america,26,Nürnberg,1037.995003,europe,26,Dhupguri,43259,indian_subcontinent,26,Los Angeles;,13474333,northern_america
+27,Jieyang; Sha,1961,eastasia,27,Bar-le-Duc,1036.952925,europe,27,Rongchang,43086,eastasia,27,Kinshasa,12945683,sub_saharan_africa
+28,Houston; Pas,1859,northern_america,28,Liverpool,1032.412731,europe,28,Sareyn,42719,middle_east,28,Lagos; Ikeja,12846045,sub_saharan_africa
+29,Suzhou; Wuxi,1802,eastasia,29,Massa,1029.710448,europe,29,Hechuan,42250,eastasia,29,Luanda,11672134,sub_saharan_africa
+30,Johannesburg,1756,sub_saharan_africa,30,Patna,1022.039308,indian_subcontinent,30,Al Hudayyah;,41879,middle_east,30,Suzhou; Wuxi,11540430,eastasia
+31,Cairo; Giza;,1680,maghreb_egypt,31,Avallon,1021.387907,europe,31,Neragyatanah,41670,indian_subcontinent,31,Chennai; Tam,11466400,indian_subcontinent
+32,London; West,1649,europe,32,Elblag,1016.005443,europe,32,`Adan Baraka,41312,middle_east,32,Lima; Callao,10828104,latin_america
+33,Toronto; Mis,1620,northern_america,33,Vitória,1013.348274,latin_america,33,Bhola,41213,indian_subcontinent,33,Jieyang; Sha,10579303,eastasia
+34,São Paulo,1616.032996,latin_america,34,Bayonne,1008.456493,europe,34,Wusheng,41185,eastasia,34,Bogota; Soac,10419361,latin_america
+35,San Jose; Sa,1614,northern_america,35,Perth,1007.399034,oceania,35,Shehong,40796,eastasia,35,London; West,10408332,europe
+36,Melbourne,1611,oceania,36,Montréal,1005.90387,northern_america,36,Kharameh,40335,middle_east,36,Rio de Janei,9853693,latin_america
+37,Hangzhou; Sh,1547,eastasia,37,Fujieda,1004.566892,eastasia,37,Togechane; T,39610,sub_saharan_africa,37,Hajipur; Muz,9755303,indian_subcontinent
+38,Moscow; Bala,1545,eastern_europe_and_russia,38,Akko,1000.693648,middle_east,38,Jalpaiguri,39245,indian_subcontinent,38,New Taipei; ,9686521,eastasia
+39,Tehrân,1515.34884,middle_east,39,Brugge,997.1450142,europe,39,Bugama,39034,sub_saharan_africa,39,Hyderabad; S,9455230,indian_subcontinent
+40,Ho Chi Minh ,1487,southeast_asia,40,Agadez,996.9887691,sub_saharan_africa,40,Jingbian,38488,eastasia,40,Tehran; Esla,9363124,middle_east
+41,Benin City (,1440.091913,sub_saharan_africa,41,Bragança,995.7144351,europe,41,??????? ????,38421,middle_east,41,Paris; Argen,9328385,europe
+42,Paris; Argen,1421,europe,42,Beograd,990.9515368,eastern_europe_and_russia,42,Sikandra Rao,37997,indian_subcontinent,42,Moskva,9089572,eastern_europe_and_russia
+43,Sydney,1378,oceania,43,Huancavelica,990.3863804,latin_america,43,Hudur,37919,sub_saharan_africa,43,Shanghai,9056464,eastasia
+44,Kozhikode,1341,indian_subcontinent,44,Gliwice,989.0124814,europe,44,Tulak,37643,central_asia,44,Dar es-Salaa,8918525,sub_saharan_africa
+45,Kuala Lumpur,1340,southeast_asia,45,Ensenada,986.9967813,latin_america,45,Xishui,37465,eastasia,45,Bandung; Cim,8691181,southeast_asia
+46,Chicago,1307.227738,northern_america,46,Cacheu (comm,986.0679684,sub_saharan_africa,46,Yuechi,37296,eastasia,46,Johannesburg,8592843,sub_saharan_africa
+47,Phoenix; Gle,1304,northern_america,47,Montceau-les,984.2424613,europe,47,Sandila,37209,indian_subcontinent,47,Chongqing; D,8449690,eastasia
+48,Surabaya; Si,1304,southeast_asia,48,Lanzhou,981.6769745,eastasia,48,Derudeib,37123,sub_saharan_africa,48,Kuala Lumpur,8413206,southeast_asia
+49,Washington; ,1301,northern_america,49,Heidelberg,980.4026405,europe,49,Bisalpur,36970,indian_subcontinent,49,Wuhan; Hongs,8079484,eastasia
+50,Rio de Janei,1285,latin_america,50,Arbon-Rorsch,977.0357058,europe,50,Koohanjan,36867,middle_east,50,Nanjing; Luh,8061029,eastasia
+51,Istanbul,1269,middle_east,51,Montbéliard,972.2056092,europe,51,Gobindaganj,36435,indian_subcontinent,51,Riyadh,7970319,middle_east
+52,Kochi; Ernak,1266,indian_subcontinent,52,Suva (agglom,970.2335692,oceania,52,Mojiang Hani,36274,eastasia,52,Ahmedabad,7898650,indian_subcontinent
+53,Detroit; Ste,1251,northern_america,53,"Creusot, Le ",969.3288442,europe,53,Qaraziadin,36263,middle_east,53,Nagoya; Gifu,7880478,eastasia
+54,Dallas; Plan,1237,northern_america,54,Sebinkarahis,967.9801075,middle_east,54,U�ge,35812,sub_saharan_africa,54,London,7742000,europe
+55,Colombo; Kad,1206,indian_subcontinent,55,Chatham,966.4438029,europe,55,El Hawata,35727,sub_saharan_africa,55,Kozhikode,7612130,indian_subcontinent
+56,Lagos; Ikeja,1199,sub_saharan_africa,56,Gardiz,966.1921514,central_asia,56,Famenin,35515,middle_east,56,São Paulo,7391957,latin_america
+57,Shanghai,1198.005469,eastasia,57,Yarumal,965.8693044,latin_america,57,Garasse,35323,sub_saharan_africa,57,Tianjin; Nan,7330648,eastasia
+58,Denver; Auro,1194,northern_america,58,Denain,965.2711748,europe,58,Khall,35131,central_asia,58,Addis Ababa,7280463,sub_saharan_africa
+59,Moskva,1187.890395,eastern_europe_and_russia,59,Panamá City,963.2949789,latin_america,59,Manakhah,34912,middle_east,59,Chicago,7157958,northern_america
+60,Owerri,1144,sub_saharan_africa,60,Ahmadnagar,962.5767888,indian_subcontinent,60,Yingshan,34699,eastasia,60,Khartoum; Om,7114789,sub_saharan_africa
+61,Seattle; Bel,1123,northern_america,61,Rostov,961.8897118,eastern_europe_and_russia,61,Kebkabiya,34642,sub_saharan_africa,61,Surat,7100723,indian_subcontinent
+62,Accra; Tema,1121,sub_saharan_africa,62,North Vancou,961.3672616,northern_america,62,Shahganj,34590,indian_subcontinent,62,Chengdu; Jin,7095390,eastasia
+63,Maharajganj;,1120,indian_subcontinent,63,Krivodol,959.980778,eastern_europe_and_russia,63,Ghatampur,34401,indian_subcontinent,63,"Qâhirah, Al-",6951438,maghreb_egypt
+64,Riyadh,1108,middle_east,64,Wicklow,955.5897841,europe,64,Jamame,34397,sub_saharan_africa,64,Alexandria,6931369,maghreb_egypt
+65,Onitsha; Nne,1090,sub_saharan_africa,65,Oakland,955.2376764,northern_america,65,Narus,34360,sub_saharan_africa,65,Baghdad,6891722,middle_east
+66,Chennai; Tam,1052,indian_subcontinent,66,Santos,953.478981,latin_america,66,Bishan,34355,eastasia,66,Hangzhou; Sh,6874393,eastasia
+67,Montreal; La,1020,northern_america,67,Mannheim,953.2981819,europe,67,Longquanyi,34093,eastasia,67,Surabaya; Si,6856993,southeast_asia
+68,Nanjing; Luh,1012,eastasia,68,Jaunpur,953.0333806,indian_subcontinent,68,Krishnanagar,33839,indian_subcontinent,68,Pune; Pimpri,6674000,indian_subcontinent
+69,Bengaluru,1008,indian_subcontinent,69,Olesnica,952.8894269,europe,69,Filtu,33828,sub_saharan_africa,69,Nairobi,6646257,sub_saharan_africa
+70,Bandung; Cim,988,southeast_asia,70,Chorzów,951.3861485,europe,70,Meshkan,33665,middle_east,70,Santiago,6633767,latin_america
+71,Lima; Callao,984,latin_america,71,San Marino (,950.3773251,europe,71,Ad Darumah; ,33664,middle_east,71,Abidjan; Abo,6450316,sub_saharan_africa
+72,New Taipei; ,972,eastasia,72,Ambâla,948.0270442,indian_subcontinent,72,Jais,33610,indian_subcontinent,72,Amman; Zarqa,6425246,middle_east
+73,Khartoum; Om,958,sub_saharan_africa,73,Motherwell,947.6598307,europe,73,Safipur,33423,indian_subcontinent,73,Luxor; New T,6314420,maghreb_egypt
+74,Luanda,936,sub_saharan_africa,74,Qabis,946.152563,maghreb_egypt,74,Shinkot,33336,central_asia,74,Sõul,6259111,eastasia
+75,Hanoi; T? S?,925,southeast_asia,75,Liège,945.6797024,europe,75,Shahrak,33331,central_asia,75,Kabul; Paghm,6254679,central_asia
+76,"Qâhirah, Al-",908.3914928,maghreb_egypt,76,Gällivare,944.2783051,europe,76,Al `Udayn,33267,middle_east,76,Yangon,6190958,southeast_asia
+77,Dar es-Salaa,907,sub_saharan_africa,77,Pila,943.2553906,europe,77,Shamsabad,32973,indian_subcontinent,77,Shenyang; Ti,6175250,eastasia
+78,Lahore; Shei,898,central_asia,78,Surgidero de,943.0039711,latin_america,78,Jalesar,32806,indian_subcontinent,78,Mumbaî,6035058,indian_subcontinent
+79,Hyderabad; S,889,indian_subcontinent,79,Rapperswil,942.7939591,europe,79,Burka,32767,sub_saharan_africa,79,Accra; Tema,5890466,sub_saharan_africa
+80,Tamluk; Kola,889,indian_subcontinent,80,Zeila,937.6181822,sub_saharan_africa,80,Kavar,32558,middle_east,80,Beijing,5862646,eastasia
+81,Essen; Duisb,880,europe,81,Bogaziliyan,935.2476436,middle_east,81,Nanxi,32537,eastasia,81,Onitsha; Nne,5788296,sub_saharan_africa
+82,Chengdu; Jin,880,eastasia,82,Puerto Wilch,934.3262319,latin_america,82,Al Mirqab; A,32474,middle_east,82,Miami; Hiale,5733042,northern_america
+83,Portland; Va,877,northern_america,83,Retalhuleu,933.8727531,latin_america,83,Seka,32228,sub_saharan_africa,83,Madrid; M�st,5680137,europe
+84,Mesa; Chandl,867,northern_america,84,Lille,931.5261091,europe,84,Hillat Ashat,31850,sub_saharan_africa,84,Faisalabad,5676793,central_asia
+85,Dubai; Sharj,854,middle_east,85,Karâchi (agg,930.1901081,central_asia,85,Yenice,31813,middle_east,85,Hefei; Shush,5646049,eastasia
+86,Las Vegas; H,851,northern_america,86,Bremen,929.0126461,europe,86,B�tou,31782,sub_saharan_africa,86,Toronto; Mis,5566382,northern_america
+87,Karachi,834,central_asia,87,Kalisz,928.7272189,europe,87,Khayran,31550,middle_east,87,Yaound�,5479204,sub_saharan_africa
+88,Linyi; Linyi,829,eastasia,88,Kogarah,928.1411056,oceania,88,Pengshui,31492,eastasia,88,Wetter (Ruhr,5462021,europe
+89,Tehran; Esla,825,middle_east,89,Ahmadâbâd,925.1763009,indian_subcontinent,89,Nanbu,31289,eastasia,89,Xi'an; Yanta,5427863,eastasia
+90,Kampala; Kir,810,sub_saharan_africa,90,Thionville,925.0351604,europe,90,Hamero,31269,sub_saharan_africa,90,Mashhad,5377005,middle_east
+91,Durban,807,sub_saharan_africa,91,Caracas,925.0345091,latin_america,91,Amber; Kunda,31234,indian_subcontinent,91,Chicago; Eva,5348728,northern_america
+92,Quanzhou; Fe,801,eastasia,92,Siegburg,924.2850098,europe,92,Utraula,31204,indian_subcontinent,92,Paris,5256347,europe
+93,Santiago,801,latin_america,93,Van,924.2387167,middle_east,93,Lezhi,31162,eastasia,93,Lucknow; Bar,5214964,indian_subcontinent
+94,Sõul,785.2874459,eastasia,94,Ciudad de Mé,923.4866227,latin_america,94,Buram,31087,sub_saharan_africa,94,Kampala; Kir,5177878,sub_saharan_africa
+95,Milan; Monza,785,europe,95,Polonaruwa,922.8226499,indian_subcontinent,95,Meichuan,30931,eastasia,95,Chattogram,5175717,indian_subcontinent
+96,Perth; Joond,784,oceania,96,Artemivs'k,922.1279136,eastern_europe_and_russia,96,Bendaravadi;,30908,indian_subcontinent,96,Rio de Janei,5154146,latin_america
+97,San Diego; C,778,northern_america,97,Kortrijk,918.0825592,europe,97,Daying,30898,eastasia,97,Zhengzhou; J,5126112,eastasia
+98,Wuhan; Hongs,772,eastasia,98,Condé-sur-l',917.8351303,europe,98,As Sayyid,30886,middle_east,98,Singapore,5117759,southeast_asia
+99,Rio de Janei,768.9312414,latin_america,99,Khiva,913.9953094,central_asia,99,Wegeda,30885,sub_saharan_africa,99,Kano,5110616,sub_saharan_africa
+100,Sacramento; ,759,northern_america,100,Saint Peter ,913.1588403,europe,100,Faridpur,30817,indian_subcontinent,100,Kochi; Ernak,5069022,indian_subcontinent
+101,Philadelphia,754.5924063,northern_america,101,Bridgetown (,912.8996103,latin_america,101,Kibet,30724,sub_saharan_africa,101,Hanoi; T? S?,4965520,southeast_asia
+102,Ponnani; Kut,754,indian_subcontinent,102,Dubrovnik (t,912.4448218,eastern_europe_and_russia,102,Siyana,30651,indian_subcontinent,102,Kumasi,4923115,sub_saharan_africa
+103,Chicoutimi,751.1018832,northern_america,103,Kampala,911.2706296,sub_saharan_africa,103,Bhinga,30418,indian_subcontinent,103,Rawalpindi; ,4913528,central_asia
+104,Manchester; ,751,europe,104,Zary,910.5845149,europe,104,Wereta,30330,sub_saharan_africa,104,Saint Peters,4878966,eastern_europe_and_russia
+105,Orlando; Kis,750,northern_america,105,Lens,909.0800094,europe,105,Kattappana,30315,indian_subcontinent,105,Philadelphia,4853649,northern_america
+106,Shenyang; Ti,748,eastasia,106,Cazin,908.7538936,eastern_europe_and_russia,106,Tongrim,30132,eastasia,106,Jeddah,4842257,middle_east
+107,Mumbai; Than,738,indian_subcontinent,107,Shenyang,905.4939605,eastasia,107,Sahabad,30132,indian_subcontinent,107,Hong Kong; K,4810523,eastasia
+108,London,724.661337,europe,108,Aachen,905.3108438,europe,108,Weixin,30097,eastasia,108,Mogadishu,4798453,sub_saharan_africa
+109,Kollam,710,indian_subcontinent,109,Aït Melloul,904.9436422,maghreb_egypt,109,Chhibramau,30068,indian_subcontinent,109,Colombo; Kad,4720933,indian_subcontinent
+110,Saint Peters,705,northern_america,110,Barauni,904.192022,indian_subcontinent,110,Kangdong,30041,eastasia,110,San Jose; Sa,4718349,northern_america
+111,Brisbane; Lo,701,oceania,111,Shizuoka,904.1553533,eastasia,111,Soku,30030,sub_saharan_africa,111,Santo Doming,4593164,latin_america
+112,Jeddah,696,middle_east,112,Johannesburg,903.5557761,sub_saharan_africa,112,Hardoi,30015,indian_subcontinent,112,Harbin; Daol,4591886,eastasia
+113,Cape Town,695,sub_saharan_africa,113,Gorna Orjach,903.1969907,eastern_europe_and_russia,113,Aleta Wendo,29972,sub_saharan_africa,113,Casablanca; ,4577677,maghreb_egypt
+114,Xi'an; Yanta,691,eastasia,114,Kitakyûshû,902.6107292,eastasia,114,Hargele,29946,sub_saharan_africa,114,Dubai; Sharj,4565478,middle_east
+115,Baghdad,688,middle_east,115,Leuven,901.8113507,europe,115,Bolo,29691,sub_saharan_africa,115,Tôkyô,4498700,eastasia
+116,Berlin,687,europe,116,Petrozavodsk,900.5877178,eastern_europe_and_russia,116,El Afweyn,29556,sub_saharan_africa,116,Tianjin,4494121,eastasia
+117,Birmingham; ,685,europe,117,Anamorós,899.7848203,latin_america,117,Ed Al Fursan,29514,sub_saharan_africa,117,Douala,4457862,sub_saharan_africa
+118,Monterrey; G,685,latin_america,118,Hurstville,899.1324439,oceania,118,Tongjiang Co,29353,eastasia,118,Kanpur; Unna,4413625,indian_subcontinent
+119,Madrid; M�st,680,europe,119,Tadjourah,898.7030186,sub_saharan_africa,119,Jhenaidah,29261,indian_subcontinent,119,Belo Horizon,4376747,latin_america
+120,Yogyakarta; ,678,southeast_asia,120,Butiaba,898.0454658,sub_saharan_africa,,,,,120,Sydney,4375394,oceania
