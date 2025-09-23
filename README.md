@@ -12,6 +12,8 @@
 
 - Authors/Developers: Aust Kätzchen, Vis Tacitus
 - E-mail: [vf.confoederatio@proton.me](mailto:vf.confoederatio@gmail.com)
+- Methodological Paper (1.0.1): https://doi.org/10.5281/zenodo.17180328
+- Methodological Paper (1.0): https://doi.org/10.5281/zenodo.17172245
 
 **Abstract.**
 
