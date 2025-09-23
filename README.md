@@ -8,12 +8,14 @@
 
 ---
 
-[![Join our community!](https://img.shields.io/discord/548994743925997570?label=Discord&style=for-the-badge)](https://discord.gg/89kQY2KFQz) ![](https://img.shields.io/github/languages/code-size/Confoederatio/Eoscala-Velkscala?style=for-the-badge)
+[![Join our community!](https://img.shields.io/discord/548994743925997570?label=Discord&style=for-the-badge)](https://discord.gg/89kQY2KFQz) ![](https://img.shields.io/github/languages/code-size/Confoederatio/Eoscala-Velkscala?style=for-the-badge) 
+
+[![](https://zenodo.org/badge/DOI/10.5281/zenodo.17172244.svg)](https://doi.org/10.5281/zenodo.17172244)
 
 - Authors/Developers: Aust Kätzchen, Vis Tacitus
 - E-mail: [vf.confoederatio@proton.me](mailto:vf.confoederatio@gmail.com)
-- Methodological Paper (1.0.1): https://doi.org/10.5281/zenodo.17180328
-- Methodological Paper (1.0): https://doi.org/10.5281/zenodo.17172245
+- 📝 Methodological Paper (1.0.1): https://doi.org/10.5281/zenodo.17180328
+- 📝 Methodological Paper (1.0): https://doi.org/10.5281/zenodo.17172245
 
 **Abstract.**
 
