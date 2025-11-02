@@ -1,5 +1,3 @@
-//Initialise AI-generated helper functions - [WIP] - Should be refactored at a later date
-//AI Policy: Quarantine
 {
 	const { PNG } = require("pngjs");
 	
