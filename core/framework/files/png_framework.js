@@ -73,13 +73,7 @@
     //Return statement
     return decodeRGBAAsNumber(getRGBAFromPixel(image_obj, index));
   };
-
-  /**
-   * loadNumberRasterImage() - Loads a number raster image into the assigned variable.
-   * @param {String} arg0_file_path 
-   * 
-   * @returns {Object}
-   */
+  
   /**
    * loadNumberRasterImage() - Loads a number raster image into the assigned variable.
    * @param {String} arg0_file_path 
