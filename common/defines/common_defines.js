@@ -23,6 +23,7 @@ config.defines.common = {
     stadester_cities: `./input/uud/stadester_cities.json`,
     processed_stadester_cities: `./input/uud/processed_stadester_cities.json`,
     uud_cities: "./input/uud/uud_cities.json",
+		worldcitypop_cities: "./input/worldcitypop/chandler_modelski_cities.json",
     
     ghsl_csv: "./input/GHSL/GHS_UCDB_MTUC_GLOBE_R2024A.csv",
     ghsl_folder: "./input/GHSL/geojson/",
@@ -36,8 +37,8 @@ config.defines.common = {
     regions_file_path: "./input/regional_subdivisions.png",
 		voronoi_regions_file_path: "./input/voronoi_subdivisions.png",
     substrata_folder: `./input/hyde/population/`,
-    substrata_prefix: `substrata_pop_`,
-    substrata_suffix: `_number.png`,
+    substrata_prefix: `popc_`,
+    substrata_suffix: ``,
 		
 		//Velkscala
 		velkscala_northern_america_folder: "./input/velkscala/northern_america/intermediate_images/",

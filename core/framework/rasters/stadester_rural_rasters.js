@@ -11,7 +11,7 @@
 		//Iterate over all stadester_years
 		for (let i = 0; i < stadester_years.length; i++) {
 			let local_substrata_file_path = (stadester_years[i] < first_ghsl_year) ?
-				`${common_defines.input_file_paths.substrata_folder}${common_defines.input_file_paths.substrata_prefix}${getHYDEYearName(stadester_years[i])}${common_defines.input_file_paths.substrata_suffix}` : `${common_defines.input_file_paths.ghsl_population_folder}${common_defines.input_file_paths.ghsl_population_prefix}${stadester_years[i]}${common_defines.input_file_paths.ghsl_population_suffix}`;
+				`${common_defines.input_file_paths.substrata_folder}${common_defines.input_file_paths.substrata_prefix}${stadester_years[i]}${common_defines.input_file_paths.substrata_suffix}` : `${common_defines.input_file_paths.ghsl_population_folder}${common_defines.input_file_paths.ghsl_population_prefix}${stadester_years[i]}${common_defines.input_file_paths.ghsl_population_suffix}`;
 			
 			if (fs.existsSync(local_substrata_file_path)) {
 				all_substrata_rasters[stadester_years[i]] = local_substrata_file_path;

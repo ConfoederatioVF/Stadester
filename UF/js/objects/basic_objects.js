@@ -435,6 +435,71 @@
     //Return statement
     return all_keys;
   };
+  
+  /**
+   * linearInterpolationObject() - Performs a linear interpolation operation on an object.
+   * @param {Object} arg0_object - The object to perform the linear interpolation on.
+   * @param {Object} [arg1_options]
+   *  @param {boolean} [arg1_options.all_years=false] - Optional. Whether to interpolate for every single year in the domain.
+   *  @param {Array<number>} [arg1_options.years] - Optional. The years to interpolate over if possible.
+   *
+   * @return {Object}
+   */
+  global.linearInterpolationObject = function (arg0_object, arg1_options) {
+    // Convert from parameters
+    var object = arg0_object;
+    var options = arg1_options ? arg1_options : {};
+    
+    // Declare local instance variables
+    var sorted_indices = sortYearValues(object);
+    var values = sorted_indices.values;
+    var years = sorted_indices.years;
+    
+    // Guard clause if there are less than 2 years
+    if (years.length < 2) return object;
+    
+    // Initialise target years for interpolation
+    var target_years = options.years ? getList(options.years) : years;
+    
+    if (options.all_years) {
+      var object_domain = getObjectDomain(object);
+      target_years = [];
+      
+      // Iterate between object_domain[0] and object_domain[1]
+      for (var i = object_domain[0]; i <= object_domain[1]; i++)
+        target_years.push(i);
+    }
+    
+    // Iterate over all requested years
+    for (var i = 0; i < target_years.length; i++) {
+      var current_year = target_years[i];
+      var min_year = returnSafeNumber(years[0]);
+      var max_year = returnSafeNumber(years[years.length - 1]);
+      
+      if (current_year >= min_year && current_year <= max_year) {
+        // Find the two bounding points for linear interpolation
+        var left_index = 0;
+        
+        for (var j = 0; j < years.length - 1; j++)
+          if (current_year >= years[j] && current_year <= years[j + 1]) {
+            left_index = j;
+            break;
+          }
+        
+        var pair_x = [years[left_index], years[left_index + 1]];
+        var pair_y = [values[left_index], values[left_index + 1]];
+        
+        object[current_year] = linearInterpolation(
+          pair_x,
+          pair_y,
+          current_year,
+        );
+      }
+    }
+    
+    // Return statement
+    return object;
+  };
 
   /*
     mergeObjects() - Merges two objects together.

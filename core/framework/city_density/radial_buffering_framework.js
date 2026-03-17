@@ -2,14 +2,14 @@
 {
 	global.cacheRadialBuffers = function () {
 		//Declare local instance variables
-		var density_processing_obj = config.population_density.processing;
-		var input_file_path = config.defines.common.input_file_paths.stadester_areas;
-		var output_file_path = config.defines.common.input_file_paths.stadester_output;
-		var stadester_obj = JSON.parse(fs.readFileSync(input_file_path, "utf8"));
-		var walkability_ratio_obj = getWalkabilityRatioObject();
+		let density_processing_obj = config.population_density.processing;
+		let input_file_path = config.defines.common.input_file_paths.stadester_areas;
+		let output_file_path = config.defines.common.input_file_paths.stadester_output;
+		let stadester_obj = JSON.parse(fs.readFileSync(input_file_path, "utf8"));
+		let walkability_ratio_obj = getWalkabilityRatioObject();
 		
 		//Iterate over all_cities and check if .area would be large enough at latitude to cover multiple gridcells. If not, skip it
-		var all_cities = Object.keys(stadester_obj);
+		let all_cities = Object.keys(stadester_obj);
 		
 		for (let i = 0; i < all_cities.length; i++) {
 			let local_city = stadester_obj[all_cities[i]];
@@ -102,7 +102,7 @@
 		let output_file_path = `${common_defines.output_file_paths.stadester_base_rasters_folder}/${common_defines.output_file_paths.stadester_base_rasters_prefix}${year}.png`;
 		let pixel_dictionary = {};
 		let pixel_obj = {};
-		let substrata_file_path = `${common_defines.input_file_paths.substrata_folder}${common_defines.input_file_paths.substrata_prefix}${getHYDEYearName(year)}${common_defines.input_file_paths.substrata_suffix}`;
+		let substrata_file_path = `${common_defines.input_file_paths.substrata_folder}${common_defines.input_file_paths.substrata_prefix}${year}${common_defines.input_file_paths.substrata_suffix}`;
 			if (year >= first_ghsl_year)
 				substrata_file_path = `${common_defines.input_file_paths.ghsl_population_folder}${common_defines.input_file_paths.ghsl_population_prefix}${year}${common_defines.input_file_paths.ghsl_population_suffix}`;
 		let substrata_raster = loadNumberRasterImage(substrata_file_path);
@@ -131,7 +131,7 @@
 		
 		for (let i = 0; i < all_pixel_keys.length; i++) {
 			let local_cities = pixel_dictionary[all_pixel_keys[i]];
-				if (local_cities.length == 0) continue; //Internal guard clause if local_cities is empty
+				if (local_cities.length === 0) continue; //Internal guard clause if local_cities is empty
 			
 			//Iterate over all local_cities
 			for (let x = 0; x < local_cities.length; x++) {
@@ -161,7 +161,7 @@
 				//Populate local_pixels
 				if (local_radial_buffers.length > 0) {
 					//console.log(`Local radial buffers for ${local_cities[x].name}: ${local_radial_buffers.length}`);
-					if (local_radial_buffers.length == 1) {
+					if (local_radial_buffers.length === 1) {
 						modifyValue(local_pixels, all_pixel_keys[i], local_sum_population);
 					} else if (local_radial_buffers.length > 1) {
 						local_pixels[all_pixel_keys[i]] = local_radial_buffers[0];
@@ -176,7 +176,7 @@
 								
 								annular_sum += local_value;
 							}
-							if (annular_sum == 0) continue; //Internal guard clause if annular_sum is not applicable
+							if (annular_sum === 0) continue; //Internal guard clause if annular_sum is not applicable
 							
 							//Compute annular_scalar; push scaled annular pixels to local_pixels
 							let annular_scalar = local_radial_buffers[y]/annular_sum;

@@ -90,7 +90,7 @@
 	{
 		global.generateMetroCorrectedBase = function () {
 			//Generate metro corrected Stadestér database
-			initialiseUUD();
+			saveUUDData({ mode: "cubic" });
 			parseUUDToStadester();
 			flattenStadesterMetros();
 			fixStadesterErrors();
@@ -106,11 +106,15 @@
 			generateStadesterRuralRasters();
 				generateStadesterNorthernAmericaRasters();
 			generateStadesterPopulationRasters();
+			
+			//Generate visualisations
+			getStadesterRegionalUrbanObject();
+			getStadesterRegionalTotalPopulationObject();
 		};
 		
 		global.generateNonMetroCorrectedBase = function () {
 			//Generate non-metro correctied Stadestér database
-			initialiseUUD();
+			saveUUDData({ mode: "linear" });
 			parseUUDToStadester();
 			flattenStadesterMetros(true);
 			fixStadesterErrors();

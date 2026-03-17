@@ -499,14 +499,20 @@
 	global.processCitiesAreas = function () {
 		//Declare local instance variables
 		//1. Fundamental variables; .area/.density calculation
+		console.log(`Processing baseline city areas.`);
 		global.stadester_obj = estimateBaselineCityAreas();
+		console.log(`Processing remainder city areas.`);
 		global.stadester_obj = calculateRemainderCityAreas(stadester_obj);
+		console.log(`Fixing city areas.`);
 		global.stadester_obj = fixCityAreas(stadester_obj);
 		
+		console.log(`Calculating city densities.`);
 		global.stadester_obj = calculateCityDensities(stadester_obj);
 		
 		//2. Clark coefficient calculations
+		console.log(`Assigning regions to cities.`);
 		global.stadester_obj = assignRegionsToCities(stadester_obj); //Used for calculating Clark variant equations/walkability ratios
+		console.log(`Calculating city centre densities.`);
 		global.stadester_obj = calculateCitiesCentreDensities(stadester_obj);
 		
 		//Save processed stadester_obj

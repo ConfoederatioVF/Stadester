@@ -124,7 +124,7 @@
 
         local_city_key = `${local_city_key}-${temp_city_obj.country}`;
         if (!return_obj[local_city_key])
-         return_obj[local_city_key] = temp_city_obj;
+          return_obj[local_city_key] = temp_city_obj;
       }
 
     //Return statement
