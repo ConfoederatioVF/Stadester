@@ -38,7 +38,7 @@ config.defines.common = {
 		voronoi_regions_file_path: "./input/voronoi_subdivisions.png",
     substrata_folder: `./input/hyde/population/`,
     substrata_prefix: `popc_`,
-    substrata_suffix: ``,
+    substrata_suffix: `.png`,
 		
 		//Velkscala
 		velkscala_northern_america_folder: "./input/velkscala/northern_america/intermediate_images/",

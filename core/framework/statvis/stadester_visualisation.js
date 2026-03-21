@@ -88,23 +88,31 @@
 	
 	//1.1. Number of cities with radial buffers; generate non-metro corrected base-case
 	{
-		global.generateMetroCorrectedBase = function () {
-			//Generate metro corrected Stadestér database
-			saveUUDData({ mode: "cubic" });
-			parseUUDToStadester();
-			flattenStadesterMetros();
-			fixStadesterErrors();
+		global.generateMetroCorrectedBase = function (arg0_options) {
+			//Convert from parameters
+			let options = (arg0_options) ? arg0_options : {};
 			
-			processCitiesAreas();
-			cacheRadialBuffers();
-			generateStadesterRasters();
-			processStadester();
-			getStadesterGHSLObject();
+			//Initialise options
+			if (!options.exclude) options.exclude = [];
+			
+			if (!options.exclude.includes("training")) {
+				//Generate metro corrected Stadestér database
+				saveUUDData({ mode: "cubic" });
+				parseUUDToStadester();
+				flattenStadesterMetros();
+				fixStadesterErrors();
+				
+				processCitiesAreas();
+				cacheRadialBuffers();
+				generateStadesterRasters();
+				processStadester();
+				getStadesterGHSLObject();
+			}
 			
 			//Generate post-addendum rasters
 			generateStadesterUrbanRasters();
 			generateStadesterRuralRasters();
-				generateStadesterNorthernAmericaRasters();
+				//generateStadesterNorthernAmericaRasters();
 			generateStadesterPopulationRasters();
 			
 			//Generate visualisations
@@ -128,7 +136,7 @@
 			//Generate post-addendum rasters
 			generateStadesterUrbanRasters();
 			generateStadesterRuralRasters();
-				generateStadesterNorthernAmericaRasters();
+				//generateStadesterNorthernAmericaRasters();
 			generateStadesterPopulationRasters();
 		};
 		

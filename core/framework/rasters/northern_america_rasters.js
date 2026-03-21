@@ -1,6 +1,6 @@
 //Initialise functions
 {
-	global.generateStadesterNorthernAmericaRasters = function () { //[WIP] - Finish function body
+	global.generateStadesterNorthernAmericaRasters = function () {
 		//Declare local instance variables
 		let common_defines = config.defines.common;
 		let hyde_years = config.uud.processing.hyde_years.concat([2024, 2025]).sort((a, b) => a - b);

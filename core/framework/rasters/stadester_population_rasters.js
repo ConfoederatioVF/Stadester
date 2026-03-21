@@ -83,7 +83,7 @@
 		//1. Generate rasters to begin with
 		generateStadesterUrbanRasters();
 		generateStadesterRuralRasters();
-			generateStadesterNorthernAmericaRasters();
+			//generateStadesterNorthernAmericaRasters();
 		generateStadesterPopulationRasters();
 		
 		//2. Post-processing
