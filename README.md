@@ -54,6 +54,8 @@ Spatiotemporal outlier masking was also performed for irregular regions, with ma
 <div align = "center">Figure 3. Centre of gravity comparison between Stadestér Base and Stadestér GHSL, 3000BC-2025AD. Results for Stadestér-Base roughly align with that of Reba et al (2016).</div>
 <br>
 
+Custom demographic modelling was also done for pre-Columbian Northern America based on the work of Nevle and Bird, Milner and Chaplin, and Driver and Massey.
+
 After 1975, GHS-POP was utilised as the substrata base instead. Annular rings were calculated from Clark, Stanilov and Sykora variant equations as to their radial density, with fractional per-pixel scaling and proportional distribution over the substrata. This sort of annular scaling is in effect an extended Burgess model that takes into account local land use, pre-existing population distributions, and existing coastlines, lakes, and land area.
 
 Annular rings were decided to be at 5-arcminute resolution, like all resultant rasters. You can view intended Stadestér rasters/outputs in `./output/stadester/`. Manual copychecking was performed for Stadestér results, and outliers or errant information was corrected via various injection stages throughout the pipeline.
@@ -69,6 +71,7 @@ Raw dumps of demographic data, cleaned and refined, are available for the follow
 - Modelski (Geolocated, Cleaned)
 - Populstat (Geolocated, Cleaned)
 - Wikipedia (Geolocated, Extracted)
+- Worldcitypop (Geolocated, Cleaned)
 
 This repository is currently in production and may be subject to frequent updates. __Stadestér__ is a sub-project of both **Eoscala** and **Velkscala**.
 
