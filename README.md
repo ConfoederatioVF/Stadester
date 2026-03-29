@@ -21,7 +21,7 @@
 
 **Stadestér** is an urban population database of ~40k+ global cities and their populations from 3000BC to the present day as taken from Chandler, Modelski, Reba et al., Buringh, DeVries, Populstat, GHSL, and Wikipedia. Resultant demographic inormation was hybridised, standardised, geolocated, cubic spline interpolated, and calculated at 1-year intervals utilising geomean scalars and agglomerative correction techniques. 
 
-Area, density, RNI, and geospatial distributions of population within cities are also available at annual resolution starting from 1800AD. Note that rasters have only been outputted for the subset of HYDE years from 3000BC-2025AD, and that you must dynamically generate rasters outside of this subset via the provided CLI in `autorun.bat`.
+Area, density, RNI, and geospatial distributions of population within cities are also available at annual resolution starting from 1800AD. Note that rasters have only been outputted for the subset of HYDE years from 3000BC-2025AD, and that you must dynamically generate rasters outside of this subset via the provided CLI in `autorun.bat`. Rural, urban, and total population rasters at 5-arcmin resolution are available from 10000BC-2025AD at a global level.
 
 To avoid double counting, metropolitan networks were corrected for in the data by subtracting suburban populations from their metro area, and redistributing any negative numbers held by the metropolitan area back to their suburbs in a proportional manner. Area/density calculations were derived from Angel (2011), Bairoch (1991), Clark (1951), Pasciuti and Chase-Dunn (2002), and Stanilov and Sykora (2014). Hanson and Ortman's work on classical populations have not yet been incorporated.
 
@@ -54,7 +54,7 @@ Spatiotemporal outlier masking was also performed for irregular regions, with ma
 <div align = "center">Figure 3. Centre of gravity comparison between Stadestér Base and Stadestér GHSL, 3000BC-2025AD. Results for Stadestér-Base roughly align with that of Reba et al (2016).</div>
 <br>
 
-Custom demographic modelling was also done for pre-Columbian Northern America based on the work of Nevle and Bird, Milner and Chaplin, and Driver and Massey.
+Custom demographic modelling was also done for pre-Columbian Northern America based on the work of Nevle and Bird, Milner and Chaplin, and Driver and Massey. CARD/p3k14c has not yet been incorporated, nor modelling for Amazonian/Siberian populations.
 
 After 1975, GHS-POP was utilised as the substrata base instead. Annular rings were calculated from Clark, Stanilov and Sykora variant equations as to their radial density, with fractional per-pixel scaling and proportional distribution over the substrata. This sort of annular scaling is in effect an extended Burgess model that takes into account local land use, pre-existing population distributions, and existing coastlines, lakes, and land area.
 
