@@ -43,6 +43,7 @@ Spatiotemporal outlier masking was also performed for irregular regions, with ma
 - Canada: 10000BC-1750AD
 - Denmark: 10000BC-1000BC
 - Hong Kong: 10000BC-1850AD
+- Jakarta: 10000BC-1500AD
 - Milan, Naples: 10000BC-1000BC
 - Russia: 10000BC-1400AD
 - Siberia: 10000BC-1500AD
