@@ -12,12 +12,20 @@
 
 [![](https://zenodo.org/badge/DOI/10.5281/zenodo.17172244.svg)](https://doi.org/10.5281/zenodo.17172244)
 
+## Abstract.
+
 - Authors/Developers: Aust Kätzchen, Vis Tacitus
 - E-mail: [vf@confoederatio.org](mailto:vf@confoederatio.org)
+- Dataview: https://dataview.confoederatio.org
+- <ins>Download:</ins>
+- - **Stadestér (Cities, part of Velkscala)** | [Github](https://github.com/ConfoederatioVF/Stadester) | [Projects (1.1)](https://projects.confoederatio.org/c/Stadester)
+- - Velkscala (Demographics) | [Github](https://github.com/ConfoederatioVF/Velkscala) | [Datavault (1.0)](https://datavault.confoederatio.org/s/44Pfgt7ya8wE77b)
+- - Eoscala (Economics) | [Github](https://github.com/ConfoederatioVF/Eoscala) | [Datavault (1.5)](https://datavault.confoederatio.org/s/2Kytdej7ABpw4rr)
+- - Atlas (Polities) | [Github](https://github.com/ConfoederatioVF/Atlas) | [Datavault (0.7)](https://datavault.confoederatio.org/s/rPntqXwCxzXg4Bk)
 - 📝 Methodological Paper (1.0.1): https://doi.org/10.5281/zenodo.17180328
 - 📝 Methodological Paper (1.0): https://doi.org/10.5281/zenodo.17172245
 
-**Abstract.**
+---
 
 **Stadestér** is an urban population database of ~40k+ global cities and their populations from 3000BC to the present day as taken from Chandler, Modelski, Reba et al., Buringh, DeVries, Populstat, GHSL, and Wikipedia. Resultant demographic inormation was hybridised, standardised, geolocated, cubic spline interpolated, and calculated at 1-year intervals utilising geomean scalars and agglomerative correction techniques. 
 
@@ -34,17 +42,23 @@ Two versions of Stadestér are provided: Stadestér Base (which does not merge S
 
 **Geospatial Distributions.**
 
-A substrata model was constructed from HYDE3.2/3.3 normalised to McEvedy and Jones (see [Velkscala 0.7](https://github.com/Confoederatio/Eoscala-Velkscala-Production)). Resultant rasters were subject to Moore neighbourhood outlier removal (threshold of 8x the average), with a fallback model constructed from KK10/LUH2 (Kaplan and Krumhardt 2010, Land Use Harmonisation 2) scaled to regional (Nelson, OWID) and global population estimates [1].
+A substrata model was constructed from HYDE3.5 normalised to McEvedy and Jones (see [Velkscala 0.7](https://github.com/Confoederatio/Eoscala-Velkscala-Production)). Resultant rasters were subject to Moore neighbourhood outlier removal (threshold of 8x the average), with a fallback model constructed from KK10/LUH2 (Kaplan and Krumhardt 2010, Land Use Harmonisation 2) scaled to regional (Nelson, OWID) and global population estimates [1]. Prior to 1AD, we use calibrated radiocarbon dates per watershed to infer population via anchoring and summed probability distribution (SPD) methods, mainly from [c14bazAAR](https://github.com/ropensci/c14bazAAR) and [OxCal](https://c14.arch.ox.ac.uk/calibration.html).
 
 Spatiotemporal outlier masking was also performed for irregular regions, with manual copychecking done in [Constele Red](https://github.com/Confoederatio/Constele-Red), our custom geospatial visualisation and preprocessing suite. Outliers masked for replacement by the fallback model were as follows:
 
 - Athens: 10000BC-1000AD
 - Bhutan: 10000BC-1500AD
 - Canada: 10000BC-1750AD
+- Chernobyl: 10000BC-1986AD
 - Denmark: 10000BC-1000BC
+- Donbas: 10000BC-1700AD
+- Eurasian Steppe Cities (Astana, Darkhan, Erdenet, Ulaanbaatar): 10000BC-1800AD
 - Hong Kong: 10000BC-1850AD
+- Liechtenstein: 10000BC-1930AD
 - Jakarta: 10000BC-1500AD
 - Milan, Naples: 10000BC-1000BC
+- Patagonia: 10000BC-1000BC
+- Poland: 10000BC-9000BC
 - Russia: 10000BC-1400AD
 - Siberia: 10000BC-1500AD
 - St. Petersburg: 10000BC-1700AD
