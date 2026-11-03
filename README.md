@@ -14,6 +14,7 @@
 
 ## Abstract.
 
+**Stadestér** is part of the **Naissance World Model**, a digital twin of human society from 10000BC-2025AD.
 - Authors/Developers: Aust Kätzchen, Vis Tacitus
 - E-mail: [vf@confoederatio.org](mailto:vf@confoederatio.org)
 - Dataview: https://dataview.confoederatio.org
