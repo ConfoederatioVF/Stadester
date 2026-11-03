@@ -32,6 +32,8 @@
 
 Area, density, RNI, and geospatial distributions of population within cities are also available at annual resolution starting from 1800AD. Note that rasters have only been outputted for the subset of HYDE years from 3000BC-2025AD, and that you must dynamically generate rasters outside of this subset via the provided CLI in `autorun.bat`. Rural, urban, and total population rasters at 5-arcmin resolution are available from 10000BC-2025AD at a global level.
 
+Capital city and historic name data can be found in `city_metadata.json`, organised by YYYY.MM.DD and [lng, lat] coordinate pairs.
+
 To avoid double counting, metropolitan networks were corrected for in the data by subtracting suburban populations from their metro area, and redistributing any negative numbers held by the metropolitan area back to their suburbs in a proportional manner. Area/density calculations were derived from Angel (2011), Bairoch (1991), Clark (1951), Pasciuti and Chase-Dunn (2002), and Stanilov and Sykora (2014). Hanson and Ortman's work on classical populations have not yet been incorporated.
 
 <img src = "https://i.postimg.cc/XVzvtFy7/stadester-urban-pop-heatmaps.png">
