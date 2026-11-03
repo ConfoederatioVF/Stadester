@@ -41,6 +41,8 @@ To avoid double counting, metropolitan networks were corrected for in the data b
 
 Two versions of Stadestér are provided: Stadestér Base (which does not merge Stadestér with GHSL post-1975), and Stadestér-GHSL (which utilises GHSL post-1975). There is additionally the option to generate a non-agglomerative corrected version from the CLI by calling `console generateNonMetroCorrectedBase()`. By comparison, `console generateMetroCorrectedBase()` generates the default corrected version of Stadestér.
 
+For more details on how Stadestér integrates with broader demographic databases, we advise you to check the [Velkscala README](https://github.com/ConfoederatioVF/Velkscala/blob/main/README.md).
+
 **Geospatial Distributions.**
 
 A substrata model was constructed from HYDE3.5 normalised to McEvedy and Jones (see [Velkscala 0.7](https://github.com/Confoederatio/Eoscala-Velkscala-Production)). Resultant rasters were subject to Moore neighbourhood outlier removal (threshold of 8x the average), with a fallback model constructed from KK10/LUH2 (Kaplan and Krumhardt 2010, Land Use Harmonisation 2) scaled to regional (Nelson, OWID) and global population estimates [1]. Prior to 1AD, we use calibrated radiocarbon dates per watershed to infer population via anchoring and summed probability distribution (SPD) methods, mainly from [c14bazAAR](https://github.com/ropensci/c14bazAAR) and [OxCal](https://c14.arch.ox.ac.uk/calibration.html).
